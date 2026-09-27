@@ -34,7 +34,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import com.android.datetimepicker.time.RadialPickerLayout
 import com.android.datetimepicker.time.TimePickerDialog
+import com.google.android.material.datepicker.CalendarConstraints
+import com.google.android.material.datepicker.DateValidatorPointBackward
+import com.google.android.material.datepicker.MaterialDatePicker
 import org.isoron.platform.gui.toInt
+import org.isoron.platform.time.DateUtils
+import org.isoron.platform.time.LocalDate
 import org.isoron.uhabits.HabitsApplication
 import org.isoron.uhabits.R
 import org.isoron.uhabits.activities.AndroidThemeSwitcher
@@ -51,6 +56,7 @@ import org.isoron.uhabits.core.models.NumericalHabitType
 import org.isoron.uhabits.core.models.PaletteColor
 import org.isoron.uhabits.core.models.Reminder
 import org.isoron.uhabits.core.models.WeekdayList
+import org.isoron.uhabits.core.models.quitTimestamp
 import org.isoron.uhabits.databinding.ActivityEditHabitBinding
 import org.isoron.uhabits.utils.applyBottomInset
 import org.isoron.uhabits.utils.applyRootViewInsets
@@ -58,6 +64,8 @@ import org.isoron.uhabits.utils.applyToolbarInsets
 import org.isoron.uhabits.utils.dismissCurrentAndShow
 import org.isoron.uhabits.utils.formatTime
 import org.isoron.uhabits.utils.toFormattedString
+import org.isoron.uhabits.utils.toSimpleDataFormat
+import java.util.Date
 
 fun formatFrequency(freqNum: Int, freqDen: Int, resources: Resources) = when {
     freqNum == 1 && (freqDen == 30 || freqDen == 31) -> resources.getString(R.string.every_month)
@@ -86,6 +94,7 @@ class EditHabitActivity : AppCompatActivity() {
     var reminderMin = -1
     var reminderDays: WeekdayList = WeekdayList.EVERY_DAY
     var targetType = NumericalHabitType.AT_LEAST
+    var quitSince = DateUtils.getLocalTime()
 
     override fun onCreate(state: Bundle?) {
         super.onCreate(state)
@@ -119,6 +128,7 @@ class EditHabitActivity : AppCompatActivity() {
             binding.notesInput.setText(habit.description)
             binding.unitInput.setText(habit.unit)
             binding.targetInput.setText(habit.targetValue.toString())
+            habit.quitSince?.let { quitSince = it }
         } else {
             habitType = HabitType.fromInt(intent.getIntExtra("habitType", HabitType.YES_NO.value))
         }
@@ -132,6 +142,7 @@ class EditHabitActivity : AppCompatActivity() {
             reminderHour = state.getInt("reminderHour")
             reminderMin = state.getInt("reminderMin")
             reminderDays = WeekdayList(state.getInt("reminderDays"))
+            quitSince = state.getLong("quitSince", quitSince)
         }
 
         updateColors()
@@ -146,6 +157,15 @@ class EditHabitActivity : AppCompatActivity() {
                 binding.nameInput.hint = getString(R.string.measurable_short_example)
                 binding.questionInput.hint = getString(R.string.measurable_question_example)
                 binding.frequencyOuterBox.visibility = View.GONE
+            }
+            HabitType.QUIT -> {
+                binding.nameInput.hint = getString(R.string.quit_short_example)
+                binding.questionInput.hint = getString(R.string.quit_question_example)
+                binding.frequencyOuterBox.visibility = View.GONE
+                binding.unitOuterBox.visibility = View.GONE
+                binding.targetOuterBox.visibility = View.GONE
+                binding.targetTypeOuterBox.visibility = View.GONE
+                binding.quitSinceOuterBox.visibility = View.VISIBLE
             }
         }
 
@@ -209,6 +229,46 @@ class EditHabitActivity : AppCompatActivity() {
                 dialog.dismiss()
             }
             builder.show()
+        }
+
+        populateQuitSince()
+        binding.quitDatePicker.setOnClickListener {
+            // MaterialDatePicker works with UTC midnights, which matches LocalDate.unixTime.
+            val today = LocalDate.fromUnixTime(DateUtils.getLocalTime())
+            val constraints = CalendarConstraints.Builder()
+                .setEnd(today.unixTime)
+                .setValidator(DateValidatorPointBackward.before(today.unixTime))
+                .build()
+            val picker = MaterialDatePicker.Builder.datePicker()
+                .setTitleText(R.string.quit_since)
+                .setSelection(LocalDate.fromUnixTime(quitSince).unixTime)
+                .setCalendarConstraints(constraints)
+                .build()
+            picker.addOnPositiveButtonClickListener { selection ->
+                quitSince = quitTimestamp(LocalDate.fromUnixTime(selection), quitHour(), quitMinute())
+                populateQuitSince()
+            }
+            picker.dismissCurrentAndShow(supportFragmentManager, "quitDatePicker")
+        }
+        binding.quitTimePicker.setOnClickListener {
+            val dialog = TimePickerDialog.newInstance(
+                object : TimePickerDialog.OnTimeSetListener {
+                    override fun onTimeSet(view: RadialPickerLayout?, hourOfDay: Int, minute: Int) {
+                        quitSince = quitTimestamp(LocalDate.fromUnixTime(quitSince), hourOfDay, minute)
+                        populateQuitSince()
+                    }
+
+                    override fun onTimeCleared(view: RadialPickerLayout?) {
+                        quitSince = quitTimestamp(LocalDate.fromUnixTime(quitSince), 0, 0)
+                        populateQuitSince()
+                    }
+                },
+                quitHour(),
+                quitMinute(),
+                DateFormat.is24HourFormat(this),
+                androidColor
+            )
+            dialog.dismissCurrentAndShow(supportFragmentManager, "quitTimePicker")
         }
 
         populateReminder()
@@ -286,6 +346,10 @@ class EditHabitActivity : AppCompatActivity() {
             habit.targetType = targetType
             habit.unit = binding.unitInput.text.trim().toString()
         }
+        if (habitType == HabitType.QUIT) {
+            habit.quitSince = quitSince
+            habit.frequency = Frequency.DAILY
+        }
         habit.type = habitType
 
         val command = if (habitId >= 0) {
@@ -334,6 +398,18 @@ class EditHabitActivity : AppCompatActivity() {
         }
     }
 
+    private fun quitMinutesOfDay() =
+        ((quitSince - LocalDate.fromUnixTime(quitSince).unixTime) / 60_000).toInt()
+
+    private fun quitHour() = quitMinutesOfDay() / 60
+
+    private fun quitMinute() = quitMinutesOfDay() % 60
+
+    private fun populateQuitSince() {
+        binding.quitDatePicker.text = "yMMMd".toSimpleDataFormat().format(Date(quitSince))
+        binding.quitTimePicker.text = formatTime(this, quitHour(), quitMinute())
+    }
+
     @SuppressLint("StringFormatMatches")
     private fun populateFrequency() {
         binding.booleanFrequencyPicker.text = formatFrequency(freqNum, freqDen, resources)
@@ -378,6 +454,7 @@ class EditHabitActivity : AppCompatActivity() {
             putInt("reminderHour", reminderHour)
             putInt("reminderMin", reminderMin)
             putInt("reminderDays", reminderDays.toInteger())
+            putLong("quitSince", quitSince)
         }
     }
 }

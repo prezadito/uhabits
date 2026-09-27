@@ -32,7 +32,8 @@ data class CreateRepetitionCommand(
 ) : Command {
     override fun run() {
         val entries = habit.originalEntries
-        entries.add(Entry(date, value, notes))
+        val storedValue = if (habit.isQuit) Entry.toQuitStoredValue(value) else value
+        entries.add(Entry(date, storedValue, notes))
         habit.recompute()
         habitList.resort()
     }

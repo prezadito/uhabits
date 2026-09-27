@@ -26,6 +26,7 @@ import org.isoron.uhabits.core.database.HabitRepository
 import org.isoron.uhabits.core.models.Habit
 import org.isoron.uhabits.core.models.HabitList
 import org.isoron.uhabits.core.models.HabitMatcher
+import org.isoron.uhabits.core.models.HabitType
 import org.isoron.uhabits.core.models.ModelObservable
 import org.isoron.uhabits.core.models.Reminder
 import org.isoron.uhabits.core.models.WeekdayList
@@ -100,6 +101,23 @@ class SQLiteHabitListTest : BaseUnitTest() {
         val all = repository.findAll()
         val record = all.find { it.id == 12300L }
         assertEquals(habit.name, record!!.name)
+    }
+
+    @Test
+    fun testAdd_quitHabit() = dbTest {
+        val habit = modelFactory.buildHabit()
+        habit.name = "Quit smoking"
+        habit.type = HabitType.QUIT
+        habit.quitSince = 1_422_000_000_000L
+        habitList.add(habit)
+        val record = repository.findAll().find { it.id == habit.id }!!
+        assertEquals(HabitType.QUIT.value, record.type)
+        assertEquals(1_422_000_000_000L, record.quitSince)
+
+        (habitList as SQLiteHabitList).reload()
+        val loaded = habitList.getById(habit.id!!)!!
+        assertEquals(HabitType.QUIT, loaded.type)
+        assertEquals(1_422_000_000_000L, loaded.quitSince)
     }
 
     @Test

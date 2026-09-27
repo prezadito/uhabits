@@ -23,6 +23,7 @@ import org.isoron.platform.Synchronized
 import org.isoron.platform.time.DayOfWeek
 import org.isoron.platform.time.LocalDate
 import org.isoron.platform.time.TruncateField
+import org.isoron.uhabits.core.models.Entry.Companion.NO
 import org.isoron.uhabits.core.models.Entry.Companion.SKIP
 import org.isoron.uhabits.core.models.Entry.Companion.UNKNOWN
 import org.isoron.uhabits.core.models.Entry.Companion.YES_AUTO
@@ -100,6 +101,38 @@ open class EntryList {
             snapIntervalsTogether(intervals)
             val computed = buildEntriesFromInterval(original, intervals)
             computed.filter { it.value != UNKNOWN || it.notes.isNotEmpty() }.forEach { add(it) }
+        }
+    }
+
+    /**
+     * Replaces all entries in this list by entries computed from the entries of a quit habit.
+     *
+     * Quit habits only store slips (with value NO). Every other day from [quitDate] until [today]
+     * is considered clean and receives the value YES_MANUAL, so that scores and streaks measure
+     * how long the user has stayed away from the habit. Days before the quit date are left
+     * unknown. Notes attached to any day are preserved.
+     */
+    @Synchronized
+    open fun recomputeQuitFrom(
+        originalEntries: EntryList,
+        quitDate: LocalDate?,
+        today: LocalDate
+    ) {
+        clear()
+        val original = originalEntries.getKnown()
+        original.forEach { entry ->
+            if (entry.value == NO) {
+                add(entry)
+            } else if (entry.notes.isNotEmpty()) {
+                add(Entry(entry.date, UNKNOWN, entry.notes))
+            }
+        }
+        val start = quitDate ?: original.lastOrNull()?.date ?: return
+        var current = start
+        while (current <= today) {
+            val existing = get(current)
+            if (existing.value != NO) add(Entry(current, YES_MANUAL, existing.notes))
+            current = current.plus(1)
         }
     }
 

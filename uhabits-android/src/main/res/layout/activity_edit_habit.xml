@@ -155,6 +155,30 @@
                 </LinearLayout>
             </FrameLayout>
 
+            <!-- Quit date and time -->
+            <FrameLayout
+                android:id="@+id/quitSinceOuterBox"
+                style="@style/FormOuterBox"
+                android:visibility="gone">
+                <LinearLayout style="@style/FormInnerBox">
+                    <TextView
+                        style="@style/FormLabel"
+                        android:text="@string/quit_since" />
+
+                    <TextView
+                        style="@style/FormDropdown"
+                        android:id="@+id/quitDatePicker"
+                        android:text="" />
+
+                    <View style="@style/FormDivider" />
+
+                    <TextView
+                        style="@style/FormDropdown"
+                        android:id="@+id/quitTimePicker"
+                        android:text="" />
+                </LinearLayout>
+            </FrameLayout>
+
             <!-- Target value, unit and frequency -->
             <FrameLayout
                 android:id="@+id/unitOuterBox"

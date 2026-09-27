@@ -119,7 +119,8 @@ open class NotificationTray(
 
         override fun onPostExecute() {
             systemTray.log("Showing notification for habit=" + habit.id)
-            if (isCompleted && habit.targetType != NumericalHabitType.AT_MOST) {
+            // Reminders for quit habits are motivational nudges, so they are always shown.
+            if (isCompleted && !habit.isQuit && habit.targetType != NumericalHabitType.AT_MOST) {
                 systemTray.log("Habit ${habit.id} already checked. Skipping.")
                 return
             }

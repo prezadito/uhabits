@@ -23,9 +23,12 @@ import android.app.PendingIntent
 import android.content.Context
 import android.view.View
 import org.isoron.platform.gui.toInt
+import org.isoron.platform.time.DateUtils
 import org.isoron.platform.time.getToday
+import org.isoron.uhabits.R
 import org.isoron.uhabits.core.models.Entry
 import org.isoron.uhabits.core.models.Habit
+import org.isoron.uhabits.core.models.getCleanTime
 import org.isoron.uhabits.core.ui.views.WidgetTheme
 import org.isoron.uhabits.widgets.views.CheckmarkWidgetView
 
@@ -40,7 +43,10 @@ open class CheckmarkWidget(
     override val defaultWidth: Int = 125
 
     override fun getOnClickPendingIntent(context: Context): PendingIntent? {
-        return if (habit.isNumerical) {
+        return if (habit.isQuit) {
+            // Tapping a quit widget should never log a slip by accident, so it opens the habit.
+            pendingIntentFactory.showHabit(habit)
+        } else if (habit.isNumerical) {
             pendingIntentFactory.showNumberPicker(habit, getToday())
         } else {
             pendingIntentFactory.toggleCheckmark(habit, null)
@@ -54,7 +60,12 @@ open class CheckmarkWidget(
             activeColor = WidgetTheme().color(habit.color).toInt()
             name = habit.name
             entryValue = habit.computedEntries.get(today).value
-            if (habit.isNumerical) {
+            if (habit.isQuit) {
+                // Show the number of clean days instead of a checkmark
+                val days = habit.getCleanTime(DateUtils.getLocalTime()).days
+                quitText = context.getString(R.string.clean_time_days, days)
+                entryState = if (habit.isCompletedToday()) Entry.YES_MANUAL else Entry.NO
+            } else if (habit.isNumerical) {
                 isNumerical = true
                 entryState = getNumericalEntryState()
             } else {

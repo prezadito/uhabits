@@ -26,6 +26,7 @@ import android.widget.AdapterView
 import android.widget.LinearLayout
 import org.isoron.platform.gui.toInt
 import org.isoron.platform.time.JavaLocalDateFormatter
+import org.isoron.uhabits.R
 import org.isoron.uhabits.core.ui.screens.habits.show.views.BarCardPresenter
 import org.isoron.uhabits.core.ui.screens.habits.show.views.BarCardState
 import org.isoron.uhabits.core.ui.views.BarChart
@@ -47,6 +48,7 @@ class BarCardView(context: Context, attrs: AttributeSet) : LinearLayout(context,
         binding.chart.postInvalidate()
 
         binding.title.setTextColor(androidColor)
+        binding.title.setText(if (state.isQuit) R.string.slips else R.string.history)
         if (state.isNumerical) {
             binding.boolSpinner.visibility = GONE
         } else {

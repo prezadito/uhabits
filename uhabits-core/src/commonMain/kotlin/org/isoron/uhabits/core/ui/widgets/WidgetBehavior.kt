@@ -51,11 +51,15 @@ class WidgetBehavior(
     fun onToggleRepetition(habit: Habit, date: LocalDate) {
         val entry = habit.originalEntries.get(date)
         val currentValue = entry.value
-        val newValue = nextToggleValue(
-            value = currentValue,
-            isSkipEnabled = preferences.isSkipEnabled,
-            areQuestionMarksEnabled = preferences.areQuestionMarksEnabled
-        )
+        val newValue = if (habit.isQuit) {
+            Entry.nextQuitToggleValue(currentValue)
+        } else {
+            nextToggleValue(
+                value = currentValue,
+                isSkipEnabled = preferences.isSkipEnabled,
+                areQuestionMarksEnabled = preferences.areQuestionMarksEnabled
+            )
+        }
         setValue(habit, date, newValue, entry.notes)
         notificationTray.cancel(habit)
     }

@@ -19,51 +19,44 @@
   -->
 
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
-       xmlns:habit="http://isoron.org/android">
+       xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
         android:id="@+id/title"
         style="@style/CardHeader"
-        android:text="@string/overview"/>
+        android:text="@string/clean_time"/>
+
+    <TextView
+        android:id="@+id/cleanTimeLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:gravity="center"
+        android:textSize="32sp"
+        tools:text="12d 4h"/>
 
     <LinearLayout
-        android:id="@+id/llOverview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal">
 
-        <FrameLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="5">
-
-            <org.isoron.uhabits.activities.common.views.RingView
-                android:id="@+id/scoreRing"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                habit:percentage="0"
-                habit:textSize="12"
-                habit:thickness="5"/>
-
-        </FrameLayout>
-
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="4"
+            android:layout_weight="1"
+            android:gravity="center"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/scoreLabel"
+                android:id="@+id/cleanSinceLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/score"
+                android:text="@string/clean_since"
                 android:textColor="?attr/contrast60"/>
 
         </LinearLayout>
@@ -71,18 +64,19 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="4"
+            android:layout_weight="1"
+            android:gravity="center"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/monthDiffLabel"
+                android:id="@+id/bestStreakLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/month"
+                android:text="@string/best_clean_streak"
                 android:textColor="?attr/contrast60"/>
 
         </LinearLayout>
@@ -90,38 +84,19 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="4"
+            android:layout_weight="1"
+            android:gravity="center"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/yearDiffLabel"
+                android:id="@+id/recentSlipsLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/year"
-                android:textColor="?attr/contrast60"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/totalCountLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:id="@+id/totalCountTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/total"
+                android:text="@string/slips_last_30_days"
                 android:textColor="?attr/contrast60"/>
 
         </LinearLayout>

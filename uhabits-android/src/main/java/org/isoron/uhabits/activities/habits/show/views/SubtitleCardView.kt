@@ -33,6 +33,8 @@ import org.isoron.uhabits.core.ui.screens.habits.show.views.SubtitleCardState
 import org.isoron.uhabits.databinding.ShowHabitSubtitleBinding
 import org.isoron.uhabits.utils.InterfaceUtils
 import org.isoron.uhabits.utils.formatTime
+import org.isoron.uhabits.utils.toSimpleDataFormat
+import java.util.Date
 
 class SubtitleCardView(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
 
@@ -62,6 +64,13 @@ class SubtitleCardView(context: Context, attrs: AttributeSet) : LinearLayout(con
             resources.getString(R.string.reminder_off)
         }
         binding.targetText.text = "${state.targetValue.toShortString()} ${state.unit}"
+        val quitSince = state.quitSince
+        if (state.isQuit && quitSince != null) {
+            binding.frequencyLabel.text = resources.getString(
+                R.string.quit_since_date,
+                "yMMMd".toSimpleDataFormat().format(Date(quitSince))
+            )
+        }
 
         binding.questionLabel.visibility = View.VISIBLE
         binding.targetIcon.visibility = View.VISIBLE

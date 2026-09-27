@@ -32,6 +32,12 @@ data class Habit(
     var name: String = "",
     var position: Int = 0,
     var question: String = "",
+    /**
+     * For habits of type [HabitType.QUIT], the moment the user quit, as local
+     * wall-clock time in milliseconds (same convention as LocalDate.unixTime,
+     * plus the time of day). Null for other habit types.
+     */
+    var quitSince: Long? = null,
     var reminder: Reminder? = null,
     var targetType: NumericalHabitType = NumericalHabitType.AT_LEAST,
     var targetValue: Double = 0.0,
@@ -52,6 +58,9 @@ data class Habit(
     val isNumerical: Boolean
         get() = type == HabitType.NUMERICAL
 
+    val isQuit: Boolean
+        get() = type == HabitType.QUIT
+
     val uriString: String
         get() = "content://org.isoron.uhabits/habit/$id"
 
@@ -60,7 +69,9 @@ data class Habit(
     fun isCompletedToday(): Boolean {
         val today = getToday()
         val value = computedEntries.get(today).value
-        return if (isNumerical) {
+        return if (isQuit) {
+            value != Entry.NO
+        } else if (isNumerical) {
             when (targetType) {
                 NumericalHabitType.AT_LEAST -> value / 1000.0 >= targetValue
                 NumericalHabitType.AT_MOST -> false
@@ -77,13 +88,21 @@ data class Habit(
     }
 
     fun recompute() {
-        computedEntries.recomputeFrom(
-            originalEntries = originalEntries,
-            frequency = frequency,
-            isNumerical = isNumerical
-        )
-
         val today = getToday()
+        if (isQuit) {
+            computedEntries.recomputeQuitFrom(
+                originalEntries = originalEntries,
+                quitDate = getQuitDate(),
+                today = today
+            )
+        } else {
+            computedEntries.recomputeFrom(
+                originalEntries = originalEntries,
+                frequency = frequency,
+                isNumerical = isNumerical
+            )
+        }
+
         val to = today.plus(30)
         val entries = computedEntries.getKnown()
         var from = entries.lastOrNull()?.date ?: today
@@ -109,6 +128,19 @@ data class Habit(
         )
     }
 
+    /**
+     * Computed entries of quit habits depend on the current date, since every day without a
+     * slip is considered clean. This recomputes them if the day has changed since the last
+     * computation.
+     */
+    fun recomputeIfStale() {
+        if (!isQuit) return
+        val today = getToday()
+        val quitDate = getQuitDate() ?: return
+        if (quitDate > today) return
+        if (computedEntries.get(today).value == Entry.UNKNOWN) recompute()
+    }
+
     fun copyFrom(other: Habit) {
         this.color = other.color
         this.description = other.description
@@ -118,6 +150,7 @@ data class Habit(
         this.name = other.name
         this.position = other.position
         this.question = other.question
+        this.quitSince = other.quitSince
         this.reminder = other.reminder
         this.targetType = other.targetType
         this.targetValue = other.targetValue
@@ -138,6 +171,7 @@ data class Habit(
         if (name != other.name) return false
         if (position != other.position) return false
         if (question != other.question) return false
+        if (quitSince != other.quitSince) return false
         if (reminder != other.reminder) return false
         if (targetType != other.targetType) return false
         if (targetValue != other.targetValue) return false
@@ -157,6 +191,7 @@ data class Habit(
         result = 31 * result + name.hashCode()
         result = 31 * result + position
         result = 31 * result + question.hashCode()
+        result = 31 * result + (quitSince?.hashCode() ?: 0)
         result = 31 * result + (reminder?.hashCode() ?: 0)
         result = 31 * result + targetType.value
         result = 31 * result + targetValue.hashCode()

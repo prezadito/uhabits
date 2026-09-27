@@ -16,43 +16,38 @@
  * You should have received a copy of the GNU General Public License along
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package org.isoron.uhabits.core.ui.screens.habits.show.views
 
-import org.isoron.platform.time.DayOfWeek
-import org.isoron.platform.time.LocalDate
+import org.isoron.platform.time.getToday
 import org.isoron.uhabits.core.models.Habit
 import org.isoron.uhabits.core.models.PaletteColor
-import org.isoron.uhabits.core.models.computeSlipWeekdayFrequency
+import org.isoron.uhabits.core.models.countSlips
+import org.isoron.uhabits.core.models.getCleanSince
 import org.isoron.uhabits.core.ui.views.Theme
-data class FrequencyCardState(
+
+data class QuitCardState(
     val color: PaletteColor,
-    val firstWeekday: DayOfWeek,
-    val frequency: HashMap<LocalDate, Array<Int>>,
-    val theme: Theme,
-    val isNumerical: Boolean,
-    val isQuit: Boolean = false
+    val quitSince: Long?,
+    val cleanSince: Long?,
+    val longestStreakDays: Int,
+    val totalSlips: Int,
+    val slipsLast30Days: Int,
+    val theme: Theme
 )
 
-class FrequencyCardPresenter {
+class QuitCardPresenter {
     companion object {
-        fun buildState(
-            habit: Habit,
-            firstWeekday: DayOfWeek,
-            theme: Theme
-        ) = FrequencyCardState(
-            color = habit.color,
-            isNumerical = habit.isNumerical,
-            isQuit = habit.isQuit,
-            frequency = if (habit.isQuit) {
-                habit.computeSlipWeekdayFrequency()
-            } else {
-                habit.originalEntries.computeWeekdayFrequency(
-                    isNumerical = habit.isNumerical
-                )
-            },
-            firstWeekday = firstWeekday,
-            theme = theme
-        )
+        fun buildState(habit: Habit, theme: Theme): QuitCardState {
+            val today = getToday()
+            return QuitCardState(
+                color = habit.color,
+                quitSince = habit.quitSince,
+                cleanSince = habit.getCleanSince(),
+                longestStreakDays = habit.streaks.getBest(1).firstOrNull()?.length ?: 0,
+                totalSlips = habit.countSlips(),
+                slipsLast30Days = habit.countSlips(since = today.minus(29)),
+                theme = theme
+            )
+        }
     }
 }

@@ -46,6 +46,7 @@ import org.isoron.uhabits.core.ui.screens.habits.list.ListHabitsBehavior
 import org.isoron.uhabits.inject.ActivityContext
 import org.isoron.uhabits.utils.currentTheme
 import org.isoron.uhabits.utils.dp
+import org.isoron.uhabits.utils.formatCleanStatus
 import org.isoron.uhabits.utils.sres
 
 @Inject
@@ -127,9 +128,18 @@ class HabitCardView(
     private var numberPanel: NumberPanelView
     private var innerFrame: LinearLayout
     private var label: TextView
+    private var cleanTimeLabel: TextView
+    private var labelContainer: LinearLayout
     private var scoreRing: RingView
 
     private var currentToggleTaskId = 0
+
+    private val cleanTimeTicker = object : Runnable {
+        override fun run() {
+            habit?.let { if (it.isQuit) updateCleanTime(it) }
+            postDelayed(this, CLEAN_TIME_REFRESH_INTERVAL)
+        }
+    }
 
     init {
         scoreRing = RingView(context).apply {
@@ -146,10 +156,25 @@ class HabitCardView(
         label = TextView(context).apply {
             maxLines = 2
             ellipsize = TextUtils.TruncateAt.END
-            layoutParams = LinearLayout.LayoutParams(0, WRAP_CONTENT, 1f)
+            layoutParams = LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
             if (SDK_INT >= Build.VERSION_CODES.Q) {
                 breakStrategy = BREAK_STRATEGY_BALANCED
             }
+        }
+
+        cleanTimeLabel = TextView(context).apply {
+            maxLines = 1
+            ellipsize = TextUtils.TruncateAt.END
+            textSize = 12f
+            visibility = GONE
+            layoutParams = LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
+        }
+
+        labelContainer = LinearLayout(context).apply {
+            orientation = LinearLayout.VERTICAL
+            layoutParams = LinearLayout.LayoutParams(0, WRAP_CONTENT, 1f)
+            addView(label)
+            addView(cleanTimeLabel)
         }
 
         checkmarkPanel = checkmarkPanelFactory.create().apply {
@@ -190,7 +215,7 @@ class HabitCardView(
             elevation = dp(1f)
 
             addView(scoreRing)
-            addView(label)
+            addView(labelContainer)
             addView(checkmarkPanel)
             addView(numberPanel)
 
@@ -256,9 +281,11 @@ class HabitCardView(
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
         habit?.observable?.addListener(this)
+        postDelayed(cleanTimeTicker, CLEAN_TIME_REFRESH_INTERVAL)
     }
 
     override fun onDetachedFromWindow() {
+        removeCallbacks(cleanTimeTicker)
         habit?.observable?.removeListener(this)
         super.onDetachedFromWindow()
     }
@@ -279,8 +306,14 @@ class HabitCardView(
         scoreRing.apply {
             setColor(c)
         }
+        cleanTimeLabel.apply {
+            setTextColor(sres.getColor(R.attr.contrast60))
+            visibility = if (h.isQuit) View.VISIBLE else View.GONE
+        }
+        if (h.isQuit) updateCleanTime(h)
         checkmarkPanel.apply {
             color = c
+            isQuit = h.isQuit
             visibility = when (h.isNumerical) {
                 true -> View.GONE
                 false -> View.VISIBLE
@@ -296,6 +329,10 @@ class HabitCardView(
                 false -> View.GONE
             }
         }
+    }
+
+    private fun updateCleanTime(h: Habit) {
+        cleanTimeLabel.text = h.formatCleanStatus(resources)
     }
 
     private fun triggerRipple(x: Float, y: Float) {
@@ -317,6 +354,8 @@ class HabitCardView(
     }
 
     companion object {
+        private const val CLEAN_TIME_REFRESH_INTERVAL = 60_000L
+
         fun (() -> Unit).delay(delayInMillis: Long) {
             Handler(Looper.getMainLooper()).postDelayed(this, delayInMillis)
         }

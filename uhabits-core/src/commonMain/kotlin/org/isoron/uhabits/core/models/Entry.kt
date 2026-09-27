@@ -63,6 +63,19 @@ data class Entry(
          */
         const val UNKNOWN = -1
 
+        /**
+         * For quit habits, returns the value a day should have after being toggled: clean days
+         * (or unknown days) become slips, and slips become clean again.
+         */
+        fun nextQuitToggleValue(value: Int): Int = if (value == NO) YES_MANUAL else NO
+
+        /**
+         * For quit habits, converts a value chosen by the user into the value that should be
+         * stored. Quit habits only store slips (NO); every other value means "clean", which is
+         * the default for days without entries, so it is stored as UNKNOWN.
+         */
+        fun toQuitStoredValue(value: Int): Int = if (value == NO) NO else UNKNOWN
+
         fun nextToggleValue(
             value: Int,
             isSkipEnabled: Boolean,

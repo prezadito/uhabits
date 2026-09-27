@@ -77,6 +77,15 @@ class CheckmarkButtonView(
             invalidate()
         }
 
+    /**
+     * For quit habits, the button toggles between clean days and slips.
+     */
+    var isQuit = false
+        set(value) {
+            field = value
+            invalidate()
+        }
+
     var onToggle: (Int, String) -> Unit = { _, _ -> }
 
     var onEdit: () -> Unit = { }
@@ -89,11 +98,15 @@ class CheckmarkButtonView(
     }
 
     fun performToggle() {
-        value = Entry.nextToggleValue(
-            value = value,
-            isSkipEnabled = preferences.isSkipEnabled,
-            areQuestionMarksEnabled = preferences.areQuestionMarksEnabled
-        )
+        value = if (isQuit) {
+            Entry.nextQuitToggleValue(value)
+        } else {
+            Entry.nextToggleValue(
+                value = value,
+                isSkipEnabled = preferences.isSkipEnabled,
+                areQuestionMarksEnabled = preferences.areQuestionMarksEnabled
+            )
+        }
         onToggle(value, notes)
         performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
         invalidate()
@@ -131,6 +144,35 @@ class CheckmarkButtonView(
     }
 
     private inner class Drawer {
+        /**
+         * Quit habits show clean days as checkmarks and slips as crosses. Days before the
+         * quit date are left blank.
+         */
+        private fun drawQuit(canvas: Canvas) {
+            paint.strokeWidth = 0f
+            paint.style = Paint.Style.FILL
+            paint.textSize = sp(14.0f)
+            val em = paint.measureText("m")
+            rect.set(0f, 0f, width.toFloat(), height.toFloat())
+            val id = when (value) {
+                YES_MANUAL -> R.string.fa_check
+                NO -> R.string.fa_times
+                else -> null
+            }
+            if (id != null) {
+                paint.color = if (value == NO) mediumContrastColor else color
+                val textRect = RectF(rect).apply { offset(0f, 0.4f * em) }
+                canvas.drawText(resources.getString(id), textRect.centerX(), textRect.centerY(), paint)
+            }
+            drawNotesIndicator(
+                pNotesIndicator = pNotesIndicator,
+                canvas = canvas,
+                color = color,
+                size = em,
+                notes = notes
+            )
+        }
+
         private val rect = RectF()
         private val bgColor = sres.getColor(R.attr.cardBgColor)
         private val lowContrastColor = sres.getColor(R.attr.contrast40)
@@ -144,6 +186,10 @@ class CheckmarkButtonView(
         }
 
         fun draw(canvas: Canvas) {
+            if (isQuit) {
+                drawQuit(canvas)
+                return
+            }
             paint.color = when (value) {
                 YES_MANUAL, YES_AUTO, SKIP -> color
                 NO -> {

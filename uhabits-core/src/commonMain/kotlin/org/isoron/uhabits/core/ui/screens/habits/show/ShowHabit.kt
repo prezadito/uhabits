@@ -34,6 +34,8 @@ import org.isoron.uhabits.core.ui.screens.habits.show.views.NotesCardPresenter
 import org.isoron.uhabits.core.ui.screens.habits.show.views.NotesCardState
 import org.isoron.uhabits.core.ui.screens.habits.show.views.OverviewCardPresenter
 import org.isoron.uhabits.core.ui.screens.habits.show.views.OverviewCardState
+import org.isoron.uhabits.core.ui.screens.habits.show.views.QuitCardPresenter
+import org.isoron.uhabits.core.ui.screens.habits.show.views.QuitCardState
 import org.isoron.uhabits.core.ui.screens.habits.show.views.ScoreCardPresenter
 import org.isoron.uhabits.core.ui.screens.habits.show.views.ScoreCardState
 import org.isoron.uhabits.core.ui.screens.habits.show.views.StreakCardState
@@ -47,9 +49,11 @@ import org.isoron.uhabits.core.ui.views.Theme
 data class ShowHabitState(
     val title: String = "",
     val isNumerical: Boolean = false,
+    val isQuit: Boolean = false,
     val color: PaletteColor = PaletteColor(1),
     val subtitle: SubtitleCardState,
     val overview: OverviewCardState,
+    val quit: QuitCardState,
     val notes: NotesCardState,
     val target: TargetCardState,
     val streaks: StreakCardState,
@@ -91,16 +95,22 @@ class ShowHabitPresenter(
             preferences: Preferences,
             theme: Theme
         ): ShowHabitState {
+            habit.recomputeIfStale()
             return ShowHabitState(
                 title = habit.name,
                 color = habit.color,
                 isNumerical = habit.isNumerical,
+                isQuit = habit.isQuit,
                 theme = theme,
                 subtitle = SubtitleCardPresenter.buildState(
                     habit = habit,
                     theme = theme
                 ),
                 overview = OverviewCardPresenter.buildState(
+                    habit = habit,
+                    theme = theme
+                ),
+                quit = QuitCardPresenter.buildState(
                     habit = habit,
                     theme = theme
                 ),

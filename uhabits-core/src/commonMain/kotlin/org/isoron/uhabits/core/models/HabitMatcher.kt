@@ -28,8 +28,9 @@ data class HabitMatcher(
     fun matches(habit: Habit): Boolean {
         if (!isArchivedAllowed && habit.isArchived) return false
         if (isReminderRequired && !habit.hasReminder()) return false
-        if (!isCompletedAllowed && habit.isCompletedToday()) return false
-        if (!isEnteredAllowed && habit.isEnteredToday()) return false
+        // Quit habits are never "done" for the day, since the user may still slip later on.
+        if (!isCompletedAllowed && !habit.isQuit && habit.isCompletedToday()) return false
+        if (!isEnteredAllowed && !habit.isQuit && habit.isEnteredToday()) return false
         if (searchQuery.isNotEmpty()) {
             val q = searchQuery.trim()
             if (q.isNotEmpty() &&

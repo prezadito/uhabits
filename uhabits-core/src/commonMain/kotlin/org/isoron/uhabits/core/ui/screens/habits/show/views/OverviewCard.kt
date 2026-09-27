@@ -31,6 +31,7 @@ data class OverviewCardState(
     val scoreYearDiff: Float,
     val scoreToday: Float,
     val totalCount: Long,
+    val isQuit: Boolean = false,
     val theme: Theme
 )
 
@@ -44,8 +45,10 @@ class OverviewCardPresenter {
             val scoreToday = scores[today].value.toFloat()
             val scoreLastMonth = scores[lastMonth].value.toFloat()
             val scoreLastYear = scores[lastYear].value.toFloat()
+            // For quit habits, the total counts slips rather than repetitions.
+            val countedValue = if (habit.isQuit) Entry.NO else Entry.YES_MANUAL
             val totalCount = habit.originalEntries.getKnown()
-                .filter { it.value == Entry.YES_MANUAL }
+                .filter { it.value == countedValue }
                 .count()
                 .toLong()
             return OverviewCardState(
@@ -54,6 +57,7 @@ class OverviewCardPresenter {
                 scoreMonthDiff = scoreToday - scoreLastMonth,
                 scoreYearDiff = scoreToday - scoreLastYear,
                 totalCount = totalCount,
+                isQuit = habit.isQuit,
                 theme = theme
             )
         }
