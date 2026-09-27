@@ -23,6 +23,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import org.isoron.platform.gui.toInt
+import org.isoron.uhabits.R
 import org.isoron.uhabits.core.ui.screens.habits.show.views.FrequencyCardState
 import org.isoron.uhabits.databinding.ShowHabitFrequencyBinding
 
@@ -36,6 +37,7 @@ class FrequencyCardView(context: Context, attrs: AttributeSet) : LinearLayout(co
         binding.frequencyChart.setIsNumerical(state.isNumerical)
         binding.frequencyChart.setFirstWeekday(state.firstWeekday)
         binding.title.setTextColor(androidColor)
+        binding.title.setText(if (state.isQuit) R.string.slips_by_weekday else R.string.frequency)
         binding.frequencyChart.setColor(androidColor)
     }
 }

@@ -46,6 +46,7 @@ class ShowHabitView(context: Context) : FrameLayout(context) {
         )
         binding.subtitleCard.setState(data.subtitle)
         binding.overviewCard.setState(data.overview)
+        binding.quitCard.setState(data.quit)
         binding.notesCard.setState(data.notes)
         binding.targetCard.setState(data.target)
         binding.streakCard.setState(data.streaks)
@@ -58,6 +59,7 @@ class ShowHabitView(context: Context) : FrameLayout(context) {
         } else {
             binding.targetCard.visibility = GONE
         }
+        if (!data.isQuit) binding.quitCard.visibility = GONE
         binding.linearLayout.applyBottomInset()
     }
 

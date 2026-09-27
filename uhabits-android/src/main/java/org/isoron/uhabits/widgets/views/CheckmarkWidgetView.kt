@@ -51,6 +51,11 @@ class CheckmarkWidgetView : HabitWidgetView {
     var entryValue = 0
     var entryState = 0
     var isNumerical = false
+
+    /**
+     * For quit habits, the text shown inside the ring (the number of clean days).
+     */
+    var quitText: String? = null
     private var preferences: Preferences? = null
 
     constructor(context: Context?) : super(context) {
@@ -95,7 +100,7 @@ class CheckmarkWidgetView : HabitWidgetView {
     }
 
     private val strokedTextEnabled: Boolean
-        get() = if (isNumerical) {
+        get() = if (isNumerical || quitText != null) {
             false
         } else {
             when (entryState) {
@@ -105,7 +110,7 @@ class CheckmarkWidgetView : HabitWidgetView {
         }
 
     private val text: String
-        get() = if (isNumerical) {
+        get() = quitText ?: if (isNumerical) {
             (max(0, entryValue) / 1000.0).toShortString()
         } else {
             when (entryState) {
@@ -139,7 +144,7 @@ class CheckmarkWidgetView : HabitWidgetView {
         }
         val textSize = min(0.175f * width, getDimension(context, R.dimen.smallTextSize))
         label.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize)
-        if (isNumerical) {
+        if (isNumerical || quitText != null) {
             ring.setTextSize(textSize * 0.9f)
         } else {
             ring.setTextSize(textSize)

@@ -28,6 +28,7 @@ import org.isoron.uhabits.core.models.HabitType
 import org.isoron.uhabits.core.models.ModelFactory
 import org.isoron.uhabits.core.models.NumericalHabitType
 import org.isoron.uhabits.core.models.PaletteColor
+import org.isoron.uhabits.core.models.quitTimestamp
 import org.isoron.uhabits.core.models.sqlite.SQLiteEntryList
 
 class HabitFixtures(
@@ -137,6 +138,24 @@ class HabitFixtures(
             val timestamp = reference.minus(times[i])
             habit.originalEntries.add(Entry(timestamp, values[i]))
         }
+        habit.recompute()
+        return habit
+    }
+
+    /**
+     * Creates a quit habit started 20 days ago at 08:30, with slips 12 and 5 days ago.
+     */
+    fun createQuitHabit(): Habit {
+        val habit = modelFactory.buildHabit()
+        habit.type = HabitType.QUIT
+        habit.name = "Quit smoking"
+        habit.question = "Did you smoke today?"
+        habit.color = PaletteColor(2)
+        val today = getToday()
+        habit.quitSince = quitTimestamp(today.minus(20), 8, 30)
+        saveIfSQLite(habit)
+        habit.originalEntries.add(Entry(today.minus(12), Entry.NO))
+        habit.originalEntries.add(Entry(today.minus(5), Entry.NO))
         habit.recompute()
         return habit
     }

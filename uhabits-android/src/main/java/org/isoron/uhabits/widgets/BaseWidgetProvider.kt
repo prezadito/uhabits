@@ -113,6 +113,7 @@ abstract class BaseWidgetProvider : AppWidgetProvider() {
         val selectedHabits = ArrayList<Habit>(selectedIds.size)
         for (id in selectedIds) {
             val h = habits.getById(id) ?: throw HabitNotFoundException()
+            h.recomputeIfStale()
             selectedHabits.add(h)
         }
         return selectedHabits

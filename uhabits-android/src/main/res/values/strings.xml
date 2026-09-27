@@ -238,4 +238,30 @@
     <string name="pref_midnight_delay_description">Wait until 3:00 AM to show a new day. Useful if you typically go to sleep after midnight. Requires app restart.</string>
     <string name="pref_animations_title">Disable animations</string>
     <string name="pref_animations_description">Disable confetti animation after adding a checkmark.</string>
+
+    <!-- Quit habits -->
+    <string name="quit_habit">Quit a habit</string>
+    <string name="quit_habit_example">e.g. Stop smoking. Quit social media. Cut out sugar.</string>
+    <string name="quit_short_example">e.g. Smoking</string>
+    <string name="quit_question_example">e.g. Stay strong, you can do this!</string>
+    <string name="quit_since">Quit since</string>
+    <string name="quit_since_date">Quit since %s</string>
+    <string name="clean_time">Clean time</string>
+    <string name="clean_since">Clean since</string>
+    <string name="clean_for">%s clean</string>
+    <string name="clean_time_days">%dd</string>
+    <string name="clean_time_days_hours">%1$dd %2$dh</string>
+    <string name="clean_time_hours_minutes">%1$dh %2$dm</string>
+    <string name="clean_time_minutes">%dm</string>
+    <string name="slipped_today">Slipped today</string>
+    <string name="i_slipped">I slipped</string>
+    <string name="slips">Slips</string>
+    <string name="slips_by_weekday">Slips by weekday</string>
+    <string name="slips_last_30_days">Slips (30 days)</string>
+    <string name="best_clean_streak">Best streak</string>
+    <string name="quit_reminder_text">%s. Keep going!</string>
+    <plurals name="x_days">
+        <item quantity="one">%d day</item>
+        <item quantity="other">%d days</item>
+    </plurals>
 </resources>

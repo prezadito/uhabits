@@ -1,0 +1,1 @@
+alter table Habits add column quit_since integer;

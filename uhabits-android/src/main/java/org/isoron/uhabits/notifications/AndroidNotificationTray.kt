@@ -41,6 +41,7 @@ import org.isoron.uhabits.core.preferences.Preferences
 import org.isoron.uhabits.core.ui.NotificationTray
 import org.isoron.uhabits.inject.AppContext
 import org.isoron.uhabits.intents.PendingIntentFactory
+import org.isoron.uhabits.utils.formatCleanStatus
 
 @Inject
 @AppScope
@@ -121,7 +122,17 @@ class AndroidNotificationTray(
         // WearableExtender.
         val wearableExtender = WearableExtender().setBackground(wearableBg)
 
-        val defaultText = context.getString(R.string.default_reminder_question)
+        val slipAction = Action(
+            R.drawable.ic_action_cancel,
+            context.getString(R.string.i_slipped),
+            pendingIntents.removeRepetition(habit, date)
+        )
+
+        val defaultText = if (habit.isQuit) {
+            context.getString(R.string.quit_reminder_text, habit.formatCleanStatus(context.resources))
+        } else {
+            context.getString(R.string.default_reminder_question)
+        }
         val builder = Builder(context, REMINDERS_CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_notification)
             .setContentTitle(habit.name)
@@ -133,7 +144,10 @@ class AndroidNotificationTray(
             .setShowWhen(true)
             .setOngoing(preferences.shouldMakeNotificationsSticky())
 
-        if (habit.isNumerical) {
+        if (habit.isQuit) {
+            wearableExtender.addAction(slipAction)
+            builder.addAction(slipAction)
+        } else if (habit.isNumerical) {
             wearableExtender.addAction(enterAction)
             builder.addAction(enterAction)
         } else {

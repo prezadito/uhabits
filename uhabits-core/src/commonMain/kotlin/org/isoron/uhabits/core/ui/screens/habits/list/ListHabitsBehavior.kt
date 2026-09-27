@@ -75,7 +75,9 @@ open class ListHabitsBehavior(
                 entry.notes,
                 habit.color
             ) { newValue: Int, newNotes: String ->
-                if (newValue != entry.value && newValue == YES_MANUAL) screen.showConfetti(habit.color, x, y)
+                if (!habit.isQuit && newValue != entry.value && newValue == YES_MANUAL) {
+                    screen.showConfetti(habit.color, x, y)
+                }
                 commandRunner.run(CreateRepetitionCommand(habitList, habit, date, newValue, newNotes))
             }
         }
@@ -136,7 +138,7 @@ open class ListHabitsBehavior(
         commandRunner.run(
             CreateRepetitionCommand(habitList, habit, date, value, notes)
         )
-        if (value == YES_MANUAL) screen.showConfetti(habit.color, x, y)
+        if (value == YES_MANUAL && !habit.isQuit) screen.showConfetti(habit.color, x, y)
     }
 
     enum class Message {

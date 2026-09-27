@@ -20,6 +20,7 @@ package org.isoron.uhabits.core.models
 
 import org.isoron.platform.io.csvLine
 import org.isoron.platform.io.format
+import org.isoron.platform.time.LocalDate
 
 /**
  * An ordered collection of [Habit]s.
@@ -178,7 +179,8 @@ abstract class HabitList : Iterable<Habit> {
             "Unit",
             "Target Type",
             "Target Value",
-            "Archived?"
+            "Archived?",
+            "Quit Since"
         )
         sb.append(csvLine(header))
         for (habit in this) {
@@ -195,11 +197,21 @@ abstract class HabitList : Iterable<Habit> {
                 if (habit.isNumerical) habit.unit else "",
                 if (habit.isNumerical) habit.targetType.name else "",
                 if (habit.isNumerical) format("%.1f", habit.targetValue) else "",
-                habit.isArchived.toString()
+                habit.isArchived.toString(),
+                formatQuitSince(habit)
             )
             sb.append(csvLine(cols))
         }
         return sb.toString()
+    }
+
+    private fun formatQuitSince(habit: Habit): String {
+        val quitSince = habit.quitSince ?: return ""
+        if (!habit.isQuit) return ""
+        val date = LocalDate.fromUnixTime(quitSince)
+        val minutes = ((quitSince - date.unixTime) / 60_000).toInt()
+        fun pad(n: Int) = n.toString().padStart(2, '0')
+        return "${date.year}-${pad(date.month)}-${pad(date.day)} ${pad(minutes / 60)}:${pad(minutes % 60)}"
     }
 
     abstract fun resort()

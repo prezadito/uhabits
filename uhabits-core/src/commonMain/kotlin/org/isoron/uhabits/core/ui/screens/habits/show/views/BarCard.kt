@@ -34,6 +34,7 @@ data class BarCardState(
     val color: PaletteColor,
     val entries: List<Entry>,
     val isNumerical: Boolean,
+    val isQuit: Boolean = false,
     val numericalSpinnerPosition: Int
 )
 
@@ -59,7 +60,11 @@ class BarCardPresenter(
             }
             val today = getToday()
             val oldest = habit.computedEntries.getKnown().lastOrNull()?.date ?: today
-            val entries = habit.computedEntries.getByInterval(oldest, today).groupedSum(
+            // For quit habits, the chart shows the number of slips in each period.
+            val intervalEntries = habit.computedEntries.getByInterval(oldest, today).map {
+                if (habit.isQuit) Entry(it.date, if (it.value == Entry.NO) Entry.YES_MANUAL else Entry.NO) else it
+            }
+            val entries = intervalEntries.groupedSum(
                 truncateField = ScoreCardPresenter.getTruncateField(bucketSize),
                 firstWeekday = firstWeekday,
                 isNumerical = habit.isNumerical
@@ -70,6 +75,7 @@ class BarCardPresenter(
                 bucketSize = bucketSize,
                 color = habit.color,
                 isNumerical = habit.isNumerical,
+                isQuit = habit.isQuit,
                 numericalSpinnerPosition = numericalSpinnerPosition,
                 boolSpinnerPosition = boolSpinnerPosition
             )

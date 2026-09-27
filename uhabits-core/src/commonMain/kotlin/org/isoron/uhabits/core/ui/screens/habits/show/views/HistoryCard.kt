@@ -111,11 +111,15 @@ class HistoryCardPresenter(
 
     private fun toggle(date: LocalDate) {
         val entry = habit.computedEntries.get(date)
-        val nextValue = Entry.nextToggleValue(
-            value = entry.value,
-            isSkipEnabled = preferences.isSkipEnabled,
-            areQuestionMarksEnabled = preferences.areQuestionMarksEnabled
-        )
+        val nextValue = if (habit.isQuit) {
+            Entry.nextQuitToggleValue(entry.value)
+        } else {
+            Entry.nextToggleValue(
+                value = entry.value,
+                isSkipEnabled = preferences.isSkipEnabled,
+                areQuestionMarksEnabled = preferences.areQuestionMarksEnabled
+            )
+        }
         commandRunner.run(
             CreateRepetitionCommand(
                 habitList,
@@ -160,7 +164,15 @@ class HistoryCardPresenter(
             val today = getToday()
             val oldest = habit.computedEntries.getKnown().lastOrNull()?.date ?: today
             val entries = habit.computedEntries.getByInterval(oldest, today)
-            val series = if (habit.isNumerical) {
+            val series = if (habit.isQuit) {
+                entries.map {
+                    when (it.value) {
+                        YES_MANUAL -> ON
+                        Entry.NO -> GREY
+                        else -> OFF
+                    }
+                }
+            } else if (habit.isNumerical) {
                 entries.map {
                     when {
                         it.value == Entry.UNKNOWN -> OFF

@@ -26,6 +26,7 @@ import org.isoron.platform.gui.toInt
 import org.isoron.platform.time.DayOfWeek
 import org.isoron.uhabits.activities.common.views.FrequencyChart
 import org.isoron.uhabits.core.models.Habit
+import org.isoron.uhabits.core.models.computeSlipWeekdayFrequency
 import org.isoron.uhabits.core.ui.views.WidgetTheme
 import org.isoron.uhabits.widgets.views.GraphWidgetView
 
@@ -51,7 +52,11 @@ class FrequencyWidget(
             setFirstWeekday(firstWeekday)
             setColor(WidgetTheme().color(habit.color).toInt())
             setIsNumerical(habit.isNumerical)
-            setFrequency(habit.originalEntries.computeWeekdayFrequency(habit.isNumerical))
+            if (habit.isQuit) {
+                setFrequency(habit.computeSlipWeekdayFrequency())
+            } else {
+                setFrequency(habit.originalEntries.computeWeekdayFrequency(habit.isNumerical))
+            }
         }
     }
 
