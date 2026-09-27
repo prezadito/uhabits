@@ -20,7 +20,6 @@
 package org.isoron.uhabits.activities.habits.edit
 
 import android.annotation.SuppressLint
-import android.app.DatePickerDialog
 import android.content.res.ColorStateList
 import android.content.res.Resources
 import android.os.Bundle
@@ -35,6 +34,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import com.android.datetimepicker.time.RadialPickerLayout
 import com.android.datetimepicker.time.TimePickerDialog
+import com.google.android.material.datepicker.CalendarConstraints
+import com.google.android.material.datepicker.DateValidatorPointBackward
+import com.google.android.material.datepicker.MaterialDatePicker
 import org.isoron.platform.gui.toInt
 import org.isoron.platform.time.DateUtils
 import org.isoron.platform.time.LocalDate
@@ -231,18 +233,22 @@ class EditHabitActivity : AppCompatActivity() {
 
         populateQuitSince()
         binding.quitDatePicker.setOnClickListener {
-            val date = LocalDate.fromUnixTime(quitSince)
-            val dialog = DatePickerDialog(
-                this,
-                { _, year, month, day ->
-                    quitSince = quitTimestamp(LocalDate(year, month + 1, day), quitHour(), quitMinute())
-                    populateQuitSince()
-                },
-                date.year,
-                date.month - 1,
-                date.day
-            )
-            dialog.show()
+            // MaterialDatePicker works with UTC midnights, which matches LocalDate.unixTime.
+            val today = LocalDate.fromUnixTime(DateUtils.getLocalTime())
+            val constraints = CalendarConstraints.Builder()
+                .setEnd(today.unixTime)
+                .setValidator(DateValidatorPointBackward.before(today.unixTime))
+                .build()
+            val picker = MaterialDatePicker.Builder.datePicker()
+                .setTitleText(R.string.quit_since)
+                .setSelection(LocalDate.fromUnixTime(quitSince).unixTime)
+                .setCalendarConstraints(constraints)
+                .build()
+            picker.addOnPositiveButtonClickListener { selection ->
+                quitSince = quitTimestamp(LocalDate.fromUnixTime(selection), quitHour(), quitMinute())
+                populateQuitSince()
+            }
+            picker.dismissCurrentAndShow(supportFragmentManager, "quitDatePicker")
         }
         binding.quitTimePicker.setOnClickListener {
             val dialog = TimePickerDialog.newInstance(
