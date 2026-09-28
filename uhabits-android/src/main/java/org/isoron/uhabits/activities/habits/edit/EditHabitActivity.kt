@@ -239,7 +239,11 @@ class EditHabitActivity : AppCompatActivity() {
                 .setEnd(today.unixTime)
                 .setValidator(DateValidatorPointBackward.before(today.unixTime))
                 .build()
-            val picker = MaterialDatePicker.Builder.datePicker()
+            val builder = MaterialDatePicker.Builder.datePicker()
+            // The dark themes use a near-black primary color, which would make the selected
+            // day, the header and the buttons unreadable.
+            if (themeSwitcher.isNightMode) builder.setTheme(R.style.DatePickerDark)
+            val picker = builder
                 .setTitleText(R.string.quit_since)
                 .setSelection(LocalDate.fromUnixTime(quitSince).unixTime)
                 .setCalendarConstraints(constraints)

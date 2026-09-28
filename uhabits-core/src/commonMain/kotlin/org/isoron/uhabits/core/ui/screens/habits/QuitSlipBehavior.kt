@@ -61,14 +61,14 @@ class QuitSlipBehavior(
     }
 
     /**
-     * Called when the user saves the checkmark popup of a quit habit. Notes are always saved.
-     * If the user also changed whether the day is a slip, the day is handled as if tapped, so
-     * that the slip receives a time, or the user can choose which slip to remove.
+     * Lets the user edit the notes of a day. Slips are only added or removed through [onTap], so
+     * the popup does not offer any value to choose from.
      */
-    fun onNotesSaved(habit: Habit, date: LocalDate, value: Int, notes: String) {
-        commandRunner.run(CreateRepetitionCommand(habitList, habit, date, Entry.UNKNOWN, notes))
-        val hasSlips = habit.slips.getByDate(date).isNotEmpty()
-        if ((value == Entry.NO) != hasSlips) onTap(habit, date)
+    fun onEditNotes(habit: Habit, date: LocalDate) {
+        val notes = habit.computedEntries.get(date).notes
+        screen.showSlipNotesPopup(notes, habit.color) { newNotes ->
+            commandRunner.run(CreateRepetitionCommand(habitList, habit, date, Entry.UNKNOWN, newNotes))
+        }
     }
 
     private fun addSlip(habit: Habit, date: LocalDate) {
@@ -82,6 +82,11 @@ class QuitSlipBehavior(
     }
 
     interface Screen {
+        /**
+         * Asks the user for the notes of a day, without offering any value to choose from.
+         */
+        fun showSlipNotesPopup(notes: String, color: PaletteColor, callback: (notes: String) -> Unit)
+
         /**
          * Asks the user at which time of the given day they slipped.
          */

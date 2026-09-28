@@ -68,7 +68,11 @@ class HistoryCardPresenter(
 
     override fun onDateLongPress(date: LocalDate) {
         screen.showFeedback()
-        if (habit.isNumerical) {
+        if (habit.isQuit) {
+            // Tapping a day of a quit habit always adds or lists slips, so long presses are left
+            // for editing notes, regardless of the short toggle preference.
+            quitSlipBehavior.onEditNotes(habit, date)
+        } else if (habit.isNumerical) {
             showNumberPopup(date)
         } else {
             if (preferences.isShortToggleEnabled) {
@@ -81,7 +85,9 @@ class HistoryCardPresenter(
 
     override fun onDateShortPress(date: LocalDate) {
         screen.showFeedback()
-        if (habit.isNumerical) {
+        if (habit.isQuit) {
+            quitSlipBehavior.onTap(habit, date)
+        } else if (habit.isNumerical) {
             showNumberPopup(date)
         } else {
             if (preferences.isShortToggleEnabled) {
@@ -99,10 +105,6 @@ class HistoryCardPresenter(
             entry.notes,
             habit.color
         ) { newValue, newNotes ->
-            if (habit.isQuit) {
-                quitSlipBehavior.onNotesSaved(habit, date, newValue, newNotes)
-                return@showCheckmarkPopup
-            }
             commandRunner.run(
                 CreateRepetitionCommand(
                     habitList,
@@ -116,10 +118,6 @@ class HistoryCardPresenter(
     }
 
     private fun toggle(date: LocalDate) {
-        if (habit.isQuit) {
-            quitSlipBehavior.onTap(habit, date)
-            return
-        }
         val entry = habit.computedEntries.get(date)
         val nextValue = Entry.nextToggleValue(
             value = entry.value,

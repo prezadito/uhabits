@@ -175,6 +175,11 @@
         <item name="widgetShadowAlpha">0</item>
     </style>
 
+    <style name="DatePickerDark" parent="ThemeOverlay.MaterialComponents.MaterialCalendar">
+        <item name="colorPrimary">@color/blue_300</item>
+        <item name="colorOnPrimary">@color/grey_900</item>
+    </style>
+
     <style name="DialogButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
         <item name="android:textSize">@dimen/regularTextSize</item>
         <item name="android:textColor">@color/grey_100</item>

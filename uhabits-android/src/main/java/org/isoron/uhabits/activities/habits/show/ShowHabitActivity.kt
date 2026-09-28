@@ -205,6 +205,21 @@ class ShowHabitActivity : AppCompatActivity(), CommandRunner.Listener {
             dialog.dismissCurrentAndShow(supportFragmentManager, "checkmarkDialog")
         }
 
+        override fun showSlipNotesPopup(
+            notes: String,
+            color: PaletteColor,
+            callback: (notes: String) -> Unit
+        ) {
+            val dialog = CheckmarkDialog()
+            dialog.arguments = Bundle().apply {
+                putInt("color", view.currentTheme().color(color).toInt())
+                putString("notes", notes)
+                putBoolean("notesOnly", true)
+            }
+            dialog.onToggle = { _, n -> callback(n) }
+            dialog.dismissCurrentAndShow(supportFragmentManager, "checkmarkDialog")
+        }
+
         override fun showSlipTimePicker(
             date: LocalDate,
             color: PaletteColor,

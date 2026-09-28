@@ -304,6 +304,22 @@ class ListHabitsScreen(
         dialog.dismissCurrentAndShow(fm, "checkmarkDialog")
     }
 
+    override fun showSlipNotesPopup(
+        notes: String,
+        color: PaletteColor,
+        callback: (notes: String) -> Unit
+    ) {
+        val theme = rootView.value.currentTheme()
+        val dialog = CheckmarkDialog()
+        dialog.arguments = Bundle().apply {
+            putInt("color", theme.color(color).toInt())
+            putString("notes", notes)
+            putBoolean("notesOnly", true)
+        }
+        dialog.onToggle = { _, n -> callback(n) }
+        dialog.dismissCurrentAndShow(activity.supportFragmentManager, "checkmarkDialog")
+    }
+
     override fun showSlipTimePicker(
         date: LocalDate,
         color: PaletteColor,

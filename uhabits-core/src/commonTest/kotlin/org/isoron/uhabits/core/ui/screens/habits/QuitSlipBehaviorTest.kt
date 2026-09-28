@@ -111,31 +111,22 @@ class QuitSlipBehaviorTest : BaseUnitTest() {
     }
 
     @Test
-    fun testNotesSaved_keepsSlips() {
+    fun testEditNotes_onlyChangesNotes() {
         val date = getToday().minus(5)
-        behavior.onNotesSaved(habit, date, Entry.NO, "Party")
+        behavior.onEditNotes(habit, date)
+        assertEquals("", screen.notesPopupNotes)
+        screen.notesCallback!!("Party")
         assertEquals("Party", habit.computedEntries.get(date).notes)
+        assertEquals(Entry.NO, habit.computedEntries.get(date).value)
         assertEquals(2, habit.slips.getByDate(date).size)
-        assertNull(screen.listDate)
-    }
 
-    @Test
-    fun testNotesSaved_markingSlipAsksForTime() {
-        val date = getToday().minus(3)
-        behavior.onNotesSaved(habit, date, Entry.NO, "Oops")
-        assertEquals("Oops", habit.computedEntries.get(date).notes)
-        assertEquals(date, screen.pickerDate)
-    }
-
-    @Test
-    fun testNotesSaved_markingCleanShowsSlips() {
-        val date = getToday().minus(5)
-        behavior.onNotesSaved(habit, date, Entry.YES_MANUAL, "")
-        assertEquals(date, screen.listDate)
-        assertEquals(2, habit.slips.getByDate(date).size)
+        behavior.onEditNotes(habit, date)
+        assertEquals("Party", screen.notesPopupNotes)
     }
 
     class FakeScreen : QuitSlipBehavior.Screen {
+        var notesPopupNotes: String? = null
+        var notesCallback: ((String) -> Unit)? = null
         var pickerDate: LocalDate? = null
         var pickerCallback: ((Int, Int) -> Unit)? = null
         var listDate: LocalDate? = null
@@ -143,6 +134,15 @@ class QuitSlipBehaviorTest : BaseUnitTest() {
         var listIsToday: Boolean? = null
         var onAdd: (() -> Unit)? = null
         var onDelete: ((Long) -> Unit)? = null
+
+        override fun showSlipNotesPopup(
+            notes: String,
+            color: PaletteColor,
+            callback: (notes: String) -> Unit
+        ) {
+            notesPopupNotes = notes
+            notesCallback = callback
+        }
 
         override fun showSlipTimePicker(
             date: LocalDate,

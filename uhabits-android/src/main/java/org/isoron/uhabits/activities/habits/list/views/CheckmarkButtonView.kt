@@ -113,7 +113,9 @@ class CheckmarkButtonView(
     }
 
     override fun onClick(v: View) {
-        if (preferences.isShortToggleEnabled) {
+        // Tapping a day of a quit habit always adds or lists slips, regardless of the short
+        // toggle preference, while long presses edit notes.
+        if (isQuit || preferences.isShortToggleEnabled) {
             performToggle()
         } else {
             onEdit()
@@ -121,7 +123,7 @@ class CheckmarkButtonView(
     }
 
     override fun onLongClick(v: View): Boolean {
-        if (preferences.isShortToggleEnabled) {
+        if (isQuit || preferences.isShortToggleEnabled) {
             onEdit()
         } else {
             performToggle()

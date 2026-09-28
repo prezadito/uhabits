@@ -64,7 +64,8 @@ class CheckmarkDialog : AppCompatDialogFragment() {
         view.notes.setText(originalNotes)
         if (!prefs.isSkipEnabled) view.skipBtn.visibility = GONE
         if (!prefs.areQuestionMarksEnabled) view.unknownBtn.visibility = GONE
-        view.booleanButtons.visibility = VISIBLE
+        // Quit habits only use this dialog for notes, since slips are edited separately.
+        view.booleanButtons.visibility = if (requireArguments().getBoolean("notesOnly")) GONE else VISIBLE
         val dialog = Dialog(requireContext())
         dialog.setContentView(view.root)
         dialog.window?.apply {

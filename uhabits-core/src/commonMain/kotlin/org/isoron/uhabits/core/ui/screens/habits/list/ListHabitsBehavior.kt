@@ -57,6 +57,10 @@ open class ListHabitsBehavior(
     }
 
     open fun onEdit(habit: Habit, date: LocalDate, x: Float, y: Float) {
+        if (habit.isQuit) {
+            quitSlipBehavior.onEditNotes(habit, date)
+            return
+        }
         val entry = habit.computedEntries.get(date)
         if (habit.type == HabitType.NUMERICAL) {
             val oldValue = entry.value.toDouble() / 1000
@@ -78,10 +82,6 @@ open class ListHabitsBehavior(
                 entry.notes,
                 habit.color
             ) { newValue: Int, newNotes: String ->
-                if (habit.isQuit) {
-                    quitSlipBehavior.onNotesSaved(habit, date, newValue, newNotes)
-                    return@showCheckmarkPopup
-                }
                 if (newValue != entry.value && newValue == YES_MANUAL) {
                     screen.showConfetti(habit.color, x, y)
                 }
