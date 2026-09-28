@@ -98,10 +98,10 @@ class CheckmarkButtonView(
     }
 
     fun performToggle() {
-        value = if (isQuit) {
-            Entry.nextQuitToggleValue(value)
-        } else {
-            Entry.nextToggleValue(
+        // For quit habits, the value is not toggled here: tapping a day either records a slip
+        // or shows the slips of that day, and the button is refreshed once that is done.
+        if (!isQuit) {
+            value = Entry.nextToggleValue(
                 value = value,
                 isSkipEnabled = preferences.isSkipEnabled,
                 areQuestionMarksEnabled = preferences.areQuestionMarksEnabled
@@ -113,7 +113,9 @@ class CheckmarkButtonView(
     }
 
     override fun onClick(v: View) {
-        if (preferences.isShortToggleEnabled) {
+        // Tapping a day of a quit habit always adds or lists slips, regardless of the short
+        // toggle preference, while long presses edit notes.
+        if (isQuit || preferences.isShortToggleEnabled) {
             performToggle()
         } else {
             onEdit()
@@ -121,7 +123,7 @@ class CheckmarkButtonView(
     }
 
     override fun onLongClick(v: View): Boolean {
-        if (preferences.isShortToggleEnabled) {
+        if (isQuit || preferences.isShortToggleEnabled) {
             onEdit()
         } else {
             performToggle()

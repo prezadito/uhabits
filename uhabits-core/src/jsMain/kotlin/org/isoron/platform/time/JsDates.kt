@@ -12,6 +12,11 @@ actual fun computeToday(hourOffset: Int, minuteOffset: Int): LocalDate {
     return LocalDate(daysSince2000)
 }
 
+actual fun computeLocalNow(): Long {
+    val now = Date()
+    return (now.getTime() - now.getTimezoneOffset() * 60000.0).toLong()
+}
+
 actual fun getFirstWeekdayNumberAccordingToLocale(): Int {
     return try {
         val locale = js("new Intl.Locale(navigator.language)")

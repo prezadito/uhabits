@@ -12,3 +12,5 @@ actual fun computeToday(hourOffset: Int, minuteOffset: Int): LocalDate {
     val daysSince2000 = (daysSinceEpoch - 10957).toInt()
     return LocalDate(daysSince2000)
 }
+
+actual fun computeLocalNow(): Long = DateUtils.getLocalTime()

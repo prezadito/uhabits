@@ -31,11 +31,13 @@ import nl.dionsegijn.konfetti.core.Position
 import nl.dionsegijn.konfetti.core.emitter.Emitter
 import org.isoron.platform.gui.toInt
 import org.isoron.platform.io.JavaUserFile
+import org.isoron.platform.time.LocalDate
 import org.isoron.uhabits.R
 import org.isoron.uhabits.activities.common.dialogs.CheckmarkDialog
 import org.isoron.uhabits.activities.common.dialogs.ColorPickerDialogFactory
 import org.isoron.uhabits.activities.common.dialogs.ConfirmDeleteDialog
 import org.isoron.uhabits.activities.common.dialogs.NumberDialog
+import org.isoron.uhabits.activities.common.dialogs.QuitSlipDialogs
 import org.isoron.uhabits.activities.habits.edit.HabitTypeDialog
 import org.isoron.uhabits.activities.habits.list.views.HabitCardListAdapter
 import org.isoron.uhabits.core.commands.ArchiveHabitsCommand
@@ -300,6 +302,42 @@ class ListHabitsScreen(
         }
         dialog.onToggle = { v, n -> callback.onNotesSaved(v, n) }
         dialog.dismissCurrentAndShow(fm, "checkmarkDialog")
+    }
+
+    override fun showSlipNotesPopup(
+        notes: String,
+        color: PaletteColor,
+        callback: (notes: String) -> Unit
+    ) {
+        val theme = rootView.value.currentTheme()
+        val dialog = CheckmarkDialog()
+        dialog.arguments = Bundle().apply {
+            putInt("color", theme.color(color).toInt())
+            putString("notes", notes)
+            putBoolean("notesOnly", true)
+        }
+        dialog.onToggle = { _, n -> callback(n) }
+        dialog.dismissCurrentAndShow(activity.supportFragmentManager, "checkmarkDialog")
+    }
+
+    override fun showSlipTimePicker(
+        date: LocalDate,
+        color: PaletteColor,
+        callback: (hour: Int, minute: Int) -> Unit
+    ) {
+        val androidColor = rootView.value.currentTheme().color(color).toInt()
+        QuitSlipDialogs.showTimePicker(activity, androidColor, callback)
+    }
+
+    override fun showSlipList(
+        date: LocalDate,
+        slips: List<Long>,
+        color: PaletteColor,
+        isToday: Boolean,
+        onAdd: () -> Unit,
+        onDelete: (timestamp: Long) -> Unit
+    ) {
+        QuitSlipDialogs.showSlipList(activity, date, slips, isToday, onAdd, onDelete)
     }
 
     private fun getExecuteString(command: Command): String? {

@@ -47,37 +47,53 @@ fun quitTimestamp(date: LocalDate, hour: Int, minute: Int): Long =
     date.unixTime + hour * MILLIS_PER_HOUR + minute * MILLIS_PER_MINUTE
 
 /**
+ * Formats local wall-clock milliseconds as "yyyy-MM-dd HH:mm".
+ */
+fun formatLocalDateTime(timestamp: Long): String {
+    val date = LocalDate.fromUnixTime(timestamp)
+    val minutes = ((timestamp - date.unixTime) / MILLIS_PER_MINUTE).toInt()
+    fun pad(n: Int) = n.toString().padStart(2, '0')
+    return "${date.year}-${pad(date.month)}-${pad(date.day)} ${pad(minutes / 60)}:${pad(minutes % 60)}"
+}
+
+/**
  * Returns the day the user quit, or null if the habit has no quit date.
  */
 fun Habit.getQuitDate(): LocalDate? = quitSince?.let { LocalDate.fromUnixTime(it) }
 
 /**
- * Returns the most recent day in which the user slipped, or null if they never did.
+ * Returns the moment of the most recent slip, or null if the user never slipped.
  */
-fun Habit.getLastSlipDate(): LocalDate? =
-    originalEntries.getKnown().firstOrNull { it.value == Entry.NO }?.date
+fun Habit.getLastSlip(): Long? = slips.getLatest()
 
 /**
- * Returns the number of slips recorded on or after the given date.
+ * Returns the most recent day in which the user slipped, or null if they never did.
+ */
+fun Habit.getLastSlipDate(): LocalDate? = getLastSlip()?.let { LocalDate.fromUnixTime(it) }
+
+/**
+ * Returns the oldest day in which the user slipped, or null if they never did.
+ */
+fun Habit.getOldestSlipDate(): LocalDate? =
+    slips.getAll().lastOrNull()?.let { LocalDate.fromUnixTime(it) }
+
+/**
+ * Returns the number of slips recorded on or after the given date. Every slip is counted, so a
+ * day with several slips contributes more than one.
  */
 fun Habit.countSlips(since: LocalDate? = null): Int =
-    originalEntries.getKnown().count {
-        it.value == Entry.NO && (since == null || it.date >= since)
-    }
+    slips.getAll().count { since == null || it >= since.unixTime }
 
 /**
  * Returns the moment (local wall-clock milliseconds) from which the current clean period is
- * counted. This is either the quit time or the beginning of the day after the most recent slip,
- * whichever is later. Returns null if the habit has neither a quit date nor any slips.
+ * counted. This is either the quit time or the moment of the most recent slip, whichever is
+ * later. Returns null if the habit has neither a quit date nor any slips.
  */
-fun Habit.getCleanSince(): Long? {
-    val afterLastSlip = getLastSlipDate()?.plus(1)?.unixTime
-    return listOfNotNull(quitSince, afterLastSlip).maxOrNull()
-}
+fun Habit.getCleanSince(): Long? = listOfNotNull(quitSince, getLastSlip()).maxOrNull()
 
 /**
  * Returns how long the habit has been kept clean at the given moment (local wall-clock
- * milliseconds). If the user slipped today, or the quit date is in the future, returns zero.
+ * milliseconds). If the quit date or the last slip is in the future, returns zero.
  */
 fun Habit.getCleanTime(nowLocalMillis: Long): CleanTime {
     val since = getCleanSince() ?: return CleanTime(0, 0, 0)
@@ -85,13 +101,34 @@ fun Habit.getCleanTime(nowLocalMillis: Long): CleanTime {
 }
 
 /**
+ * Returns, for each day between [from] and [to] (inclusive), an entry whose value is the number
+ * of slips on that day multiplied by 1000, in the same format as numerical entries. Entries are
+ * sorted from the most recent day to the oldest.
+ */
+fun Habit.countSlipsByDay(from: LocalDate, to: LocalDate): List<Entry> {
+    val counts = slips.getAll()
+        .groupingBy { LocalDate.fromUnixTime(it) }
+        .eachCount()
+    val result = mutableListOf<Entry>()
+    var current = to
+    while (current >= from) {
+        result.add(Entry(current, (counts[current] ?: 0) * 1000))
+        current = current.minus(1)
+    }
+    return result
+}
+
+/**
  * Returns the number of slips for each month, grouped by day of week, in the same format as
  * [EntryList.computeWeekdayFrequency].
  */
 fun Habit.computeSlipWeekdayFrequency(): HashMap<LocalDate, Array<Int>> {
-    val slips = EntryList()
-    originalEntries.getKnown()
-        .filter { it.value == Entry.NO }
-        .forEach { slips.add(Entry(it.date, Entry.YES_MANUAL)) }
-    return slips.computeWeekdayFrequency(isNumerical = false)
+    val map = hashMapOf<LocalDate, Array<Int>>()
+    for (timestamp in slips.getAll()) {
+        val date = LocalDate.fromUnixTime(timestamp)
+        val weekday = (date.dayOfWeek.daysSinceSunday + 1) % 7
+        val list = map.getOrPut(date.startOfMonth()) { arrayOf(0, 0, 0, 0, 0, 0, 0) }
+        list[weekday] += 1
+    }
+    return map
 }

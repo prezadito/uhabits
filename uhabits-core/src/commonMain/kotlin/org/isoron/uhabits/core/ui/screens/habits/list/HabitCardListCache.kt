@@ -25,6 +25,7 @@ import org.isoron.uhabits.core.AppScope
 import org.isoron.uhabits.core.commands.Command
 import org.isoron.uhabits.core.commands.CommandRunner
 import org.isoron.uhabits.core.commands.CreateRepetitionCommand
+import org.isoron.uhabits.core.commands.SlipCommand
 import org.isoron.uhabits.core.io.Logging
 import org.isoron.uhabits.core.models.Habit
 import org.isoron.uhabits.core.models.HabitList
@@ -133,6 +134,8 @@ class HabitCardListCache(
     @Synchronized
     override fun onCommandFinished(command: Command) {
         if (command is CreateRepetitionCommand) {
+            command.habit.id?.let { refreshHabit(it) }
+        } else if (command is SlipCommand) {
             command.habit.id?.let { refreshHabit(it) }
         } else {
             refreshAllHabits()

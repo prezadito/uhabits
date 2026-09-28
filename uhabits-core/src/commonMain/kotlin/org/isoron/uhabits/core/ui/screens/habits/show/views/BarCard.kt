@@ -23,6 +23,7 @@ import org.isoron.platform.time.getToday
 import org.isoron.uhabits.core.models.Entry
 import org.isoron.uhabits.core.models.Habit
 import org.isoron.uhabits.core.models.PaletteColor
+import org.isoron.uhabits.core.models.countSlipsByDay
 import org.isoron.uhabits.core.models.groupedSum
 import org.isoron.uhabits.core.preferences.Preferences
 import org.isoron.uhabits.core.ui.views.Theme
@@ -61,13 +62,15 @@ class BarCardPresenter(
             val today = getToday()
             val oldest = habit.computedEntries.getKnown().lastOrNull()?.date ?: today
             // For quit habits, the chart shows the number of slips in each period.
-            val intervalEntries = habit.computedEntries.getByInterval(oldest, today).map {
-                if (habit.isQuit) Entry(it.date, if (it.value == Entry.NO) Entry.YES_MANUAL else Entry.NO) else it
+            val intervalEntries = if (habit.isQuit) {
+                habit.countSlipsByDay(oldest, today)
+            } else {
+                habit.computedEntries.getByInterval(oldest, today)
             }
             val entries = intervalEntries.groupedSum(
                 truncateField = ScoreCardPresenter.getTruncateField(bucketSize),
                 firstWeekday = firstWeekday,
-                isNumerical = habit.isNumerical
+                isNumerical = habit.isNumerical || habit.isQuit
             )
             return BarCardState(
                 theme = theme,

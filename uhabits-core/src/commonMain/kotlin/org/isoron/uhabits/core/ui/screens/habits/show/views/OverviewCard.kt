@@ -23,6 +23,7 @@ import org.isoron.platform.time.getToday
 import org.isoron.uhabits.core.models.Entry
 import org.isoron.uhabits.core.models.Habit
 import org.isoron.uhabits.core.models.PaletteColor
+import org.isoron.uhabits.core.models.countSlips
 import org.isoron.uhabits.core.ui.views.Theme
 
 data class OverviewCardState(
@@ -46,11 +47,14 @@ class OverviewCardPresenter {
             val scoreLastMonth = scores[lastMonth].value.toFloat()
             val scoreLastYear = scores[lastYear].value.toFloat()
             // For quit habits, the total counts slips rather than repetitions.
-            val countedValue = if (habit.isQuit) Entry.NO else Entry.YES_MANUAL
-            val totalCount = habit.originalEntries.getKnown()
-                .filter { it.value == countedValue }
-                .count()
-                .toLong()
+            val totalCount = if (habit.isQuit) {
+                habit.countSlips().toLong()
+            } else {
+                habit.originalEntries.getKnown()
+                    .filter { it.value == Entry.YES_MANUAL }
+                    .count()
+                    .toLong()
+            }
             return OverviewCardState(
                 color = habit.color,
                 scoreToday = scoreToday,

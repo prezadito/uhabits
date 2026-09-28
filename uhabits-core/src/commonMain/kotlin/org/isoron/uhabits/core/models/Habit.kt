@@ -47,7 +47,11 @@ data class Habit(
     val computedEntries: EntryList,
     val originalEntries: EntryList,
     val scores: ScoreList,
-    val streaks: StreakList
+    val streaks: StreakList,
+    /**
+     * For habits of type [HabitType.QUIT], the moments the user slipped.
+     */
+    val slips: SlipList = SlipList()
 ) {
     init {
         if (uuid == null) this.uuid = Uuid.random().toHexString()
@@ -92,7 +96,8 @@ data class Habit(
         if (isQuit) {
             computedEntries.recomputeQuitFrom(
                 originalEntries = originalEntries,
-                quitDate = getQuitDate(),
+                slips = slips,
+                quitSince = quitSince,
                 today = today
             )
         } else {
@@ -136,8 +141,8 @@ data class Habit(
     fun recomputeIfStale() {
         if (!isQuit) return
         val today = getToday()
-        val quitDate = getQuitDate() ?: return
-        if (quitDate > today) return
+        val start = getQuitDate() ?: getOldestSlipDate() ?: return
+        if (start > today) return
         if (computedEntries.get(today).value == Entry.UNKNOWN) recompute()
     }
 

@@ -20,6 +20,9 @@ package org.isoron.uhabits.core.ui.widgets
 
 import me.tatarka.inject.annotations.Inject
 import org.isoron.platform.time.LocalDate
+import org.isoron.platform.time.getLocalNow
+import org.isoron.platform.time.getToday
+import org.isoron.uhabits.core.commands.AddSlipCommand
 import org.isoron.uhabits.core.commands.CommandRunner
 import org.isoron.uhabits.core.commands.CreateRepetitionCommand
 import org.isoron.uhabits.core.models.Entry
@@ -38,28 +41,37 @@ class WidgetBehavior(
 ) {
     fun onAddRepetition(habit: Habit, date: LocalDate) {
         notificationTray.cancel(habit)
+        // Quit habits are clean by default, so there is nothing to record.
+        if (habit.isQuit) return
         val entry = habit.originalEntries.get(date)
         setValue(habit, date, Entry.YES_MANUAL, entry.notes)
     }
 
     fun onRemoveRepetition(habit: Habit, date: LocalDate) {
         notificationTray.cancel(habit)
+        if (habit.isQuit) {
+            // For quit habits, this is the "I slipped" action, so the slip happened just now.
+            commandRunner.run(AddSlipCommand(habitList, habit, getLocalNow()))
+            return
+        }
         val entry = habit.originalEntries.get(date)
         setValue(habit, date, Entry.NO, entry.notes)
     }
 
     fun onToggleRepetition(habit: Habit, date: LocalDate) {
+        if (habit.isQuit) {
+            // Widgets of quit habits open the app instead of toggling, since removing a slip
+            // requires choosing which one. Toggling today can only record a slip.
+            if (date == getToday()) onRemoveRepetition(habit, date)
+            return
+        }
         val entry = habit.originalEntries.get(date)
         val currentValue = entry.value
-        val newValue = if (habit.isQuit) {
-            Entry.nextQuitToggleValue(currentValue)
-        } else {
-            nextToggleValue(
-                value = currentValue,
-                isSkipEnabled = preferences.isSkipEnabled,
-                areQuestionMarksEnabled = preferences.areQuestionMarksEnabled
-            )
-        }
+        val newValue = nextToggleValue(
+            value = currentValue,
+            isSkipEnabled = preferences.isSkipEnabled,
+            areQuestionMarksEnabled = preferences.areQuestionMarksEnabled
+        )
         setValue(habit, date, newValue, entry.notes)
         notificationTray.cancel(habit)
     }

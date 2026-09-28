@@ -91,6 +91,36 @@ class ListHabitsBehaviorTest : BaseUnitTest() {
     }
 
     @Test
+    fun testOnEdit_quitHabitOnlyEditsNotes() {
+        val quit = fixtures.createQuitHabit()
+        val date = getToday().minus(5)
+        var capturedNotes: ((String) -> Unit)? = null
+        every {
+            screen.showSlipNotesPopup(any(), any(), any())
+        } calls { args ->
+            capturedNotes = args.arg<(String) -> Unit>(2)
+            Unit
+        }
+        behavior.onEdit(quit, date, 0f, 0f)
+        capturedNotes!!("Party")
+        assertEquals(Entry(date, Entry.NO, "Party"), quit.computedEntries.get(date))
+    }
+
+    @Test
+    fun testOnToggle_quitHabitShowsSlipsOfDay() {
+        val quit = fixtures.createQuitHabit()
+        val date = getToday().minus(5)
+        every {
+            screen.showSlipList(any(), any(), any(), any(), any(), any())
+        } returns Unit
+        behavior.onToggle(quit, date, Entry.YES_MANUAL, "", 0f, 0f)
+        verify {
+            screen.showSlipList(date, quit.slips.getByDate(date), any(), false, any(), any())
+        }
+        assertEquals(2, quit.slips.getByDate(date).size)
+    }
+
+    @Test
     fun testOnExportCSV() = runTest {
         val outputDir = createTempDir()
         every { dirFinder.getCSVOutputDir() } returns outputDir

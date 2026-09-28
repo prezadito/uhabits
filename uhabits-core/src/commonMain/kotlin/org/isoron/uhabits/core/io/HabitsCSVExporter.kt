@@ -26,6 +26,7 @@ import org.isoron.platform.time.getToday
 import org.isoron.uhabits.core.models.EntryList
 import org.isoron.uhabits.core.models.Habit
 import org.isoron.uhabits.core.models.HabitList
+import org.isoron.uhabits.core.models.formatLocalDateTime
 import kotlin.math.min
 
 /**
@@ -44,6 +45,7 @@ class HabitsCSVExporter(
             val habitDirName = habitDirName(h)
             zip.addEntry("${habitDirName}Scores.csv", writeScores(h))
             zip.addEntry("${habitDirName}Checkmarks.csv", writeEntries(h.computedEntries))
+            if (h.isQuit) zip.addEntry("${habitDirName}Slips.csv", writeSlips(h))
         }
         zip.addEntry("Scores.csv", writeMultipleHabitsScores())
         zip.addEntry("Checkmarks.csv", writeMultipleHabitsCheckmarks())
@@ -78,6 +80,15 @@ class HabitsCSVExporter(
         sb.append(csvLine(arrayOf("Date", "Value", "Notes")))
         for (entry in entries.getKnown()) {
             sb.append(csvLine(arrayOf(entry.date.toCSVString(), entry.formattedValue, entry.notes)))
+        }
+        return sb.toString()
+    }
+
+    private fun writeSlips(habit: Habit): String {
+        val sb = StringBuilder()
+        sb.append(csvLine(arrayOf("Time")))
+        for (timestamp in habit.slips.getAll()) {
+            sb.append(csvLine(arrayOf(formatLocalDateTime(timestamp))))
         }
         return sb.toString()
     }
@@ -133,7 +144,12 @@ class HabitsCSVExporter(
         var oldest = LocalDate(1000000)
         var newest = LocalDate(0)
         for (habit in selectedHabits) {
-            val entries = habit.originalEntries.getKnown()
+            // Quit habits only store notes as entries, so their computed entries are used.
+            val entries = if (habit.isQuit) {
+                habit.computedEntries.getKnown()
+            } else {
+                habit.originalEntries.getKnown()
+            }
             if (entries.isEmpty()) continue
             val currNew = entries[0].date
             val currOld = entries[entries.size - 1].date

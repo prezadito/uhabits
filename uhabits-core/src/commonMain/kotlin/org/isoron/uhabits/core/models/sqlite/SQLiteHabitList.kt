@@ -54,6 +54,7 @@ class SQLiteHabitList(private val modelFactory: ModelFactory) : HabitList() {
             val h = modelFactory.buildHabit()
             copyTo(rec, h)
             (h.originalEntries as SQLiteEntryList).habitId = h.id
+            (h.slips as SQLiteSlipList).habitId = h.id
             list.add(h)
         }
         if (shouldRebuildOrder) rebuildOrder()
@@ -68,6 +69,7 @@ class SQLiteHabitList(private val modelFactory: ModelFactory) : HabitList() {
         val id = repository.insert(data)
         habit.id = id
         (habit.originalEntries as SQLiteEntryList).habitId = id
+        (habit.slips as SQLiteSlipList).habitId = id
         list.add(habit)
         observable.notifyListeners()
     }
@@ -140,6 +142,7 @@ class SQLiteHabitList(private val modelFactory: ModelFactory) : HabitList() {
         loadRecords()
         list.remove(h)
         h.originalEntries.clear()
+        h.slips.clear()
         repository.delete(h.id!!)
         rebuildOrder()
         observable.notifyListeners()
@@ -150,6 +153,7 @@ class SQLiteHabitList(private val modelFactory: ModelFactory) : HabitList() {
         list.removeAll()
         repository.execSQL("delete from habits")
         repository.execSQL("delete from repetitions")
+        repository.execSQL("delete from quitslips")
         observable.notifyListeners()
     }
 

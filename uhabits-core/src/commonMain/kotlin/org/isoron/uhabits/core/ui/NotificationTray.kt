@@ -25,6 +25,7 @@ import org.isoron.uhabits.core.commands.Command
 import org.isoron.uhabits.core.commands.CommandRunner
 import org.isoron.uhabits.core.commands.CreateRepetitionCommand
 import org.isoron.uhabits.core.commands.DeleteHabitsCommand
+import org.isoron.uhabits.core.commands.SlipCommand
 import org.isoron.uhabits.core.models.Habit
 import org.isoron.uhabits.core.models.NumericalHabitType
 import org.isoron.uhabits.core.preferences.Preferences
@@ -51,6 +52,7 @@ open class NotificationTray(
             val (_, habit) = command
             cancel(habit)
         }
+        if (command is SlipCommand) cancel(command.habit)
         if (command is DeleteHabitsCommand) {
             val (_, deleted) = command
             for (habit in deleted) cancel(habit)

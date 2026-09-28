@@ -112,6 +112,12 @@ class LoopDBImporter(
                     entries.add(Entry(date, value, notes))
                 }
             }
+            db.query(
+                "SELECT timestamp FROM QuitSlips WHERE habit = ?",
+                habitData.id.toString()
+            ) { stmt ->
+                stmt.getLongOrNull(0)?.let { habit.slips.add(it) }
+            }
             habit.recompute()
         }
         habitList.resort()

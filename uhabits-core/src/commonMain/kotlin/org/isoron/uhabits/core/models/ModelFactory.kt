@@ -31,7 +31,8 @@ interface ModelFactory {
             scores = scores,
             streaks = streaks,
             originalEntries = buildOriginalEntries(),
-            computedEntries = buildComputedEntries()
+            computedEntries = buildComputedEntries(),
+            slips = buildSlipList()
         )
     }
     fun buildComputedEntries(): EntryList
@@ -39,4 +40,5 @@ interface ModelFactory {
     fun buildHabitList(): HabitList
     fun buildScoreList(): ScoreList
     fun buildStreakList(): StreakList
+    fun buildSlipList(): SlipList = SlipList()
 }

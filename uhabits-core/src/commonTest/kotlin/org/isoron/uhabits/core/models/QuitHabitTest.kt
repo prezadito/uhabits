@@ -21,9 +21,10 @@ package org.isoron.uhabits.core.models
 import org.isoron.platform.time.getToday
 import org.isoron.platform.time.setToday
 import org.isoron.uhabits.core.BaseUnitTest
+import org.isoron.uhabits.core.commands.AddSlipCommand
 import org.isoron.uhabits.core.commands.CreateRepetitionCommand
+import org.isoron.uhabits.core.commands.DeleteSlipCommand
 import org.isoron.uhabits.core.models.Entry.Companion.NO
-import org.isoron.uhabits.core.models.Entry.Companion.SKIP
 import org.isoron.uhabits.core.models.Entry.Companion.UNKNOWN
 import org.isoron.uhabits.core.models.Entry.Companion.YES_MANUAL
 import kotlin.test.Test
@@ -40,13 +41,74 @@ class QuitHabitTest : BaseUnitTest() {
         val habit = fixtures.createQuitHabit()
         val today = getToday()
         assertEquals(UNKNOWN, habit.computedEntries.get(today.minus(21)).value)
-        assertEquals(YES_MANUAL, habit.computedEntries.get(today.minus(20)).value)
+        // Quit at 08:30, so the quit day itself was not clean for the entire day
+        assertEquals(UNKNOWN, habit.computedEntries.get(today.minus(20)).value)
+        assertEquals(YES_MANUAL, habit.computedEntries.get(today.minus(19)).value)
         assertEquals(YES_MANUAL, habit.computedEntries.get(today.minus(13)).value)
         assertEquals(NO, habit.computedEntries.get(today.minus(12)).value)
+        assertEquals(YES_MANUAL, habit.computedEntries.get(today.minus(11)).value)
         assertEquals(YES_MANUAL, habit.computedEntries.get(today.minus(6)).value)
         assertEquals(NO, habit.computedEntries.get(today.minus(5)).value)
+        assertEquals(YES_MANUAL, habit.computedEntries.get(today.minus(4)).value)
         assertEquals(YES_MANUAL, habit.computedEntries.get(today).value)
         assertEquals(UNKNOWN, habit.computedEntries.get(today.plus(1)).value)
+    }
+
+    @Test
+    fun testComputedEntries_quitAtMidnight() {
+        val habit = fixtures.createQuitHabit()
+        val today = getToday()
+        habit.slips.clear()
+        habit.quitSince = quitTimestamp(today.minus(3), 0, 0)
+        habit.recompute()
+        assertEquals(UNKNOWN, habit.computedEntries.get(today.minus(4)).value)
+        assertEquals(YES_MANUAL, habit.computedEntries.get(today.minus(3)).value)
+    }
+
+    @Test
+    fun testComputedEntries_quitToday() {
+        val habit = fixtures.createQuitHabit()
+        val today = getToday()
+        habit.slips.clear()
+        habit.quitSince = quitTimestamp(today, 14, 0)
+        habit.recompute()
+        // Today is optimistically considered clean
+        assertEquals(YES_MANUAL, habit.computedEntries.get(today).value)
+        assertEquals(UNKNOWN, habit.computedEntries.get(today.minus(1)).value)
+    }
+
+    @Test
+    fun testComputedEntries_slipLateAtNight() {
+        val habit = fixtures.createQuitHabit()
+        val today = getToday()
+        AddSlipCommand(habitList, habit, quitTimestamp(today.minus(2), 23, 0)).run()
+        assertEquals(NO, habit.computedEntries.get(today.minus(2)).value)
+        assertEquals(YES_MANUAL, habit.computedEntries.get(today.minus(1)).value)
+        assertEquals(2, habit.streaks.getBest(10).first { it.end == today }.length)
+    }
+
+    @Test
+    fun testComputedEntries_slipToday() {
+        val habit = fixtures.createQuitHabit()
+        val today = getToday()
+        assertTrue(habit.isCompletedToday())
+        AddSlipCommand(habitList, habit, quitTimestamp(today, 7, 0)).run()
+        assertEquals(NO, habit.computedEntries.get(today).value)
+        assertFalse(habit.isCompletedToday())
+    }
+
+    @Test
+    fun testComputedEntries_deleteSlip() {
+        val habit = fixtures.createQuitHabit()
+        val today = getToday()
+        DeleteSlipCommand(habitList, habit, quitTimestamp(today.minus(12), 21, 0)).run()
+        assertEquals(YES_MANUAL, habit.computedEntries.get(today.minus(12)).value)
+
+        // The day stays a slip until every slip of that day is removed
+        DeleteSlipCommand(habitList, habit, quitTimestamp(today.minus(5), 9, 15)).run()
+        assertEquals(NO, habit.computedEntries.get(today.minus(5)).value)
+        DeleteSlipCommand(habitList, habit, quitTimestamp(today.minus(5), 18, 45)).run()
+        assertEquals(YES_MANUAL, habit.computedEntries.get(today.minus(5)).value)
     }
 
     @Test
@@ -54,9 +116,11 @@ class QuitHabitTest : BaseUnitTest() {
         val habit = fixtures.createQuitHabit()
         val today = getToday()
         habit.originalEntries.add(Entry(today.minus(2), UNKNOWN, "Tough day"))
+        habit.originalEntries.add(Entry(today.minus(5), UNKNOWN, "Party"))
         habit.originalEntries.add(Entry(today.minus(30), UNKNOWN, "Before quitting"))
         habit.recompute()
         assertEquals(Entry(today.minus(2), YES_MANUAL, "Tough day"), habit.computedEntries.get(today.minus(2)))
+        assertEquals(Entry(today.minus(5), NO, "Party"), habit.computedEntries.get(today.minus(5)))
         assertEquals(Entry(today.minus(30), UNKNOWN, "Before quitting"), habit.computedEntries.get(today.minus(30)))
     }
 
@@ -85,7 +149,7 @@ class QuitHabitTest : BaseUnitTest() {
     fun testStreaks() {
         val habit = fixtures.createQuitHabit()
         val lengths = habit.streaks.getBest(10).map { it.length }.sortedDescending()
-        assertEquals(listOf(8, 6, 5), lengths)
+        assertEquals(listOf(7, 6, 5), lengths)
     }
 
     @Test
@@ -101,15 +165,16 @@ class QuitHabitTest : BaseUnitTest() {
     fun testCleanTime() {
         val habit = fixtures.createQuitHabit()
         val today = getToday()
-        assertEquals(today.minus(4).unixTime, habit.getCleanSince())
+        // Counted from the last of the two slips of that day
+        assertEquals(quitTimestamp(today.minus(5), 18, 45), habit.getCleanSince())
         assertEquals(today.minus(5), habit.getLastSlipDate())
-        assertEquals(CleanTime(4, 10, 15), habit.getCleanTime(today.unixTime + 10 * hour + 15 * 60_000))
+        assertEquals(CleanTime(4, 15, 30), habit.getCleanTime(today.unixTime + 10 * hour + 15 * 60_000))
     }
 
     @Test
     fun testCleanTime_noSlips() {
         val habit = fixtures.createQuitHabit()
-        habit.originalEntries.clear()
+        habit.slips.clear()
         habit.recompute()
         val today = getToday()
         assertNull(habit.getLastSlipDate())
@@ -118,11 +183,13 @@ class QuitHabitTest : BaseUnitTest() {
     }
 
     @Test
-    fun testCleanTime_slippedToday() {
+    fun testCleanTime_multipleSlipsToday() {
         val habit = fixtures.createQuitHabit()
         val today = getToday()
-        CreateRepetitionCommand(habitList, habit, today, NO, "").run()
-        assertEquals(CleanTime(0, 0, 0), habit.getCleanTime(today.unixTime + 10 * hour))
+        AddSlipCommand(habitList, habit, quitTimestamp(today, 7, 0)).run()
+        assertEquals(CleanTime(0, 3, 0), habit.getCleanTime(today.unixTime + 10 * hour))
+        AddSlipCommand(habitList, habit, quitTimestamp(today, 9, 30)).run()
+        assertEquals(CleanTime(0, 0, 30), habit.getCleanTime(today.unixTime + 10 * hour))
         assertFalse(habit.isCompletedToday())
     }
 
@@ -130,7 +197,7 @@ class QuitHabitTest : BaseUnitTest() {
     fun testCleanTime_quitInFuture() {
         val habit = fixtures.createQuitHabit()
         val today = getToday()
-        habit.originalEntries.clear()
+        habit.slips.clear()
         habit.quitSince = quitTimestamp(today.plus(2), 0, 0)
         habit.recompute()
         assertEquals(CleanTime(0, 0, 0), habit.getCleanTime(today.unixTime))
@@ -140,31 +207,53 @@ class QuitHabitTest : BaseUnitTest() {
     fun testCountSlips() {
         val habit = fixtures.createQuitHabit()
         val today = getToday()
-        assertEquals(2, habit.countSlips())
-        assertEquals(1, habit.countSlips(since = today.minus(6)))
+        assertEquals(3, habit.countSlips())
+        assertEquals(2, habit.countSlips(since = today.minus(6)))
     }
 
     @Test
-    fun testCreateRepetition_onlyStoresSlips() {
+    fun testCountSlipsByDay() {
         val habit = fixtures.createQuitHabit()
         val today = getToday()
-        CreateRepetitionCommand(habitList, habit, today.minus(5), YES_MANUAL, "").run()
-        assertEquals(UNKNOWN, habit.originalEntries.get(today.minus(5)).value)
-        assertEquals(YES_MANUAL, habit.computedEntries.get(today.minus(5)).value)
-
-        CreateRepetitionCommand(habitList, habit, today.minus(3), SKIP, "").run()
-        assertEquals(UNKNOWN, habit.originalEntries.get(today.minus(3)).value)
-
-        CreateRepetitionCommand(habitList, habit, today.minus(3), NO, "").run()
-        assertEquals(NO, habit.originalEntries.get(today.minus(3)).value)
-        assertEquals(NO, habit.computedEntries.get(today.minus(3)).value)
+        val counts = habit.countSlipsByDay(today.minus(12), today)
+        assertEquals(13, counts.size)
+        assertEquals(Entry(today, 0), counts.first())
+        assertEquals(Entry(today.minus(5), 2000), counts[5])
+        assertEquals(Entry(today.minus(12), 1000), counts.last())
     }
 
     @Test
-    fun testNextQuitToggleValue() {
-        assertEquals(NO, Entry.nextQuitToggleValue(YES_MANUAL))
-        assertEquals(NO, Entry.nextQuitToggleValue(UNKNOWN))
-        assertEquals(YES_MANUAL, Entry.nextQuitToggleValue(NO))
+    fun testSlipList() {
+        val slips = SlipList()
+        slips.add(300)
+        slips.add(100)
+        slips.add(200)
+        slips.add(200)
+        assertEquals(listOf(300L, 200L, 100L), slips.getAll())
+        assertEquals(300L, slips.getLatest())
+        slips.remove(300)
+        assertEquals(listOf(200L, 100L), slips.getAll())
+    }
+
+    @Test
+    fun testSlipList_getByDate() {
+        val habit = fixtures.createQuitHabit()
+        val today = getToday()
+        assertEquals(
+            listOf(quitTimestamp(today.minus(5), 9, 15), quitTimestamp(today.minus(5), 18, 45)),
+            habit.slips.getByDate(today.minus(5))
+        )
+        assertEquals(emptyList(), habit.slips.getByDate(today.minus(4)))
+    }
+
+    @Test
+    fun testCreateRepetition_onlyStoresNotes() {
+        val habit = fixtures.createQuitHabit()
+        val today = getToday()
+        CreateRepetitionCommand(habitList, habit, today.minus(3), NO, "Almost").run()
+        assertEquals(Entry(today.minus(3), UNKNOWN, "Almost"), habit.originalEntries.get(today.minus(3)))
+        assertEquals(Entry(today.minus(3), YES_MANUAL, "Almost"), habit.computedEntries.get(today.minus(3)))
+        assertEquals(3, habit.countSlips())
     }
 
     @Test
@@ -179,7 +268,13 @@ class QuitHabitTest : BaseUnitTest() {
     fun testSlipWeekdayFrequency() {
         val habit = fixtures.createQuitHabit()
         val total = habit.computeSlipWeekdayFrequency().values.sumOf { it.sum() }
-        assertEquals(2, total)
+        assertEquals(3, total)
+    }
+
+    @Test
+    fun testFormatLocalDateTime() {
+        val today = getToday()
+        assertEquals("2015-01-25 07:05", formatLocalDateTime(quitTimestamp(today, 7, 5)))
     }
 
     @Test
