@@ -29,6 +29,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.isoron.platform.gui.toInt
+import org.isoron.platform.time.LocalDate
 import org.isoron.uhabits.AndroidDirFinder
 import org.isoron.uhabits.HabitsApplication
 import org.isoron.uhabits.R
@@ -38,6 +39,7 @@ import org.isoron.uhabits.activities.common.dialogs.CheckmarkDialog
 import org.isoron.uhabits.activities.common.dialogs.ConfirmDeleteDialog
 import org.isoron.uhabits.activities.common.dialogs.HistoryEditorDialog
 import org.isoron.uhabits.activities.common.dialogs.NumberDialog
+import org.isoron.uhabits.activities.common.dialogs.QuitSlipDialogs
 import org.isoron.uhabits.core.commands.Command
 import org.isoron.uhabits.core.commands.CommandRunner
 import org.isoron.uhabits.core.models.Habit
@@ -201,6 +203,26 @@ class ShowHabitActivity : AppCompatActivity(), CommandRunner.Listener {
             }
             dialog.onToggle = { v, n -> callback.onNotesSaved(v, n) }
             dialog.dismissCurrentAndShow(supportFragmentManager, "checkmarkDialog")
+        }
+
+        override fun showSlipTimePicker(
+            date: LocalDate,
+            color: PaletteColor,
+            callback: (hour: Int, minute: Int) -> Unit
+        ) {
+            val androidColor = view.currentTheme().color(color).toInt()
+            QuitSlipDialogs.showTimePicker(this@ShowHabitActivity, androidColor, callback)
+        }
+
+        override fun showSlipList(
+            date: LocalDate,
+            slips: List<Long>,
+            color: PaletteColor,
+            isToday: Boolean,
+            onAdd: () -> Unit,
+            onDelete: (timestamp: Long) -> Unit
+        ) {
+            QuitSlipDialogs.showSlipList(this@ShowHabitActivity, date, slips, isToday, onAdd, onDelete)
         }
 
         private fun getPopupAnchor(): View? {

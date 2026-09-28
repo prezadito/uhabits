@@ -240,6 +240,24 @@ expect fun getFirstWeekdayNumberAccordingToLocale(): Int
 
 expect fun computeToday(hourOffset: Int = 0, minuteOffset: Int = 0): LocalDate
 
+/**
+ * Returns the current moment as local wall-clock time in milliseconds, that is, the number of
+ * milliseconds since 1970-01-01 00:00 in the local time zone.
+ */
+expect fun computeLocalNow(): Long
+
+private var fixedLocalNow: Long? = null
+
+/**
+ * Returns the current moment as local wall-clock time in milliseconds, or the value previously
+ * given to [setLocalNow], if any.
+ */
+fun getLocalNow(): Long = fixedLocalNow ?: computeLocalNow()
+
+fun setLocalNow(value: Long?) {
+    fixedLocalNow = value
+}
+
 fun countWeekdayOccurrencesInMonth(startOfMonth: LocalDate): Array<Int> {
     val weekday = (startOfMonth.dayOfWeek.daysSinceSunday + 1) % 7
     val freq = Array(7) { 0 }

@@ -98,10 +98,10 @@ class CheckmarkButtonView(
     }
 
     fun performToggle() {
-        value = if (isQuit) {
-            Entry.nextQuitToggleValue(value)
-        } else {
-            Entry.nextToggleValue(
+        // For quit habits, the value is not toggled here: tapping a day either records a slip
+        // or shows the slips of that day, and the button is refreshed once that is done.
+        if (!isQuit) {
+            value = Entry.nextToggleValue(
                 value = value,
                 isSkipEnabled = preferences.isSkipEnabled,
                 areQuestionMarksEnabled = preferences.areQuestionMarksEnabled

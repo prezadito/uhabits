@@ -105,33 +105,38 @@ open class EntryList {
     }
 
     /**
-     * Replaces all entries in this list by entries computed from the entries of a quit habit.
+     * Replaces all entries in this list by entries computed from the slips of a quit habit.
      *
-     * Quit habits only store slips (with value NO). Every other day from [quitDate] until [today]
-     * is considered clean and receives the value YES_MANUAL, so that scores and streaks measure
-     * how long the user has stayed away from the habit. Days before the quit date are left
-     * unknown. Notes attached to any day are preserved.
+     * Days containing at least one slip receive the value NO. Every other day from the quit date
+     * until [today] receives the value YES_MANUAL if the user stayed clean for the entire day. The
+     * quit day itself is left unknown when the user quit after midnight, since that day was not
+     * clean from start to end. Today is optimistically considered clean until the user slips.
+     * Days before the quit date are left unknown. Notes attached to any day, which are stored in
+     * [originalEntries], are preserved.
      */
     @Synchronized
     open fun recomputeQuitFrom(
         originalEntries: EntryList,
-        quitDate: LocalDate?,
+        slips: SlipList,
+        quitSince: Long?,
         today: LocalDate
     ) {
         clear()
-        val original = originalEntries.getKnown()
-        original.forEach { entry ->
-            if (entry.value == NO) {
-                add(entry)
-            } else if (entry.notes.isNotEmpty()) {
-                add(Entry(entry.date, UNKNOWN, entry.notes))
-            }
+        originalEntries.getKnown().forEach { entry ->
+            if (entry.notes.isNotEmpty()) add(Entry(entry.date, UNKNOWN, entry.notes))
         }
-        val start = quitDate ?: original.lastOrNull()?.date ?: return
+        val slipDays = slips.getAll().map { LocalDate.fromUnixTime(it) }.toSet()
+        slipDays.forEach { add(Entry(it, NO, get(it).notes)) }
+        val quitDate = quitSince?.let { LocalDate.fromUnixTime(it) }
+        val start = quitDate ?: slipDays.minOrNull() ?: return
         var current = start
         while (current <= today) {
             val existing = get(current)
-            if (existing.value != NO) add(Entry(current, YES_MANUAL, existing.notes))
+            if (existing.value != NO) {
+                val isPartialQuitDay = current == quitDate && quitSince!! > quitDate.unixTime
+                val value = if (isPartialQuitDay && current != today) UNKNOWN else YES_MANUAL
+                add(Entry(current, value, existing.notes))
+            }
             current = current.plus(1)
         }
     }

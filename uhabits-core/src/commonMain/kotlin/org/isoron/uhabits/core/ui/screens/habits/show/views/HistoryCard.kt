@@ -36,6 +36,7 @@ import org.isoron.uhabits.core.models.PaletteColor
 import org.isoron.uhabits.core.preferences.Preferences
 import org.isoron.uhabits.core.ui.callbacks.CheckMarkDialogCallback
 import org.isoron.uhabits.core.ui.callbacks.NumberPickerCallback
+import org.isoron.uhabits.core.ui.screens.habits.QuitSlipBehavior
 import org.isoron.uhabits.core.ui.views.HistoryChart
 import org.isoron.uhabits.core.ui.views.HistoryChart.Square.DIMMED
 import org.isoron.uhabits.core.ui.views.HistoryChart.Square.GREY
@@ -63,6 +64,7 @@ class HistoryCardPresenter(
     val preferences: Preferences,
     val screen: Screen
 ) : OnDateClickedListener {
+    private val quitSlipBehavior = QuitSlipBehavior(habitList, commandRunner, screen)
 
     override fun onDateLongPress(date: LocalDate) {
         screen.showFeedback()
@@ -97,6 +99,10 @@ class HistoryCardPresenter(
             entry.notes,
             habit.color
         ) { newValue, newNotes ->
+            if (habit.isQuit) {
+                quitSlipBehavior.onNotesSaved(habit, date, newValue, newNotes)
+                return@showCheckmarkPopup
+            }
             commandRunner.run(
                 CreateRepetitionCommand(
                     habitList,
@@ -110,16 +116,16 @@ class HistoryCardPresenter(
     }
 
     private fun toggle(date: LocalDate) {
-        val entry = habit.computedEntries.get(date)
-        val nextValue = if (habit.isQuit) {
-            Entry.nextQuitToggleValue(entry.value)
-        } else {
-            Entry.nextToggleValue(
-                value = entry.value,
-                isSkipEnabled = preferences.isSkipEnabled,
-                areQuestionMarksEnabled = preferences.areQuestionMarksEnabled
-            )
+        if (habit.isQuit) {
+            quitSlipBehavior.onTap(habit, date)
+            return
         }
+        val entry = habit.computedEntries.get(date)
+        val nextValue = Entry.nextToggleValue(
+            value = entry.value,
+            isSkipEnabled = preferences.isSkipEnabled,
+            areQuestionMarksEnabled = preferences.areQuestionMarksEnabled
+        )
         commandRunner.run(
             CreateRepetitionCommand(
                 habitList,
@@ -211,7 +217,7 @@ class HistoryCardPresenter(
         }
     }
 
-    interface Screen {
+    interface Screen : QuitSlipBehavior.Screen {
         fun showHistoryEditorDialog(listener: OnDateClickedListener)
         fun showFeedback()
         fun showNumberPopup(

@@ -28,6 +28,7 @@ import org.isoron.platform.time.DateUtils
 import org.isoron.uhabits.core.commands.Command
 import org.isoron.uhabits.core.commands.CommandRunner
 import org.isoron.uhabits.core.commands.CreateRepetitionCommand
+import org.isoron.uhabits.core.commands.SlipCommand
 import org.isoron.uhabits.core.preferences.Preferences
 import org.isoron.uhabits.core.preferences.WidgetPreferences
 import org.isoron.uhabits.core.tasks.TaskRunner
@@ -50,6 +51,8 @@ class WidgetUpdater(
 
     override fun onCommandFinished(command: Command) {
         if (command is CreateRepetitionCommand) {
+            updateWidgets(command.habit.id)
+        } else if (command is SlipCommand) {
             updateWidgets(command.habit.id)
         } else {
             updateWidgets()

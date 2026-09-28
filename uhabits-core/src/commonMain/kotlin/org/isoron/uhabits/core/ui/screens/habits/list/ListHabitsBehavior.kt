@@ -37,6 +37,7 @@ import org.isoron.uhabits.core.tasks.Task
 import org.isoron.uhabits.core.tasks.TaskRunner
 import org.isoron.uhabits.core.ui.callbacks.CheckMarkDialogCallback
 import org.isoron.uhabits.core.ui.callbacks.NumberPickerCallback
+import org.isoron.uhabits.core.ui.screens.habits.QuitSlipBehavior
 import kotlin.math.roundToInt
 
 @Inject
@@ -49,6 +50,8 @@ open class ListHabitsBehavior(
     private val prefs: Preferences,
     private val bugReporter: BugReporter
 ) {
+    private val quitSlipBehavior = QuitSlipBehavior(habitList, commandRunner, screen)
+
     open fun onClickHabit(h: Habit) {
         screen.showHabitScreen(h)
     }
@@ -75,7 +78,11 @@ open class ListHabitsBehavior(
                 entry.notes,
                 habit.color
             ) { newValue: Int, newNotes: String ->
-                if (!habit.isQuit && newValue != entry.value && newValue == YES_MANUAL) {
+                if (habit.isQuit) {
+                    quitSlipBehavior.onNotesSaved(habit, date, newValue, newNotes)
+                    return@showCheckmarkPopup
+                }
+                if (newValue != entry.value && newValue == YES_MANUAL) {
                     screen.showConfetti(habit.color, x, y)
                 }
                 commandRunner.run(CreateRepetitionCommand(habitList, habit, date, newValue, newNotes))
@@ -134,11 +141,19 @@ open class ListHabitsBehavior(
         if (prefs.isFirstRun) onFirstRun()
     }
 
+    /**
+     * Called when the user toggles a checkmark. For quit habits, [value] is ignored: the day is
+     * handled by [QuitSlipBehavior], which adds a slip or shows the slips of that day.
+     */
     open fun onToggle(habit: Habit, date: LocalDate, value: Int, notes: String, x: Float, y: Float) {
+        if (habit.isQuit) {
+            quitSlipBehavior.onTap(habit, date)
+            return
+        }
         commandRunner.run(
             CreateRepetitionCommand(habitList, habit, date, value, notes)
         )
-        if (value == YES_MANUAL && !habit.isQuit) screen.showConfetti(habit.color, x, y)
+        if (value == YES_MANUAL) screen.showConfetti(habit.color, x, y)
     }
 
     enum class Message {
@@ -160,7 +175,7 @@ open class ListHabitsBehavior(
         fun getCSVOutputDir(): UserFile
     }
 
-    interface Screen {
+    interface Screen : QuitSlipBehavior.Screen {
         fun showHabitScreen(h: Habit)
         fun showIntroScreen()
         fun showMessage(m: Message)

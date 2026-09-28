@@ -143,7 +143,8 @@ class HabitFixtures(
     }
 
     /**
-     * Creates a quit habit started 20 days ago at 08:30, with slips 12 and 5 days ago.
+     * Creates a quit habit started 20 days ago at 08:30, with a slip 12 days ago at 21:00 and
+     * two slips 5 days ago, at 09:15 and 18:45.
      */
     fun createQuitHabit(): Habit {
         val habit = modelFactory.buildHabit()
@@ -154,8 +155,9 @@ class HabitFixtures(
         val today = getToday()
         habit.quitSince = quitTimestamp(today.minus(20), 8, 30)
         saveIfSQLite(habit)
-        habit.originalEntries.add(Entry(today.minus(12), Entry.NO))
-        habit.originalEntries.add(Entry(today.minus(5), Entry.NO))
+        habit.slips.add(quitTimestamp(today.minus(12), 21, 0))
+        habit.slips.add(quitTimestamp(today.minus(5), 9, 15))
+        habit.slips.add(quitTimestamp(today.minus(5), 18, 45))
         habit.recompute()
         return habit
     }

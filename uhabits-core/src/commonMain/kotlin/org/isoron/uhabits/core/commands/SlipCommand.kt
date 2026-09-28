@@ -18,23 +18,44 @@
  */
 package org.isoron.uhabits.core.commands
 
-import org.isoron.platform.time.LocalDate
-import org.isoron.uhabits.core.models.Entry
 import org.isoron.uhabits.core.models.Habit
 import org.isoron.uhabits.core.models.HabitList
 
-data class CreateRepetitionCommand(
-    val habitList: HabitList,
-    val habit: Habit,
-    val date: LocalDate,
-    val value: Int,
-    val notes: String
-) : Command {
+/**
+ * A command that adds or removes a slip of a quit habit. Like [CreateRepetitionCommand], it only
+ * affects the data of a single habit.
+ */
+sealed interface SlipCommand : Command {
+    val habitList: HabitList
+    val habit: Habit
+    val timestamp: Long
+}
+
+/**
+ * Records that the user slipped at the given moment (local wall-clock milliseconds).
+ */
+data class AddSlipCommand(
+    override val habitList: HabitList,
+    override val habit: Habit,
+    override val timestamp: Long
+) : SlipCommand {
     override fun run() {
-        val entries = habit.originalEntries
-        // Slips of quit habits are stored separately (see SlipCommand), so only notes are kept.
-        val storedValue = if (habit.isQuit) Entry.UNKNOWN else value
-        entries.add(Entry(date, storedValue, notes))
+        habit.slips.add(timestamp)
+        habit.recompute()
+        habitList.resort()
+    }
+}
+
+/**
+ * Removes the slip recorded at the given moment (local wall-clock milliseconds).
+ */
+data class DeleteSlipCommand(
+    override val habitList: HabitList,
+    override val habit: Habit,
+    override val timestamp: Long
+) : SlipCommand {
+    override fun run() {
+        habit.slips.remove(timestamp)
         habit.recompute()
         habitList.resort()
     }

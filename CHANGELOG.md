@@ -4,7 +4,7 @@
 
 ### Added
 
-- Add "Quit a habit" type for tracking bad habits you want to stop, with a live clean-time counter
+- Add "Quit a habit" type for tracking bad habits you want to stop, with a live clean-time counter. Multiple slips per day are recorded with their time, and a day is only checked once it was clean from start to end
 - Add habit search that filters by name, question and notes (@I-Dont-Remember, #2338)
 - Add archive and unarchive actions on the habit statistics page (@KyleSCraig, #2194)
 - Add option to select a public folder for automatic backups via SAF (@MihanEntalpo, #2209)
