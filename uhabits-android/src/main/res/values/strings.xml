@@ -261,8 +261,8 @@
     <string name="best_clean_streak">Best streak</string>
     <string name="quit_reminder_text">%s. Keep going!</string>
     <string name="slips_on_date">Slips on %s</string>
+    <string name="change_slip_time">Change time</string>
     <string name="add_slip">Add slip</string>
-    <string name="slipped_again_now">Slipped again now</string>
     <string name="delete_slip_message">Delete the slip at %s?</string>
     <plurals name="x_days">
         <item quantity="one">%d day</item>

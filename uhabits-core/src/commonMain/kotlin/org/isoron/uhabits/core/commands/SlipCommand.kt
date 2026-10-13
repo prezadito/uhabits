@@ -60,3 +60,20 @@ data class DeleteSlipCommand(
         habitList.resort()
     }
 }
+
+/**
+ * Moves the slip recorded at [timestamp] to [newTimestamp] (both local wall-clock milliseconds).
+ */
+data class EditSlipCommand(
+    override val habitList: HabitList,
+    override val habit: Habit,
+    override val timestamp: Long,
+    val newTimestamp: Long
+) : SlipCommand {
+    override fun run() {
+        habit.slips.remove(timestamp)
+        habit.slips.add(newTimestamp)
+        habit.recompute()
+        habitList.resort()
+    }
+}
