@@ -136,7 +136,9 @@ class HabitCardListCache(
         if (command is CreateRepetitionCommand) {
             command.habit.id?.let { refreshHabit(it) }
         } else if (command is SlipCommand) {
-            command.habit.id?.let { refreshHabit(it) }
+            // A slip can change what the card shows (e.g. the clean time) without changing the
+            // score, checkmarks or notes, so the card must be redrawn regardless.
+            command.habit.id?.let { refreshHabit(it, forceUpdate = true) }
         } else {
             refreshAllHabits()
         }
@@ -156,8 +158,8 @@ class HabitCardListCache(
     }
 
     @Synchronized
-    fun refreshHabit(id: Long) {
-        taskRunner.execute(RefreshTask(id))
+    fun refreshHabit(id: Long, forceUpdate: Boolean = false) {
+        taskRunner.execute(RefreshTask(id, forceUpdate))
     }
 
     @Synchronized
@@ -275,18 +277,21 @@ class HabitCardListCache(
     private inner class RefreshTask : Task {
         private val newData: CacheData
         private val targetId: Long?
+        private val forceUpdate: Boolean
         private var isCancelled = false
         private var runner: TaskRunner? = null
 
         constructor() {
             newData = CacheData()
             targetId = null
+            forceUpdate = false
             isCancelled = false
         }
 
-        constructor(targetId: Long) {
+        constructor(targetId: Long, forceUpdate: Boolean = false) {
             newData = CacheData()
             this.targetId = targetId
+            this.forceUpdate = forceUpdate
         }
 
         @Synchronized
@@ -376,7 +381,7 @@ class HabitCardListCache(
             val newScore = newData.scores[id]!!
             val newCheckmarks = newData.checkmarks[id]!!
             val newNoteIndicators = newData.notes[id]!!
-            var unchanged = true
+            var unchanged = !forceUpdate
             if (oldScore != newScore) unchanged = false
             if (!oldCheckmarks.contentEquals(newCheckmarks)) unchanged = false
             if (!oldNoteIndicators.contentEquals(newNoteIndicators)) unchanged = false

@@ -26,6 +26,7 @@ import org.isoron.platform.time.LocalDate
 import org.isoron.uhabits.core.BaseUnitTest
 import org.isoron.uhabits.core.commands.CreateRepetitionCommand
 import org.isoron.uhabits.core.commands.DeleteHabitsCommand
+import org.isoron.uhabits.core.commands.EditSlipCommand
 import org.isoron.uhabits.core.models.Entry
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -75,6 +76,19 @@ class HabitCardListCacheTest : BaseUnitTest() {
         verify { listener.onItemChanged(2) }
         verify { listener.onRefreshFinished() }
         verifyNoMoreCalls(listener)
+    }
+
+    @Test
+    fun testEditSlip_redrawsCardEvenIfCheckmarksDoNotChange() {
+        val quit = fixtures.createQuitHabit()
+        habitList.add(quit)
+        cache.refreshAllHabits()
+        val position = (0 until cache.habitCount).first { cache.getHabitByPosition(it) == quit }
+        resetCalls(listener)
+
+        val slip = quit.slips.getAll().first()
+        commandRunner.run(EditSlipCommand(habitList, quit, slip, slip - 60_000L))
+        verify { listener.onItemChanged(position) }
     }
 
     @Test
