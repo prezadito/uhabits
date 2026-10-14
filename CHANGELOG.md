@@ -4,7 +4,7 @@
 
 ## [2.4.0-qol] -- 2026-10-14
 
-Fork release. Installs side by side with the original app (application ID `org.isoron.uhabits.qol`).
+Fork release, renamed "Habits+". Installs side by side with the original app (application ID `org.isoron.uhabits.qol`).
 
 ### Added
 
