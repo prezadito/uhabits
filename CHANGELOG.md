@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [2.4.1-qol] -- 2026-10-14
+
+### Fixed
+
+- Show "Habits+" as the app name on the launcher and in the habit list title bar
+
 ## [2.4.0-qol] -- 2026-10-14
 
 Fork release, renamed "Habits+". Installs side by side with the original app (application ID `org.isoron.uhabits.qol`).

@@ -97,7 +97,7 @@ class ListHabitsRootView(
         }
         rootView.setupToolbar(
             toolbar = tbar,
-            title = resources.getString(R.string.main_activity_title),
+            title = resources.getString(R.string.app_name),
             color = PaletteColor(17),
             displayHomeAsUpEnabled = false,
             theme = currentTheme()
