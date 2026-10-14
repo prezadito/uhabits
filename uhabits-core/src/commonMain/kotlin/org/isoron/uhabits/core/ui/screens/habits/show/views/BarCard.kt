@@ -54,7 +54,8 @@ class BarCardPresenter(
             boolSpinnerPosition: Int,
             theme: Theme
         ): BarCardState {
-            val bucketSize = if (habit.isNumerical) {
+            // Numerical and quit habits count amounts per period, so both can be grouped by day.
+            val bucketSize = if (habit.isNumerical || habit.isQuit) {
                 numericalBucketSizes[numericalSpinnerPosition]
             } else {
                 boolBucketSizes[boolSpinnerPosition]

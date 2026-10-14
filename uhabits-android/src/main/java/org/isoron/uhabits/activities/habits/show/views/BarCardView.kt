@@ -49,7 +49,7 @@ class BarCardView(context: Context, attrs: AttributeSet) : LinearLayout(context,
 
         binding.title.setTextColor(androidColor)
         binding.title.setText(if (state.isQuit) R.string.slips else R.string.history)
-        if (state.isNumerical) {
+        if (state.isNumerical || state.isQuit) {
             binding.boolSpinner.visibility = GONE
         } else {
             binding.numericalSpinner.visibility = GONE
