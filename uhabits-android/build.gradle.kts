@@ -51,11 +51,11 @@ android {
     }
 
     defaultConfig {
-        versionCode = 20301
-        versionName = "2.3.1"
+        versionCode = 20400
+        versionName = "2.4.0-qol"
         minSdk = 28
         targetSdk = 36
-        applicationId = "org.isoron.uhabits"
+        applicationId = "org.isoron.uhabits.qol"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 

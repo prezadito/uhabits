@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [2.4.0-qol] -- 2026-10-14
+
+Fork release. Installs side by side with the original app (application ID `org.isoron.uhabits.qol`).
+
 ### Added
 
 - Add "Quit a habit" type for tracking bad habits you want to stop, with a live clean-time counter. Multiple slips per day are recorded with their time, and a day is only checked once it was clean from start to end
