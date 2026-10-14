@@ -18,7 +18,7 @@
   ~ with this program. If not, see <http://www.gnu.org/licenses/>.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="app_name">Loop Habit Tracker</string>
+    <string name="app_name">Habits+</string>
     <string name="main_activity_title">Navike</string>
     <string name="action_settings">Postavke</string>
     <string name="edit">Uredi</string>

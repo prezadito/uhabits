@@ -18,7 +18,7 @@
   ~ with this program. If not, see <http://www.gnu.org/licenses/>.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="app_name">Loop - Καταγραφή Συνηθειών</string>
+    <string name="app_name">Habits+</string>
     <string name="main_activity_title">Συνήθειες</string>
     <string name="action_settings">Ρυθμίσεις</string>
     <string name="edit">Επεξεργασία</string>
