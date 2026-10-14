@@ -223,10 +223,12 @@ class ShowHabitActivity : AppCompatActivity(), CommandRunner.Listener {
         override fun showSlipTimePicker(
             date: LocalDate,
             color: PaletteColor,
+            initialHour: Int,
+            initialMinute: Int,
             callback: (hour: Int, minute: Int) -> Unit
         ) {
             val androidColor = view.currentTheme().color(color).toInt()
-            QuitSlipDialogs.showTimePicker(this@ShowHabitActivity, androidColor, callback)
+            QuitSlipDialogs.showTimePicker(this@ShowHabitActivity, androidColor, initialHour, initialMinute, callback)
         }
 
         override fun showSlipList(
@@ -235,9 +237,10 @@ class ShowHabitActivity : AppCompatActivity(), CommandRunner.Listener {
             color: PaletteColor,
             isToday: Boolean,
             onAdd: () -> Unit,
+            onEdit: (timestamp: Long) -> Unit,
             onDelete: (timestamp: Long) -> Unit
         ) {
-            QuitSlipDialogs.showSlipList(this@ShowHabitActivity, date, slips, isToday, onAdd, onDelete)
+            QuitSlipDialogs.showSlipList(this@ShowHabitActivity, date, slips, isToday, onAdd, onEdit, onDelete)
         }
 
         private fun getPopupAnchor(): View? {

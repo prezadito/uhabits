@@ -111,11 +111,11 @@ class ListHabitsBehaviorTest : BaseUnitTest() {
         val quit = fixtures.createQuitHabit()
         val date = getToday().minus(5)
         every {
-            screen.showSlipList(any(), any(), any(), any(), any(), any())
+            screen.showSlipList(any(), any(), any(), any(), any(), any(), any())
         } returns Unit
         behavior.onToggle(quit, date, Entry.YES_MANUAL, "", 0f, 0f)
         verify {
-            screen.showSlipList(date, quit.slips.getByDate(date), any(), false, any(), any())
+            screen.showSlipList(date, quit.slips.getByDate(date), any(), false, any(), any(), any())
         }
         assertEquals(2, quit.slips.getByDate(date).size)
     }

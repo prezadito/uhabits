@@ -323,10 +323,12 @@ class ListHabitsScreen(
     override fun showSlipTimePicker(
         date: LocalDate,
         color: PaletteColor,
+        initialHour: Int,
+        initialMinute: Int,
         callback: (hour: Int, minute: Int) -> Unit
     ) {
         val androidColor = rootView.value.currentTheme().color(color).toInt()
-        QuitSlipDialogs.showTimePicker(activity, androidColor, callback)
+        QuitSlipDialogs.showTimePicker(activity, androidColor, initialHour, initialMinute, callback)
     }
 
     override fun showSlipList(
@@ -335,9 +337,10 @@ class ListHabitsScreen(
         color: PaletteColor,
         isToday: Boolean,
         onAdd: () -> Unit,
+        onEdit: (timestamp: Long) -> Unit,
         onDelete: (timestamp: Long) -> Unit
     ) {
-        QuitSlipDialogs.showSlipList(activity, date, slips, isToday, onAdd, onDelete)
+        QuitSlipDialogs.showSlipList(activity, date, slips, isToday, onAdd, onEdit, onDelete)
     }
 
     private fun getExecuteString(command: Command): String? {

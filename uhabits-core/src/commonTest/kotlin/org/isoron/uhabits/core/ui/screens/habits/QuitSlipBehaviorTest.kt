@@ -53,14 +53,30 @@ class QuitSlipBehaviorTest : BaseUnitTest() {
     }
 
     @Test
-    fun testTapToday_addsSlipNow() {
+    fun testTapToday_asksForTimeStartingNow() {
         val today = getToday()
         setLocalNow(quitTimestamp(today, 13, 20))
         behavior.onTap(habit, today)
-        assertEquals(listOf(quitTimestamp(today, 13, 20)), habit.slips.getByDate(today))
+        assertEquals(today, screen.pickerDate)
+        assertEquals(13 to 20, screen.pickerInitial)
+        assertTrue(habit.slips.getByDate(today).isEmpty())
+        screen.pickerCallback!!(10, 5)
+        assertEquals(listOf(quitTimestamp(today, 10, 5)), habit.slips.getByDate(today))
         assertEquals(Entry.NO, habit.computedEntries.get(today).value)
-        assertNull(screen.pickerDate)
         assertNull(screen.listDate)
+    }
+
+    @Test
+    fun testEditSlip_movesSlip() {
+        val date = getToday().minus(5)
+        behavior.onTap(habit, date)
+        screen.onEdit!!(quitTimestamp(date, 9, 15))
+        assertEquals(9 to 15, screen.pickerInitial)
+        screen.pickerCallback!!(7, 30)
+        assertEquals(
+            listOf(quitTimestamp(date, 7, 30), quitTimestamp(date, 18, 45)),
+            habit.slips.getByDate(date)
+        )
     }
 
     @Test
@@ -95,15 +111,18 @@ class QuitSlipBehaviorTest : BaseUnitTest() {
     }
 
     @Test
-    fun testTapTodayWithSlips_addsAnotherSlipNow() {
+    fun testTapTodayWithSlips_addsAnotherSlip() {
         val today = getToday()
         setLocalNow(quitTimestamp(today, 8, 0))
         behavior.onTap(habit, today)
+        screen.pickerCallback!!(8, 0)
         behavior.onTap(habit, today)
         assertEquals(today, screen.listDate)
         assertTrue(screen.listIsToday!!)
         setLocalNow(quitTimestamp(today, 11, 0))
         screen.onAdd!!()
+        assertEquals(11 to 0, screen.pickerInitial)
+        screen.pickerCallback!!(11, 0)
         assertEquals(
             listOf(quitTimestamp(today, 8, 0), quitTimestamp(today, 11, 0)),
             habit.slips.getByDate(today)
@@ -128,11 +147,13 @@ class QuitSlipBehaviorTest : BaseUnitTest() {
         var notesPopupNotes: String? = null
         var notesCallback: ((String) -> Unit)? = null
         var pickerDate: LocalDate? = null
+        var pickerInitial: Pair<Int, Int>? = null
         var pickerCallback: ((Int, Int) -> Unit)? = null
         var listDate: LocalDate? = null
         var listSlips: List<Long>? = null
         var listIsToday: Boolean? = null
         var onAdd: (() -> Unit)? = null
+        var onEdit: ((Long) -> Unit)? = null
         var onDelete: ((Long) -> Unit)? = null
 
         override fun showSlipNotesPopup(
@@ -147,9 +168,12 @@ class QuitSlipBehaviorTest : BaseUnitTest() {
         override fun showSlipTimePicker(
             date: LocalDate,
             color: PaletteColor,
+            initialHour: Int,
+            initialMinute: Int,
             callback: (hour: Int, minute: Int) -> Unit
         ) {
             pickerDate = date
+            pickerInitial = initialHour to initialMinute
             pickerCallback = callback
         }
 
@@ -159,12 +183,14 @@ class QuitSlipBehaviorTest : BaseUnitTest() {
             color: PaletteColor,
             isToday: Boolean,
             onAdd: () -> Unit,
+            onEdit: (timestamp: Long) -> Unit,
             onDelete: (timestamp: Long) -> Unit
         ) {
             listDate = date
             listSlips = slips
             listIsToday = isToday
             this.onAdd = onAdd
+            this.onEdit = onEdit
             this.onDelete = onDelete
         }
     }
