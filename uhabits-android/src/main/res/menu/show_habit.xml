@@ -44,6 +44,7 @@
     <item
         android:id="@+id/action_edit_habit"
         android:icon="?iconEdit"
+        app:iconTint="?attr/dsInk"
         android:title="@string/edit"
         app:showAsAction="ifRoom"/>
 

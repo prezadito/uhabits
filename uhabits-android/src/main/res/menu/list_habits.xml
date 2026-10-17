@@ -30,15 +30,9 @@
 
     <group android:id="@+id/actionItems">
         <item
-            android:id="@+id/actionCreateHabit"
-            android:enabled="true"
-            android:icon="?iconAdd"
-            android:title="@string/add_habit"
-            app:showAsAction="always"/>
-
-        <item
             android:id="@+id/action_filter"
             android:icon="?iconFilter"
+            app:iconTint="?attr/dsInk"
             android:title="@string/filter"
             app:showAsAction="always">
             <menu>
@@ -83,6 +77,13 @@
                     android:title="@string/search"/>
             </menu>
         </item>
+
+        <item
+            android:id="@+id/actionCreateHabit"
+            android:enabled="true"
+            android:title="@string/add_habit"
+            app:actionLayout="@layout/menu_create_habit"
+            app:showAsAction="always"/>
 
         <item
             android:id="@+id/actionToggleNightMode"

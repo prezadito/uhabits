@@ -22,11 +22,13 @@ package org.isoron.uhabits.activities.habits.show
 import android.content.Context
 import android.view.LayoutInflater
 import android.widget.FrameLayout
+import org.isoron.platform.gui.toInt
 import org.isoron.uhabits.core.ui.screens.habits.show.ShowHabitPresenter
 import org.isoron.uhabits.core.ui.screens.habits.show.ShowHabitState
 import org.isoron.uhabits.databinding.ShowHabitBinding
 import org.isoron.uhabits.utils.applyBottomInset
 import org.isoron.uhabits.utils.applyToolbarInsets
+import org.isoron.uhabits.utils.setScrolled
 import org.isoron.uhabits.utils.setupToolbar
 
 class ShowHabitView(context: Context) : FrameLayout(context) {
@@ -35,14 +37,16 @@ class ShowHabitView(context: Context) : FrameLayout(context) {
     init {
         binding.toolbar.applyToolbarInsets()
         addView(binding.root)
+        binding.scrollView.setOnScrollChangeListener { _, _, scrollY, _, _ ->
+            binding.toolbar.setScrolled(scrollY > 0)
+        }
     }
 
     fun setState(data: ShowHabitState) {
         setupToolbar(
             binding.toolbar,
             title = data.title,
-            color = data.color,
-            theme = data.theme
+            titleColor = data.theme.habitInk(data.color).toInt()
         )
         binding.subtitleCard.setState(data.subtitle)
         binding.overviewCard.setState(data.overview)

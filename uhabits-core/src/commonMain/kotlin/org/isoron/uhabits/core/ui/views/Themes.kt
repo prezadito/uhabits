@@ -33,8 +33,6 @@ abstract class Theme {
     open val lowContrastTextColor: Color get() = lineColor
     open val mediumContrastTextColor: Color get() = inkMutedColor
     open val statusBarBackgroundColor = Color(0x333333)
-    open val toolbarBackgroundColor = Color(0xf4f4f4)
-    open val toolbarColor = Color(0xffffff)
     open val surfaceColor = Color(0xf5f5f5)
     open val surfaceRaisedColor = Color(0xffffff)
     open val inkColor = Color(0x1c1c1c)
@@ -79,8 +77,6 @@ open class DarkTheme : Theme() {
     override val headerTextColor = Color(0x9E9E9E)
     override val itemBackgroundColor = Color(0xffffff)
     override val statusBarBackgroundColor = Color(0x333333)
-    override val toolbarBackgroundColor = Color(0xf4f4f4)
-    override val toolbarColor = Color(0xffffff)
     override val surfaceColor = Color(0x161616)
     override val surfaceRaisedColor = Color(0x212121)
     override val inkColor = Color(0xf2f2f2)

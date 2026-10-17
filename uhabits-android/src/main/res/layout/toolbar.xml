@@ -23,6 +23,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="?actionBarSize"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+    android:layout_height="64dp"
+    android:background="?attr/dsSurface"
+    android:theme="?attr/dsToolbarTheme"
+    app:contentInsetStart="@dimen/ds_space_16"
+    app:contentInsetStartWithNavigation="@dimen/ds_space_16"
+    app:titleTextAppearance="@style/TextAppearance.Ds.Display"
     app:popupTheme="?toolbarPopupTheme"/>

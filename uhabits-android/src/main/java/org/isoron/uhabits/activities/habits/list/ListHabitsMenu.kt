@@ -53,7 +53,13 @@ class ListHabitsMenu(
         inflater.inflate(R.menu.list_habits, menu)
         createSearchBar(menu)
         createMenuItems(menu)
+        createAddButton(menu)
         updateArrows(menu)
+    }
+
+    private fun createAddButton(menu: Menu) {
+        val item = menu.findItem(R.id.actionCreateHabit)
+        item.actionView?.setOnClickListener { onItemSelected(item) }
     }
 
     private fun createMenuItems(menu: Menu) {

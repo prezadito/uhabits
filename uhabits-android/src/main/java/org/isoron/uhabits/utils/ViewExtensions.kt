@@ -47,14 +47,14 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.FileProvider
+import androidx.core.graphics.ColorUtils
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.snackbar.Snackbar
-import org.isoron.platform.gui.toInt
 import org.isoron.uhabits.HabitsApplication
 import org.isoron.uhabits.R
 import org.isoron.uhabits.activities.AndroidThemeSwitcher
-import org.isoron.uhabits.core.models.PaletteColor
 import org.isoron.uhabits.core.ui.views.Theme
 import java.io.File
 
@@ -176,24 +176,46 @@ fun Activity.restartWithFade(cls: Class<*>?) {
 fun View.setupToolbar(
     toolbar: Toolbar,
     title: String,
-    color: PaletteColor,
-    theme: Theme,
+    titleColor: Int? = null,
     displayHomeAsUpEnabled: Boolean = true
 ) {
-    toolbar.elevation = InterfaceUtils.dpToPixels(context, 2f)
     val res = StyledResources(context)
+    val surface = res.getColor(R.attr.dsSurface)
+    toolbar.elevation = 0f
     toolbar.title = title
-    val toolbarColor = if (!res.getBoolean(R.attr.useHabitColorAsPrimary)) {
-        StyledResources(context).getColor(R.attr.colorPrimary)
+    if (titleColor != null) {
+        toolbar.setTitleTextAppearance(context, R.style.TextAppearance_Ds_TitleLarge)
+        toolbar.setTitleTextColor(titleColor)
     } else {
-        theme.color(color).toInt()
+        toolbar.setTitleTextColor(res.getColor(R.attr.dsInk))
     }
-    toolbar.background = ColorDrawable(toolbarColor)
+    toolbar.setBackgroundColor(surface)
     toolbar.applyToolbarInsets()
     val activity = context as AppCompatActivity
-    activity.window.statusBarColor = toolbarColor
+    activity.window.statusBarColor = surface
+    activity.window.navigationBarColor = surface
+    val isLightSurface = ColorUtils.calculateLuminance(surface) > 0.5
+    WindowCompat.getInsetsController(activity.window, activity.window.decorView).apply {
+        isAppearanceLightStatusBars = isLightSurface
+        isAppearanceLightNavigationBars = isLightSurface
+    }
     activity.setSupportActionBar(toolbar)
     activity.supportActionBar?.setDisplayHomeAsUpEnabled(displayHomeAsUpEnabled)
+}
+
+/**
+ * Shows the toolbar as raised once the content has scrolled away from the top:
+ * a 2dp shadow in light themes, a raised surface in dark ones.
+ */
+fun Toolbar.setScrolled(scrolled: Boolean) {
+    val res = StyledResources(context)
+    val isLight = ColorUtils.calculateLuminance(res.getColor(R.attr.dsSurface)) > 0.5
+    if (isLight) {
+        elevation = if (scrolled) InterfaceUtils.dpToPixels(context, 2f) else 0f
+    } else {
+        elevation = 0f
+        setBackgroundColor(res.getColor(if (scrolled) R.attr.dsSurfaceRaised else R.attr.dsSurface))
+    }
 }
 
 fun View.currentTheme(): Theme {
