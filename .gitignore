@@ -20,3 +20,6 @@ crowdin.yml
 kotlin-js-store
 *.md
 .kotlin
+.claude
+.agents
+skills-lock.json
