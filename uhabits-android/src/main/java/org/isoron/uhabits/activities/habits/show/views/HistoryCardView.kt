@@ -23,6 +23,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import org.isoron.platform.time.JavaLocalDateFormatter
+import org.isoron.uhabits.R
 import org.isoron.uhabits.core.ui.screens.habits.show.views.HistoryCardPresenter
 import org.isoron.uhabits.core.ui.screens.habits.show.views.HistoryCardState
 import org.isoron.uhabits.core.ui.views.HistoryChart
@@ -45,6 +46,7 @@ class HistoryCardView(context: Context, attrs: AttributeSet) : LinearLayout(cont
             firstWeekday = state.firstWeekday
         )
         binding.chart.postInvalidate()
+        binding.chart.contentDescription = resources.getString(R.string.cd_chart_history)
     }
 
     fun setListener(presenter: HistoryCardPresenter) {

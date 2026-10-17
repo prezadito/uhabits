@@ -54,7 +54,6 @@
         <item name="palette">@array/dsPaletteLight</item>
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
         <item name="scrollableRecyclerViewStyle">@style/ScrollableRecyclerViewStyle</item>
-        <item name="selectedBackground">@drawable/selected_box</item>
         <item name="toolbarPopupTheme">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="dsToolbarTheme">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="widgetBackgroundAlpha">1</item>
@@ -114,7 +113,6 @@
         <item name="popupMenuBackground">@color/black</item>
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
         <item name="scrollableRecyclerViewStyle">@style/ScrollableRecyclerViewStyle</item>
-        <item name="selectedBackground">@drawable/selected_box</item>
         <item name="textColorAlertDialogListItem">?attr/dsInk</item>
         <item name="toolbarPopupTheme">@style/ThemeOverlay.AppCompat</item>
         <item name="dsToolbarTheme">@style/ThemeOverlay.AppCompat.Dark</item>
@@ -157,7 +155,6 @@
         <item name="contrast60">?attr/dsInkMuted</item>
         <item name="contrast80">?attr/dsInk</item>
         <item name="contrast100">?attr/dsInk</item>
-        <item name="selectedBackground">@drawable/selected_box</item>
         <item name="textColorAlertDialogListItem">?attr/dsInk</item>
         <item name="windowBackgroundColor">?attr/dsSurface</item>
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material.PureBlack</item>
