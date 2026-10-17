@@ -238,7 +238,7 @@
         <item name="contrast60">@color/white_aa</item>
         <item name="contrast80">@color/grey_800</item>
         <item name="contrast100">@color/white</item>
-        <item name="palette">@array/transparentWidgetPalette</item>
+        <item name="palette">@array/dsPaletteLight</item>
         <item name="widgetShadowAlpha">0</item>
         <item name="android:textColor">@color/grey_100</item>
         <item name="aboutScreenColor">@color/blue_300</item>
