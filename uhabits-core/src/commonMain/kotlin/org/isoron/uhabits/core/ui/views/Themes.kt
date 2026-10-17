@@ -35,6 +35,17 @@ abstract class Theme {
     open val statusBarBackgroundColor = Color(0x333333)
     open val toolbarBackgroundColor = Color(0xf4f4f4)
     open val toolbarColor = Color(0xffffff)
+    open val surfaceColor = Color(0xf5f5f5)
+    open val surfaceRaisedColor = Color(0xffffff)
+    open val inkColor = Color(0x1c1c1c)
+    open val inkMutedColor = Color(0x666666)
+    open val lineColor = Color(0xe6e6e6)
+    open val lineStrongColor = Color(0x8a8a8a)
+    open val accentColor = Color(0x1f6fca)
+    open val onAccentColor = Color(0xffffff)
+    open val accentTintColor = Color(0xe1eefe)
+    open val onHabitColor = Color(0xffffff)
+    open val onHabitTextColor = Color(0x1c1c1c)
 
     fun color(paletteColor: PaletteColor): Color {
         return color(paletteColor.paletteIndex)
@@ -86,6 +97,17 @@ open class DarkTheme : Theme() {
     override val statusBarBackgroundColor = Color(0x333333)
     override val toolbarBackgroundColor = Color(0xf4f4f4)
     override val toolbarColor = Color(0xffffff)
+    override val surfaceColor = Color(0x161616)
+    override val surfaceRaisedColor = Color(0x212121)
+    override val inkColor = Color(0xf2f2f2)
+    override val inkMutedColor = Color(0xa6a6a6)
+    override val lineColor = Color(0x2e2e2e)
+    override val lineStrongColor = Color(0x7a7a7a)
+    override val accentColor = Color(0x7baff2)
+    override val onAccentColor = Color(0x161616)
+    override val accentTintColor = Color(0x222f3f)
+    override val onHabitColor = Color(0x161616)
+    override val onHabitTextColor = Color(0x0f0f0f)
 
     override fun color(paletteIndex: Int): Color {
         return when (paletteIndex) {
@@ -118,6 +140,17 @@ class PureBlackTheme : DarkTheme() {
     override val appBackgroundColor = Color(0x000000)
     override val cardBackgroundColor = Color(0x000000)
     override val lowContrastTextColor = Color(0x212121)
+    override val surfaceColor = Color(0x000000)
+    override val surfaceRaisedColor = Color(0x121212)
+    override val inkColor = Color(0xf2f2f2)
+    override val inkMutedColor = Color(0xa6a6a6)
+    override val lineColor = Color(0x222222)
+    override val lineStrongColor = Color(0x6e6e6e)
+    override val accentColor = Color(0x7baff2)
+    override val onAccentColor = Color(0x000000)
+    override val accentTintColor = Color(0x1a2433)
+    override val onHabitColor = Color(0x000000)
+    override val onHabitTextColor = Color(0x000000)
 }
 
 class WidgetTheme : LightTheme() {
