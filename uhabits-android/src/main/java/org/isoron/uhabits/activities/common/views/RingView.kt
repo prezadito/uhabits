@@ -55,6 +55,7 @@ class RingView : View {
     private var pRing: TextPaint? = null
     private var backgroundColor: Int? = null
     private var inactiveColor: Int? = null
+    private var hasExplicitInactiveColor = false
     private var em = 0f
     private var text: String?
     private var textSize: Float
@@ -92,6 +93,13 @@ class RingView : View {
 
     override fun setBackgroundColor(backgroundColor: Int) {
         this.backgroundColor = backgroundColor
+        invalidate()
+    }
+
+    /** Sets the color of the unfilled part of the ring, without any extra transparency. */
+    fun setInactiveColor(color: Int) {
+        inactiveColor = color
+        hasExplicitInactiveColor = true
         invalidate()
     }
 
@@ -204,7 +212,7 @@ class RingView : View {
         val res = StyledResources(context)
         if (backgroundColor == null) backgroundColor = res.getColor(R.attr.cardBgColor)
         if (inactiveColor == null) inactiveColor = res.getColor(R.attr.contrast100)
-        inactiveColor = setAlpha(inactiveColor!!, 0.15f)
+        if (!hasExplicitInactiveColor) inactiveColor = setAlpha(inactiveColor!!, 0.15f)
         rect = RectF()
     }
 
