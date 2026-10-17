@@ -65,6 +65,19 @@
         <item name="android:textColorAlertDialogListItem">@color/grey_800</item>
         <item name="singleLineTitle">false</item>
         <item name="dialogFormLabelColor">@color/white</item>
+        <item name="dsSurface">@color/ds_light_surface</item>
+        <item name="dsSurfaceRaised">@color/ds_light_surface_raised</item>
+        <item name="dsInk">@color/ds_light_ink</item>
+        <item name="dsInkMuted">@color/ds_light_ink_muted</item>
+        <item name="dsLine">@color/ds_light_line</item>
+        <item name="dsLineStrong">@color/ds_light_line_strong</item>
+        <item name="dsAccent">@color/ds_light_accent</item>
+        <item name="dsOnAccent">@color/ds_light_on_accent</item>
+        <item name="dsAccentTint">@color/ds_light_accent_tint</item>
+        <item name="dsTodayRing">@color/ds_light_today_ring</item>
+        <item name="dsOnHabit">@color/ds_light_on_habit</item>
+        <item name="dsOnHabitText">@color/ds_light_on_habit_text</item>
+        <item name="dsScrim">@color/ds_light_scrim</item>
     </style>
 
     <style name="AppBaseThemeDark" parent="@style/Theme.MaterialComponents.NoActionBar">
@@ -113,6 +126,19 @@
         <item name="android:textColorAlertDialogListItem">@color/grey_100</item>
         <item name="singleLineTitle">false</item>
         <item name="dialogFormLabelColor">@color/grey_800</item>
+        <item name="dsSurface">@color/ds_dark_surface</item>
+        <item name="dsSurfaceRaised">@color/ds_dark_surface_raised</item>
+        <item name="dsInk">@color/ds_dark_ink</item>
+        <item name="dsInkMuted">@color/ds_dark_ink_muted</item>
+        <item name="dsLine">@color/ds_dark_line</item>
+        <item name="dsLineStrong">@color/ds_dark_line_strong</item>
+        <item name="dsAccent">@color/ds_dark_accent</item>
+        <item name="dsOnAccent">@color/ds_dark_on_accent</item>
+        <item name="dsAccentTint">@color/ds_dark_accent_tint</item>
+        <item name="dsTodayRing">@color/ds_dark_today_ring</item>
+        <item name="dsOnHabit">@color/ds_dark_on_habit</item>
+        <item name="dsOnHabitText">@color/ds_dark_on_habit_text</item>
+        <item name="dsScrim">@color/ds_dark_scrim</item>
     </style>
 
     <style name="AppBaseThemeDark.PureBlack">
@@ -135,6 +161,19 @@
         <item name="windowBackgroundColor">@color/black</item>
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material.PureBlack</item>
         <item name="dialogFormLabelColor">@color/grey_800</item>
+        <item name="dsSurface">@color/ds_black_surface</item>
+        <item name="dsSurfaceRaised">@color/ds_black_surface_raised</item>
+        <item name="dsInk">@color/ds_black_ink</item>
+        <item name="dsInkMuted">@color/ds_black_ink_muted</item>
+        <item name="dsLine">@color/ds_black_line</item>
+        <item name="dsLineStrong">@color/ds_black_line_strong</item>
+        <item name="dsAccent">@color/ds_black_accent</item>
+        <item name="dsOnAccent">@color/ds_black_on_accent</item>
+        <item name="dsAccentTint">@color/ds_black_accent_tint</item>
+        <item name="dsTodayRing">@color/ds_black_today_ring</item>
+        <item name="dsOnHabit">@color/ds_black_on_habit</item>
+        <item name="dsOnHabitText">@color/ds_black_on_habit_text</item>
+        <item name="dsScrim">@color/ds_black_scrim</item>
     </style>
 
     <style name="BaseDialog" parent="Theme.AppCompat.Light.Dialog">
@@ -146,6 +185,19 @@
         <item name="contrast100">@color/grey_800</item>
         <item name="palette">@array/lightPalette</item>
         <item name="dialogFormLabelColor">@color/white</item>
+        <item name="dsSurface">@color/ds_light_surface</item>
+        <item name="dsSurfaceRaised">@color/ds_light_surface_raised</item>
+        <item name="dsInk">@color/ds_light_ink</item>
+        <item name="dsInkMuted">@color/ds_light_ink_muted</item>
+        <item name="dsLine">@color/ds_light_line</item>
+        <item name="dsLineStrong">@color/ds_light_line_strong</item>
+        <item name="dsAccent">@color/ds_light_accent</item>
+        <item name="dsOnAccent">@color/ds_light_on_accent</item>
+        <item name="dsAccentTint">@color/ds_light_accent_tint</item>
+        <item name="dsTodayRing">@color/ds_light_today_ring</item>
+        <item name="dsOnHabit">@color/ds_light_on_habit</item>
+        <item name="dsOnHabitText">@color/ds_light_on_habit_text</item>
+        <item name="dsScrim">@color/ds_light_scrim</item>
     </style>
 
     <style name="BaseDialogDark" parent="Theme.AppCompat.Dialog">
@@ -157,6 +209,19 @@
         <item name="contrast100">@color/grey_100</item>
         <item name="palette">@array/darkPalette</item>
         <item name="dialogFormLabelColor">@color/grey_800</item>
+        <item name="dsSurface">@color/ds_dark_surface</item>
+        <item name="dsSurfaceRaised">@color/ds_dark_surface_raised</item>
+        <item name="dsInk">@color/ds_dark_ink</item>
+        <item name="dsInkMuted">@color/ds_dark_ink_muted</item>
+        <item name="dsLine">@color/ds_dark_line</item>
+        <item name="dsLineStrong">@color/ds_dark_line_strong</item>
+        <item name="dsAccent">@color/ds_dark_accent</item>
+        <item name="dsOnAccent">@color/ds_dark_on_accent</item>
+        <item name="dsAccentTint">@color/ds_dark_accent_tint</item>
+        <item name="dsTodayRing">@color/ds_dark_today_ring</item>
+        <item name="dsOnHabit">@color/ds_dark_on_habit</item>
+        <item name="dsOnHabitText">@color/ds_dark_on_habit_text</item>
+        <item name="dsScrim">@color/ds_dark_scrim</item>
     </style>
 
     <style name="PreferenceThemeOverlay.v14.Material.PureBlack">

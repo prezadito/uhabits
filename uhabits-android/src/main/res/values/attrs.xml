@@ -57,4 +57,18 @@
     <attr name="selectedBackground" format="reference"/>
 
     <attr name="scrollableRecyclerViewStyle" format="reference"/>
+
+    <attr name="dsSurface" format="color"/>
+    <attr name="dsSurfaceRaised" format="color"/>
+    <attr name="dsInk" format="color"/>
+    <attr name="dsInkMuted" format="color"/>
+    <attr name="dsLine" format="color"/>
+    <attr name="dsLineStrong" format="color"/>
+    <attr name="dsAccent" format="color"/>
+    <attr name="dsOnAccent" format="color"/>
+    <attr name="dsAccentTint" format="color"/>
+    <attr name="dsTodayRing" format="color"/>
+    <attr name="dsOnHabit" format="color"/>
+    <attr name="dsOnHabitText" format="color"/>
+    <attr name="dsScrim" format="color"/>
 </resources>
