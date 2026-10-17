@@ -42,6 +42,7 @@ import org.isoron.uhabits.R
 import org.isoron.uhabits.activities.common.views.RingView
 import org.isoron.uhabits.core.models.Habit
 import org.isoron.uhabits.core.models.ModelObservable
+import org.isoron.uhabits.core.models.PaletteColor
 import org.isoron.uhabits.core.ui.screens.habits.list.ListHabitsBehavior
 import org.isoron.uhabits.inject.ActivityContext
 import org.isoron.uhabits.utils.currentTheme
@@ -311,8 +312,11 @@ class HabitCardView(
             visibility = if (h.isQuit) View.VISIBLE else View.GONE
         }
         if (h.isQuit) updateCleanTime(h)
+        val theme = currentTheme()
+        val tileColor = if (h.isArchived) PaletteColor.fromHue(11) else h.color
+        val tileColors = TileColors.of(theme, tileColor)
         checkmarkPanel.apply {
-            color = c
+            colors = tileColors
             isQuit = h.isQuit
             visibility = when (h.isNumerical) {
                 true -> View.GONE
@@ -320,7 +324,7 @@ class HabitCardView(
             }
         }
         numberPanel.apply {
-            color = c
+            colors = tileColors
             units = h.unit
             targetType = h.targetType
             threshold = h.targetValue

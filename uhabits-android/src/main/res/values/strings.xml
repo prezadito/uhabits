@@ -268,4 +268,17 @@
         <item quantity="one">%d day</item>
         <item quantity="other">%d days</item>
     </plurals>
+
+    <!-- Content descriptions for day tiles -->
+    <string name="cd_day">%1$s %2$d</string>
+    <string name="cd_entry_done">%1$s, done</string>
+    <string name="cd_entry_done_auto">%1$s, done automatically</string>
+    <string name="cd_entry_skipped">%1$s, skipped</string>
+    <string name="cd_entry_not_done">%1$s, not done</string>
+    <string name="cd_entry_unknown">%1$s, not recorded</string>
+    <string name="cd_entry_clean">%1$s, clean day</string>
+    <string name="cd_entry_slip">%1$s, slip</string>
+    <string name="cd_number_met">%1$s, %2$s, target met</string>
+    <string name="cd_number_missed">%1$s, %2$s, target missed</string>
+    <string name="cd_has_notes">%1$s, has notes</string>
 </resources>

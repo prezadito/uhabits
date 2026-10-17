@@ -23,7 +23,8 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
 import org.isoron.uhabits.BaseViewTest
 import org.isoron.uhabits.core.models.Entry
-import org.isoron.uhabits.utils.PaletteUtils
+import org.isoron.uhabits.core.models.PaletteColor
+import org.isoron.uhabits.core.ui.views.LightTheme
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -43,7 +44,7 @@ class EntryButtonViewTest : BaseViewTest() {
         super.setUp()
         view = component.getEntryButtonViewFactory().create().apply {
             value = Entry.NO
-            color = PaletteUtils.getAndroidTestColor(5)
+            colors = TileColors.of(LightTheme(), PaletteColor(5))
             onToggle = { _, _ -> toggled = true }
             onEdit = { edited = true }
         }

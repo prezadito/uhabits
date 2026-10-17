@@ -23,12 +23,11 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
-import android.graphics.RectF
-import android.text.TextPaint
 import android.view.HapticFeedbackConstants
 import android.view.View
 import android.view.View.MeasureSpec.EXACTLY
 import me.tatarka.inject.annotations.Inject
+import org.isoron.platform.time.LocalDate
 import org.isoron.uhabits.R
 import org.isoron.uhabits.core.models.Entry
 import org.isoron.uhabits.core.models.Entry.Companion.NO
@@ -38,10 +37,6 @@ import org.isoron.uhabits.core.models.Entry.Companion.YES_AUTO
 import org.isoron.uhabits.core.models.Entry.Companion.YES_MANUAL
 import org.isoron.uhabits.core.preferences.Preferences
 import org.isoron.uhabits.inject.ActivityContext
-import org.isoron.uhabits.utils.drawNotesIndicator
-import org.isoron.uhabits.utils.getFontAwesome
-import org.isoron.uhabits.utils.sp
-import org.isoron.uhabits.utils.sres
 import org.isoron.uhabits.utils.toMeasureSpec
 
 @Inject
@@ -59,7 +54,20 @@ class CheckmarkButtonView(
     View.OnClickListener,
     View.OnLongClickListener {
 
-    var color: Int = Color.BLACK
+    var colors = TileColors(Color.BLACK, Color.BLACK, Color.LTGRAY)
+        set(value) {
+            field = value
+            invalidate()
+        }
+
+    var date: LocalDate? = null
+        set(value) {
+            field = value
+            updateDescription()
+        }
+
+    /** True when this cell is today; an open today gets a ring. */
+    var isToday = false
         set(value) {
             field = value
             invalidate()
@@ -68,12 +76,14 @@ class CheckmarkButtonView(
     var value: Int = 0
         set(value) {
             field = value
+            updateDescription()
             invalidate()
         }
 
     var notes = ""
         set(value) {
             field = value
+            updateDescription()
             invalidate()
         }
 
@@ -83,6 +93,7 @@ class CheckmarkButtonView(
     var isQuit = false
         set(value) {
             field = value
+            updateDescription()
             invalidate()
         }
 
@@ -95,6 +106,23 @@ class CheckmarkButtonView(
     init {
         setOnClickListener(this)
         setOnLongClickListener(this)
+    }
+
+    private fun updateDescription() {
+        val date = date ?: return
+        val day = describeDay(date)
+        val id = when {
+            isQuit && value == YES_MANUAL -> R.string.cd_entry_clean
+            isQuit && value == NO -> R.string.cd_entry_slip
+            isQuit -> R.string.cd_entry_unknown
+            value == YES_MANUAL -> R.string.cd_entry_done
+            value == YES_AUTO -> R.string.cd_entry_done_auto
+            value == SKIP -> R.string.cd_entry_skipped
+            value == NO -> R.string.cd_entry_not_done
+            preferences.areQuestionMarksEnabled -> R.string.cd_entry_unknown
+            else -> R.string.cd_entry_not_done
+        }
+        contentDescription = describeWithNotes(resources.getString(id, day), notes)
     }
 
     fun performToggle() {
@@ -146,108 +174,70 @@ class CheckmarkButtonView(
     }
 
     private inner class Drawer {
-        /**
-         * Quit habits show clean days as checkmarks and slips as crosses. Days before the
-         * quit date are left blank.
-         */
-        private fun drawQuit(canvas: Canvas) {
-            paint.strokeWidth = 0f
-            paint.style = Paint.Style.FILL
-            paint.textSize = sp(14.0f)
-            val em = paint.measureText("m")
-            rect.set(0f, 0f, width.toFloat(), height.toFloat())
-            val id = when (value) {
-                YES_MANUAL -> R.string.fa_check
-                NO -> R.string.fa_times
-                else -> null
-            }
-            if (id != null) {
-                paint.color = if (value == NO) mediumContrastColor else color
-                val textRect = RectF(rect).apply { offset(0f, 0.4f * em) }
-                canvas.drawText(resources.getString(id), textRect.centerX(), textRect.centerY(), paint)
-            }
-            drawNotesIndicator(
-                pNotesIndicator = pNotesIndicator,
-                canvas = canvas,
-                color = color,
-                size = em,
-                notes = notes
-            )
-        }
-
-        private val rect = RectF()
-        private val bgColor = sres.getColor(R.attr.cardBgColor)
-        private val lowContrastColor = sres.getColor(R.attr.contrast40)
-        private val mediumContrastColor = sres.getColor(R.attr.contrast60)
+        private val tile = DayTilePainter(this@CheckmarkButtonView)
         private val pNotesIndicator = Paint()
 
-        private val paint = TextPaint().apply {
-            typeface = getFontAwesome()
-            isAntiAlias = true
-            textAlign = Paint.Align.CENTER
+        fun draw(canvas: Canvas) {
+            tile.layout()
+            val state = resolveState() ?: return drawBlank(canvas)
+            val ringed = isToday && value != YES_MANUAL && value != YES_AUTO
+            when (state) {
+                State.DONE -> {
+                    tile.fill(canvas, colors.fill)
+                    tile.glyph(canvas, R.string.fa_check, 15f, tile.onHabit)
+                }
+                State.AUTO -> {
+                    tile.fill(canvas, colors.tint)
+                    tile.innerStroke(canvas, colors.fill, 2f)
+                    tile.glyph(canvas, R.string.fa_check, 15f, colors.ink)
+                }
+                State.SKIPPED -> {
+                    tile.hatch(canvas, colors.tint)
+                    tile.glyph(canvas, R.string.fa_skipped, 15f, colors.ink)
+                }
+                State.MISSED -> {
+                    tile.fill(canvas, colors.tint)
+                    tile.glyph(canvas, R.string.fa_times, 12f, tile.inkMuted)
+                }
+                State.UNKNOWN -> {
+                    tile.dashedBorder(canvas, tile.lineStrong)
+                    tile.glyph(canvas, R.string.fa_question, 13f, tile.inkMuted)
+                }
+            }
+            if (ringed) tile.todayRing(canvas)
+            tile.notesDot(canvas, glyphColor(state), notes)
         }
 
-        fun draw(canvas: Canvas) {
+        private fun drawBlank(canvas: Canvas) {
+            if (isToday) tile.todayRing(canvas)
+            tile.notesDot(canvas, colors.ink, notes)
+        }
+
+        private fun glyphColor(state: State) = when (state) {
+            State.DONE -> tile.onHabit
+            State.AUTO, State.SKIPPED -> colors.ink
+            else -> tile.inkMuted
+        }
+
+        /** Null when nothing is drawn (quit habits, days before the quit date). */
+        private fun resolveState(): State? {
             if (isQuit) {
-                drawQuit(canvas)
-                return
-            }
-            paint.color = when (value) {
-                YES_MANUAL, YES_AUTO, SKIP -> color
-                NO -> {
-                    if (preferences.areQuestionMarksEnabled) {
-                        mediumContrastColor
-                    } else {
-                        lowContrastColor
-                    }
+                return when (value) {
+                    YES_MANUAL -> State.DONE
+                    NO -> State.MISSED
+                    else -> null
                 }
-                else -> lowContrastColor
             }
-            val id = when (value) {
-                SKIP -> R.string.fa_skipped
-                NO -> R.string.fa_times
-                UNKNOWN -> {
-                    if (preferences.areQuestionMarksEnabled) {
-                        R.string.fa_question
-                    } else {
-                        R.string.fa_times
-                    }
-                }
-                else -> R.string.fa_check
+            return when (value) {
+                YES_MANUAL -> State.DONE
+                YES_AUTO -> State.AUTO
+                SKIP -> State.SKIPPED
+                UNKNOWN ->
+                    if (preferences.areQuestionMarksEnabled) State.UNKNOWN else State.MISSED
+                else -> State.MISSED
             }
-            paint.textSize = when {
-                id == R.string.fa_question -> sp(12.0f)
-                value == YES_AUTO -> sp(13.0f)
-                else -> sp(14.0f)
-            }
-            if (value == YES_AUTO) {
-                paint.strokeWidth = 5f
-                paint.style = Paint.Style.STROKE
-            } else {
-                paint.strokeWidth = 0f
-                paint.style = Paint.Style.FILL
-            }
-
-            val label = resources.getString(id)
-            val em = paint.measureText("m")
-
-            rect.set(0f, 0f, width.toFloat(), height.toFloat())
-            rect.offset(0f, 0.4f * em)
-            canvas.drawText(label, rect.centerX(), rect.centerY(), paint)
-
-            if (value == YES_AUTO) {
-                paint.color = bgColor
-                paint.style = Paint.Style.FILL
-                canvas.drawText(label, rect.centerX(), rect.centerY(), paint)
-            }
-
-            drawNotesIndicator(
-                pNotesIndicator = pNotesIndicator,
-                canvas = canvas,
-                color = color,
-                size = em,
-                notes = notes
-            )
         }
     }
+
+    private enum class State { DONE, AUTO, SKIPPED, MISSED, UNKNOWN }
 }

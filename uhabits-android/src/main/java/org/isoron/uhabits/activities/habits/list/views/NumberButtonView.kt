@@ -22,13 +22,13 @@ package org.isoron.uhabits.activities.habits.list.views
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
-import android.graphics.RectF
 import android.graphics.Typeface
 import android.text.TextPaint
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.View.OnLongClickListener
 import me.tatarka.inject.annotations.Inject
+import org.isoron.platform.time.LocalDate
 import org.isoron.uhabits.R
 import org.isoron.uhabits.core.models.Entry
 import org.isoron.uhabits.core.models.NumericalHabitType.AT_LEAST
@@ -37,13 +37,8 @@ import org.isoron.uhabits.core.preferences.Preferences
 import org.isoron.uhabits.inject.ActivityContext
 import org.isoron.uhabits.utils.InterfaceUtils.getDimension
 import org.isoron.uhabits.utils.dim
-import org.isoron.uhabits.utils.drawNotesIndicator
-import org.isoron.uhabits.utils.getFontAwesome
-import org.isoron.uhabits.utils.sres
+import org.isoron.uhabits.utils.dp
 import java.text.DecimalFormat
-
-private val BOLD_TYPEFACE = Typeface.create("sans-serif-condensed", Typeface.BOLD)
-private val NORMAL_TYPEFACE = Typeface.create("sans-serif-condensed", Typeface.NORMAL)
 
 fun Double.toShortString(): String = when {
     this >= 1e9 -> String.format("%.1fG", this / 1e9)
@@ -73,7 +68,19 @@ class NumberButtonView(
     OnClickListener,
     OnLongClickListener {
 
-    var color = 0
+    var colors = TileColors(0, 0, 0)
+        set(value) {
+            field = value
+            invalidate()
+        }
+
+    var date: LocalDate? = null
+        set(value) {
+            field = value
+            updateDescription()
+        }
+
+    var isToday = false
         set(value) {
             field = value
             invalidate()
@@ -82,29 +89,34 @@ class NumberButtonView(
     var value = 0.0
         set(value) {
             field = value
+            updateDescription()
             invalidate()
         }
 
     var threshold = 0.0
         set(value) {
             field = value
+            updateDescription()
             invalidate()
         }
 
     var targetType = AT_LEAST
         set(value) {
             field = value
+            updateDescription()
             invalidate()
         }
 
     var units = ""
         set(value) {
             field = value
+            updateDescription()
             invalidate()
         }
     var notes = ""
         set(value) {
             field = value
+            updateDescription()
             invalidate()
         }
 
@@ -115,6 +127,27 @@ class NumberButtonView(
     init {
         setOnClickListener(this)
         setOnLongClickListener(this)
+    }
+
+    private fun isTargetMet() = value >= 0 && when (targetType) {
+        AT_LEAST -> value >= threshold
+        AT_MOST -> value <= threshold
+    }
+
+    private fun updateDescription() {
+        val date = date ?: return
+        val day = describeDay(date)
+        val description = when {
+            value == Entry.SKIP.toDouble() / 1000 ->
+                resources.getString(R.string.cd_entry_skipped, day)
+            value < 0 -> resources.getString(R.string.cd_entry_unknown, day)
+            else -> resources.getString(
+                if (isTargetMet()) R.string.cd_number_met else R.string.cd_number_missed,
+                day,
+                if (units.isBlank()) value.toShortString() else "${value.toShortString()} $units"
+            )
+        }
+        contentDescription = describeWithNotes(description, notes)
     }
 
     override fun onClick(v: View) {
@@ -138,111 +171,70 @@ class NumberButtonView(
     }
 
     private inner class Drawer(context: Context) {
-
-        private val em: Float
-        private val rect: RectF = RectF()
-
-        private val lowContrast: Int
-        private val mediumContrast: Int
-
+        private val tile = DayTilePainter(this@NumberButtonView)
         private val pNotesIndicator = Paint()
 
-        private val paint = TextPaint().apply {
-            typeface = getFontAwesome()
-            isAntiAlias = true
-            textAlign = Paint.Align.CENTER
-        }
-
         private val pUnit: TextPaint = TextPaint().apply {
-            textSize = getDimension(context, R.dimen.smallerTextSize)
-            typeface = NORMAL_TYPEFACE
+            textSize = dim(R.dimen.ds_text_tile_unit)
+            typeface = Typeface.DEFAULT
             isAntiAlias = true
             textAlign = Paint.Align.CENTER
         }
 
         private val pNumber: TextPaint = TextPaint().apply {
-            textSize = dim(R.dimen.smallTextSize)
-            typeface = BOLD_TYPEFACE
+            textSize = dim(R.dimen.ds_text_tile_number)
+            typeface = SANS_BOLD
+            fontFeatureSettings = "tnum"
             isAntiAlias = true
             textAlign = Paint.Align.CENTER
         }
 
-        init {
-            em = pNumber.measureText("m")
-            lowContrast = sres.getColor(R.attr.contrast40)
-            mediumContrast = sres.getColor(R.attr.contrast60)
+        fun draw(canvas: Canvas) {
+            tile.layout()
+            val skipped = value == Entry.SKIP.toDouble() / 1000
+            val recorded = value >= 0 && !skipped
+            val met = recorded && isTargetMet()
+            val textColor: Int
+            when {
+                skipped -> {
+                    tile.hatch(canvas, colors.tint)
+                    tile.glyph(canvas, R.string.fa_skipped, 15f, colors.ink)
+                    textColor = colors.ink
+                }
+                met -> {
+                    tile.fill(canvas, colors.fill)
+                    textColor = tile.onHabitText
+                }
+                else -> {
+                    tile.fill(canvas, colors.tint)
+                    textColor = if (recorded) tile.ink else tile.inkMuted
+                }
+            }
+            if (!skipped) {
+                if (!recorded && preferences.areQuestionMarksEnabled) {
+                    tile.glyph(canvas, R.string.fa_question, 13f, textColor)
+                } else {
+                    drawNumber(canvas, if (recorded) value.toShortString() else "0", textColor)
+                }
+            }
+            if (isToday && !met) tile.todayRing(canvas)
+            tile.notesDot(canvas, textColor, notes)
         }
 
-        fun draw(canvas: Canvas) {
-            val activeColor = when {
-                value < 0.0 -> lowContrast
-                (targetType == AT_LEAST) && (value >= threshold) -> color
-                (targetType == AT_MOST) && (value <= threshold) -> color
-                else -> mediumContrast
-            }
-
-            val label: String
-            val typeface: Typeface
-            val textSize: Float
-
-            when {
-                value == Entry.SKIP.toDouble() / 1000 -> {
-                    label = resources.getString(R.string.fa_skipped)
-                    textSize = dim(R.dimen.smallTextSize)
-                    typeface = getFontAwesome()
-                }
-
-                value >= 0 -> {
-                    label = value.toShortString()
-                    typeface = BOLD_TYPEFACE
-                    textSize = dim(R.dimen.smallTextSize)
-                }
-
-                preferences.areQuestionMarksEnabled -> {
-                    label = resources.getString(R.string.fa_question)
-                    typeface = getFontAwesome()
-                    textSize = dim(R.dimen.smallerTextSize)
-                }
-
-                else -> {
-                    label = "0"
-                    typeface = BOLD_TYPEFACE
-                    textSize = dim(R.dimen.smallTextSize)
-                }
-            }
-
-            pNumber.textSize = textSize
-            pNumber.color = activeColor
-            pNumber.typeface = typeface
-            pUnit.color = activeColor
-
+        private fun drawNumber(canvas: Canvas, label: String, color: Int) {
+            pNumber.color = color
+            pUnit.color = color
             if (units.isBlank()) {
-                // Draw number without units
-                rect.set(0f, 0f, width.toFloat(), height.toFloat())
-                rect.offset(0f, 0.5f * em)
-                canvas.drawText(label, rect.centerX(), rect.centerY(), pNumber)
-            } else {
-                // Draw number
-                rect.set(0f, 0f, width.toFloat(), height.toFloat())
-                canvas.drawText(label, rect.centerX(), rect.centerY(), pNumber)
-
-                // Draw units
-                val maxUnitsWidth = width * 0.9f
-                var trimmedUnits = units
-                while (trimmedUnits.length > 2 && pUnit.measureText(trimmedUnits) > maxUnitsWidth) {
-                    trimmedUnits = trimmedUnits.dropLast(2) + "…"
-                }
-                rect.offset(0f, 1.3f * em)
-                canvas.drawText(trimmedUnits, rect.centerX(), rect.centerY(), pUnit)
+                tile.text(canvas, label, pNumber, tile.rect.centerY())
+                return
             }
-
-            drawNotesIndicator(
-                pNotesIndicator = pNotesIndicator,
-                canvas = canvas,
-                color = color,
-                size = em,
-                notes = notes
-            )
+            tile.text(canvas, label, pNumber, tile.rect.centerY() - dp(6f))
+            val maxUnitsWidth = dp(32f)
+            var trimmedUnits = units
+            while (trimmedUnits.length > 2 && pUnit.measureText(trimmedUnits) > maxUnitsWidth) {
+                trimmedUnits = trimmedUnits.dropLast(2) + "…"
+            }
+            tile.text(canvas, trimmedUnits, pUnit, tile.rect.centerY() + dp(7f))
         }
     }
 }
