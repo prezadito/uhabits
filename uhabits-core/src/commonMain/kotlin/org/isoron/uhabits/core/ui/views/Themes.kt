@@ -47,35 +47,25 @@ abstract class Theme {
     open val onHabitColor = Color(0xffffff)
     open val onHabitTextColor = Color(0x1c1c1c)
 
-    fun color(paletteColor: PaletteColor): Color {
-        return color(paletteColor.paletteIndex)
-    }
+    protected open val habitFills = listOf(Color(0xe9615c), Color(0xdd6f23), Color(0xbf8105), Color(0x809703), Color(0x3ca059), Color(0x189e8c), Color(0x0d9caf), Color(0x418eec), Color(0x7786eb), Color(0xa17adf), Color(0xd268b2), Color(0x8d8d8d))
+    protected open val habitInks = listOf(Color(0xc43f3e), Color(0xb45302), Color(0x966503), Color(0x647703), Color(0x0e803b), Color(0x067c6c), Color(0x087988), Color(0x1f6fca), Color(0x5a66c7), Color(0x825abc), Color(0xaf4791), Color(0x6f6f6f))
+    protected open val habitTints = listOf(Color(0xfee8e6), Color(0xffe8dc), Color(0xfdead0), Color(0xe8f0d3), Color(0xd9f3dd), Color(0xcff5ec), Color(0xcef3fa), Color(0xe1eefe), Color(0xe7ecff), Color(0xf0e9ff), Color(0xfee7f5), Color(0xededed))
 
-    open fun color(paletteIndex: Int): Color {
-        return when (paletteIndex) {
-            0 -> Color(0xD32F2F)
-            1 -> Color(0xE64A19)
-            2 -> Color(0xF57C00)
-            3 -> Color(0xFF8F00)
-            4 -> Color(0xF9A825)
-            5 -> Color(0xAFB42B)
-            6 -> Color(0x7CB342)
-            7 -> Color(0x388E3C)
-            8 -> Color(0x00897B)
-            9 -> Color(0x00ACC1)
-            10 -> Color(0x039BE5)
-            11 -> Color(0x1976D2)
-            12 -> Color(0x303F9F)
-            13 -> Color(0x5E35B1)
-            14 -> Color(0x8E24AA)
-            15 -> Color(0xD81B60)
-            16 -> Color(0x5D4037)
-            17 -> Color(0x424242)
-            18 -> Color(0x757575)
-            19 -> Color(0x9E9E9E)
-            else -> Color(0x000000)
-        }
-    }
+    fun color(paletteColor: PaletteColor): Color = color(paletteColor.paletteIndex)
+
+    open fun color(paletteIndex: Int): Color = habitFill(paletteIndex)
+
+    fun habitFill(paletteColor: PaletteColor): Color = habitFill(paletteColor.paletteIndex)
+
+    fun habitInk(paletteColor: PaletteColor): Color = habitInk(paletteColor.paletteIndex)
+
+    fun habitTint(paletteColor: PaletteColor): Color = habitTint(paletteColor.paletteIndex)
+
+    fun habitFill(paletteIndex: Int): Color = habitFills[PaletteColor(paletteIndex).hue]
+
+    fun habitInk(paletteIndex: Int): Color = habitInks[PaletteColor(paletteIndex).hue]
+
+    fun habitTint(paletteIndex: Int): Color = habitTints[PaletteColor(paletteIndex).hue]
 
     val checkmarkButtonSize = 48.0
     val smallTextSize = 10.0
@@ -109,31 +99,9 @@ open class DarkTheme : Theme() {
     override val onHabitColor = Color(0x161616)
     override val onHabitTextColor = Color(0x0f0f0f)
 
-    override fun color(paletteIndex: Int): Color {
-        return when (paletteIndex) {
-            0 -> Color(0xEF9A9A)
-            1 -> Color(0xFFAB91)
-            2 -> Color(0xFFCC80)
-            3 -> Color(0xFFECB3)
-            4 -> Color(0xFFF59D)
-            5 -> Color(0xE6EE9C)
-            6 -> Color(0xC5E1A5)
-            7 -> Color(0x69F0AE)
-            8 -> Color(0x80CBC4)
-            9 -> Color(0x80DEEA)
-            10 -> Color(0x81D4FA)
-            11 -> Color(0x64B5F6)
-            12 -> Color(0x9FA8DA)
-            13 -> Color(0xB39DDB)
-            14 -> Color(0xCE93D8)
-            15 -> Color(0xF48FB1)
-            16 -> Color(0xBCAAA4)
-            17 -> Color(0xF5F5F5)
-            18 -> Color(0xE0E0E0)
-            19 -> Color(0x9E9E9E)
-            else -> Color(0xFFFFFF)
-        }
-    }
+    override val habitFills = listOf(Color(0xcd5c57), Color(0xc2672d), Color(0xad7501), Color(0x74881f), Color(0x3f8f55), Color(0x298e7e), Color(0x208b9a), Color(0x4281cf), Color(0x6c7acd), Color(0x8f70c4), Color(0xb9619e), Color(0x7f7f7f))
+    override val habitInks = listOf(Color(0xf29189), Color(0xe99a6d), Color(0xd3a35d), Color(0xa1b365), Color(0x7bbb88), Color(0x70baab), Color(0x6cb7c4), Color(0x7baff2), Color(0x9aa9f1), Color(0xb89fe7), Color(0xe195c7), Color(0xababab))
+    override val habitTints = listOf(Color(0x3f2826), Color(0x3d2a1f), Color(0x392c1a), Color(0x2b301c), Color(0x203223), Color(0x17332d), Color(0x163236), Color(0x222f3f), Color(0x292d40), Color(0x312b3e), Color(0x3b2834), Color(0x2e2e2e))
 }
 
 class PureBlackTheme : DarkTheme() {
@@ -158,30 +126,4 @@ class WidgetTheme : LightTheme() {
     override val highContrastTextColor = Color.WHITE
     override val mediumContrastTextColor = Color.WHITE.withAlpha(0.50)
     override val lowContrastTextColor = Color.WHITE.withAlpha(0.10)
-
-    override fun color(paletteIndex: Int): Color {
-        return when (paletteIndex) {
-            0 -> Color(0xD32F2F)
-            1 -> Color(0xE64A19)
-            2 -> Color(0xF57C00)
-            3 -> Color(0xFF8F00)
-            4 -> Color(0xF9A825)
-            5 -> Color(0xAFB42B)
-            6 -> Color(0x7CB342)
-            7 -> Color(0x388E3C)
-            8 -> Color(0x00897B)
-            9 -> Color(0x00ACC1)
-            10 -> Color(0x039BE5)
-            11 -> Color(0x1976D2)
-            12 -> Color(0x6275f0)
-            13 -> Color(0x5E35B1)
-            14 -> Color(0x8E24AA)
-            15 -> Color(0xD81B60)
-            16 -> Color(0x5D4037)
-            17 -> Color(0x757575)
-            18 -> Color(0x757575)
-            19 -> Color(0x9E9E9E)
-            else -> Color(0x000000)
-        }
-    }
 }

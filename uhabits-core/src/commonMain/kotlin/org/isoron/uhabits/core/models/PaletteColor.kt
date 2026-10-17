@@ -19,7 +19,24 @@
 
 package org.isoron.uhabits.core.models
 
+/** Classic paletteIndex 0..19 -> hue 0..11. */
+private val CLASSIC_TO_HUE = intArrayOf(0, 1, 1, 2, 2, 3, 3, 4, 5, 6, 7, 7, 8, 9, 9, 10, 2, 11, 11, 11)
+
+/** Hue -> paletteIndex the picker saves. */
+val HUE_CANONICAL_INDEX = intArrayOf(0, 2, 3, 5, 7, 8, 9, 11, 12, 13, 15, 18)
+
 data class PaletteColor(val paletteIndex: Int) {
+    val hue: Int
+        get() = CLASSIC_TO_HUE[paletteIndex]
+
+    /**
+     * Color to store after the user picks [hue] in the color picker. Re-picking
+     * the current hue keeps the stored index, so editing never changes it.
+     */
+    fun afterPickingHue(hue: Int): PaletteColor {
+        return if (hue == this.hue) this else fromHue(hue)
+    }
+
     fun toCsvColor(): String {
         return arrayOf(
             "#D32F2F", //  0 red
@@ -47,5 +64,9 @@ data class PaletteColor(val paletteIndex: Int) {
 
     fun compareTo(other: PaletteColor): Int {
         return paletteIndex.compareTo(other.paletteIndex)
+    }
+
+    companion object {
+        fun fromHue(hue: Int) = PaletteColor(HUE_CANONICAL_INDEX[hue])
     }
 }

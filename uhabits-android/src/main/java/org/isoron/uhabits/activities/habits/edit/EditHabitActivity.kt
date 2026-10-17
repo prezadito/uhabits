@@ -177,7 +177,7 @@ class EditHabitActivity : AppCompatActivity() {
         val colorPickerDialogFactory = ColorPickerDialogFactory(this)
         binding.colorButton.setOnClickListener {
             val picker = colorPickerDialogFactory.create(color, themeSwitcher.currentTheme)
-            picker.setListener { paletteColor ->
+            picker.setListener(color) { paletteColor ->
                 this.color = paletteColor
                 updateColors()
             }

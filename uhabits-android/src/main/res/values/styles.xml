@@ -51,7 +51,7 @@
         <item name="contrast60">@color/grey_500</item>
         <item name="contrast80">@color/grey_700</item>
         <item name="contrast100">@color/grey_800</item>
-        <item name="palette">@array/lightPalette</item>
+        <item name="palette">@array/dsPaletteLight</item>
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
         <item name="scrollableRecyclerViewStyle">@style/ScrollableRecyclerViewStyle</item>
         <item name="selectedBackground">@drawable/selected_box</item>
@@ -109,7 +109,7 @@
         <item name="contrast60">@color/grey_500</item>
         <item name="contrast80">@color/grey_300</item>
         <item name="contrast100">@color/grey_100</item>
-        <item name="palette">@array/darkPalette</item>
+        <item name="palette">@array/dsPaletteDark</item>
         <item name="popupMenuBackground">@color/black</item>
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
         <item name="scrollableRecyclerViewStyle">@style/ScrollableRecyclerViewStyle</item>
@@ -183,7 +183,7 @@
         <item name="contrast60">@color/grey_500</item>
         <item name="contrast80">@color/grey_700</item>
         <item name="contrast100">@color/grey_800</item>
-        <item name="palette">@array/lightPalette</item>
+        <item name="palette">@array/dsPaletteLight</item>
         <item name="dialogFormLabelColor">@color/white</item>
         <item name="dsSurface">@color/ds_light_surface</item>
         <item name="dsSurfaceRaised">@color/ds_light_surface_raised</item>
@@ -207,7 +207,7 @@
         <item name="contrast60">@color/grey_500</item>
         <item name="contrast80">@color/grey_300</item>
         <item name="contrast100">@color/grey_100</item>
-        <item name="palette">@array/darkPalette</item>
+        <item name="palette">@array/dsPaletteDark</item>
         <item name="dialogFormLabelColor">@color/grey_800</item>
         <item name="dsSurface">@color/ds_dark_surface</item>
         <item name="dsSurfaceRaised">@color/ds_dark_surface_raised</item>

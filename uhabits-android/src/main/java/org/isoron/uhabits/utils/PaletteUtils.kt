@@ -53,7 +53,7 @@ fun PaletteColor.toFixedAndroidColor(): Int {
     )[paletteIndex]
 }
 
-fun Int.toPaletteColor(context: Context): PaletteColor {
-    val palette = StyledResources(context).getPalette()
-    return PaletteColor(palette.indexOf(this))
+/** Hue (0..11) of a color picked from the current theme's palette. */
+fun Int.toHue(context: Context): Int {
+    return StyledResources(context).getPalette().indexOf(this)
 }
