@@ -27,9 +27,9 @@ import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.LinearLayout
 import android.widget.TextView
 import org.isoron.uhabits.R
+import org.isoron.uhabits.utils.dim
 import org.isoron.uhabits.utils.dp
 import org.isoron.uhabits.utils.getFontAwesome
-import org.isoron.uhabits.utils.sp
 import org.isoron.uhabits.utils.sres
 import org.isoron.uhabits.utils.str
 
@@ -40,14 +40,16 @@ class EmptyListView(context: Context) : LinearLayout(context) {
     init {
         orientation = VERTICAL
         gravity = CENTER
+        val padding = dim(R.dimen.ds_space_32).toInt()
+        setPadding(padding, padding, padding, padding)
         visibility = View.GONE
 
         iconTextView = TextView(context).apply {
             text = str(R.string.fa_star_half_o)
             typeface = getFontAwesome()
-            textSize = sp(40.0f)
+            textSize = 40f
             gravity = CENTER
-            setTextColor(sres.getColor(R.attr.contrast60))
+            setTextColor(sres.getColor(R.attr.dsInkMuted))
         }
 
         addView(
@@ -59,8 +61,9 @@ class EmptyListView(context: Context) : LinearLayout(context) {
         textTextView = TextView(context).apply {
             text = str(R.string.no_habits_found)
             gravity = CENTER
+            setTextAppearance(R.style.TextAppearance_Ds_Body)
             setPadding(0, dp(20.0f).toInt(), 0, 0)
-            setTextColor(sres.getColor(R.attr.contrast60))
+            setTextColor(sres.getColor(R.attr.dsInkMuted))
         }
         addView(
             textTextView,

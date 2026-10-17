@@ -94,6 +94,12 @@ class ListHabitsRootView(
                 it.topMargin = dp(-6.0f).toInt()
             }
             addAtBottom(hintView)
+            (hintView.layoutParams as MarginLayoutParams).setMargins(
+                dp(16f).toInt(),
+                0,
+                dp(16f).toInt(),
+                dp(8f).toInt()
+            )
         }
         rootView.setupToolbar(
             toolbar = tbar,
@@ -143,10 +149,9 @@ class ListHabitsRootView(
     }
 
     private fun getCheckmarkCount(): Int {
-        val nameWidth = dim(R.dimen.habitNameWidth)
         val buttonWidth = dim(R.dimen.checkmarkWidth)
-        val labelWidth = max((measuredWidth / 3).toFloat(), nameWidth)
-        val buttonCount = ((measuredWidth - labelWidth) / buttonWidth).toInt()
+        val cardInsets = 2 * dp(16f) + 2 * dp(12f)
+        val buttonCount = ((measuredWidth - cardInsets) / buttonWidth).toInt()
         return min(MAX_CHECKMARK_COUNT, max(0, buttonCount))
     }
 

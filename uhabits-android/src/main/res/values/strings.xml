@@ -281,4 +281,9 @@
     <string name="cd_number_met">%1$s, %2$s, target met</string>
     <string name="cd_number_missed">%1$s, %2$s, target missed</string>
     <string name="cd_has_notes">%1$s, has notes</string>
+
+    <!-- Habit list -->
+    <string name="cd_habit_strength">Habit strength %1$d%%</string>
+    <string name="cd_header_today">Today, %1$s</string>
+    <string name="habit_card_target">Target %1$s</string>
 </resources>
