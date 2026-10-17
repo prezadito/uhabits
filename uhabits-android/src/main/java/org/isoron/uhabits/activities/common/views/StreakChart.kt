@@ -20,7 +20,6 @@ package org.isoron.uhabits.activities.common.views
 
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.RectF
 import android.util.AttributeSet
@@ -49,6 +48,7 @@ class StreakChart : View {
     private var rect: RectF? = null
     private var baseSize = 0
     private var primaryColor = 0
+    private var tintColor = 0
     private var streaks: List<Streak>? = null
     private var isBackgroundTransparent = false
     private var dateFormatter: JavaLocalDateFormatter? = null
@@ -86,6 +86,11 @@ class StreakChart : View {
             start = end.plus(1)
         }
         setStreaks(streaks)
+    }
+
+    fun setTintColor(color: Int) {
+        tintColor = color
+        initColors()
     }
 
     fun setColor(color: Int) {
@@ -136,7 +141,7 @@ class StreakChart : View {
     ) {
         this.internalWidth = width
         val context = context
-        val minTextSize = getDimension(context, R.dimen.tinyTextSize)
+        val minTextSize = getDimension(context, R.dimen.ds_text_caption)
         val maxTextSize = getDimension(context, R.dimen.regularTextSize)
         val textSize = baseSize * 0.5f
         paint!!.textSize = max(min(textSize, maxTextSize), minTextSize)
@@ -148,6 +153,7 @@ class StreakChart : View {
     private fun drawRow(canvas: Canvas, streak: Streak, rect: RectF?) {
         if (maxLength == 0L) return
         val percentage = streak.length.toFloat() / maxLength
+        val isCurrent = streak.end >= getToday().minus(1)
         var availableWidth = internalWidth - 2 * maxLabelWidth
         if (shouldShowLabels) availableWidth -= 2 * textMargin
         var barWidth = percentage * availableWidth
@@ -155,8 +161,8 @@ class StreakChart : View {
         barWidth = max(barWidth, minBarWidth)
         val gap = (internalWidth - barWidth) / 2
         val paddingTopBottom = baseSize * 0.05f
-        paint!!.color = percentageToColor(percentage)
-        val round = dpToPixels(context, 2f)
+        paint!!.color = if (isCurrent) colors[1] else colors[0]
+        val round = dpToPixels(context, 4f)
         canvas.drawRoundRect(
             rect!!.left + gap,
             rect.top + paddingTopBottom,
@@ -167,7 +173,7 @@ class StreakChart : View {
             paint!!
         )
         val yOffset = rect.centerY() + 0.3f * em
-        paint!!.color = percentageToTextColor(percentage)
+        paint!!.color = if (isCurrent) textColors[1] else textColors[0]
         paint!!.textAlign = Paint.Align.CENTER
         canvas.drawText(
             streak.length.toLong().toString(),
@@ -179,7 +185,7 @@ class StreakChart : View {
             val df = dateFormatter!!
             val startLabel = df.longFormat(streak.start)
             val endLabel = df.longFormat(streak.end)
-            paint!!.color = textColors[1]
+            paint!!.color = textColors[2]
             paint!!.textAlign = Paint.Align.RIGHT
             canvas.drawText(startLabel, gap - textMargin, yOffset, paint!!)
             paint!!.textAlign = Paint.Align.LEFT
@@ -197,35 +203,15 @@ class StreakChart : View {
     }
 
     private fun initColors() {
-        val red = Color.red(primaryColor)
-        val green = Color.green(primaryColor)
-        val blue = Color.blue(primaryColor)
         val res = StyledResources(context)
-        colors = IntArray(4)
-        colors[3] = primaryColor
-        colors[2] = Color.argb(192, red, green, blue)
-        colors[1] = Color.argb(96, red, green, blue)
-        colors[0] = res.getColor(R.attr.contrast20)
-        textColors = IntArray(3)
-        textColors[2] = res.getColor(R.attr.contrast0)
-        textColors[1] = res.getColor(R.attr.contrast60)
-        textColors[0] = res.getColor(R.attr.contrast80)
+        colors = intArrayOf(tintColor, primaryColor)
+        textColors = intArrayOf(res.getColor(R.attr.dsInk), res.getColor(R.attr.dsOnHabit), res.getColor(R.attr.dsInk))
     }
 
     private fun initPaints() {
         paint = Paint()
         paint!!.textAlign = Paint.Align.CENTER
         paint!!.isAntiAlias = true
-    }
-
-    private fun percentageToColor(percentage: Float): Int {
-        if (percentage >= 1.0f) return colors[3]
-        if (percentage >= 0.8f) return colors[2]
-        return if (percentage >= 0.5f) colors[1] else colors[0]
-    }
-
-    private fun percentageToTextColor(percentage: Float): Int {
-        return if (percentage >= 0.5f) textColors[2] else textColors[1]
     }
 
     private fun updateMaxMinLengths() {

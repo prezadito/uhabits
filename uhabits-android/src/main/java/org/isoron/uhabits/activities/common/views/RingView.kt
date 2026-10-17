@@ -26,6 +26,7 @@ import android.graphics.Paint
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffXfermode
 import android.graphics.RectF
+import android.graphics.Typeface
 import android.text.TextPaint
 import android.util.AttributeSet
 import android.view.View
@@ -56,6 +57,8 @@ class RingView : View {
     private var backgroundColor: Int? = null
     private var inactiveColor: Int? = null
     private var hasExplicitInactiveColor = false
+    private var textColor: Int? = null
+    private var isBoldText = false
     private var em = 0f
     private var text: String?
     private var textSize: Float
@@ -100,6 +103,17 @@ class RingView : View {
     fun setInactiveColor(color: Int) {
         inactiveColor = color
         hasExplicitInactiveColor = true
+        invalidate()
+    }
+
+    /** Color of the text inside the ring. Defaults to the ring color. */
+    fun setTextColor(color: Int) {
+        textColor = color
+        invalidate()
+    }
+
+    fun setBoldText(bold: Boolean) {
+        isBoldText = bold
         invalidate()
     }
 
@@ -170,7 +184,7 @@ class RingView : View {
             rect!!.inset(thickness, thickness)
             activeCanvas.drawArc(rect!!, 0f, 360f, true, pRing!!)
             pRing!!.xfermode = null
-            pRing!!.color = color
+            pRing!!.color = textColor ?: color
             pRing!!.textSize = textSize
 
             if (isStrokedTextEnabled) {
@@ -178,7 +192,11 @@ class RingView : View {
                 pRing!!.strokeWidth = textSize / 15f
             }
 
-            if (enableFontAwesome) pRing!!.typeface = getFontAwesome(context)
+            if (enableFontAwesome) {
+                pRing!!.typeface = getFontAwesome(context)
+            } else if (isBoldText) {
+                pRing!!.typeface = Typeface.DEFAULT_BOLD
+            }
             activeCanvas.drawText(
                 text!!,
                 rect!!.centerX(),

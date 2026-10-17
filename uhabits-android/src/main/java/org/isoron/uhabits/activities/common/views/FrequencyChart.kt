@@ -265,8 +265,8 @@ class FrequencyChart : ScrollableChart {
 
     private fun initColors() {
         val res = StyledResources(context)
-        textColor = res.getColor(R.attr.contrast60)
-        gridColor = res.getColor(R.attr.contrast20)
+        textColor = res.getColor(R.attr.dsInkMuted)
+        gridColor = res.getColor(R.attr.dsLine)
         colors = IntArray(4)
         colors[0] = gridColor
         colors[3] = primaryColor

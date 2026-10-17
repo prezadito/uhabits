@@ -32,12 +32,11 @@ class FrequencyCardView(context: Context, attrs: AttributeSet) : LinearLayout(co
     private var binding = ShowHabitFrequencyBinding.inflate(LayoutInflater.from(context), this)
 
     fun setState(state: FrequencyCardState) {
-        val androidColor = state.theme.color(state.color).toInt()
+        val fill = state.theme.habitFill(state.color).toInt()
         binding.frequencyChart.setFrequency(state.frequency)
         binding.frequencyChart.setIsNumerical(state.isNumerical)
         binding.frequencyChart.setFirstWeekday(state.firstWeekday)
-        binding.title.setTextColor(androidColor)
         binding.title.setText(if (state.isQuit) R.string.slips_by_weekday else R.string.frequency)
-        binding.frequencyChart.setColor(androidColor)
+        binding.frequencyChart.setColor(fill)
     }
 }

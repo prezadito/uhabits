@@ -288,8 +288,8 @@
     <style name="CardHeader">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginBottom">12dp</item>
-        <item name="android:textSize">@dimen/regularTextSize</item>
+        <item name="android:layout_marginBottom">@dimen/ds_space_12</item>
+        <item name="android:textAppearance">@style/TextAppearance.Ds.Label</item>
     </style>
 
     <style name="About" />

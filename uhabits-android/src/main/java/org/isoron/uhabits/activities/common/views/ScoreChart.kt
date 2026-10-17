@@ -172,7 +172,7 @@ class ScoreChart : ScrollableChart {
     ) {
         var height = height
         if (height < 9) height = 200
-        val maxTextSize = getDimension(context, R.dimen.tinyTextSize)
+        val maxTextSize = getDimension(context, R.dimen.ds_text_caption)
         val textSize = height * 0.06f
         pText!!.textSize = min(textSize, maxTextSize)
         em = pText!!.fontSpacing
@@ -325,8 +325,8 @@ class ScoreChart : ScrollableChart {
     private fun initColors() {
         val res = StyledResources(context)
         primaryColor = Color.BLACK
-        textColor = res.getColor(R.attr.contrast60)
-        gridColor = res.getColor(R.attr.contrast20)
+        textColor = res.getColor(R.attr.dsInkMuted)
+        gridColor = res.getColor(R.attr.dsLine)
         internalBackgroundColor = res.getColor(R.attr.cardBgColor)
     }
 
