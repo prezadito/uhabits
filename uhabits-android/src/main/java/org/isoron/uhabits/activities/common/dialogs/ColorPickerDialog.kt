@@ -19,17 +19,21 @@
 package org.isoron.uhabits.activities.common.dialogs
 
 import com.android.colorpicker.ColorPickerDialog
+import org.isoron.uhabits.core.models.PaletteColor
 import org.isoron.uhabits.core.ui.callbacks.OnColorPickedCallback
-import org.isoron.uhabits.utils.toPaletteColor
+import org.isoron.uhabits.utils.toHue
 
 /**
  * Dialog that allows the user to choose a color.
  */
 class ColorPickerDialog : ColorPickerDialog() {
-    fun setListener(callback: OnColorPickedCallback) {
+    /**
+     * Reports the picked color. Re-picking the hue of [original] reports
+     * [original] itself, so its stored index is not rewritten.
+     */
+    fun setListener(original: PaletteColor, callback: OnColorPickedCallback) {
         super.setOnColorSelectedListener { c: Int ->
-            val pc = c.toPaletteColor(requireContext())
-            callback.onColorPicked(pc)
+            callback.onColorPicked(original.afterPickingHue(c.toHue(requireContext())))
         }
     }
 }
