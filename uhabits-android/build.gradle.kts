@@ -56,6 +56,7 @@ android {
         minSdk = 28
         targetSdk = 36
         applicationId = "org.isoron.uhabits.qol"
+        manifestPlaceholders["appLabel"] = "@string/app_name"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -82,6 +83,7 @@ android {
         debug {
             // Lets debug builds install next to the release app instead of replacing it.
             applicationIdSuffix = ".debug"
+            manifestPlaceholders["appLabel"] = "Habits+ (debug)"
             enableUnitTestCoverage = true
         }
     }
