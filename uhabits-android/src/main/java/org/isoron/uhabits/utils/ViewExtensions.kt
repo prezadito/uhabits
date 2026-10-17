@@ -193,15 +193,21 @@ fun View.setupToolbar(
     toolbar.setBackgroundColor(surface)
     toolbar.applyToolbarInsets()
     val activity = context as AppCompatActivity
-    activity.window.statusBarColor = surface
-    activity.window.navigationBarColor = surface
+    activity.applySurfaceSystemBars()
+    activity.setSupportActionBar(toolbar)
+    activity.supportActionBar?.setDisplayHomeAsUpEnabled(displayHomeAsUpEnabled)
+}
+
+/** Colors the status and navigation bars with `dsSurface` and picks matching icon contrast. */
+fun Activity.applySurfaceSystemBars() {
+    val surface = StyledResources(this).getColor(R.attr.dsSurface)
+    window.statusBarColor = surface
+    window.navigationBarColor = surface
     val isLightSurface = ColorUtils.calculateLuminance(surface) > 0.5
-    WindowCompat.getInsetsController(activity.window, activity.window.decorView).apply {
+    WindowCompat.getInsetsController(window, window.decorView).apply {
         isAppearanceLightStatusBars = isLightSurface
         isAppearanceLightNavigationBars = isLightSurface
     }
-    activity.setSupportActionBar(toolbar)
-    activity.supportActionBar?.setDisplayHomeAsUpEnabled(displayHomeAsUpEnabled)
 }
 
 /**

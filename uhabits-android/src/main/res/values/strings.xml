@@ -286,4 +286,21 @@
     <string name="cd_habit_strength">Habit strength %1$d%%</string>
     <string name="cd_header_today">Today, %1$s</string>
     <string name="habit_card_target">Target %1$s</string>
+
+    <!-- Habit color hue names -->
+    <string-array name="hue_names">
+        <item>Red</item>
+        <item>Orange</item>
+        <item>Amber</item>
+        <item>Lime</item>
+        <item>Green</item>
+        <item>Teal</item>
+        <item>Cyan</item>
+        <item>Blue</item>
+        <item>Indigo</item>
+        <item>Violet</item>
+        <item>Magenta</item>
+        <item>Graphite</item>
+    </string-array>
+    <string name="cd_color_selected">%1$s, selected</string>
 </resources>

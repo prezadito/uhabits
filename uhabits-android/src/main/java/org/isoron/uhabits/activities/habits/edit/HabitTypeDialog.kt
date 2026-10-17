@@ -23,14 +23,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatDialogFragment
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import org.isoron.uhabits.R
 import org.isoron.uhabits.core.models.HabitType
 import org.isoron.uhabits.databinding.SelectHabitTypeBinding
 import org.isoron.uhabits.intents.IntentFactory
 
-class HabitTypeDialog : AppCompatDialogFragment() {
-    override fun getTheme() = R.style.Translucent
+class HabitTypeDialog : BottomSheetDialogFragment() {
+    override fun getTheme() = R.style.ThemeOverlay_Ds_BottomSheetDialog
+
+    override fun onStart() {
+        super.onStart()
+        (dialog as? BottomSheetDialog)?.behavior?.state = BottomSheetBehavior.STATE_EXPANDED
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -54,10 +61,6 @@ class HabitTypeDialog : AppCompatDialogFragment() {
         binding.buttonQuit.setOnClickListener {
             val intent = IntentFactory().startEditActivity(requireActivity(), HabitType.QUIT.value)
             startActivity(intent)
-            dismiss()
-        }
-
-        binding.background.setOnClickListener {
             dismiss()
         }
 
