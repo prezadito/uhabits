@@ -55,4 +55,16 @@ class ThemeTokensTest {
         PureBlackTheme(),
         listOf(0x000000, 0x121212, 0xf2f2f2, 0xa6a6a6, 0x222222, 0x6e6e6e, 0x7baff2, 0x000000, 0x1a2433, 0x000000, 0x000000)
     )
+
+    @Test
+    fun chartFieldsUseTokens() {
+        for (theme in listOf(LightTheme(), DarkTheme(), PureBlackTheme())) {
+            assertEquals(theme.surfaceColor, theme.appBackgroundColor)
+            assertEquals(theme.surfaceRaisedColor, theme.cardBackgroundColor)
+            assertEquals(theme.surfaceColor, theme.headerBackgroundColor)
+            assertEquals(theme.inkColor, theme.highContrastTextColor)
+            assertEquals(theme.inkMutedColor, theme.mediumContrastTextColor)
+            assertEquals(theme.lineColor, theme.lowContrastTextColor)
+        }
+    }
 }

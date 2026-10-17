@@ -34,6 +34,7 @@ import org.isoron.uhabits.core.ui.views.PureBlackTheme
 import org.isoron.uhabits.core.ui.views.Theme
 import org.isoron.uhabits.inject.ActivityContext
 import org.isoron.uhabits.inject.ActivityScope
+import org.isoron.uhabits.utils.StyledResources
 
 @ActivityScope
 class AndroidThemeSwitcher
@@ -58,7 +59,7 @@ constructor(
         currentTheme = DarkTheme()
         context.setTheme(R.style.AppBaseThemeDark)
         (context as Activity).window.navigationBarColor =
-            ContextCompat.getColor(context, R.color.grey_900)
+            StyledResources(context).getColor(R.attr.dsSurface)
     }
 
     override fun applyLightTheme() {
@@ -70,7 +71,7 @@ constructor(
         currentTheme = PureBlackTheme()
         context.setTheme(R.style.AppBaseThemeDark_PureBlack)
         (context as Activity).window.navigationBarColor =
-            ContextCompat.getColor(context, R.color.black)
+            StyledResources(context).getColor(R.attr.dsSurface)
     }
 
     fun applyDialog() {

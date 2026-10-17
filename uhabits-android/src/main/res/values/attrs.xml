@@ -52,7 +52,6 @@
     <attr name="palette" format="reference"/>
 
     <!-- Pre-Lollipop -->
-    <attr name="cardBackground" format="reference"/>
     <attr name="headerBackground" format="reference"/>
     <attr name="selectedBackground" format="reference"/>
 
@@ -71,4 +70,5 @@
     <attr name="dsOnHabit" format="color"/>
     <attr name="dsOnHabitText" format="color"/>
     <attr name="dsScrim" format="color"/>
+    <attr name="dsCardElevation" format="dimension"/>
 </resources>
