@@ -45,6 +45,7 @@ import org.isoron.uhabits.utils.sp
 import org.isoron.uhabits.utils.sres
 import org.isoron.uhabits.utils.toMeasureSpec
 import java.util.Locale
+import kotlin.math.max
 
 class HeaderView(
     context: Context,
@@ -185,14 +186,20 @@ class HeaderView(
                 val rect = columnRect(index)
                 val date = today.minus(index + dataOffset)
                 val isToday = index + dataOffset == 0
+                val dayOfWeek = dateFormatter.shortWeekdayName(date).uppercase()
                 if (isToday) {
                     val pillRect = RectF(rect).apply { inset(dp(4f), 0f) }
+                    // The pill grows with its text, e.g. at large font scales.
+                    val wanted = max(
+                        weekdayPaint.measureText(dayOfWeek),
+                        dayPaint.measureText(date.day.toString())
+                    ) + dp(16f)
+                    if (wanted > pillRect.width()) pillRect.inset((pillRect.width() - wanted) / 2, 0f)
                     val radius = pillRect.width() / 2
                     canvas.drawRoundRect(pillRect, radius, radius, pill)
                 }
                 weekdayPaint.color = if (isToday) onAccent else inkMuted
                 dayPaint.color = if (isToday) onAccent else ink
-                val dayOfWeek = dateFormatter.shortWeekdayName(date).uppercase()
                 drawCentered(canvas, dayOfWeek, weekdayPaint, rect.centerX(), rect.centerY() - dp(8f))
                 drawCentered(canvas, date.day.toString(), dayPaint, rect.centerX(), rect.centerY() + dp(9f))
             }

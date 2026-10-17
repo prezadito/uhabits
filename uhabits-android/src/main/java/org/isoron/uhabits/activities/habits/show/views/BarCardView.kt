@@ -44,6 +44,7 @@ class BarCardView(context: Context, attrs: AttributeSet) : LinearLayout(context,
         }
         binding.chart.resetDataOffset()
         binding.chart.postInvalidate()
+        binding.chart.contentDescription = resources.getString(R.string.cd_chart_bar)
 
         binding.title.setText(if (state.isQuit) R.string.slips else R.string.history)
         if (state.isNumerical || state.isQuit) {

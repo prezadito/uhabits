@@ -25,6 +25,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.LinearLayout
 import org.isoron.platform.gui.toInt
+import org.isoron.uhabits.R
 import org.isoron.uhabits.core.ui.screens.habits.show.views.ScoreCardPresenter
 import org.isoron.uhabits.core.ui.screens.habits.show.views.ScoreCardState
 import org.isoron.uhabits.databinding.ShowHabitScoreBinding
@@ -39,6 +40,7 @@ class ScoreCardView(context: Context, attrs: AttributeSet) : LinearLayout(contex
         binding.scoreView.reset()
         binding.scoreView.setBucketSize(state.bucketSize)
         binding.scoreView.setColor(fill)
+        binding.scoreView.contentDescription = resources.getString(R.string.cd_chart_score)
     }
 
     fun setListener(presenter: ScoreCardPresenter) {

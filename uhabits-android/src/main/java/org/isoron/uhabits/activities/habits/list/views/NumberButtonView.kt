@@ -39,6 +39,7 @@ import org.isoron.uhabits.utils.InterfaceUtils.getDimension
 import org.isoron.uhabits.utils.dim
 import org.isoron.uhabits.utils.dp
 import java.text.DecimalFormat
+import kotlin.math.max
 
 fun Double.toShortString(): String = when {
     this >= 1e9 -> String.format("%.1fG", this / 1e9)
@@ -221,9 +222,20 @@ class NumberButtonView(
             tile.notesDot(canvas, textColor, notes)
         }
 
+        /** Shrinks the number to fit inside the tile, down to a 9sp minimum. */
+        private fun fitNumber(label: String) {
+            val maxWidth = dim(R.dimen.ds_tile) - dp(4f)
+            val minSize = dim(R.dimen.ds_text_tile_unit)
+            pNumber.textSize = dim(R.dimen.ds_text_tile_number)
+            while (pNumber.textSize > minSize && pNumber.measureText(label) > maxWidth) {
+                pNumber.textSize = max(minSize, pNumber.textSize - 1f)
+            }
+        }
+
         private fun drawNumber(canvas: Canvas, label: String, color: Int) {
             pNumber.color = color
             pUnit.color = color
+            fitNumber(label)
             if (units.isBlank()) {
                 tile.text(canvas, label, pNumber, tile.rect.centerY())
                 return

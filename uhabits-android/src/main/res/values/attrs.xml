@@ -53,7 +53,6 @@
 
     <!-- Pre-Lollipop -->
     <attr name="headerBackground" format="reference"/>
-    <attr name="selectedBackground" format="reference"/>
 
     <attr name="scrollableRecyclerViewStyle" format="reference"/>
 

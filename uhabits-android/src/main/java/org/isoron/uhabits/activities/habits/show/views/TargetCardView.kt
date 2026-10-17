@@ -36,6 +36,7 @@ class TargetCardView(context: Context, attrs: AttributeSet) : LinearLayout(conte
         binding.targetChart.setTargets(state.targets)
         binding.targetChart.setLabels(state.intervals.map { intervalToLabel(resources, it) })
         binding.targetChart.setColor(fill)
+        binding.targetChart.contentDescription = resources.getString(R.string.cd_chart_target)
         postInvalidate()
     }
 

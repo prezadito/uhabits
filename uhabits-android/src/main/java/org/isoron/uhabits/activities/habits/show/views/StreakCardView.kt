@@ -23,6 +23,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import org.isoron.platform.gui.toInt
+import org.isoron.uhabits.R
 import org.isoron.uhabits.core.ui.screens.habits.show.views.StreakCardState
 import org.isoron.uhabits.databinding.ShowHabitStreakBinding
 
@@ -34,6 +35,7 @@ class StreakCardView(context: Context, attrs: AttributeSet) : LinearLayout(conte
         binding.streakChart.setColor(fill)
         binding.streakChart.setTintColor(tint)
         binding.streakChart.setStreaks(state.bestStreaks)
+        binding.streakChart.contentDescription = resources.getString(R.string.cd_chart_streaks)
         postInvalidate()
     }
 }

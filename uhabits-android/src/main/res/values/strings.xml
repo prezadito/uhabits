@@ -304,4 +304,12 @@
         <item>Graphite</item>
     </string-array>
     <string name="cd_color_selected">%1$s, selected</string>
+
+    <!-- Chart summaries for screen readers -->
+    <string name="cd_chart_history">Calendar history</string>
+    <string name="cd_chart_bar">History bar chart</string>
+    <string name="cd_chart_score">Habit strength over time</string>
+    <string name="cd_chart_streaks">Best streaks</string>
+    <string name="cd_chart_frequency">Frequency by weekday</string>
+    <string name="cd_chart_target">Progress toward targets</string>
 </resources>

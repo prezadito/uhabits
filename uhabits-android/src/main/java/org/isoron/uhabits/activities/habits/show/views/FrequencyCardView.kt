@@ -38,5 +38,6 @@ class FrequencyCardView(context: Context, attrs: AttributeSet) : LinearLayout(co
         binding.frequencyChart.setFirstWeekday(state.firstWeekday)
         binding.title.setText(if (state.isQuit) R.string.slips_by_weekday else R.string.frequency)
         binding.frequencyChart.setColor(fill)
+        binding.frequencyChart.contentDescription = resources.getString(R.string.cd_chart_frequency)
     }
 }
