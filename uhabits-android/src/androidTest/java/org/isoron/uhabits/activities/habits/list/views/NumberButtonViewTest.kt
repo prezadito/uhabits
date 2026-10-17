@@ -25,7 +25,8 @@ import org.hamcrest.CoreMatchers.equalTo
 import org.hamcrest.MatcherAssert.assertThat
 import org.isoron.uhabits.BaseViewTest
 import org.isoron.uhabits.core.models.NumericalHabitType
-import org.isoron.uhabits.utils.PaletteUtils
+import org.isoron.uhabits.core.models.PaletteColor
+import org.isoron.uhabits.core.ui.views.LightTheme
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -45,7 +46,7 @@ class NumberButtonViewTest : BaseViewTest() {
             units = "steps"
             targetType = NumericalHabitType.AT_LEAST
             threshold = 100.0
-            color = PaletteUtils.getAndroidTestColor(8)
+            colors = TileColors.of(LightTheme(), PaletteColor(8))
             onEdit = { edited = true }
         }
         measureView(view, dpToPixels(48), dpToPixels(48))

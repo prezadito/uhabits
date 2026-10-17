@@ -48,7 +48,7 @@ class CheckmarkPanelView(
             setupButtons()
         }
 
-    var color = 0
+    var colors = TileColors(0, 0, 0)
         set(value) {
             field = value
             setupButtons()
@@ -94,7 +94,9 @@ class CheckmarkPanelView(
                 index + dataOffset < notes.size -> notes[index + dataOffset]
                 else -> ""
             }
-            button.color = color
+            button.colors = colors
+            button.date = date
+            button.isToday = index + dataOffset == 0
             button.isQuit = isQuit
             button.onToggle = { value, notes -> onToggle(date, value, notes) }
             button.onEdit = { onEdit(date) }
