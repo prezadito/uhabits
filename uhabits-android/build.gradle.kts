@@ -80,6 +80,8 @@ android {
         }
 
         debug {
+            // Lets debug builds install next to the release app instead of replacing it.
+            applicationIdSuffix = ".debug"
             enableUnitTestCoverage = true
         }
     }
