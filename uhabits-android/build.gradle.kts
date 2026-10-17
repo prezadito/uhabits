@@ -51,8 +51,8 @@ android {
     }
 
     defaultConfig {
-        versionCode = 20401
-        versionName = "2.4.1-qol"
+        versionCode = 20402
+        versionName = "2.4.2-qol"
         minSdk = 28
         targetSdk = 36
         applicationId = "org.isoron.uhabits.qol"
