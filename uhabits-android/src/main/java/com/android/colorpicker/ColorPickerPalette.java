@@ -99,9 +99,8 @@ public class ColorPickerPalette extends TableLayout {
             tableElements++;
 
             View colorSwatch = createColorSwatch(color, selectedColor);
-            setSwatchDescription(rowNumber, tableElements, rowElements, color == selectedColor,
-                    colorSwatch);
-            addSwatchToRow(row, colorSwatch, rowNumber);
+            setSwatchDescription(tableElements - 1, color == selectedColor, colorSwatch);
+            row.addView(colorSwatch);
 
             rowElements++;
             if (rowElements == mNumColumns) {
@@ -115,7 +114,7 @@ public class ColorPickerPalette extends TableLayout {
         // Create blank views to fill the row if the last row has not been filled.
         if (rowElements > 0) {
             while (rowElements != mNumColumns) {
-                addSwatchToRow(row, createBlankSpace(), rowNumber);
+                row.addView(createBlankSpace());
                 rowElements++;
             }
             addView(row);
@@ -123,42 +122,15 @@ public class ColorPickerPalette extends TableLayout {
     }
 
     /**
-     * Appends a swatch to the end of the row for even-numbered rows (starting with row 0),
-     * to the beginning of a row for odd-numbered rows.
+     * Describes the swatch by the name of its hue, for example "Teal, selected".
      */
-    private static void addSwatchToRow(TableRow row, View swatch, int rowNumber) {
-        if (rowNumber % 2 == 0) {
-            row.addView(swatch);
-        } else {
-            row.addView(swatch, 0);
-        }
-    }
-
-    /**
-     * Add a content description to the specified swatch view. Because the palette get added in a
-     * snaking form, every other row will need to compensate for the fact that the palette are added
-     * in an opposite direction from their left->right/top->bottom order, which is how the system
-     * will arrange them for accessibility purposes.
-     */
-    private void setSwatchDescription(int rowNumber, int index, int rowElements, boolean selected,
-            View swatch) {
-        int accessibilityIndex;
-        if (rowNumber % 2 == 0) {
-            // We're in a regular-ordered row
-            accessibilityIndex = index;
-        } else {
-            // We're in a backwards-ordered row.
-            int rowMax = ((rowNumber + 1) * mNumColumns);
-            accessibilityIndex = rowMax - rowElements;
-        }
-
-        String description;
+    private void setSwatchDescription(int hueIndex, boolean selected, View swatch) {
+        String[] names = getResources().getStringArray(R.array.hue_names);
+        String name = hueIndex < names.length ? names[hueIndex] : mDescription;
         if (selected) {
-            description = String.format(mDescriptionSelected, accessibilityIndex);
-        } else {
-            description = String.format(mDescription, accessibilityIndex);
+            name = getResources().getString(R.string.cd_color_selected, name);
         }
-        swatch.setContentDescription(description);
+        swatch.setContentDescription(name);
     }
 
     /**

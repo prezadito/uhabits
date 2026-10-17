@@ -20,9 +20,9 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <dimen name="color_swatch_large">64dip</dimen>
-    <dimen name="color_swatch_small">48dip</dimen>
+    <dimen name="color_swatch_small">50dip</dimen>
     <dimen name="color_swatch_margins_large">8dip</dimen>
-    <dimen name="color_swatch_margins_small">4dip</dimen>
+    <dimen name="color_swatch_margins_small">3dip</dimen>
 
     <item name="circle_radius_multiplier" format="float" translatable="false" type="string">
         0.82

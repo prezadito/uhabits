@@ -19,6 +19,7 @@
 
 <resources xmlns:tools="http://schemas.android.com/tools">
     <style name="AppBaseTheme" parent="@style/Theme.MaterialComponents.Light.NoActionBar">
+        <item name="alertDialogTheme">@style/ThemeOverlay.Ds.AlertDialog</item>
         <item name="aboutScreenColor">?attr/dsAccent</item>
         <item name="actionBarPopupTheme">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="actionModeBackground">@color/grey_700</item>
@@ -81,6 +82,7 @@
     </style>
 
     <style name="AppBaseThemeDark" parent="@style/Theme.MaterialComponents.NoActionBar">
+        <item name="alertDialogTheme">@style/ThemeOverlay.Ds.AlertDialog</item>
         <item name="aboutScreenColor">?attr/dsAccent</item>
         <item name="actionModeBackground">@color/grey_800</item>
         <item name="android:alertDialogTheme">@style/Theme.AppCompat.Dialog</item>
@@ -253,8 +255,23 @@
     </style>
 
     <style name="DialogButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
-        <item name="android:textSize">@dimen/regularTextSize</item>
-        <item name="android:textColor">@color/grey_100</item>
+        <item name="android:textAppearance">@style/TextAppearance.Ds.Label</item>
+        <item name="android:textColor">?attr/dsAccent</item>
+    </style>
+
+    <style name="Ds.DialogWindowTitle" parent="RtlOverlay.DialogWindowTitle.AppCompat">
+        <item name="android:textAppearance">@style/TextAppearance.Ds.TitleLarge</item>
+    </style>
+
+    <style name="ThemeOverlay.Ds.AlertDialog" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <item name="android:windowBackground">@drawable/ds_dialog_background</item>
+        <item name="android:windowTitleStyle">@style/Ds.DialogWindowTitle</item>
+        <item name="android:textColorPrimary">?attr/dsInk</item>
+        <item name="android:textColorSecondary">?attr/dsInkMuted</item>
+        <item name="android:textColor">?attr/dsInk</item>
+        <item name="buttonBarNegativeButtonStyle">@style/DialogButtonStyle</item>
+        <item name="buttonBarNeutralButtonStyle">@style/DialogButtonStyle</item>
+        <item name="buttonBarPositiveButtonStyle">@style/DialogButtonStyle</item>
     </style>
 
     <style name="SmallSpinner">
@@ -345,30 +362,54 @@
     </style>
 
     <style name="SelectHabitTypeButton">
-        <item name="android:orientation">vertical</item>
-        <item name="android:paddingTop">14dp</item>
-        <item name="android:paddingBottom">16dp</item>
-        <item name="android:paddingLeft">16dp</item>
-        <item name="android:paddingRight">16dp</item>
-        <item name="android:layout_marginLeft">16dp</item>
-        <item name="android:layout_marginRight">16dp</item>
-        <item name="android:layout_marginBottom">8dp</item>
-        <item name="android:layout_marginTop">8dp</item>
-        <item name="android:elevation">6dp</item>
-        <item name="android:background">@drawable/round_ripple</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:padding">@dimen/ds_space_16</item>
+        <item name="android:layout_marginBottom">@dimen/ds_space_8</item>
+        <item name="android:background">@drawable/ds_choice_ripple</item>
         <item name="android:clickable">true</item>
-        <item name="android:selectable">true</item>
+        <item name="android:focusable">true</item>
     </style>
 
     <style name="SelectHabitTypeButtonTitle">
-        <item name="android:textSize">20sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.Ds.HabitName</item>
+        <item name="android:textColor">?attr/dsInk</item>
+        <item name="android:layout_marginBottom">@dimen/ds_space_4</item>
     </style>
 
     <style name="SelectHabitTypeButtonBody">
-        <item name="android:textSize">@dimen/smallTextSize</item>
-        <item name="android:lineSpacingMultiplier">1.25</item>
+        <item name="android:textAppearance">@style/TextAppearance.Ds.Label</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">?attr/dsInkMuted</item>
+    </style>
+
+    <style name="SelectHabitTypeButtonChevron">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/ds_space_16</item>
+        <item name="android:importantForAccessibility">no</item>
+        <item name="android:text">@string/fa_angle_right</item>
+        <item name="android:textColor">?attr/dsInkMuted</item>
+        <item name="android:textSize">@dimen/ds_text_title_lg</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.Ds.Sheet" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">@dimen/ds_radius_lg</item>
+        <item name="cornerSizeTopRight">@dimen/ds_radius_lg</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
+    <style name="Widget.Ds.BottomSheet" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="backgroundTint">?attr/dsSurfaceRaised</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.Ds.Sheet</item>
+    </style>
+
+    <!-- dsScrim is #a0000000, i.e. 63% black; the dialog window can only dim with black -->
+    <style name="ThemeOverlay.Ds.BottomSheetDialog" parent="ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Widget.Ds.BottomSheet</item>
+        <item name="android:backgroundDimAmount">0.63</item>
     </style>
 
     <style name="PopupAnimation">
@@ -388,44 +429,44 @@
     <style name="FormLabel">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">8dp</item>
-        <item name="android:layout_marginTop">-15dp</item>
-        <item name="android:layout_marginBottom">-4dp</item>
-        <item name="android:background">?attr/contrast0</item>
-        <item name="android:paddingStart">8dp</item>
-        <item name="android:paddingEnd">8dp</item>
-        <item name="android:textSize">@dimen/smallerTextSize</item>
+        <item name="android:layout_marginBottom">@dimen/ds_space_4</item>
+        <item name="android:textAppearance">@style/TextAppearance.Ds.Label</item>
     </style>
 
     <style name="FormInput">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@color/transparent</item>
-        <item name="android:paddingLeft">16dp</item>
-        <item name="android:paddingRight">16dp</item>
-        <item name="android:paddingTop">16dp</item>
-        <item name="android:paddingBottom">16dp</item>
-        <item name="android:textSize">@dimen/regularTextSize</item>
+        <item name="android:paddingLeft">@dimen/ds_space_16</item>
+        <item name="android:paddingRight">@dimen/ds_space_16</item>
+        <item name="android:paddingTop">@dimen/ds_space_12</item>
+        <item name="android:paddingBottom">@dimen/ds_space_12</item>
+        <item name="android:textAppearance">@style/TextAppearance.Ds.Body</item>
+        <item name="android:textColorHint">?attr/dsInkMuted</item>
     </style>
 
     <style name="FormDropdown">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:drawableEnd">@drawable/ic_arrow_drop_down_dark</item>
-        <item name="android:paddingTop">16dp</item>
-        <item name="android:paddingBottom">14dp</item>
-        <item name="android:paddingLeft">16dp</item>
-        <item name="android:paddingRight">16dp</item>
-        <item name="android:textSize">@dimen/regularTextSize</item>
+        <item name="android:drawableTint">?attr/dsInkMuted</item>
+        <item name="android:paddingTop">@dimen/ds_space_12</item>
+        <item name="android:paddingBottom">@dimen/ds_space_12</item>
+        <item name="android:paddingLeft">@dimen/ds_space_16</item>
+        <item name="android:paddingRight">@dimen/ds_space_16</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:textAppearance">@style/TextAppearance.Ds.Body</item>
     </style>
 
     <style name="FormInnerBox">
-        <item name="android:background">@drawable/bg_input_group</item>
+        <item name="android:background">@drawable/ds_input_background</item>
+        <item name="android:addStatesFromChildren">true</item>
         <item name="android:clipChildren">false</item>
         <item name="android:clipToPadding">false</item>
         <item name="android:orientation">vertical</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
     </style>
 
     <style name="FormOuterBox">
@@ -434,37 +475,30 @@
         <item name="android:clipChildren">false</item>
         <item name="android:clipToPadding">false</item>
         <item name="android:orientation">vertical</item>
-        <item name="android:paddingBottom">8dp</item>
-        <item name="android:paddingTop">4dp</item>
-        <item name="android:paddingLeft">4dp</item>
-        <item name="android:paddingRight">4dp</item>
+        <item name="android:paddingBottom">@dimen/ds_space_16</item>
     </style>
 
     <style name="FormDivider">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1dp</item>
-        <item name="android:background">?attr/contrast20</item>
+        <item name="android:background">?attr/dsLine</item>
     </style>
 
     <style name="DialogFormInnerBox">
-        <item name="android:background">@drawable/dialog_bg_input_box</item>
+        <item name="android:background">@drawable/ds_input_background</item>
+        <item name="android:addStatesFromChildren">true</item>
         <item name="android:clipChildren">false</item>
         <item name="android:clipToPadding">false</item>
         <item name="android:orientation">vertical</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
     </style>
 
     <style name="DialogFormLabel">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">8dp</item>
-        <item name="android:layout_marginTop">-15dp</item>
-        <item name="android:layout_marginBottom">-4dp</item>
-        <item name="android:paddingStart">8dp</item>
-        <item name="android:background">?attr/dialogFormLabelColor</item>
-        <item name="android:paddingEnd">8dp</item>
-        <item name="android:textSize">@dimen/smallTextSize</item>
+        <item name="android:layout_marginBottom">@dimen/ds_space_4</item>
+        <item name="android:textAppearance">@style/TextAppearance.Ds.Label</item>
     </style>
 
     <style name="CheckmarkPopupBtn">
@@ -475,7 +509,8 @@
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
         <item name="android:background">@drawable/ripple_transparent</item>
-        <item name="android:textSize">@dimen/smallerTextSize</item>
+        <item name="android:textAppearance">@style/TextAppearance.Ds.Label</item>
+        <item name="android:textColor">?attr/dsInk</item>
     </style>
 
     <style name="NumericalPopupBtn">
@@ -483,14 +518,13 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:paddingStart">12dp</item>
         <item name="android:paddingEnd">12dp</item>
-        <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
         <item name="android:background">@drawable/ripple_transparent</item>
-        <item name="android:textSize">@dimen/smallerTextSize</item>
+        <item name="android:textAppearance">@style/TextAppearance.Ds.Label</item>
+        <item name="android:textColor">?attr/dsInk</item>
         <item name="android:textAllCaps">true</item>
-
     </style>
 
     <style name="Theme.Transparent" parent="android:Theme">
