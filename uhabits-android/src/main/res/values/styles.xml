@@ -55,7 +55,7 @@
         <item name="scrollableRecyclerViewStyle">@style/ScrollableRecyclerViewStyle</item>
         <item name="selectedBackground">@drawable/selected_box</item>
         <item name="toolbarPopupTheme">@style/ThemeOverlay.AppCompat.Light</item>
-        <item name="useHabitColorAsPrimary">true</item>
+        <item name="dsToolbarTheme">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="widgetBackgroundAlpha">1</item>
         <item name="widgetShadowAlpha">0.25</item>
         <item name="windowActionModeOverlay">true</item>
@@ -115,7 +115,7 @@
         <item name="selectedBackground">@drawable/selected_box</item>
         <item name="textColorAlertDialogListItem">?attr/dsInk</item>
         <item name="toolbarPopupTheme">@style/ThemeOverlay.AppCompat</item>
-        <item name="useHabitColorAsPrimary">false</item>
+        <item name="dsToolbarTheme">@style/ThemeOverlay.AppCompat.Dark</item>
         <item name="widgetBackgroundAlpha">1</item>
         <item name="widgetShadowAlpha">0.25</item>
         <item name="windowActionModeOverlay">true</item>
@@ -319,9 +319,12 @@
 
     <style name="Toolbar">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">?colorPrimary</item>
-        <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="android:layout_height">64dp</item>
+        <item name="android:background">?attr/dsSurface</item>
+        <item name="android:theme">?attr/dsToolbarTheme</item>
+        <item name="titleTextAppearance">@style/TextAppearance.Ds.Display</item>
+        <item name="contentInsetStart">@dimen/ds_space_16</item>
+        <item name="contentInsetStartWithNavigation">@dimen/ds_space_16</item>
     </style>
 
     <style name="Preference.Category.Material">
