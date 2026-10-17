@@ -23,15 +23,15 @@ import org.isoron.platform.gui.Color
 import org.isoron.uhabits.core.models.PaletteColor
 
 abstract class Theme {
-    open val appBackgroundColor = Color(0xf4f4f4)
-    open val cardBackgroundColor = Color(0xFAFAFA)
-    open val headerBackgroundColor = Color(0xeeeeee)
+    open val appBackgroundColor: Color get() = surfaceColor
+    open val cardBackgroundColor: Color get() = surfaceRaisedColor
+    open val headerBackgroundColor: Color get() = surfaceColor
     open val headerBorderColor = Color(0xcccccc)
     open val headerTextColor = Color(0x9E9E9E)
-    open val highContrastTextColor = Color(0x202020)
+    open val highContrastTextColor: Color get() = inkColor
     open val itemBackgroundColor = Color(0xffffff)
-    open val lowContrastTextColor = Color(0xe0e0e0)
-    open val mediumContrastTextColor = Color(0x9E9E9E)
+    open val lowContrastTextColor: Color get() = lineColor
+    open val mediumContrastTextColor: Color get() = inkMutedColor
     open val statusBarBackgroundColor = Color(0x333333)
     open val toolbarBackgroundColor = Color(0xf4f4f4)
     open val toolbarColor = Color(0xffffff)
@@ -75,15 +75,9 @@ abstract class Theme {
 open class LightTheme : Theme()
 
 open class DarkTheme : Theme() {
-    override val appBackgroundColor = Color(0x212121)
-    override val cardBackgroundColor = Color(0x303030)
-    override val headerBackgroundColor = Color(0x212121)
     override val headerBorderColor = Color(0xcccccc)
     override val headerTextColor = Color(0x9E9E9E)
-    override val highContrastTextColor = Color(0xF5F5F5)
     override val itemBackgroundColor = Color(0xffffff)
-    override val lowContrastTextColor = Color(0x424242)
-    override val mediumContrastTextColor = Color(0x9E9E9E)
     override val statusBarBackgroundColor = Color(0x333333)
     override val toolbarBackgroundColor = Color(0xf4f4f4)
     override val toolbarColor = Color(0xffffff)
@@ -105,9 +99,6 @@ open class DarkTheme : Theme() {
 }
 
 class PureBlackTheme : DarkTheme() {
-    override val appBackgroundColor = Color(0x000000)
-    override val cardBackgroundColor = Color(0x000000)
-    override val lowContrastTextColor = Color(0x212121)
     override val surfaceColor = Color(0x000000)
     override val surfaceRaisedColor = Color(0x121212)
     override val inkColor = Color(0xf2f2f2)
@@ -122,6 +113,8 @@ class PureBlackTheme : DarkTheme() {
 }
 
 class WidgetTheme : LightTheme() {
+    override val appBackgroundColor = Color(0xf4f4f4)
+    override val headerBackgroundColor = Color(0xeeeeee)
     override val cardBackgroundColor = Color.TRANSPARENT
     override val highContrastTextColor = Color.WHITE
     override val mediumContrastTextColor = Color.WHITE.withAlpha(0.50)
