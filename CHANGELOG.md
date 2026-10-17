@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [2.4.2-qol] -- 2026-10-17
+
+### Fixed
+
+- Fix the toolbar back arrow doing nothing on the create habit, habit detail, settings and about screens
+
 ## [2.4.1-qol] -- 2026-10-14
 
 ### Fixed
