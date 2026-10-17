@@ -98,13 +98,13 @@ class BarChart(
             } else {
                 canvas.fillRect(x, y, barWidth, barHeight)
             }
-            canvas.setFontSize(theme.smallTextSize)
+            canvas.setFontSize(LABEL_FONT_SIZE)
             canvas.setTextAlign(TextAlign.CENTER)
-            canvas.setColor(colors[s])
+            canvas.setColor(theme.inkMutedColor)
             canvas.drawText(
                 value.toShortString(),
                 x + barWidth / 2,
-                y - theme.smallTextSize * 0.80
+                y - LABEL_FONT_SIZE * 0.80
             )
         }
 
@@ -115,7 +115,7 @@ class BarChart(
         fun drawMajorGrid() {
             canvas.setStrokeWidth(1.0)
             if (nSeries > 1) {
-                canvas.setColor(theme.lowContrastTextColor.withAlpha(0.5))
+                canvas.setColor(theme.lineColor.withAlpha(0.5))
                 for (c in 0 until nColumns - 1) {
                     val x = barGroupOffset(c)
                     canvas.drawLine(x, paddingTop, x, paddingTop + maxBarHeight)
@@ -124,7 +124,7 @@ class BarChart(
             for (k in 1 until nGridlines) {
                 val pct = 1.0 - (k.toDouble() / (nGridlines - 1))
                 val y = paddingTop + maxBarHeight * pct
-                canvas.setColor(theme.lowContrastTextColor)
+                canvas.setColor(theme.lineColor)
                 canvas.setStrokeWidth(0.5)
                 canvas.drawLine(0.0, y, width, y)
             }
@@ -132,11 +132,11 @@ class BarChart(
 
         fun drawAxis() {
             val y = paddingTop + maxBarHeight
-            canvas.setColor(theme.lowContrastTextColor)
+            canvas.setColor(theme.lineColor)
             canvas.drawLine(0.0, y, width, y)
-            canvas.setColor(theme.mediumContrastTextColor)
+            canvas.setColor(theme.inkMutedColor)
             canvas.setTextAlign(TextAlign.CENTER)
-            canvas.setFontSize(theme.smallTextSize)
+            canvas.setFontSize(LABEL_FONT_SIZE)
             var prevMonth = -1
             var prevYear = -1
             val isLargeInterval = axis.size < 2 || (axis[0].daysUntil(axis[1]) > 300)
@@ -150,27 +150,27 @@ class BarChart(
                     canvas.drawText(
                         date.year.toString(),
                         x + barGroupWidth / 2,
-                        y + theme.smallTextSize * 1.0
+                        y + LABEL_FONT_SIZE * 1.0
                     )
                 } else {
                     if (date.month != prevMonth) {
                         canvas.drawText(
                             dateFormatter.shortMonthName(date),
                             x + barGroupWidth / 2,
-                            y + theme.smallTextSize * 1.0
+                            y + LABEL_FONT_SIZE * 1.0
                         )
                     } else {
                         canvas.drawText(
                             date.day.toString(),
                             x + barGroupWidth / 2,
-                            y + theme.smallTextSize * 1.0
+                            y + LABEL_FONT_SIZE * 1.0
                         )
                     }
                     if (date.year != prevYear) {
                         canvas.drawText(
                             date.year.toString(),
                             x + barGroupWidth / 2,
-                            y + theme.smallTextSize * 2.3
+                            y + LABEL_FONT_SIZE * 2.3
                         )
                     }
                 }
@@ -182,5 +182,9 @@ class BarChart(
         drawMajorGrid()
         for (k in 0 until nSeries) drawSeries(k)
         drawAxis()
+    }
+
+    companion object {
+        private const val LABEL_FONT_SIZE = 12.0
     }
 }

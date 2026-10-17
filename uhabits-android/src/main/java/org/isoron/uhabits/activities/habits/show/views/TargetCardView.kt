@@ -31,12 +31,11 @@ import org.isoron.uhabits.databinding.ShowHabitTargetBinding
 class TargetCardView(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
     private val binding = ShowHabitTargetBinding.inflate(LayoutInflater.from(context), this)
     fun setState(state: TargetCardState) {
-        val androidColor = state.theme.color(state.color).toInt()
+        val fill = state.theme.habitFill(state.color).toInt()
         binding.targetChart.setValues(state.values)
         binding.targetChart.setTargets(state.targets)
         binding.targetChart.setLabels(state.intervals.map { intervalToLabel(resources, it) })
-        binding.title.setTextColor(androidColor)
-        binding.targetChart.setColor(androidColor)
+        binding.targetChart.setColor(fill)
         postInvalidate()
     }
 

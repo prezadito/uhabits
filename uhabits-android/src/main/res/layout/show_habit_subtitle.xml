@@ -29,8 +29,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:textColor="?attr/contrast60"
-        android:textSize="@dimen/regularTextSize"
+        android:textAppearance="@style/TextAppearance.Ds.Body"
+        android:textColor="?attr/dsInkMuted"
         tools:text="Have you worked out today?" />
 
     <LinearLayout
@@ -45,7 +45,7 @@
             android:id="@+id/targetIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="?attr/contrast60"
+            android:textColor="?attr/dsInkMuted"
             android:textSize="16sp" />
 
         <TextView
@@ -53,8 +53,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
-            android:textColor="?attr/contrast60"
-            android:textSize="@dimen/smallTextSize"
+            android:textColor="?attr/dsInkMuted"
+            android:textSize="@dimen/ds_text_label"
             android:layout_marginStart="4dp"
             android:layout_marginEnd="16dp"
             android:maxEms="7"
@@ -66,36 +66,36 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/fa_calendar"
-            android:textColor="?attr/contrast60"
-            android:textSize="@dimen/smallTextSize" />
+            android:textColor="?attr/dsInkMuted"
+            android:textSize="@dimen/ds_text_label" />
 
         <TextView
             android:id="@+id/frequencyLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/every_day"
-            android:textColor="?attr/contrast60"
+            android:textColor="?attr/dsInkMuted"
             android:layout_marginStart="4dp"
             android:layout_marginEnd="16dp"
-            android:textSize="@dimen/smallTextSize" />
+            android:textSize="@dimen/ds_text_label" />
 
         <TextView
             android:id="@+id/reminderIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/fa_bell_o"
-            android:textColor="?attr/contrast60"
-            android:textSize="@dimen/smallTextSize" />
+            android:textColor="?attr/dsInkMuted"
+            android:textSize="@dimen/ds_text_label" />
 
         <TextView
             android:id="@+id/reminderLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="1dp"
-            android:textColor="?attr/contrast60"
+            android:textColor="?attr/dsInkMuted"
             android:text=""
             android:layout_marginStart="4dp"
-            android:textSize="@dimen/smallTextSize" />
+            android:textSize="@dimen/ds_text_label" />
 
     </LinearLayout>
 </merge>

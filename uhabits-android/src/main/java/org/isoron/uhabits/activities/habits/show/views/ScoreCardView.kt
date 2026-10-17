@@ -33,13 +33,12 @@ class ScoreCardView(context: Context, attrs: AttributeSet) : LinearLayout(contex
     private var binding = ShowHabitScoreBinding.inflate(LayoutInflater.from(context), this)
 
     fun setState(state: ScoreCardState) {
-        val androidColor = state.theme.color(state.color).toInt()
-        binding.title.setTextColor(androidColor)
+        val fill = state.theme.habitFill(state.color).toInt()
         binding.spinner.setSelection(state.spinnerPosition)
         binding.scoreView.setScores(state.scores)
         binding.scoreView.reset()
         binding.scoreView.setBucketSize(state.bucketSize)
-        binding.scoreView.setColor(androidColor)
+        binding.scoreView.setColor(fill)
     }
 
     fun setListener(presenter: ScoreCardPresenter) {

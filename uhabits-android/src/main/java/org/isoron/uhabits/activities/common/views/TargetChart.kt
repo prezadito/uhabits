@@ -97,7 +97,7 @@ class TargetChart : View {
 
     private fun drawRow(canvas: Canvas, row: Int, rect: RectF) {
         val padding = dpToPixels(context, 4f)
-        val round = dpToPixels(context, 2f)
+        val round = dpToPixels(context, 4f)
         val stop = maxLabelSize + padding * 2
         paint!!.color = mediumContrastTextColor
 
@@ -169,10 +169,10 @@ class TargetChart : View {
         paint!!.textAlign = Paint.Align.CENTER
         paint!!.isAntiAlias = true
         val res = StyledResources(context)
-        lowContrastTextColor = res.getColor(R.attr.contrast20)
-        mediumContrastTextColor = res.getColor(R.attr.contrast60)
-        highContrastReverseTextColor = res.getColor(R.attr.contrast0)
-        tinyTextSize = getDimension(context, R.dimen.tinyTextSize)
+        lowContrastTextColor = res.getColor(R.attr.dsLine)
+        mediumContrastTextColor = res.getColor(R.attr.dsInkMuted)
+        highContrastReverseTextColor = res.getColor(R.attr.dsOnHabit)
+        tinyTextSize = getDimension(context, R.dimen.ds_text_caption)
     }
 
     fun setValues(values: List<Double>) {
