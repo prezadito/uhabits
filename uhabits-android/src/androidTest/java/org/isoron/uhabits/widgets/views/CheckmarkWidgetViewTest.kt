@@ -23,7 +23,7 @@ import androidx.test.filters.MediumTest
 import org.isoron.platform.time.getToday
 import org.isoron.uhabits.BaseViewTest
 import org.isoron.uhabits.R
-import org.isoron.uhabits.utils.PaletteUtils.getAndroidTestColor
+import org.isoron.uhabits.core.models.PaletteColor
 import org.junit.Before
 import org.junit.Ignore
 import org.junit.Test
@@ -46,7 +46,7 @@ class CheckmarkWidgetViewTest : BaseViewTest() {
         val today = getToday()
         val score = scores[today].value
         view = CheckmarkWidgetView(targetContext).apply {
-            activeColor = getAndroidTestColor(0)
+            habitPaletteColor = PaletteColor(0)
             entryState = computedEntries.get(today).value
             entryValue = computedEntries.get(today).value
             percentage = score.toFloat()

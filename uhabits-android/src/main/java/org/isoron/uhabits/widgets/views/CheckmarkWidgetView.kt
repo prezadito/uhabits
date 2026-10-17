@@ -19,35 +19,35 @@
 package org.isoron.uhabits.widgets.views
 
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
+import org.isoron.platform.gui.toInt
 import org.isoron.uhabits.HabitsApplication
 import org.isoron.uhabits.R
 import org.isoron.uhabits.activities.common.views.RingView
 import org.isoron.uhabits.activities.habits.list.views.toShortString
-import org.isoron.uhabits.core.models.Entry.Companion.NO
-import org.isoron.uhabits.core.models.Entry.Companion.SKIP
-import org.isoron.uhabits.core.models.Entry.Companion.UNKNOWN
-import org.isoron.uhabits.core.models.Entry.Companion.YES_AUTO
 import org.isoron.uhabits.core.models.Entry.Companion.YES_MANUAL
+import org.isoron.uhabits.core.models.PaletteColor
 import org.isoron.uhabits.core.preferences.Preferences
+import org.isoron.uhabits.core.ui.views.WidgetTheme
 import org.isoron.uhabits.inject.HabitsApplicationComponent
 import org.isoron.uhabits.utils.InterfaceUtils.getDimension
-import org.isoron.uhabits.utils.PaletteUtils.getAndroidTestColor
-import org.isoron.uhabits.utils.StyledResources
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.roundToInt
 
 class CheckmarkWidgetView : HabitWidgetView {
-    var activeColor: Int = 0
+    var habitPaletteColor = PaletteColor(11)
 
     var percentage = 0f
     var name: String? = null
     private lateinit var ring: RingView
     private lateinit var label: TextView
+    private lateinit var tile: WidgetTileView
     var entryValue = 0
     var entryState = 0
     var isNumerical = false
@@ -68,68 +68,25 @@ class CheckmarkWidgetView : HabitWidgetView {
 
     fun refresh() {
         if (backgroundPaint == null || frame == null) return
-        val res = StyledResources(context)
-        val bgColor: Int
-        val fgColor: Int
-        setShadowAlpha(0x4f)
-        when (entryState) {
-            YES_MANUAL, SKIP, YES_AUTO -> {
-                bgColor = activeColor
-                fgColor = res.getColor(R.attr.contrast0)
-                backgroundPaint!!.color = bgColor
-                frame!!.setBackgroundDrawable(background)
-            }
-            NO, UNKNOWN -> {
-                bgColor = res.getColor(R.attr.cardBgColor)
-                fgColor = res.getColor(R.attr.contrast60)
-            }
-            else -> {
-                bgColor = res.getColor(R.attr.cardBgColor)
-                fgColor = res.getColor(R.attr.contrast60)
-            }
-        }
+        val theme = WidgetTheme()
+        val habitColor = habitPaletteColor
+        tile.fill = theme.habitFill(habitColor).toInt()
+        tile.tint = theme.habitTint(habitColor).toInt()
+        tile.state = entryState
+        tile.questionMarks = preferences!!.areQuestionMarksEnabled
+        tile.text = if (isNumerical || quitText != null) numberText else null
+        tile.invalidate()
         ring.setPercentage(percentage)
-        ring.setColor(fgColor)
-        ring.setBackgroundColor(bgColor)
-        ring.setText(text)
-        ring.setIsStrokedTextEnabled(strokedTextEnabled)
+        ring.setColor(tile.fill)
+        ring.setText("")
         label.text = name
-        label.setTextColor(fgColor)
+        label.setTextColor(Color.WHITE)
         requestLayout()
         postInvalidate()
     }
 
-    private val strokedTextEnabled: Boolean
-        get() = if (isNumerical || quitText != null) {
-            false
-        } else {
-            when (entryState) {
-                YES_AUTO -> true
-                else -> false
-            }
-        }
-
-    private val text: String
-        get() = quitText ?: if (isNumerical) {
-            (max(0, entryValue) / 1000.0).toShortString()
-        } else {
-            when (entryState) {
-                YES_MANUAL, YES_AUTO -> resources.getString(R.string.fa_check)
-                SKIP -> resources.getString(R.string.fa_skipped)
-                UNKNOWN -> {
-                    run {
-                        if (preferences!!.areQuestionMarksEnabled) {
-                            return resources.getString(R.string.fa_question)
-                        } else {
-                            resources.getString(R.string.fa_times)
-                        }
-                    }
-                    resources.getString(R.string.fa_times)
-                }
-                NO -> resources.getString(R.string.fa_times)
-                else -> resources.getString(R.string.fa_times)
-            }
-        }
+    private val numberText: String
+        get() = quitText ?: (max(0, entryValue) / 1000.0).toShortString()
 
     override val innerLayoutId: Int
         get() = R.layout.widget_checkmark
@@ -142,14 +99,8 @@ class CheckmarkWidgetView : HabitWidgetView {
         } else {
             width = min(width, height)
         }
-        val textSize = min(0.175f * width, getDimension(context, R.dimen.smallTextSize))
-        label.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize)
-        if (isNumerical || quitText != null) {
-            ring.setTextSize(textSize * 0.9f)
-        } else {
-            ring.setTextSize(textSize)
-        }
-        ring.setThickness(0.03f * width)
+        label.setTextSize(TypedValue.COMPLEX_UNIT_PX, getDimension(context, R.dimen.ds_text_caption))
+        ring.setThickness(getDimension(context, R.dimen.ds_ring_stroke))
         super.onMeasure(
             MeasureSpec.makeMeasureSpec(width, MeasureSpec.EXACTLY),
             MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY)
@@ -163,10 +114,12 @@ class CheckmarkWidgetView : HabitWidgetView {
         ring = findViewById<View>(R.id.scoreRing) as RingView
         label = findViewById<View>(R.id.label) as TextView
         ring.setIsTransparencyEnabled(true)
+        tile = WidgetTileView(context)
+        (findViewById<View>(R.id.tileContainer) as ViewGroup).addView(tile)
         if (isInEditMode) {
             percentage = 0.75f
             name = "Wake up early"
-            activeColor = getAndroidTestColor(6)
+            habitPaletteColor = PaletteColor(6)
             entryValue = YES_MANUAL
             refresh()
         }

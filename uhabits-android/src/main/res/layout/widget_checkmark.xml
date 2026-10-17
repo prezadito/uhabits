@@ -27,24 +27,34 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <org.isoron.uhabits.activities.common.views.RingView
-        android:id="@+id/scoreRing"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.9"
-        habit:thickness="2"
-        habit:textSize="16"
-        habit:enableFontAwesome="true"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"/>
+        android:layout_marginRight="4dp">
+
+        <org.isoron.uhabits.activities.common.views.RingView
+            android:id="@+id/scoreRing"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            habit:thickness="3"
+            habit:textSize="16" />
+
+        <FrameLayout
+            android:id="@+id/tileContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+    </FrameLayout>
 
     <TextView
         android:id="@+id/label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.1"
-        android:textSize="12sp"
+        android:textSize="@dimen/ds_text_caption"
         android:textColor="@color/white"
         android:layout_marginLeft="6dp"
         android:layout_marginRight="6dp"
@@ -54,7 +64,6 @@
         android:maxLines="2"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"
-        android:fontFamily="sans-serif-condensed"
         android:breakStrategy="balanced" />
 
 </LinearLayout>

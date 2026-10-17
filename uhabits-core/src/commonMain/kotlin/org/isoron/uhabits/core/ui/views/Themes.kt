@@ -112,7 +112,16 @@ class WidgetTheme : LightTheme() {
     override val appBackgroundColor = Color(0xf4f4f4)
     override val headerBackgroundColor = Color(0xeeeeee)
     override val cardBackgroundColor = Color.TRANSPARENT
+
+    // Widgets sit on a translucent dark card, so text and lines are white.
+    override val inkColor = Color.WHITE
+    override val inkMutedColor = Color.WHITE.withAlpha(0.75)
+    override val lineColor = Color.WHITE.withAlpha(0.20)
     override val highContrastTextColor = Color.WHITE
-    override val mediumContrastTextColor = Color.WHITE.withAlpha(0.50)
-    override val lowContrastTextColor = Color.WHITE.withAlpha(0.10)
+    override val mediumContrastTextColor = Color.WHITE.withAlpha(0.75)
+    override val lowContrastTextColor = Color.WHITE.withAlpha(0.20)
+
+    // Habit hues use the light fills. Tints are translucent, and ink is white.
+    override val habitTints = super.habitTints.map { it.withAlpha(0.30) }
+    override val habitInks = List(super.habitInks.size) { Color.WHITE }
 }
