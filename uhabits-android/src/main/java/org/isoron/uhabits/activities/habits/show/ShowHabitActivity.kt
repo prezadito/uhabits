@@ -122,7 +122,8 @@ class ShowHabitActivity : AppCompatActivity(), CommandRunner.Listener {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return menu.onOptionsItemSelected(item)
+        // Fall through to super so the toolbar's Up arrow (android.R.id.home) navigates back.
+        return menu.onOptionsItemSelected(item) || super.onOptionsItemSelected(item)
     }
 
     override fun onResume() {
