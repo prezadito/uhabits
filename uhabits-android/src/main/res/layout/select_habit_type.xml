@@ -57,7 +57,7 @@
                 android:text="@string/yes_or_no_example" />
         </LinearLayout>
 
-        <TextView style="@style/SelectHabitTypeButtonChevron" />
+        <ImageView style="@style/SelectHabitTypeButtonChevron" />
     </LinearLayout>
 
     <LinearLayout
@@ -85,7 +85,7 @@
                 android:text="@string/measurable_example" />
         </LinearLayout>
 
-        <TextView style="@style/SelectHabitTypeButtonChevron" />
+        <ImageView style="@style/SelectHabitTypeButtonChevron" />
     </LinearLayout>
 
     <LinearLayout
@@ -113,7 +113,7 @@
                 android:text="@string/quit_habit_example" />
         </LinearLayout>
 
-        <TextView style="@style/SelectHabitTypeButtonChevron" />
+        <ImageView style="@style/SelectHabitTypeButtonChevron" />
     </LinearLayout>
 
 </LinearLayout>
