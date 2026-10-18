@@ -66,13 +66,6 @@ class CheckmarkButtonView(
             updateDescription()
         }
 
-    /** True when this cell is today; an open today gets a ring. */
-    var isToday = false
-        set(value) {
-            field = value
-            invalidate()
-        }
-
     var value: Int = 0
         set(value) {
             field = value
@@ -180,7 +173,6 @@ class CheckmarkButtonView(
         fun draw(canvas: Canvas) {
             tile.layout()
             val state = resolveState() ?: return drawBlank(canvas)
-            val ringed = isToday && value != YES_MANUAL && value != YES_AUTO
             when (state) {
                 State.DONE -> {
                     tile.fill(canvas, colors.fill)
@@ -204,12 +196,10 @@ class CheckmarkButtonView(
                     tile.glyph(canvas, R.string.fa_question, 13f, tile.inkMuted)
                 }
             }
-            if (ringed) tile.todayRing(canvas)
             tile.notesDot(canvas, glyphColor(state), notes)
         }
 
         private fun drawBlank(canvas: Canvas) {
-            if (isToday) tile.todayRing(canvas)
             tile.notesDot(canvas, colors.ink, notes)
         }
 

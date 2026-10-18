@@ -81,12 +81,6 @@ class NumberButtonView(
             updateDescription()
         }
 
-    var isToday = false
-        set(value) {
-            field = value
-            invalidate()
-        }
-
     var value = 0.0
         set(value) {
             field = value
@@ -218,7 +212,6 @@ class NumberButtonView(
                     drawNumber(canvas, if (recorded) value.toShortString() else "0", textColor)
                 }
             }
-            if (isToday && !met) tile.todayRing(canvas)
             tile.notesDot(canvas, textColor, notes)
         }
 

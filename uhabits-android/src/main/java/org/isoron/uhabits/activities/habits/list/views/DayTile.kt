@@ -79,7 +79,6 @@ class DayTilePainter(private val view: View) {
     val lineStrong = view.sres.getColor(R.attr.dsLineStrong)
     val onHabit = view.sres.getColor(R.attr.dsOnHabit)
     val onHabitText = view.sres.getColor(R.attr.dsOnHabitText)
-    val todayRing = view.sres.getColor(R.attr.dsTodayRing)
     val ink = view.sres.getColor(R.attr.dsInk)
 
     fun layout() {
@@ -130,17 +129,6 @@ class DayTilePainter(private val view: View) {
         paint.pathEffect = DashPathEffect(floatArrayOf(view.dp(4f), view.dp(3f)), 0f)
         innerStroke(canvas, color, 1.5f)
         paint.pathEffect = null
-    }
-
-    /** 2dp outline, 2dp outside the tile. */
-    fun todayRing(canvas: Canvas) {
-        val w = view.dp(2f)
-        val gap = view.dp(2f)
-        val r = RectF(rect).apply { inset(-(gap + w / 2), -(gap + w / 2)) }
-        paint.style = Paint.Style.STROKE
-        paint.strokeWidth = w
-        paint.color = todayRing
-        canvas.drawRoundRect(r, radius + gap, radius + gap, paint)
     }
 
     /** Draws a FontAwesome glyph centered on the tile. */
