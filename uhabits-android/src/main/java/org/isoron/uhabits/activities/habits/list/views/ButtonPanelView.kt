@@ -36,7 +36,10 @@ abstract class ButtonPanelView<T : View>(
 
     var buttonCount = 0
         set(value) {
-            if (field == value) return
+            if (field == value) {
+                refreshOrderIfStale()
+                return
+            }
             field = value
             inflateButtons()
         }
@@ -50,6 +53,8 @@ abstract class ButtonPanelView<T : View>(
 
     var buttons = mutableListOf<T>()
 
+    private var laidOutReversed: Boolean? = null
+
     override fun onCheckmarkSequenceChanged() {
         inflateButtons()
     }
@@ -57,6 +62,7 @@ abstract class ButtonPanelView<T : View>(
     @Synchronized
     protected fun inflateButtons() {
         val reverse = preferences.isCheckmarkSequenceReversed
+        laidOutReversed = reverse
 
         buttons.clear()
         repeat(buttonCount) { buttons.add(createButton()) }
@@ -71,9 +77,18 @@ abstract class ButtonPanelView<T : View>(
         requestLayout()
     }
 
+    /**
+     * Panels only receive preference changes while attached, so a panel that was detached or
+     * recycled when the order changed must catch up when it is bound or attached again.
+     */
+    private fun refreshOrderIfStale() {
+        if (laidOutReversed != preferences.isCheckmarkSequenceReversed) inflateButtons()
+    }
+
     public override fun onAttachedToWindow() {
         super.onAttachedToWindow()
         preferences.addListener(this)
+        refreshOrderIfStale()
     }
 
     public override fun onDetachedFromWindow() {
