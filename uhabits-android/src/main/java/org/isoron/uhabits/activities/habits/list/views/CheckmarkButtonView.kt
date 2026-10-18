@@ -180,7 +180,7 @@ class CheckmarkButtonView(
         fun draw(canvas: Canvas) {
             tile.layout()
             val state = resolveState() ?: return drawBlank(canvas)
-            val ringed = isToday && value != YES_MANUAL && value != YES_AUTO
+            val ringed = isToday
             when (state) {
                 State.DONE -> {
                     tile.fill(canvas, colors.fill)
