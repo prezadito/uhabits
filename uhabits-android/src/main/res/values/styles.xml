@@ -19,7 +19,8 @@
 
 <resources xmlns:tools="http://schemas.android.com/tools">
     <style name="AppBaseTheme" parent="@style/Theme.MaterialComponents.Light.NoActionBar">
-        <item name="aboutScreenColor">@color/blue_800</item>
+        <item name="alertDialogTheme">@style/ThemeOverlay.Ds.AlertDialog</item>
+        <item name="aboutScreenColor">?attr/dsAccent</item>
         <item name="actionBarPopupTheme">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="actionModeBackground">@color/grey_700</item>
         <item name="android:alertDialogTheme">@style/Theme.AppCompat.Light.Dialog</item>
@@ -27,15 +28,14 @@
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
         <item name="android:itemBackground">?attr/contrast0</item>
         <item name="android:navigationBarColor">?attr/colorPrimary</item>
-        <item name="android:textColor">@color/grey_800</item>
-        <item name="cardBackground">@drawable/card_light_background</item>
-        <item name="cardBgColor">@color/grey_50</item>
+        <item name="android:textColor">?attr/dsInk</item>
+        <item name="cardBgColor">?attr/dsSurfaceRaised</item>
         <item name="colorAccent">?aboutScreenColor</item>
         <item name="colorPrimary">#363636</item>
         <item name="colorPrimaryDark">#303030</item>
         <item name="dialogIconChangeColor">@drawable/ic_action_color_light</item>
-        <item name="headerBackgroundColor">@color/grey_200</item>
-        <item name="highlightedBackgroundColor">@color/grey_100</item>
+        <item name="headerBackgroundColor">?attr/dsSurface</item>
+        <item name="highlightedBackgroundColor">?attr/dsAccentTint</item>
         <item name="iconAdd">@drawable/ic_action_add_dark</item>
         <item name="iconArchive">@drawable/ic_action_archive_dark</item>
         <item name="iconChangeColor">@drawable/ic_action_color_dark</item>
@@ -45,43 +45,56 @@
         <item name="iconUnarchive">@drawable/ic_action_unarchive_dark</item>
         <item name="iconArrowUp">@drawable/ic_arrow_up_light</item>
         <item name="iconArrowDown">@drawable/ic_arrow_down_light</item>
-        <item name="contrast0">@color/white</item>
-        <item name="contrast20">@color/grey_300</item>
-        <item name="contrast40">@color/grey_350</item>
-        <item name="contrast60">@color/grey_500</item>
-        <item name="contrast80">@color/grey_700</item>
-        <item name="contrast100">@color/grey_800</item>
-        <item name="palette">@array/lightPalette</item>
+        <item name="contrast0">?attr/dsSurfaceRaised</item>
+        <item name="contrast20">?attr/dsLine</item>
+        <item name="contrast40">?attr/dsLineStrong</item>
+        <item name="contrast60">?attr/dsInkMuted</item>
+        <item name="contrast80">?attr/dsInk</item>
+        <item name="contrast100">?attr/dsInk</item>
+        <item name="palette">@array/dsPaletteLight</item>
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
         <item name="scrollableRecyclerViewStyle">@style/ScrollableRecyclerViewStyle</item>
-        <item name="selectedBackground">@drawable/selected_box</item>
         <item name="toolbarPopupTheme">@style/ThemeOverlay.AppCompat.Light</item>
-        <item name="useHabitColorAsPrimary">true</item>
+        <item name="dsToolbarTheme">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="widgetBackgroundAlpha">1</item>
         <item name="widgetShadowAlpha">0.25</item>
         <item name="windowActionModeOverlay">true</item>
-        <item name="windowBackgroundColor">@color/grey_200</item>
-        <item name="android:colorBackground">@color/color_background</item>
-        <item name="android:textColorAlertDialogListItem">@color/grey_800</item>
+        <item name="windowBackgroundColor">?attr/dsSurface</item>
+        <item name="android:colorBackground">?attr/dsSurface</item>
+        <item name="android:textColorAlertDialogListItem">?attr/dsInk</item>
         <item name="singleLineTitle">false</item>
-        <item name="dialogFormLabelColor">@color/white</item>
+        <item name="dialogFormLabelColor">?attr/dsSurfaceRaised</item>
+        <item name="dsSurface">@color/ds_light_surface</item>
+        <item name="dsSurfaceRaised">@color/ds_light_surface_raised</item>
+        <item name="dsInk">@color/ds_light_ink</item>
+        <item name="dsInkMuted">@color/ds_light_ink_muted</item>
+        <item name="dsLine">@color/ds_light_line</item>
+        <item name="dsLineStrong">@color/ds_light_line_strong</item>
+        <item name="dsAccent">@color/ds_light_accent</item>
+        <item name="dsOnAccent">@color/ds_light_on_accent</item>
+        <item name="dsAccentTint">@color/ds_light_accent_tint</item>
+        <item name="dsTodayRing">@color/ds_light_today_ring</item>
+        <item name="dsOnHabit">@color/ds_light_on_habit</item>
+        <item name="dsOnHabitText">@color/ds_light_on_habit_text</item>
+        <item name="dsScrim">@color/ds_light_scrim</item>
+        <item name="dsCardElevation">1dp</item>
     </style>
 
     <style name="AppBaseThemeDark" parent="@style/Theme.MaterialComponents.NoActionBar">
-        <item name="aboutScreenColor">@color/blue_300</item>
+        <item name="alertDialogTheme">@style/ThemeOverlay.Ds.AlertDialog</item>
+        <item name="aboutScreenColor">?attr/dsAccent</item>
         <item name="actionModeBackground">@color/grey_800</item>
         <item name="android:alertDialogTheme">@style/Theme.AppCompat.Dialog</item>
         <item name="android:dialogTheme">@style/Theme.AppCompat.Dialog</item>
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
-        <item name="android:textColor">@color/grey_100</item>
-        <item name="cardBackground">@drawable/card_dark_background</item>
-        <item name="cardBgColor">@color/grey_850</item>
+        <item name="android:textColor">?attr/dsInk</item>
+        <item name="cardBgColor">?attr/dsSurfaceRaised</item>
         <item name="colorAccent">?aboutScreenColor</item>
         <item name="colorPrimary">@color/grey_950</item>
         <item name="colorPrimaryDark">@color/black</item>
         <item name="dialogIconChangeColor">@drawable/ic_action_color_dark</item>
-        <item name="headerBackgroundColor">@color/grey_900</item>
-        <item name="highlightedBackgroundColor">@color/grey_800</item>
+        <item name="headerBackgroundColor">?attr/dsSurface</item>
+        <item name="highlightedBackgroundColor">?attr/dsAccentTint</item>
         <item name="iconAdd">@drawable/ic_action_add_dark</item>
         <item name="iconArchive">@drawable/ic_action_archive_dark</item>
         <item name="iconChangeColor">@drawable/ic_action_color_dark</item>
@@ -90,73 +103,124 @@
         <item name="iconUnarchive">@drawable/ic_action_unarchive_dark</item>
         <item name="iconArrowUp">@drawable/ic_arrow_up_dark</item>
         <item name="iconArrowDown">@drawable/ic_arrow_down_dark</item>
-        <item name="contrast0">@color/grey_900</item>
-        <item name="contrast20">@color/grey_800</item>
-        <item name="contrast40">@color/grey_750</item>
-        <item name="contrast60">@color/grey_500</item>
-        <item name="contrast80">@color/grey_300</item>
-        <item name="contrast100">@color/grey_100</item>
-        <item name="palette">@array/darkPalette</item>
+        <item name="contrast0">?attr/dsSurfaceRaised</item>
+        <item name="contrast20">?attr/dsLine</item>
+        <item name="contrast40">?attr/dsLineStrong</item>
+        <item name="contrast60">?attr/dsInkMuted</item>
+        <item name="contrast80">?attr/dsInk</item>
+        <item name="contrast100">?attr/dsInk</item>
+        <item name="palette">@array/dsPaletteDark</item>
         <item name="popupMenuBackground">@color/black</item>
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
         <item name="scrollableRecyclerViewStyle">@style/ScrollableRecyclerViewStyle</item>
-        <item name="selectedBackground">@drawable/selected_box</item>
-        <item name="textColorAlertDialogListItem">@color/grey_100</item>
+        <item name="textColorAlertDialogListItem">?attr/dsInk</item>
         <item name="toolbarPopupTheme">@style/ThemeOverlay.AppCompat</item>
-        <item name="useHabitColorAsPrimary">false</item>
+        <item name="dsToolbarTheme">@style/ThemeOverlay.AppCompat.Dark</item>
         <item name="widgetBackgroundAlpha">1</item>
         <item name="widgetShadowAlpha">0.25</item>
         <item name="windowActionModeOverlay">true</item>
-        <item name="windowBackgroundColor">@color/grey_900</item>
+        <item name="windowBackgroundColor">?attr/dsSurface</item>
         <item name="buttonBarNegativeButtonStyle">@style/DialogButtonStyle</item>
         <item name="buttonBarPositiveButtonStyle">@style/DialogButtonStyle</item>
-        <item name="android:textColorAlertDialogListItem">@color/grey_100</item>
+        <item name="android:textColorAlertDialogListItem">?attr/dsInk</item>
         <item name="singleLineTitle">false</item>
-        <item name="dialogFormLabelColor">@color/grey_800</item>
+        <item name="dialogFormLabelColor">?attr/dsSurfaceRaised</item>
+        <item name="dsSurface">@color/ds_dark_surface</item>
+        <item name="dsSurfaceRaised">@color/ds_dark_surface_raised</item>
+        <item name="dsInk">@color/ds_dark_ink</item>
+        <item name="dsInkMuted">@color/ds_dark_ink_muted</item>
+        <item name="dsLine">@color/ds_dark_line</item>
+        <item name="dsLineStrong">@color/ds_dark_line_strong</item>
+        <item name="dsAccent">@color/ds_dark_accent</item>
+        <item name="dsOnAccent">@color/ds_dark_on_accent</item>
+        <item name="dsAccentTint">@color/ds_dark_accent_tint</item>
+        <item name="dsTodayRing">@color/ds_dark_today_ring</item>
+        <item name="dsOnHabit">@color/ds_dark_on_habit</item>
+        <item name="dsOnHabitText">@color/ds_dark_on_habit_text</item>
+        <item name="dsScrim">@color/ds_dark_scrim</item>
+        <item name="dsCardElevation">0dp</item>
     </style>
 
     <style name="AppBaseThemeDark.PureBlack">
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
-        <item name="android:textColor">@color/grey_200</item>
-        <item name="cardBackground">@drawable/card_amoled_background</item>
-        <item name="cardBgColor">@color/black</item>
+        <item name="android:textColor">?attr/dsInk</item>
+        <item name="cardBgColor">?attr/dsSurfaceRaised</item>
         <item name="colorPrimary">@color/black</item>
         <item name="colorPrimaryDark">@color/black</item>
-        <item name="headerBackgroundColor">@color/black</item>
-        <item name="highlightedBackgroundColor">@color/black</item>
-        <item name="contrast0">@color/black</item>
-        <item name="contrast20">@color/grey_900</item>
-        <item name="contrast40">@color/grey_800</item>
-        <item name="contrast60">@color/grey_500</item>
-        <item name="contrast80">@color/grey_400</item>
-        <item name="contrast100">@color/grey_200</item>
-        <item name="selectedBackground">@drawable/selected_box</item>
-        <item name="textColorAlertDialogListItem">@color/grey_100</item>
-        <item name="windowBackgroundColor">@color/black</item>
+        <item name="headerBackgroundColor">?attr/dsSurface</item>
+        <item name="highlightedBackgroundColor">?attr/dsAccentTint</item>
+        <item name="contrast0">?attr/dsSurfaceRaised</item>
+        <item name="contrast20">?attr/dsLine</item>
+        <item name="contrast40">?attr/dsLineStrong</item>
+        <item name="contrast60">?attr/dsInkMuted</item>
+        <item name="contrast80">?attr/dsInk</item>
+        <item name="contrast100">?attr/dsInk</item>
+        <item name="textColorAlertDialogListItem">?attr/dsInk</item>
+        <item name="windowBackgroundColor">?attr/dsSurface</item>
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material.PureBlack</item>
-        <item name="dialogFormLabelColor">@color/grey_800</item>
+        <item name="dialogFormLabelColor">?attr/dsSurfaceRaised</item>
+        <item name="dsSurface">@color/ds_black_surface</item>
+        <item name="dsSurfaceRaised">@color/ds_black_surface_raised</item>
+        <item name="dsInk">@color/ds_black_ink</item>
+        <item name="dsInkMuted">@color/ds_black_ink_muted</item>
+        <item name="dsLine">@color/ds_black_line</item>
+        <item name="dsLineStrong">@color/ds_black_line_strong</item>
+        <item name="dsAccent">@color/ds_black_accent</item>
+        <item name="dsOnAccent">@color/ds_black_on_accent</item>
+        <item name="dsAccentTint">@color/ds_black_accent_tint</item>
+        <item name="dsTodayRing">@color/ds_black_today_ring</item>
+        <item name="dsOnHabit">@color/ds_black_on_habit</item>
+        <item name="dsOnHabitText">@color/ds_black_on_habit_text</item>
+        <item name="dsScrim">@color/ds_black_scrim</item>
+        <item name="dsCardElevation">0dp</item>
     </style>
 
     <style name="BaseDialog" parent="Theme.AppCompat.Light.Dialog">
-        <item name="contrast0">@color/white</item>
-        <item name="contrast20">@color/grey_300</item>
-        <item name="contrast40">@color/grey_350</item>
-        <item name="contrast60">@color/grey_500</item>
-        <item name="contrast80">@color/grey_700</item>
-        <item name="contrast100">@color/grey_800</item>
-        <item name="palette">@array/lightPalette</item>
-        <item name="dialogFormLabelColor">@color/white</item>
+        <item name="contrast0">?attr/dsSurfaceRaised</item>
+        <item name="contrast20">?attr/dsLine</item>
+        <item name="contrast40">?attr/dsLineStrong</item>
+        <item name="contrast60">?attr/dsInkMuted</item>
+        <item name="contrast80">?attr/dsInk</item>
+        <item name="contrast100">?attr/dsInk</item>
+        <item name="palette">@array/dsPaletteLight</item>
+        <item name="dialogFormLabelColor">?attr/dsSurfaceRaised</item>
+        <item name="dsSurface">@color/ds_light_surface</item>
+        <item name="dsSurfaceRaised">@color/ds_light_surface_raised</item>
+        <item name="dsInk">@color/ds_light_ink</item>
+        <item name="dsInkMuted">@color/ds_light_ink_muted</item>
+        <item name="dsLine">@color/ds_light_line</item>
+        <item name="dsLineStrong">@color/ds_light_line_strong</item>
+        <item name="dsAccent">@color/ds_light_accent</item>
+        <item name="dsOnAccent">@color/ds_light_on_accent</item>
+        <item name="dsAccentTint">@color/ds_light_accent_tint</item>
+        <item name="dsTodayRing">@color/ds_light_today_ring</item>
+        <item name="dsOnHabit">@color/ds_light_on_habit</item>
+        <item name="dsOnHabitText">@color/ds_light_on_habit_text</item>
+        <item name="dsScrim">@color/ds_light_scrim</item>
     </style>
 
     <style name="BaseDialogDark" parent="Theme.AppCompat.Dialog">
-        <item name="contrast0">@color/grey_900</item>
-        <item name="contrast20">@color/grey_800</item>
-        <item name="contrast40">@color/grey_750</item>
-        <item name="contrast60">@color/grey_500</item>
-        <item name="contrast80">@color/grey_300</item>
-        <item name="contrast100">@color/grey_100</item>
-        <item name="palette">@array/darkPalette</item>
-        <item name="dialogFormLabelColor">@color/grey_800</item>
+        <item name="contrast0">?attr/dsSurfaceRaised</item>
+        <item name="contrast20">?attr/dsLine</item>
+        <item name="contrast40">?attr/dsLineStrong</item>
+        <item name="contrast60">?attr/dsInkMuted</item>
+        <item name="contrast80">?attr/dsInk</item>
+        <item name="contrast100">?attr/dsInk</item>
+        <item name="palette">@array/dsPaletteDark</item>
+        <item name="dialogFormLabelColor">?attr/dsSurfaceRaised</item>
+        <item name="dsSurface">@color/ds_dark_surface</item>
+        <item name="dsSurfaceRaised">@color/ds_dark_surface_raised</item>
+        <item name="dsInk">@color/ds_dark_ink</item>
+        <item name="dsInkMuted">@color/ds_dark_ink_muted</item>
+        <item name="dsLine">@color/ds_dark_line</item>
+        <item name="dsLineStrong">@color/ds_dark_line_strong</item>
+        <item name="dsAccent">@color/ds_dark_accent</item>
+        <item name="dsOnAccent">@color/ds_dark_on_accent</item>
+        <item name="dsAccentTint">@color/ds_dark_accent_tint</item>
+        <item name="dsTodayRing">@color/ds_dark_today_ring</item>
+        <item name="dsOnHabit">@color/ds_dark_on_habit</item>
+        <item name="dsOnHabitText">@color/ds_dark_on_habit_text</item>
+        <item name="dsScrim">@color/ds_dark_scrim</item>
     </style>
 
     <style name="PreferenceThemeOverlay.v14.Material.PureBlack">
@@ -171,8 +235,15 @@
         <item name="contrast60">@color/white_aa</item>
         <item name="contrast80">@color/grey_800</item>
         <item name="contrast100">@color/white</item>
-        <item name="palette">@array/transparentWidgetPalette</item>
+        <item name="palette">@array/dsPaletteLight</item>
         <item name="widgetShadowAlpha">0</item>
+        <item name="android:textColor">@color/grey_100</item>
+        <item name="aboutScreenColor">@color/blue_300</item>
+        <item name="contrast40">@color/grey_750</item>
+        <item name="headerBackgroundColor">@color/grey_900</item>
+        <item name="highlightedBackgroundColor">@color/grey_800</item>
+        <item name="windowBackgroundColor">@color/grey_900</item>
+        <item name="dialogFormLabelColor">@color/grey_800</item>
     </style>
 
     <style name="DatePickerDark" parent="ThemeOverlay.MaterialComponents.MaterialCalendar">
@@ -181,8 +252,23 @@
     </style>
 
     <style name="DialogButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
-        <item name="android:textSize">@dimen/regularTextSize</item>
-        <item name="android:textColor">@color/grey_100</item>
+        <item name="android:textAppearance">@style/TextAppearance.Ds.Label</item>
+        <item name="android:textColor">?attr/dsAccent</item>
+    </style>
+
+    <style name="Ds.DialogWindowTitle" parent="RtlOverlay.DialogWindowTitle.AppCompat">
+        <item name="android:textAppearance">@style/TextAppearance.Ds.TitleLarge</item>
+    </style>
+
+    <style name="ThemeOverlay.Ds.AlertDialog" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <item name="android:windowBackground">@drawable/ds_dialog_background</item>
+        <item name="android:windowTitleStyle">@style/Ds.DialogWindowTitle</item>
+        <item name="android:textColorPrimary">?attr/dsInk</item>
+        <item name="android:textColorSecondary">?attr/dsInkMuted</item>
+        <item name="android:textColor">?attr/dsInk</item>
+        <item name="buttonBarNegativeButtonStyle">@style/DialogButtonStyle</item>
+        <item name="buttonBarNeutralButtonStyle">@style/DialogButtonStyle</item>
+        <item name="buttonBarPositiveButtonStyle">@style/DialogButtonStyle</item>
     </style>
 
     <style name="SmallSpinner">
@@ -193,35 +279,31 @@
     <style name="CardList">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">?windowBackgroundColor</item>
+        <item name="android:background">?attr/dsSurface</item>
         <item name="android:orientation">vertical</item>
+        <item name="android:paddingTop">@dimen/ds_space_8</item>
     </style>
 
     <style name="CardCommon">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:orientation">vertical</item>
-        <item name="android:paddingTop">16dp</item>
-        <item name="android:paddingBottom">16dp</item>
-        <item name="android:paddingLeft">16dp</item>
-        <item name="android:paddingRight">4dp</item>
-        <item name="android:layout_marginBottom">3dp</item>
-        <item name="android:layout_marginLeft">3dp</item>
-        <item name="android:layout_marginRight">3dp</item>
-        <item name="android:background">?cardBackground</item>
+        <item name="android:padding">@dimen/ds_space_16</item>
+        <item name="android:layout_marginBottom">@dimen/ds_space_8</item>
+        <item name="android:layout_marginLeft">@dimen/ds_space_16</item>
+        <item name="android:layout_marginRight">@dimen/ds_space_16</item>
+        <item name="android:background">@drawable/ds_card_background</item>
+        <item name="android:elevation">?attr/dsCardElevation</item>
+        <item name="android:outlineProvider">background</item>
     </style>
 
-    <style name="Card" parent="CardCommon">
-        <item name="android:layout_marginBottom">1dp</item>
-        <item name="android:elevation">1dp</item>
-        <item name="android:background">?attr/cardBgColor</item>
-    </style>
+    <style name="Card" parent="CardCommon" />
 
     <style name="CardHeader">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginBottom">12dp</item>
-        <item name="android:textSize">@dimen/regularTextSize</item>
+        <item name="android:layout_marginBottom">@dimen/ds_space_12</item>
+        <item name="android:textAppearance">@style/TextAppearance.Ds.Label</item>
     </style>
 
     <style name="About" />
@@ -252,8 +334,12 @@
     <style name="Toolbar">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">?colorPrimary</item>
-        <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="android:minHeight">64dp</item>
+        <item name="android:background">?attr/dsSurface</item>
+        <item name="android:theme">?attr/dsToolbarTheme</item>
+        <item name="titleTextAppearance">@style/TextAppearance.Ds.Display</item>
+        <item name="contentInsetStart">@dimen/ds_space_16</item>
+        <item name="contentInsetStartWithNavigation">@dimen/ds_space_16</item>
     </style>
 
     <style name="Preference.Category.Material">
@@ -274,30 +360,52 @@
     </style>
 
     <style name="SelectHabitTypeButton">
-        <item name="android:orientation">vertical</item>
-        <item name="android:paddingTop">14dp</item>
-        <item name="android:paddingBottom">16dp</item>
-        <item name="android:paddingLeft">16dp</item>
-        <item name="android:paddingRight">16dp</item>
-        <item name="android:layout_marginLeft">16dp</item>
-        <item name="android:layout_marginRight">16dp</item>
-        <item name="android:layout_marginBottom">8dp</item>
-        <item name="android:layout_marginTop">8dp</item>
-        <item name="android:elevation">6dp</item>
-        <item name="android:background">@drawable/round_ripple</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:padding">@dimen/ds_space_16</item>
+        <item name="android:layout_marginBottom">@dimen/ds_space_8</item>
+        <item name="android:background">@drawable/ds_choice_ripple</item>
         <item name="android:clickable">true</item>
-        <item name="android:selectable">true</item>
+        <item name="android:focusable">true</item>
     </style>
 
     <style name="SelectHabitTypeButtonTitle">
-        <item name="android:textSize">20sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.Ds.HabitName</item>
+        <item name="android:textColor">?attr/dsInk</item>
+        <item name="android:layout_marginBottom">@dimen/ds_space_4</item>
     </style>
 
     <style name="SelectHabitTypeButtonBody">
-        <item name="android:textSize">@dimen/smallTextSize</item>
-        <item name="android:lineSpacingMultiplier">1.25</item>
+        <item name="android:textAppearance">@style/TextAppearance.Ds.Label</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">?attr/dsInkMuted</item>
+    </style>
+
+    <style name="SelectHabitTypeButtonChevron">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/ds_space_16</item>
+        <item name="android:importantForAccessibility">no</item>
+        <item name="android:src">@drawable/ds_chevron_right</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.Ds.Sheet" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">@dimen/ds_radius_lg</item>
+        <item name="cornerSizeTopRight">@dimen/ds_radius_lg</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
+    <style name="Widget.Ds.BottomSheet" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="backgroundTint">?attr/dsSurfaceRaised</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.Ds.Sheet</item>
+    </style>
+
+    <!-- dsScrim is #a0000000, i.e. 63% black; the dialog window can only dim with black -->
+    <style name="ThemeOverlay.Ds.BottomSheetDialog" parent="ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Widget.Ds.BottomSheet</item>
+        <item name="android:backgroundDimAmount">0.63</item>
     </style>
 
     <style name="PopupAnimation">
@@ -317,44 +425,44 @@
     <style name="FormLabel">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">8dp</item>
-        <item name="android:layout_marginTop">-15dp</item>
-        <item name="android:layout_marginBottom">-4dp</item>
-        <item name="android:background">?attr/contrast0</item>
-        <item name="android:paddingStart">8dp</item>
-        <item name="android:paddingEnd">8dp</item>
-        <item name="android:textSize">@dimen/smallerTextSize</item>
+        <item name="android:layout_marginBottom">@dimen/ds_space_4</item>
+        <item name="android:textAppearance">@style/TextAppearance.Ds.Label</item>
     </style>
 
     <style name="FormInput">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@color/transparent</item>
-        <item name="android:paddingLeft">16dp</item>
-        <item name="android:paddingRight">16dp</item>
-        <item name="android:paddingTop">16dp</item>
-        <item name="android:paddingBottom">16dp</item>
-        <item name="android:textSize">@dimen/regularTextSize</item>
+        <item name="android:paddingLeft">@dimen/ds_space_16</item>
+        <item name="android:paddingRight">@dimen/ds_space_16</item>
+        <item name="android:paddingTop">@dimen/ds_space_12</item>
+        <item name="android:paddingBottom">@dimen/ds_space_12</item>
+        <item name="android:textAppearance">@style/TextAppearance.Ds.Body</item>
+        <item name="android:textColorHint">?attr/dsInkMuted</item>
     </style>
 
     <style name="FormDropdown">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:drawableEnd">@drawable/ic_arrow_drop_down_dark</item>
-        <item name="android:paddingTop">16dp</item>
-        <item name="android:paddingBottom">14dp</item>
-        <item name="android:paddingLeft">16dp</item>
-        <item name="android:paddingRight">16dp</item>
-        <item name="android:textSize">@dimen/regularTextSize</item>
+        <item name="android:drawableTint">?attr/dsInkMuted</item>
+        <item name="android:paddingTop">@dimen/ds_space_12</item>
+        <item name="android:paddingBottom">@dimen/ds_space_12</item>
+        <item name="android:paddingLeft">@dimen/ds_space_16</item>
+        <item name="android:paddingRight">@dimen/ds_space_16</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:textAppearance">@style/TextAppearance.Ds.Body</item>
     </style>
 
     <style name="FormInnerBox">
-        <item name="android:background">@drawable/bg_input_group</item>
+        <item name="android:background">@drawable/ds_input_background</item>
+        <item name="android:addStatesFromChildren">true</item>
         <item name="android:clipChildren">false</item>
         <item name="android:clipToPadding">false</item>
         <item name="android:orientation">vertical</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
     </style>
 
     <style name="FormOuterBox">
@@ -363,37 +471,30 @@
         <item name="android:clipChildren">false</item>
         <item name="android:clipToPadding">false</item>
         <item name="android:orientation">vertical</item>
-        <item name="android:paddingBottom">8dp</item>
-        <item name="android:paddingTop">4dp</item>
-        <item name="android:paddingLeft">4dp</item>
-        <item name="android:paddingRight">4dp</item>
+        <item name="android:paddingBottom">@dimen/ds_space_16</item>
     </style>
 
     <style name="FormDivider">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1dp</item>
-        <item name="android:background">?attr/contrast20</item>
+        <item name="android:background">?attr/dsLine</item>
     </style>
 
     <style name="DialogFormInnerBox">
-        <item name="android:background">@drawable/dialog_bg_input_box</item>
+        <item name="android:background">@drawable/ds_input_background</item>
+        <item name="android:addStatesFromChildren">true</item>
         <item name="android:clipChildren">false</item>
         <item name="android:clipToPadding">false</item>
         <item name="android:orientation">vertical</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
     </style>
 
     <style name="DialogFormLabel">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">8dp</item>
-        <item name="android:layout_marginTop">-15dp</item>
-        <item name="android:layout_marginBottom">-4dp</item>
-        <item name="android:paddingStart">8dp</item>
-        <item name="android:background">?attr/dialogFormLabelColor</item>
-        <item name="android:paddingEnd">8dp</item>
-        <item name="android:textSize">@dimen/smallTextSize</item>
+        <item name="android:layout_marginBottom">@dimen/ds_space_4</item>
+        <item name="android:textAppearance">@style/TextAppearance.Ds.Label</item>
     </style>
 
     <style name="CheckmarkPopupBtn">
@@ -404,7 +505,8 @@
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
         <item name="android:background">@drawable/ripple_transparent</item>
-        <item name="android:textSize">@dimen/smallerTextSize</item>
+        <item name="android:textAppearance">@style/TextAppearance.Ds.Label</item>
+        <item name="android:textColor">?attr/dsInk</item>
     </style>
 
     <style name="NumericalPopupBtn">
@@ -412,14 +514,13 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:paddingStart">12dp</item>
         <item name="android:paddingEnd">12dp</item>
-        <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
         <item name="android:background">@drawable/ripple_transparent</item>
-        <item name="android:textSize">@dimen/smallerTextSize</item>
+        <item name="android:textAppearance">@style/TextAppearance.Ds.Label</item>
+        <item name="android:textColor">?attr/dsInk</item>
         <item name="android:textAllCaps">true</item>
-
     </style>
 
     <style name="Theme.Transparent" parent="android:Theme">

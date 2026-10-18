@@ -28,6 +28,7 @@ import org.isoron.uhabits.core.ui.screens.habits.show.views.OverviewCardState
 import org.isoron.uhabits.databinding.ShowHabitOverviewBinding
 import org.isoron.uhabits.utils.StyledResources
 import kotlin.math.abs
+import kotlin.math.roundToInt
 
 class OverviewCardView(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
 
@@ -42,21 +43,27 @@ class OverviewCardView(context: Context, attrs: AttributeSet) : LinearLayout(con
     }
 
     fun setState(state: OverviewCardState) {
-        val androidColor = state.theme.color(state.color).toInt()
-        val res = StyledResources(context)
-        val inactiveColor = res.getColor(R.attr.contrast60)
-        binding.monthDiffLabel.setTextColor(if (state.scoreMonthDiff >= 0) androidColor else inactiveColor)
+        val theme = state.theme
+        val ink = theme.habitInk(state.color).toInt()
+        val inkMuted = StyledResources(context).getColor(R.attr.dsInkMuted)
+        binding.monthDiffLabel.setTextColor(if (state.scoreMonthDiff >= 0) ink else inkMuted)
         binding.monthDiffLabel.text = formatPercentageDiff(state.scoreMonthDiff)
-        binding.scoreLabel.setTextColor(androidColor)
-        binding.scoreLabel.text = String.format("%.0f%%", state.scoreToday * 100)
-        binding.scoreRing.setColor(androidColor)
-        binding.scoreRing.setPercentage(state.scoreToday)
-
-        binding.title.setTextColor(androidColor)
-        binding.totalCountLabel.setTextColor(androidColor)
+        binding.scoreRing.apply {
+            setColor(theme.habitFill(state.color).toInt())
+            setInactiveColor(theme.habitTint(state.color).toInt())
+            setTextColor(ink)
+            setBoldText(true)
+            setText(String.format("%.0f%%", state.scoreToday * 100))
+            setPercentage(state.scoreToday)
+            contentDescription = resources.getString(
+                R.string.cd_habit_strength,
+                (state.scoreToday * 100).roundToInt()
+            )
+        }
+        binding.totalCountLabel.setTextColor(ink)
         binding.totalCountLabel.text = state.totalCount.toString()
         binding.totalCountTitle.setText(if (state.isQuit) R.string.slips else R.string.total)
-        binding.yearDiffLabel.setTextColor(if (state.scoreYearDiff >= 0) androidColor else inactiveColor)
+        binding.yearDiffLabel.setTextColor(if (state.scoreYearDiff >= 0) ink else inkMuted)
         binding.yearDiffLabel.text = formatPercentageDiff(state.scoreYearDiff)
         postInvalidate()
     }

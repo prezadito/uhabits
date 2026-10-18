@@ -21,15 +21,15 @@ package org.isoron.uhabits.activities.habits.list.views
 
 import android.animation.AnimatorListenerAdapter
 import android.content.Context
-import android.graphics.Color.WHITE
-import android.graphics.Typeface
 import android.view.View
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+import android.view.ViewOutlineProvider
 import android.widget.LinearLayout
 import android.widget.TextView
 import org.isoron.uhabits.R
 import org.isoron.uhabits.core.ui.screens.habits.list.HintList
 import org.isoron.uhabits.utils.dp
+import org.isoron.uhabits.utils.sres
 
 class HintView(
     context: Context,
@@ -42,20 +42,20 @@ class HintView(
         isClickable = true
         visibility = GONE
         orientation = VERTICAL
-        val p1 = dp(16.0f).toInt()
-        val p2 = dp(4.0f).toInt()
-        setPadding(p1, p1, p2, p1)
-        setBackgroundColor(resources.getColor(R.color.indigo_500))
+        val padding = dp(16.0f).toInt()
+        setPadding(padding, padding, padding, padding)
+        setBackgroundResource(R.drawable.ds_hint_background)
+        elevation = sres.getDimension(R.attr.dsCardElevation).toFloat()
+        outlineProvider = ViewOutlineProvider.BACKGROUND
 
         val hintTitle = TextView(context).apply {
-            setTextColor(WHITE)
-            setTypeface(null, Typeface.BOLD)
+            setTextAppearance(R.style.TextAppearance_Ds_Label)
             text = resources.getString(R.string.hint_title)
         }
 
         hintContent = TextView(context).apply {
-            setTextColor(WHITE)
-            setPadding(0, dp(5.0f).toInt(), 0, 0)
+            setTextAppearance(R.style.TextAppearance_Ds_Body)
+            setPadding(0, dp(4.0f).toInt(), 0, 0)
         }
 
         addView(hintTitle, WRAP_CONTENT, WRAP_CONTENT)

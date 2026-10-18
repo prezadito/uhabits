@@ -23,6 +23,7 @@ import android.content.Context
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.FrameLayout
 import android.widget.RelativeLayout
+import androidx.recyclerview.widget.RecyclerView
 import me.tatarka.inject.annotations.Inject
 import nl.dionsegijn.konfetti.xml.KonfettiView
 import org.isoron.uhabits.R
@@ -35,7 +36,6 @@ import org.isoron.uhabits.activities.habits.list.views.HabitCardListViewFactory
 import org.isoron.uhabits.activities.habits.list.views.HeaderView
 import org.isoron.uhabits.activities.habits.list.views.HintView
 import org.isoron.uhabits.core.models.ModelObservable
-import org.isoron.uhabits.core.models.PaletteColor
 import org.isoron.uhabits.core.preferences.Preferences
 import org.isoron.uhabits.core.tasks.TaskRunner
 import org.isoron.uhabits.core.ui.screens.habits.list.HintListFactory
@@ -46,9 +46,9 @@ import org.isoron.uhabits.utils.addAtBottom
 import org.isoron.uhabits.utils.addAtTop
 import org.isoron.uhabits.utils.addBelow
 import org.isoron.uhabits.utils.buildToolbar
-import org.isoron.uhabits.utils.currentTheme
 import org.isoron.uhabits.utils.dim
 import org.isoron.uhabits.utils.dp
+import org.isoron.uhabits.utils.setScrolled
 import org.isoron.uhabits.utils.setupToolbar
 import org.isoron.uhabits.utils.sres
 import kotlin.math.max
@@ -94,14 +94,23 @@ class ListHabitsRootView(
                 it.topMargin = dp(-6.0f).toInt()
             }
             addAtBottom(hintView)
+            (hintView.layoutParams as MarginLayoutParams).setMargins(
+                dp(16f).toInt(),
+                0,
+                dp(16f).toInt(),
+                dp(8f).toInt()
+            )
         }
         rootView.setupToolbar(
             toolbar = tbar,
             title = context.applicationInfo.loadLabel(context.packageManager).toString(),
-            color = PaletteColor(17),
-            displayHomeAsUpEnabled = false,
-            theme = currentTheme()
+            displayHomeAsUpEnabled = false
         )
+        listView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                tbar.setScrolled(recyclerView.canScrollVertically(-1))
+            }
+        })
         addView(rootView, MATCH_PARENT, MATCH_PARENT)
         listAdapter.setListView(listView)
     }
@@ -140,10 +149,9 @@ class ListHabitsRootView(
     }
 
     private fun getCheckmarkCount(): Int {
-        val nameWidth = dim(R.dimen.habitNameWidth)
         val buttonWidth = dim(R.dimen.checkmarkWidth)
-        val labelWidth = max((measuredWidth / 3).toFloat(), nameWidth)
-        val buttonCount = ((measuredWidth - labelWidth) / buttonWidth).toInt()
+        val cardInsets = 2 * dp(16f) + 2 * dp(12f)
+        val buttonCount = ((measuredWidth - cardInsets) / buttonWidth).toInt()
         return min(MAX_CHECKMARK_COUNT, max(0, buttonCount))
     }
 

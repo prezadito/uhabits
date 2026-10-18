@@ -22,14 +22,12 @@ package org.isoron.uhabits.widgets
 import android.app.PendingIntent
 import android.content.Context
 import android.view.View
-import org.isoron.platform.gui.toInt
 import org.isoron.platform.time.DateUtils
 import org.isoron.platform.time.getToday
 import org.isoron.uhabits.R
 import org.isoron.uhabits.core.models.Entry
 import org.isoron.uhabits.core.models.Habit
 import org.isoron.uhabits.core.models.getCleanTime
-import org.isoron.uhabits.core.ui.views.WidgetTheme
 import org.isoron.uhabits.widgets.views.CheckmarkWidgetView
 
 open class CheckmarkWidget(
@@ -57,7 +55,7 @@ open class CheckmarkWidget(
         (widgetView as CheckmarkWidgetView).apply {
             val today = getToday()
             setBackgroundAlpha(preferedBackgroundAlpha)
-            activeColor = WidgetTheme().color(habit.color).toInt()
+            habitPaletteColor = habit.color
             name = habit.name
             entryValue = habit.computedEntries.get(today).value
             if (habit.isQuit) {

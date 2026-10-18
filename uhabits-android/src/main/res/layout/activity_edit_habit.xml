@@ -24,7 +24,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/contrast0"
+    android:background="?attr/dsSurface"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context=".activities.habits.edit.EditHabitActivity">
@@ -37,25 +37,25 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:elevation="2dp"
+            android:background="?attr/dsSurface"
             android:gravity="end"
             android:minHeight="?attr/actionBarSize"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:theme="?attr/dsToolbarTheme"
+            app:contentInsetStart="@dimen/ds_space_16"
             app:title="@string/create_habit"
-            app:titleTextColor="@color/white">
+            app:titleTextAppearance="@style/TextAppearance.Ds.TitleLarge"
+            app:titleTextColor="?attr/dsInk">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonSave"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="@dimen/ds_space_8"
                 android:text="@string/save"
-                android:textColor="@color/white"
-                app:rippleColor="@color/white"
-                app:strokeColor="@color/white" />
+                android:textAppearance="@style/TextAppearance.Ds.Label"
+                android:textColor="?attr/dsAccent" />
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -65,15 +65,15 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:background="?attr/contrast0">
+        android:background="?attr/dsSurface">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="8dp"
-            android:paddingLeft="4dp"
-            android:paddingRight="4dp">
+            android:paddingTop="@dimen/ds_space_16"
+            android:paddingLeft="@dimen/ds_space_16"
+            android:paddingRight="@dimen/ds_space_16">
 
             <!-- Title and color -->
             <LinearLayout
@@ -83,14 +83,14 @@
                 android:baselineAligned="false">
 
                 <!-- Habit Title -->
-                <FrameLayout
+                <LinearLayout
                     style="@style/FormOuterBox"
                     android:layout_width="0dp"
                     android:layout_weight="1">
-                    <LinearLayout style="@style/FormInnerBox">
-                        <TextView
+<TextView
                             style="@style/FormLabel"
                             android:text="@string/name" />
+<LinearLayout style="@style/FormInnerBox">
                         <EditText
                             android:id="@+id/nameInput"
                             style="@style/FormInput"
@@ -100,37 +100,49 @@
                             android:hint="@string/yes_or_no_short_example"
                             />
                     </LinearLayout>
-                </FrameLayout>
+</LinearLayout>
 
                 <!-- Habit Color -->
-                <FrameLayout
+                <LinearLayout
                     style="@style/FormOuterBox"
-                    android:layout_width="80dp"
-                    android:layout_height="match_parent">
-                    <LinearLayout style="@style/FormInnerBox">
+                    android:layout_width="wrap_content"
+                    android:layout_marginStart="@dimen/ds_space_16">
+                    <TextView
+                        style="@style/FormLabel"
+                        android:text="@string/color" />
+                    <LinearLayout
+                        android:id="@+id/colorButton"
+                        style="@style/FormInnerBox"
+                        android:layout_width="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:minHeight="48dp"
+                        android:orientation="horizontal"
+                        android:paddingStart="@dimen/ds_space_16"
+                        android:paddingEnd="@dimen/ds_space_16">
+                        <View
+                            android:id="@+id/colorSwatch"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:background="@drawable/ds_color_swatch"
+                            android:importantForAccessibility="no" />
                         <TextView
-                            style="@style/FormLabel"
-                            android:text="@string/color" />
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/colorButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginRight="16dp"
-                            android:layout_marginBottom="8dp"
-                            android:backgroundTint="#E23673" />
-
+                            android:id="@+id/colorName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/ds_space_12"
+                            android:textAppearance="@style/TextAppearance.Ds.Body" />
                     </LinearLayout>
-                </FrameLayout>
+                </LinearLayout>
             </LinearLayout>
 
             <!-- Habit Question -->
-            <FrameLayout style="@style/FormOuterBox">
-                <LinearLayout style="@style/FormInnerBox">
-                    <TextView
+            <LinearLayout style="@style/FormOuterBox">
+<TextView
                         style="@style/FormLabel"
                         android:text="@string/question" />
+<LinearLayout style="@style/FormInnerBox">
                     <EditText
                         android:id="@+id/questionInput"
                         style="@style/FormInput"
@@ -138,32 +150,32 @@
                         android:hint="@string/example_question_boolean"
                          />
                 </LinearLayout>
-            </FrameLayout>
+</LinearLayout>
 
             <!-- Frequency -->
-            <FrameLayout
+            <LinearLayout
                 android:id="@+id/frequencyOuterBox"
                 style="@style/FormOuterBox">
-                <LinearLayout style="@style/FormInnerBox">
-                    <TextView
+<TextView
                         style="@style/FormLabel"
                         android:text="@string/frequency" />
+<LinearLayout style="@style/FormInnerBox">
                     <TextView
                         style="@style/FormDropdown"
                         android:id="@+id/boolean_frequency_picker"
                         android:text="@string/every_day" />
                 </LinearLayout>
-            </FrameLayout>
+</LinearLayout>
 
             <!-- Quit date and time -->
-            <FrameLayout
+            <LinearLayout
                 android:id="@+id/quitSinceOuterBox"
                 style="@style/FormOuterBox"
                 android:visibility="gone">
-                <LinearLayout style="@style/FormInnerBox">
-                    <TextView
+<TextView
                         style="@style/FormLabel"
                         android:text="@string/quit_since" />
+<LinearLayout style="@style/FormInnerBox">
 
                     <TextView
                         style="@style/FormDropdown"
@@ -177,16 +189,16 @@
                         android:id="@+id/quitTimePicker"
                         android:text="" />
                 </LinearLayout>
-            </FrameLayout>
+</LinearLayout>
 
             <!-- Target value, unit and frequency -->
-            <FrameLayout
+            <LinearLayout
                 android:id="@+id/unitOuterBox"
                 style="@style/FormOuterBox">
-                <LinearLayout style="@style/FormInnerBox">
-                    <TextView
+<TextView
                         style="@style/FormLabel"
                         android:text="@string/unit" />
+<LinearLayout style="@style/FormInnerBox">
                     <EditText
                         style="@style/FormInput"
                         android:id="@+id/unitInput"
@@ -194,7 +206,7 @@
                         android:ems="10"
                         android:hint="@string/measurable_units_example"/>
                 </LinearLayout>
-            </FrameLayout>
+</LinearLayout>
 
             <LinearLayout
                 android:id="@+id/targetOuterBox"
@@ -202,14 +214,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:baselineAligned="false">
-                <FrameLayout
+                <LinearLayout
                     style="@style/FormOuterBox"
                     android:layout_width="0dp"
                     android:layout_weight="1">
-                    <LinearLayout style="@style/FormInnerBox">
-                        <TextView
+<TextView
                             style="@style/FormLabel"
                             android:text="@string/target" />
+<LinearLayout style="@style/FormInnerBox">
                         <EditText
                             style="@style/FormInput"
                             android:id="@+id/targetInput"
@@ -217,15 +229,15 @@
                             android:inputType="numberDecimal"
                             android:hint="@string/example_target"/>
                     </LinearLayout>
-                </FrameLayout>
-                <FrameLayout
+</LinearLayout>
+                <LinearLayout
                     style="@style/FormOuterBox"
                     android:layout_width="0dp"
                     android:layout_weight="1">
-                    <LinearLayout style="@style/FormInnerBox">
-                        <TextView
+<TextView
                             style="@style/FormLabel"
                             android:text="@string/frequency" />
+<LinearLayout style="@style/FormInnerBox">
                         <TextView
                             style="@style/FormDropdown"
                             android:id="@+id/numericalFrequencyPicker"
@@ -233,31 +245,31 @@
                             android:textColor="?attr/contrast100"
                             />
                     </LinearLayout>
-                </FrameLayout>
+</LinearLayout>
             </LinearLayout>
 
-            <FrameLayout
+            <LinearLayout
                 android:id="@+id/targetTypeOuterBox"
                 style="@style/FormOuterBox">
-                <LinearLayout style="@style/FormInnerBox">
-                    <TextView
+<TextView
                         style="@style/FormLabel"
                         android:text="@string/target_type" />
+<LinearLayout style="@style/FormInnerBox">
                     <TextView
                         style="@style/FormDropdown"
                         android:id="@+id/targetTypePicker"
                         android:textColor="?attr/contrast100"
                         />
                 </LinearLayout>
-            </FrameLayout>
+</LinearLayout>
 
 
             <!-- Reminder -->
-            <FrameLayout style="@style/FormOuterBox">
-                <LinearLayout style="@style/FormInnerBox">
-                    <TextView
+            <LinearLayout style="@style/FormOuterBox">
+<TextView
                         style="@style/FormLabel"
                         android:text="@string/reminder" />
+<LinearLayout style="@style/FormInnerBox">
 
                     <TextView
                         style="@style/FormDropdown"
@@ -273,15 +285,15 @@
                         android:id="@+id/reminderDatePicker"
                         android:text="" />
                 </LinearLayout>
-            </FrameLayout>
+</LinearLayout>
 
 
             <!-- Notes -->
-            <FrameLayout style="@style/FormOuterBox">
-                <LinearLayout style="@style/FormInnerBox">
-                    <TextView
+            <LinearLayout style="@style/FormOuterBox">
+<TextView
                         style="@style/FormLabel"
                         android:text="@string/notes" />
+<LinearLayout style="@style/FormInnerBox">
 
                     <EditText
                         android:id="@+id/notesInput"
@@ -289,7 +301,7 @@
                         android:inputType="textCapSentences|textMultiLine"
                         android:hint="@string/example_notes" />
                 </LinearLayout>
-            </FrameLayout>
+</LinearLayout>
         </LinearLayout>
     </ScrollView>
 

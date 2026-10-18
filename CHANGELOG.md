@@ -2,6 +2,18 @@
 
 ## [Unreleased]
 
+## [2.5.0-qol] -- 2026-10-17
+
+### Changed
+
+- Redesign: 12 tuned habit colors (existing habits keep their stored color), refreshed light, dark and pure black themes, a surface app bar with an accent "Create habit" button, rounded habit cards with the score ring, a meta line and a weekday/date header with a today pill, state tiles that show done, skipped and missed days by shape as well as color, a ring and rounded history chart on the habit screen, new form fields, a bottom sheet for choosing the habit type, refreshed dialogs and color picker, and updated widgets
+- Improve contrast: secondary text, borders and chart labels now meet WCAG AA in every theme
+
+### Added
+
+- Screen reader descriptions for day tiles, the list header, the score ring, charts and color swatches
+- A note under the widget opacity setting about readability on light wallpapers
+
 ## [2.4.2-qol] -- 2026-10-17
 
 ### Fixed

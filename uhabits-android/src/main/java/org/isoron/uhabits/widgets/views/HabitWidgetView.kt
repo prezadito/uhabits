@@ -28,8 +28,10 @@ import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import android.widget.TextView
 import org.isoron.uhabits.R
 import org.isoron.uhabits.utils.InterfaceUtils.dpToPixels
+import org.isoron.uhabits.utils.InterfaceUtils.getDimension
 import org.isoron.uhabits.utils.StyledResources
 import java.util.Arrays
 import kotlin.math.max
@@ -69,7 +71,7 @@ abstract class HabitWidgetView : FrameLayout {
         val shadowRadius = dpToPixels(context, 2f).toInt()
         val shadowOffset = dpToPixels(context, 1f).toInt()
         val shadowColor = Color.argb(shadowAlpha, 0, 0, 0)
-        val cornerRadius = dpToPixels(context, 18f)
+        val cornerRadius = getDimension(context, R.dimen.ds_radius_md)
         val radii = FloatArray(8)
         Arrays.fill(radii, cornerRadius)
         val shape = RoundRectShape(radii, null, null)
@@ -94,6 +96,34 @@ abstract class HabitWidgetView : FrameLayout {
         backgroundPaint?.alpha = backgroundAlpha
         frame = findViewById<View>(R.id.frame) as ViewGroup
         if (frame != null) frame!!.background = background
+        updateTextShadows(this)
+    }
+
+    /**
+     * White text over a mostly transparent widget can wash out on light wallpapers, so at low
+     * opacity every label gets a soft dark shadow.
+     */
+    private fun updateTextShadows(view: View) {
+        if (view is TextView) {
+            if (backgroundAlpha <= LOW_OPACITY_THRESHOLD) {
+                view.setShadowLayer(
+                    dpToPixels(context, 2f),
+                    0f,
+                    dpToPixels(context, 1f),
+                    TEXT_SHADOW_COLOR
+                )
+            } else {
+                view.setShadowLayer(0f, 0f, 0f, Color.TRANSPARENT)
+            }
+        }
+        if (view is ViewGroup) {
+            for (i in 0 until view.childCount) updateTextShadows(view.getChildAt(i))
+        }
+    }
+
+    companion object {
+        private const val LOW_OPACITY_THRESHOLD = 102
+        private val TEXT_SHADOW_COLOR = Color.parseColor("#99000000")
     }
 
     private fun init() {

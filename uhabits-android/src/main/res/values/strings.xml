@@ -201,6 +201,7 @@
     <string name="view_all_contributors">View all contributors…</string>
     <string name="database">Database</string>
     <string name="widget_opacity_title">Widget opacity</string>
+    <string name="widget_opacity_description_low_warning">Makes widgets more transparent or more opaque in your home screen. Low opacity can make widget text hard to read on light wallpapers.</string>
     <string name="widget_opacity_description">Makes widgets more transparent or more opaque in your home screen.</string>
     <string name="first_day_of_the_week">First day of the week</string>
     <string name="default_reminder_question">Have you completed this habit today?</string>
@@ -268,4 +269,47 @@
         <item quantity="one">%d day</item>
         <item quantity="other">%d days</item>
     </plurals>
+
+    <!-- Content descriptions for day tiles -->
+    <string name="cd_day">%1$s %2$d</string>
+    <string name="cd_entry_done">%1$s, done</string>
+    <string name="cd_entry_done_auto">%1$s, done automatically</string>
+    <string name="cd_entry_skipped">%1$s, skipped</string>
+    <string name="cd_entry_not_done">%1$s, not done</string>
+    <string name="cd_entry_unknown">%1$s, not recorded</string>
+    <string name="cd_entry_clean">%1$s, clean day</string>
+    <string name="cd_entry_slip">%1$s, slip</string>
+    <string name="cd_number_met">%1$s, %2$s, target met</string>
+    <string name="cd_number_missed">%1$s, %2$s, target missed</string>
+    <string name="cd_has_notes">%1$s, has notes</string>
+
+    <!-- Habit list -->
+    <string name="cd_habit_strength">Habit strength %1$d%%</string>
+    <string name="cd_header_today">Today, %1$s</string>
+    <string name="habit_card_target">Target %1$s</string>
+
+    <!-- Habit color hue names -->
+    <string-array name="hue_names">
+        <item>Red</item>
+        <item>Orange</item>
+        <item>Amber</item>
+        <item>Lime</item>
+        <item>Green</item>
+        <item>Teal</item>
+        <item>Cyan</item>
+        <item>Blue</item>
+        <item>Indigo</item>
+        <item>Violet</item>
+        <item>Magenta</item>
+        <item>Graphite</item>
+    </string-array>
+    <string name="cd_color_selected">%1$s, selected</string>
+
+    <!-- Chart summaries for screen readers -->
+    <string name="cd_chart_history">Calendar history</string>
+    <string name="cd_chart_bar">History bar chart</string>
+    <string name="cd_chart_score">Habit strength over time</string>
+    <string name="cd_chart_streaks">Best streaks</string>
+    <string name="cd_chart_frequency">Frequency by weekday</string>
+    <string name="cd_chart_target">Progress toward targets</string>
 </resources>

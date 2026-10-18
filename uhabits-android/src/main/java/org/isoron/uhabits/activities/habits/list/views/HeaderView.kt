@@ -21,12 +21,17 @@ package org.isoron.uhabits.activities.habits.list.views
 
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.Paint
+import android.graphics.Rect
 import android.graphics.RectF
 import android.graphics.Typeface
+import android.os.Bundle
 import android.text.TextPaint
+import android.view.MotionEvent
 import android.view.View.MeasureSpec.EXACTLY
+import androidx.core.view.ViewCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
+import androidx.customview.widget.ExploreByTouchHelper
 import org.isoron.platform.time.JavaLocalDateFormatter
 import org.isoron.platform.time.getToday
 import org.isoron.uhabits.R
@@ -36,6 +41,7 @@ import org.isoron.uhabits.core.utils.MidnightTimer
 import org.isoron.uhabits.utils.dim
 import org.isoron.uhabits.utils.dp
 import org.isoron.uhabits.utils.isRTL
+import org.isoron.uhabits.utils.sp
 import org.isoron.uhabits.utils.sres
 import org.isoron.uhabits.utils.toMeasureSpec
 import java.util.Locale
@@ -56,10 +62,60 @@ class HeaderView(
             requestLayout()
         }
 
+    private val columnHelper by lazy {
+        object : ExploreByTouchHelper(this) {
+            override fun getVirtualViewAt(x: Float, y: Float): Int {
+                val index = (0 until buttonCount).firstOrNull { columnRect(it).contains(x, y) }
+                return index ?: INVALID_ID
+            }
+
+            override fun getVisibleVirtualViews(ids: MutableList<Int>) {
+                ids.addAll(0 until buttonCount)
+            }
+
+            override fun onPopulateNodeForVirtualView(id: Int, node: AccessibilityNodeInfoCompat) {
+                val bounds = Rect()
+                columnRect(id).roundOut(bounds)
+                node.setBoundsInParent(bounds)
+                node.contentDescription = describeColumn(id)
+            }
+
+            override fun onPerformActionForVirtualView(id: Int, action: Int, args: Bundle?) = false
+        }
+    }
+
     init {
         setScrollerBucketSize(dim(R.dimen.checkmarkWidth).toInt())
-        setBackgroundColor(sres.getColor(R.attr.headerBackgroundColor))
-        elevation = dp(2.0f)
+        setBackgroundColor(sres.getColor(R.attr.dsSurface))
+        elevation = 0f
+        ViewCompat.setAccessibilityDelegate(this, columnHelper)
+    }
+
+    override fun dispatchHoverEvent(event: MotionEvent): Boolean {
+        return columnHelper.dispatchHoverEvent(event) || super.dispatchHoverEvent(event)
+    }
+
+    private fun describeColumn(index: Int): String {
+        val date = getToday().minus(index + dataOffset)
+        val day = describeDay(date)
+        return if (index + dataOffset == 0) resources.getString(R.string.cd_header_today, day) else day
+    }
+
+    /** Bounds of the column for day [index], aligned with the tiles of the habit cards. */
+    private fun columnRect(index: Int): RectF {
+        val width = dim(R.dimen.checkmarkWidth)
+        val height = dim(R.dimen.checkmarkHeight)
+        val rect = RectF(0f, 0f, width, height)
+        rect.offset(this.width.toFloat() - dp(CARD_INSET_DP), 0f)
+        if (prefs.isCheckmarkSequenceReversed) {
+            rect.offset(-(index + 1) * width, 0f)
+        } else {
+            rect.offset((index - buttonCount) * width, 0f)
+        }
+        if (isRTL()) {
+            rect.set(this.width - rect.right, rect.top, this.width - rect.left, rect.bottom)
+        }
+        return rect
     }
 
     override fun atMidnight() {
@@ -102,52 +158,53 @@ class HeaderView(
     }
 
     private inner class Drawer {
-        private val rect = RectF()
         private val dateFormatter = JavaLocalDateFormatter(Locale.getDefault())
-        private val paint = TextPaint().apply {
-            color = Color.BLACK
+        private val pill = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = sres.getColor(R.attr.dsAccent) }
+        private val inkMuted = sres.getColor(R.attr.dsInkMuted)
+        private val ink = sres.getColor(R.attr.dsInk)
+        private val accent = sres.getColor(R.attr.dsAccent)
+
+        private val weekdayPaint = TextPaint().apply {
             isAntiAlias = true
-            textSize = dim(R.dimen.tinyTextSize)
+            textSize = sp(12f)
+            textAlign = Paint.Align.CENTER
+            typeface = Typeface.DEFAULT
+            letterSpacing = 0.04f
+        }
+
+        private val dayPaint = TextPaint().apply {
+            isAntiAlias = true
+            textSize = sp(14f)
             textAlign = Paint.Align.CENTER
             typeface = Typeface.DEFAULT_BOLD
-            color = sres.getColor(R.attr.contrast60)
         }
 
         fun draw(canvas: Canvas) {
             val today = getToday()
-            val width = dim(R.dimen.checkmarkWidth)
-            val height = dim(R.dimen.checkmarkHeight)
-            val isReversed = prefs.isCheckmarkSequenceReversed
-
-            val em = paint.measureText("m")
-
             repeat(buttonCount) { index ->
-                rect.set(0f, 0f, width, height)
-                rect.offset(canvas.width.toFloat() - dp(3.0f), 0f)
-
-                if (isReversed) {
-                    rect.offset(-(index + 1) * width, 0f)
-                } else {
-                    rect.offset((index - buttonCount) * width, 0f)
-                }
-
-                if (isRTL()) {
-                    rect.set(
-                        canvas.width - rect.right,
-                        rect.top,
-                        canvas.width - rect.left,
-                        rect.bottom
-                    )
-                }
-
+                val rect = columnRect(index)
                 val date = today.minus(index + dataOffset)
+                val isToday = index + dataOffset == 0
                 val dayOfWeek = dateFormatter.shortWeekdayName(date).uppercase()
-                val dayOfMonth = date.day.toString()
-                val y1 = rect.centerY() - 0.25 * em
-                val y2 = rect.centerY() + 1.25 * em
-                canvas.drawText(dayOfWeek, rect.centerX(), y1.toFloat(), paint)
-                canvas.drawText(dayOfMonth, rect.centerX(), y2.toFloat(), paint)
+                if (isToday) {
+                    val bar = RectF(rect.left + dp(8f), rect.bottom - dp(3f), rect.right - dp(8f), rect.bottom)
+                    canvas.drawRoundRect(bar, dp(1.5f), dp(1.5f), pill)
+                }
+                weekdayPaint.color = if (isToday) accent else inkMuted
+                dayPaint.color = if (isToday) accent else ink
+                drawCentered(canvas, dayOfWeek, weekdayPaint, rect.centerX(), rect.centerY() - dp(8f))
+                drawCentered(canvas, date.day.toString(), dayPaint, rect.centerX(), rect.centerY() + dp(9f))
             }
         }
+
+        private fun drawCentered(canvas: Canvas, text: String, paint: TextPaint, cx: Float, cy: Float) {
+            val fm = paint.fontMetrics
+            canvas.drawText(text, cx, cy - (fm.ascent + fm.descent) / 2, paint)
+        }
+    }
+
+    companion object {
+        /** Card margin (16dp) plus card padding (12dp). */
+        private const val CARD_INSET_DP = 28f
     }
 }

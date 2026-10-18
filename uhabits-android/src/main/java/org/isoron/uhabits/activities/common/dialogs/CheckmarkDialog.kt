@@ -54,7 +54,7 @@ class CheckmarkDialog : AppCompatDialogFragment() {
             it.setTextColor(color)
         }
         arrayOf(view.noBtn, view.unknownBtn).forEach {
-            it.setTextColor(view.root.sres.getColor(R.attr.contrast60))
+            it.setTextColor(view.root.sres.getColor(R.attr.dsInkMuted))
         }
         arrayOf(view.yesBtn, view.noBtn, view.skipBtn, view.unknownBtn).forEach {
             it.typeface = getFontAwesome(requireContext())
@@ -66,6 +66,7 @@ class CheckmarkDialog : AppCompatDialogFragment() {
         if (!prefs.areQuestionMarksEnabled) view.unknownBtn.visibility = GONE
         // Quit habits only use this dialog for notes, since slips are edited separately.
         view.booleanButtons.visibility = if (requireArguments().getBoolean("notesOnly")) GONE else VISIBLE
+        markSelected(originalValue)
         val dialog = Dialog(requireContext())
         dialog.setContentView(view.root)
         dialog.window?.apply {
@@ -87,6 +88,19 @@ class CheckmarkDialog : AppCompatDialogFragment() {
         }
 
         return dialog
+    }
+
+    /** The button matching the current value gets a solid accent fill and a contrasting glyph. */
+    private fun markSelected(value: Int) {
+        val selected = when (value) {
+            YES_MANUAL -> view.yesBtn
+            SKIP -> view.skipBtn
+            NO -> view.noBtn
+            UNKNOWN -> view.unknownBtn
+            else -> null
+        }
+        selected?.setBackgroundResource(R.drawable.ds_popup_btn_selected)
+        selected?.setTextColor(view.root.sres.getColor(R.attr.dsOnAccent))
     }
 
     override fun onDismiss(dialog: DialogInterface) {

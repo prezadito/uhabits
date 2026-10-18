@@ -60,7 +60,7 @@ class NumberPanelView(
             setupButtons()
         }
 
-    var color = 0
+    var colors = TileColors(0, 0, 0)
         set(value) {
             field = value
             setupButtons()
@@ -100,7 +100,9 @@ class NumberPanelView(
                 index + dataOffset < notes.size -> notes[index + dataOffset]
                 else -> ""
             }
-            button.color = color
+            button.colors = colors
+            button.date = date
+            button.isToday = index + dataOffset == 0
             button.targetType = targetType
             button.threshold = threshold
             button.units = units

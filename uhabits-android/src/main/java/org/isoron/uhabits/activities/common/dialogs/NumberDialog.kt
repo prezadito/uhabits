@@ -42,7 +42,7 @@ class NumberDialog : AppCompatDialogFragment() {
             it.setTextColor(requireArguments().getInt("color"))
         }
         arrayOf(view.noBtn, view.unknownBtnNumber).forEach {
-            it.setTextColor(view.root.sres.getColor(R.attr.contrast60))
+            it.setTextColor(view.root.sres.getColor(R.attr.dsInkMuted))
         }
         arrayOf(view.yesBtn, view.noBtn, view.unknownBtnNumber).forEach {
             it.typeface = InterfaceUtils.getFontAwesome(requireContext())

@@ -21,7 +21,6 @@ package org.isoron.uhabits.activities.common.dialogs
 import android.content.Context
 import com.android.colorpicker.ColorPickerDialog.SIZE_SMALL
 import me.tatarka.inject.annotations.Inject
-import org.isoron.platform.gui.toInt
 import org.isoron.uhabits.R
 import org.isoron.uhabits.core.models.PaletteColor
 import org.isoron.uhabits.core.ui.views.Theme
@@ -35,10 +34,11 @@ class ColorPickerDialogFactory(@param:ActivityContext private val context: Conte
     fun create(color: PaletteColor, theme: Theme): ColorPickerDialog {
         val dialog = ColorPickerDialog()
         val res = StyledResources(context)
-        val androidColor = theme.color(color).toInt()
+        val palette = res.getPalette()
+        val androidColor = palette[color.hue]
         dialog.initialize(
             R.string.color_picker_default_title,
-            res.getPalette(),
+            palette,
             androidColor,
             4,
             SIZE_SMALL

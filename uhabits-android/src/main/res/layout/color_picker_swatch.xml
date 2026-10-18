@@ -17,12 +17,19 @@
     <ImageView
         android:id="@+id/color_picker_swatch"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:padding="5dp" />
+    <ImageView
+        android:id="@+id/color_picker_ring"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/ds_swatch_ring"
+        android:visibility="gone" />
     <ImageView
         android:id="@+id/color_picker_checkmark"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="15dp"
         android:src="@drawable/ic_colorpicker_swatch_selected"
-        android:scaleType="fitXY"
         android:visibility="gone" />
 </merge>

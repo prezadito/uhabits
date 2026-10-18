@@ -26,6 +26,7 @@ import android.graphics.Paint
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffXfermode
 import android.graphics.RectF
+import android.graphics.Typeface
 import android.text.TextPaint
 import android.util.AttributeSet
 import android.view.View
@@ -55,6 +56,9 @@ class RingView : View {
     private var pRing: TextPaint? = null
     private var backgroundColor: Int? = null
     private var inactiveColor: Int? = null
+    private var hasExplicitInactiveColor = false
+    private var textColor: Int? = null
+    private var isBoldText = false
     private var em = 0f
     private var text: String?
     private var textSize: Float
@@ -92,6 +96,24 @@ class RingView : View {
 
     override fun setBackgroundColor(backgroundColor: Int) {
         this.backgroundColor = backgroundColor
+        invalidate()
+    }
+
+    /** Sets the color of the unfilled part of the ring, without any extra transparency. */
+    fun setInactiveColor(color: Int) {
+        inactiveColor = color
+        hasExplicitInactiveColor = true
+        invalidate()
+    }
+
+    /** Color of the text inside the ring. Defaults to the ring color. */
+    fun setTextColor(color: Int) {
+        textColor = color
+        invalidate()
+    }
+
+    fun setBoldText(bold: Boolean) {
+        isBoldText = bold
         invalidate()
     }
 
@@ -162,7 +184,7 @@ class RingView : View {
             rect!!.inset(thickness, thickness)
             activeCanvas.drawArc(rect!!, 0f, 360f, true, pRing!!)
             pRing!!.xfermode = null
-            pRing!!.color = color
+            pRing!!.color = textColor ?: color
             pRing!!.textSize = textSize
 
             if (isStrokedTextEnabled) {
@@ -170,7 +192,11 @@ class RingView : View {
                 pRing!!.strokeWidth = textSize / 15f
             }
 
-            if (enableFontAwesome) pRing!!.typeface = getFontAwesome(context)
+            if (enableFontAwesome) {
+                pRing!!.typeface = getFontAwesome(context)
+            } else if (isBoldText) {
+                pRing!!.typeface = Typeface.DEFAULT_BOLD
+            }
             activeCanvas.drawText(
                 text!!,
                 rect!!.centerX(),
@@ -204,7 +230,7 @@ class RingView : View {
         val res = StyledResources(context)
         if (backgroundColor == null) backgroundColor = res.getColor(R.attr.cardBgColor)
         if (inactiveColor == null) inactiveColor = res.getColor(R.attr.contrast100)
-        inactiveColor = setAlpha(inactiveColor!!, 0.15f)
+        if (!hasExplicitInactiveColor) inactiveColor = setAlpha(inactiveColor!!, 0.15f)
         rect = RectF()
     }
 

@@ -20,8 +20,8 @@
 package org.isoron.uhabits.activities.habits.edit
 
 import android.annotation.SuppressLint
-import android.content.res.ColorStateList
 import android.content.res.Resources
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.text.Html
 import android.text.Spanned
@@ -60,6 +60,7 @@ import org.isoron.uhabits.core.models.quitTimestamp
 import org.isoron.uhabits.databinding.ActivityEditHabitBinding
 import org.isoron.uhabits.utils.applyBottomInset
 import org.isoron.uhabits.utils.applyRootViewInsets
+import org.isoron.uhabits.utils.applySurfaceSystemBars
 import org.isoron.uhabits.utils.applyToolbarInsets
 import org.isoron.uhabits.utils.dismissCurrentAndShow
 import org.isoron.uhabits.utils.formatTime
@@ -108,6 +109,7 @@ class EditHabitActivity : AppCompatActivity() {
         binding.root.applyBottomInset()
         binding.toolbar.applyToolbarInsets()
         setContentView(binding.root)
+        applySurfaceSystemBars()
 
         if (intent.hasExtra("habitId")) {
             binding.toolbar.title = getString(R.string.edit_habit)
@@ -172,12 +174,12 @@ class EditHabitActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.elevation = 10.0f
+        supportActionBar?.elevation = 0f
 
         val colorPickerDialogFactory = ColorPickerDialogFactory(this)
         binding.colorButton.setOnClickListener {
             val picker = colorPickerDialogFactory.create(color, themeSwitcher.currentTheme)
-            picker.setListener { paletteColor ->
+            picker.setListener(color) { paletteColor ->
                 this.color = paletteColor
                 updateColors()
             }
@@ -433,12 +435,11 @@ class EditHabitActivity : AppCompatActivity() {
     }
 
     private fun updateColors() {
-        androidColor = themeSwitcher.currentTheme.color(color).toInt()
-        binding.colorButton.backgroundTintList = ColorStateList.valueOf(androidColor)
-        if (!themeSwitcher.isNightMode) {
-            window.statusBarColor = androidColor
-            binding.toolbar.setBackgroundColor(androidColor)
-        }
+        androidColor = themeSwitcher.currentTheme.habitFill(color).toInt()
+        (binding.colorSwatch.background.mutate() as GradientDrawable).setColor(androidColor)
+        binding.colorName.text = resources.getStringArray(R.array.hue_names)[color.hue]
+        binding.colorButton.contentDescription =
+            "${getString(R.string.color)}, ${binding.colorName.text}"
     }
 
     private fun getFormattedValidationError(@StringRes resId: Int): Spanned {

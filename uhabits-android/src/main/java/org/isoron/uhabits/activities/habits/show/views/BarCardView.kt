@@ -24,7 +24,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.AdapterView
 import android.widget.LinearLayout
-import org.isoron.platform.gui.toInt
 import org.isoron.platform.time.JavaLocalDateFormatter
 import org.isoron.uhabits.R
 import org.isoron.uhabits.core.ui.screens.habits.show.views.BarCardPresenter
@@ -38,7 +37,6 @@ class BarCardView(context: Context, attrs: AttributeSet) : LinearLayout(context,
     private var binding = ShowHabitBarBinding.inflate(LayoutInflater.from(context), this)
 
     fun setState(state: BarCardState) {
-        val androidColor = state.theme.color(state.color).toInt()
         binding.chart.view = BarChart(state.theme, JavaLocalDateFormatter(Locale.getDefault())).apply {
             series = mutableListOf(state.entries.map { it.value / 1000.0 })
             colors = mutableListOf(theme.color(state.color.paletteIndex))
@@ -46,8 +44,8 @@ class BarCardView(context: Context, attrs: AttributeSet) : LinearLayout(context,
         }
         binding.chart.resetDataOffset()
         binding.chart.postInvalidate()
+        binding.chart.contentDescription = resources.getString(R.string.cd_chart_bar)
 
-        binding.title.setTextColor(androidColor)
         binding.title.setText(if (state.isQuit) R.string.slips else R.string.history)
         if (state.isNumerical || state.isQuit) {
             binding.boolSpinner.visibility = GONE

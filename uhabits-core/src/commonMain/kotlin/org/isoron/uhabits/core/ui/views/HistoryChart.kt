@@ -105,7 +105,8 @@ class HistoryChart(
         canvas.fill()
 
         squareSize = round((height - 2 * padding) / 8.0)
-        canvas.setFontSize(min(14.0, height * 0.06))
+        squareSpacing = squareSize * 0.12
+        canvas.setFontSize(min(LABEL_FONT_SIZE, height * 0.06))
 
         val weekdayColumnWidth = DayOfWeek.values().map { weekday ->
             canvas.measureText(dateFormatter.shortWeekdayName(weekday)) + squareSize * 0.15
@@ -131,7 +132,7 @@ class HistoryChart(
         }
 
         // Draw week day names
-        canvas.setColor(theme.mediumContrastTextColor)
+        canvas.setColor(theme.inkMutedColor)
         repeat(7) { row ->
             val date = topLeftDate.plus(row)
             canvas.setTextAlign(TextAlign.LEFT)
@@ -167,7 +168,7 @@ class HistoryChart(
     }
 
     private fun drawHeader(canvas: Canvas, column: Int, date: LocalDate) {
-        canvas.setColor(theme.mediumContrastTextColor)
+        canvas.setColor(theme.inkMutedColor)
         val monthText = dateFormatter.shortMonthName(date)
         val yearText = date.year.toString()
         val headerText: String
@@ -206,62 +207,92 @@ class HistoryChart(
     ) {
         val value = if (offset >= series.size) defaultSquare else series[offset]
         val hasNotes = if (offset >= notesIndicators.size) false else notesIndicators[offset]
-        val squareColor: Color
-        val circleColor: Color
-        val color = theme.color(paletteColor.paletteIndex)
-        squareColor = when (value) {
-            Square.ON -> {
-                color
-            }
-            Square.OFF -> {
-                theme.lowContrastTextColor
-            }
-            Square.GREY -> {
-                theme.mediumContrastTextColor
-            }
-            Square.DIMMED, Square.HATCHED -> {
-                color.blendWith(theme.cardBackgroundColor, 0.5)
-            }
+        val fill = theme.habitFill(paletteColor)
+        val tint = theme.habitTint(paletteColor)
+        val ink = theme.habitInk(paletteColor)
+        val radius = width * CORNER_RADIUS
+        val strokeWidth = STROKE_WIDTH
+
+        fun roundRectWithBorder(border: Color, inner: Color) {
+            canvas.setColor(border)
+            canvas.fillRoundRect(x, y, width, height, radius)
+            canvas.setColor(inner)
+            canvas.fillRoundRect(
+                x + strokeWidth,
+                y + strokeWidth,
+                width - 2 * strokeWidth,
+                height - 2 * strokeWidth,
+                max(0.0, radius - strokeWidth)
+            )
         }
 
-        canvas.setColor(squareColor)
-        canvas.fillRoundRect(x, y, width, height, width * 0.15)
+        val squareColor = when (value) {
+            Square.ON -> fill
+            Square.OFF -> theme.lineColor
+            Square.GREY, Square.DIMMED, Square.HATCHED -> tint
+        }
+        val isToday = date == today
+        when {
+            isToday -> roundRectWithBorder(theme.inkColor, squareColor)
+            value == Square.DIMMED -> roundRectWithBorder(fill, tint)
+            else -> {
+                canvas.setColor(squareColor)
+                canvas.fillRoundRect(x, y, width, height, radius)
+            }
+        }
+        if (isToday && value == Square.DIMMED) {
+            canvas.setColor(fill)
+            canvas.fillRoundRect(
+                x + 2 * strokeWidth,
+                y + 2 * strokeWidth,
+                width - 4 * strokeWidth,
+                height - 4 * strokeWidth,
+                max(0.0, radius - 2 * strokeWidth)
+            )
+            canvas.setColor(tint)
+            canvas.fillRoundRect(
+                x + 3 * strokeWidth,
+                y + 3 * strokeWidth,
+                width - 6 * strokeWidth,
+                height - 6 * strokeWidth,
+                max(0.0, radius - 3 * strokeWidth)
+            )
+        }
 
         if (value == Square.HATCHED) {
-            canvas.setStrokeWidth(0.75)
-            canvas.setColor(theme.cardBackgroundColor)
-            var k = width / 10
-            repeat(5) {
-                canvas.drawLine(x + k, y, x, y + k)
-                canvas.drawLine(
-                    x + width - k,
-                    y + height,
-                    x + width,
-                    y + height - k
-                )
-                k += width / 5
-            }
+            canvas.setColor(ink)
+            canvas.fillRect(
+                x + width * 0.3,
+                y + height * 0.78 - strokeWidth / 2,
+                width * 0.4,
+                strokeWidth
+            )
         }
 
-        val textColor = if (theme.cardBackgroundColor == Color.TRANSPARENT) {
-            theme.highContrastTextColor
-        } else {
-            val c1 = squareColor.contrast(theme.cardBackgroundColor)
-            val c2 = squareColor.contrast(theme.mediumContrastTextColor)
-            if (c1 > c2) theme.cardBackgroundColor else theme.mediumContrastTextColor
+        val textColor = when (value) {
+            Square.ON -> theme.onHabitTextColor
+            Square.OFF -> theme.inkMutedColor
+            else -> theme.inkColor
         }
-
         canvas.setColor(textColor)
         canvas.setTextAlign(TextAlign.CENTER)
         canvas.drawText(date.day.toString(), x + width / 2, y + width / 2)
 
         if (hasNotes) {
-            circleColor = when (value) {
-                Square.ON, Square.GREY -> theme.lowContrastTextColor
-                else -> color
-            }
-            canvas.setColor(circleColor)
+            canvas.setColor(
+                when (value) {
+                    Square.ON -> theme.onHabitColor
+                    Square.OFF -> theme.inkMutedColor
+                    else -> ink
+                }
+            )
             canvas.fillCircle(x + width - width / 5, y + width / 5, width / 12)
         }
+    }
+
+    companion object {
+        private const val LABEL_FONT_SIZE = 12.0
+        private const val CORNER_RADIUS = 0.22
+        private const val STROKE_WIDTH = 1.5
     }
 }

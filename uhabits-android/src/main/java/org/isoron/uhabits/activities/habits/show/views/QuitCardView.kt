@@ -46,13 +46,12 @@ class QuitCardView(context: Context, attrs: AttributeSet) : LinearLayout(context
     }
 
     fun setState(state: QuitCardState) {
-        val androidColor = state.theme.color(state.color).toInt()
+        val ink = state.theme.habitInk(state.color).toInt()
         cleanSince = state.cleanSince
-        binding.title.setTextColor(androidColor)
-        binding.cleanTimeLabel.setTextColor(androidColor)
-        binding.cleanSinceLabel.setTextColor(androidColor)
-        binding.bestStreakLabel.setTextColor(androidColor)
-        binding.recentSlipsLabel.setTextColor(androidColor)
+        binding.cleanTimeLabel.setTextColor(ink)
+        binding.cleanSinceLabel.setTextColor(ink)
+        binding.bestStreakLabel.setTextColor(ink)
+        binding.recentSlipsLabel.setTextColor(ink)
 
         binding.cleanSinceLabel.text = state.cleanSince?.let {
             "MMMd".toSimpleDataFormat().format(Date(it))

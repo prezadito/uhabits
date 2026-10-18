@@ -23,7 +23,7 @@
     <attr name="cardBgColor" format="reference"/>
     <attr name="headerBackgroundColor" format="reference"/>
     <attr name="highlightedBackgroundColor" format="reference"/>
-    <attr name="useHabitColorAsPrimary" format="boolean"/>
+    <attr name="dsToolbarTheme" format="reference"/>
     <attr name="aboutScreenColor" format="reference"/>
 
     <attr name="contrast0" format="reference"/>
@@ -52,9 +52,22 @@
     <attr name="palette" format="reference"/>
 
     <!-- Pre-Lollipop -->
-    <attr name="cardBackground" format="reference"/>
     <attr name="headerBackground" format="reference"/>
-    <attr name="selectedBackground" format="reference"/>
 
     <attr name="scrollableRecyclerViewStyle" format="reference"/>
+
+    <attr name="dsSurface" format="color"/>
+    <attr name="dsSurfaceRaised" format="color"/>
+    <attr name="dsInk" format="color"/>
+    <attr name="dsInkMuted" format="color"/>
+    <attr name="dsLine" format="color"/>
+    <attr name="dsLineStrong" format="color"/>
+    <attr name="dsAccent" format="color"/>
+    <attr name="dsOnAccent" format="color"/>
+    <attr name="dsAccentTint" format="color"/>
+    <attr name="dsTodayRing" format="color"/>
+    <attr name="dsOnHabit" format="color"/>
+    <attr name="dsOnHabitText" format="color"/>
+    <attr name="dsScrim" format="color"/>
+    <attr name="dsCardElevation" format="dimension"/>
 </resources>

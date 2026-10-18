@@ -24,7 +24,31 @@
     <dimen name="history_editor_max_height">350dp</dimen>
     <dimen name="regularTextSize">16sp</dimen>
     <dimen name="smallTextSize">14sp</dimen>
-    <dimen name="smallerTextSize">12sp</dimen>
-    <dimen name="tinyTextSize">10sp</dimen>
-    <dimen name="habitNameWidth">160dp</dimen>
+
+    <!-- spacing, 4dp grid -->
+    <dimen name="ds_space_4">4dp</dimen>
+    <dimen name="ds_space_8">8dp</dimen>
+    <dimen name="ds_space_12">12dp</dimen>
+    <dimen name="ds_space_16">16dp</dimen>
+    <dimen name="ds_space_24">24dp</dimen>
+    <dimen name="ds_space_32">32dp</dimen>
+    <!-- radius -->
+    <dimen name="ds_radius_sm">8dp</dimen> <!-- tiles, inputs, chips -->
+    <dimen name="ds_radius_md">12dp</dimen> <!-- cards -->
+    <dimen name="ds_radius_lg">16dp</dimen> <!-- sheets, dialogs, habit-type choices -->
+    <!-- sizes -->
+    <dimen name="ds_tile">36dp</dimen> <!-- visible day tile inside the 48dp checkmarkWidth/Height target -->
+    <dimen name="ds_ring">28dp</dimen> <!-- score ring in a habit card, 3dp stroke -->
+    <dimen name="ds_ring_lg">56dp</dimen> <!-- score ring on the habit screen, 6dp stroke -->
+    <dimen name="ds_ring_stroke">3dp</dimen>
+    <dimen name="ds_ring_lg_stroke">6dp</dimen>
+    <!-- type -->
+    <dimen name="ds_text_display">28sp</dimen>
+    <dimen name="ds_text_title_lg">20sp</dimen>
+    <dimen name="ds_text_habit_name">17sp</dimen>
+    <dimen name="ds_text_body">16sp</dimen>
+    <dimen name="ds_text_label">14sp</dimen>
+    <dimen name="ds_text_caption">12sp</dimen>
+    <dimen name="ds_text_tile_number">13sp</dimen>
+    <dimen name="ds_text_tile_unit">9sp</dimen>
 </resources>
