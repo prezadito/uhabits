@@ -45,7 +45,6 @@ import org.isoron.platform.time.LocalDate
 import org.isoron.platform.time.getToday
 import org.isoron.uhabits.R
 import org.isoron.uhabits.activities.common.views.RingView
-import org.isoron.uhabits.activities.habits.edit.formatFrequency
 import org.isoron.uhabits.core.models.Habit
 import org.isoron.uhabits.core.models.ModelObservable
 import org.isoron.uhabits.core.models.PaletteColor
@@ -360,11 +359,7 @@ class HabitCardView(
         val percent = "${scorePercent()}%"
         val detail = when {
             h.isQuit -> h.formatCleanStatus(resources)
-            h.isNumerical -> resources.getString(
-                R.string.habit_card_target,
-                "${h.targetValue.toShortString()} ${h.unit}".trim()
-            )
-            else -> formatFrequency(h.frequency.numerator, h.frequency.denominator, resources)
+            else -> formatStreak(h)
         }
         val text = SpannableStringBuilder(percent).apply {
             setSpan(StyleSpan(Typeface.BOLD), 0, length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
@@ -372,6 +367,17 @@ class HabitCardView(
             append(" · ").append(detail)
         }
         metaLabel.text = text
+    }
+
+    /** "Streak: 7 days", or in weeks ("Streak: 4 weeks") for habits with a weekly or longer period. */
+    private fun formatStreak(h: Habit): String {
+        val days = h.streaks.getCurrent(getToday())?.length ?: 0
+        return if (h.frequency.denominator >= 7 && days >= 7) {
+            val weeks = days / 7
+            resources.getQuantityString(R.plurals.habit_card_streak_weeks, weeks, weeks)
+        } else {
+            resources.getQuantityString(R.plurals.habit_card_streak_days, days, days)
+        }
     }
 
     private fun triggerRipple(x: Float, y: Float) {

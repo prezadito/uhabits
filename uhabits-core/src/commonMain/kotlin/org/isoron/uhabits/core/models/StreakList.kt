@@ -33,6 +33,15 @@ class StreakList {
         }.toList()
     }
 
+    /**
+     * Returns the streak that is still running as of [today], or null if there is none. A streak
+     * ending yesterday is still running, since today can still be completed.
+     */
+    @Synchronized
+    fun getCurrent(today: LocalDate): Streak? {
+        return list.filter { it.end >= today.minus(1) }.maxByOrNull { it.end.daysSince2000 }
+    }
+
     @Synchronized
     fun recompute(
         computedEntries: EntryList,
