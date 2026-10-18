@@ -102,7 +102,6 @@ class NumberPanelView(
             }
             button.colors = colors
             button.date = date
-            button.isToday = index + dataOffset == 0
             button.targetType = targetType
             button.threshold = threshold
             button.units = units

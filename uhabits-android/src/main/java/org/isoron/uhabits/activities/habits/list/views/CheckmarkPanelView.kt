@@ -96,7 +96,6 @@ class CheckmarkPanelView(
             }
             button.colors = colors
             button.date = date
-            button.isToday = index + dataOffset == 0
             button.isQuit = isQuit
             button.onToggle = { value, notes -> onToggle(date, value, notes) }
             button.onEdit = { onEdit(date) }
