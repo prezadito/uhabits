@@ -385,9 +385,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginStart">@dimen/ds_space_16</item>
         <item name="android:importantForAccessibility">no</item>
-        <item name="android:text">@string/fa_angle_right</item>
-        <item name="android:textColor">?attr/dsInkMuted</item>
-        <item name="android:textSize">@dimen/ds_text_title_lg</item>
+        <item name="android:src">@drawable/ds_chevron_right</item>
     </style>
 
     <style name="ShapeAppearanceOverlay.Ds.Sheet" parent="">

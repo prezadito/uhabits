@@ -90,7 +90,7 @@ class CheckmarkDialog : AppCompatDialogFragment() {
         return dialog
     }
 
-    /** The button matching the current value gets an accent-tint pill. */
+    /** The button matching the current value gets a solid accent fill and a contrasting glyph. */
     private fun markSelected(value: Int) {
         val selected = when (value) {
             YES_MANUAL -> view.yesBtn
@@ -100,6 +100,7 @@ class CheckmarkDialog : AppCompatDialogFragment() {
             else -> null
         }
         selected?.setBackgroundResource(R.drawable.ds_popup_btn_selected)
+        selected?.setTextColor(view.root.sres.getColor(R.attr.dsOnAccent))
     }
 
     override fun onDismiss(dialog: DialogInterface) {

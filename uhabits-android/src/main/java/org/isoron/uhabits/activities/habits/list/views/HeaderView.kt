@@ -45,7 +45,6 @@ import org.isoron.uhabits.utils.sp
 import org.isoron.uhabits.utils.sres
 import org.isoron.uhabits.utils.toMeasureSpec
 import java.util.Locale
-import kotlin.math.max
 
 class HeaderView(
     context: Context,
@@ -163,7 +162,7 @@ class HeaderView(
         private val pill = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = sres.getColor(R.attr.dsAccent) }
         private val inkMuted = sres.getColor(R.attr.dsInkMuted)
         private val ink = sres.getColor(R.attr.dsInk)
-        private val onAccent = sres.getColor(R.attr.dsOnAccent)
+        private val accent = sres.getColor(R.attr.dsAccent)
 
         private val weekdayPaint = TextPaint().apply {
             isAntiAlias = true
@@ -188,18 +187,11 @@ class HeaderView(
                 val isToday = index + dataOffset == 0
                 val dayOfWeek = dateFormatter.shortWeekdayName(date).uppercase()
                 if (isToday) {
-                    val pillRect = RectF(rect).apply { inset(dp(4f), 0f) }
-                    // The pill grows with its text, e.g. at large font scales.
-                    val wanted = max(
-                        weekdayPaint.measureText(dayOfWeek),
-                        dayPaint.measureText(date.day.toString())
-                    ) + dp(16f)
-                    if (wanted > pillRect.width()) pillRect.inset((pillRect.width() - wanted) / 2, 0f)
-                    val radius = pillRect.width() / 2
-                    canvas.drawRoundRect(pillRect, radius, radius, pill)
+                    val bar = RectF(rect.left + dp(8f), rect.bottom - dp(3f), rect.right - dp(8f), rect.bottom)
+                    canvas.drawRoundRect(bar, dp(1.5f), dp(1.5f), pill)
                 }
-                weekdayPaint.color = if (isToday) onAccent else inkMuted
-                dayPaint.color = if (isToday) onAccent else ink
+                weekdayPaint.color = if (isToday) accent else inkMuted
+                dayPaint.color = if (isToday) accent else ink
                 drawCentered(canvas, dayOfWeek, weekdayPaint, rect.centerX(), rect.centerY() - dp(8f))
                 drawCentered(canvas, date.day.toString(), dayPaint, rect.centerX(), rect.centerY() + dp(9f))
             }
