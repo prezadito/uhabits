@@ -48,6 +48,9 @@ import org.isoron.uhabits.activities.common.views.RingView
 import org.isoron.uhabits.core.models.Habit
 import org.isoron.uhabits.core.models.ModelObservable
 import org.isoron.uhabits.core.models.PaletteColor
+import org.isoron.uhabits.core.models.getCurrentWeeklyStreak
+import org.isoron.uhabits.core.models.isWeeklyTarget
+import org.isoron.uhabits.core.preferences.Preferences
 import org.isoron.uhabits.core.ui.screens.habits.list.ListHabitsBehavior
 import org.isoron.uhabits.inject.ActivityContext
 import org.isoron.uhabits.utils.currentTheme
@@ -62,16 +65,18 @@ class HabitCardViewFactory(
     @ActivityContext val context: Context,
     private val checkmarkPanelFactory: CheckmarkPanelViewFactory,
     private val numberPanelFactory: NumberPanelViewFactory,
-    private val behavior: ListHabitsBehavior
+    private val behavior: ListHabitsBehavior,
+    private val prefs: Preferences
 ) {
-    fun create() = HabitCardView(context, checkmarkPanelFactory, numberPanelFactory, behavior)
+    fun create() = HabitCardView(context, checkmarkPanelFactory, numberPanelFactory, behavior, prefs)
 }
 
 class HabitCardView(
     @ActivityContext context: Context,
     checkmarkPanelFactory: CheckmarkPanelViewFactory,
     numberPanelFactory: NumberPanelViewFactory,
-    private val behavior: ListHabitsBehavior
+    private val behavior: ListHabitsBehavior,
+    private val prefs: Preferences
 ) : FrameLayout(context),
     ModelObservable.Listener {
 
@@ -369,15 +374,14 @@ class HabitCardView(
         metaLabel.text = text
     }
 
-    /** "Streak: 7 days", or in weeks ("Streak: 4 weeks") for habits with a weekly or longer period. */
+    /** "Streak: 7 days", or "Streak: 4 weeks" (weeks meeting the target) for "N times per week". */
     private fun formatStreak(h: Habit): String {
-        val days = h.streaks.getCurrent(getToday())?.length ?: 0
-        return if (h.frequency.denominator >= 7 && days >= 7) {
-            val weeks = days / 7
-            resources.getQuantityString(R.plurals.habit_card_streak_weeks, weeks, weeks)
-        } else {
-            resources.getQuantityString(R.plurals.habit_card_streak_days, days, days)
+        if (h.isWeeklyTarget) {
+            val weeks = h.getCurrentWeeklyStreak(getToday(), prefs.firstWeekdayInt)
+            return resources.getQuantityString(R.plurals.habit_card_streak_weeks, weeks, weeks)
         }
+        val days = h.streaks.getCurrent(getToday())?.length ?: 0
+        return resources.getQuantityString(R.plurals.habit_card_streak_days, days, days)
     }
 
     private fun triggerRipple(x: Float, y: Float) {
