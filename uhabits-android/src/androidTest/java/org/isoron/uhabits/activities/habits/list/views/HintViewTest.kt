@@ -42,7 +42,7 @@ class HintViewTest : BaseViewTest() {
         super.setUp()
         list = mock()
         view = HintView(targetContext, list)
-        measureView(view, 400f, 200f)
+        measureView(view, 400f, 300f)
         val text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
         every { list.shouldShow() } returns true
         every { list.pop() } returns text

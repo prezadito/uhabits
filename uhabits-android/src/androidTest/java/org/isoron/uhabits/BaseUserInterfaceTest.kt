@@ -102,7 +102,8 @@ open class BaseUserInterfaceTest {
     }
 
     companion object {
-        private const val PKG = "org.isoron.uhabits"
+        /** Package of the app under test; differs from the namespace in the debug and fork builds. */
+        val PKG: String get() = ApplicationProvider.getApplicationContext<Context>().packageName
         const val EMPTY_DESCRIPTION_HABIT_NAME = "Read books"
         lateinit var device: UiDevice
         fun startActivity(cls: Class<*>) {
