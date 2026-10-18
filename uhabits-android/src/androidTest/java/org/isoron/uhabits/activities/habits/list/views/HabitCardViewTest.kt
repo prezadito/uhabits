@@ -63,7 +63,7 @@ class HabitCardViewTest : BaseViewTest() {
         latch.countDown()
 
         latch.await()
-        measureView(view, dpToPixels(400), dpToPixels(50))
+        measureView(view, dpToPixels(400), dpToPixels(150))
     }
 
     @Test
@@ -74,7 +74,7 @@ class HabitCardViewTest : BaseViewTest() {
     @Test
     fun testRender_selected() {
         view.isSelected = true
-        measureView(view, dpToPixels(400), dpToPixels(50))
+        measureView(view, dpToPixels(400), dpToPixels(150))
         assertRenders(view, "$PATH/render_selected.png")
     }
 

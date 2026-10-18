@@ -21,6 +21,7 @@ package org.isoron.uhabits.acceptance
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import org.isoron.uhabits.BaseUserInterfaceTest
+import org.isoron.uhabits.R
 import org.isoron.uhabits.acceptance.steps.CommonSteps.Screen.EDIT_HABIT
 import org.isoron.uhabits.acceptance.steps.CommonSteps.Screen.LIST_HABITS
 import org.isoron.uhabits.acceptance.steps.CommonSteps.Screen.SELECT_HABIT_TYPE
@@ -29,6 +30,7 @@ import org.isoron.uhabits.acceptance.steps.CommonSteps.clickText
 import org.isoron.uhabits.acceptance.steps.CommonSteps.launchApp
 import org.isoron.uhabits.acceptance.steps.CommonSteps.longClickText
 import org.isoron.uhabits.acceptance.steps.CommonSteps.pressBack
+import org.isoron.uhabits.acceptance.steps.CommonSteps.verifyContentDescriptionContains
 import org.isoron.uhabits.acceptance.steps.CommonSteps.verifyDisplayGraphs
 import org.isoron.uhabits.acceptance.steps.CommonSteps.verifyDisplaysText
 import org.isoron.uhabits.acceptance.steps.CommonSteps.verifyDisplaysTextInSequence
@@ -183,7 +185,7 @@ class HabitsTest : BaseUserInterfaceTest() {
         verifyShowsScreen(SHOW_HABIT)
         // TODO: find a better way than sleeping in tests
         Thread.sleep(2001L)
-        verifyDisplaysText("10%")
+        verifyContentDescriptionContains(R.id.scoreRing, "10%")
     }
 
     @Test

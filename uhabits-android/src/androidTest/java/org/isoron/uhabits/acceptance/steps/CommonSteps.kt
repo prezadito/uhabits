@@ -20,6 +20,7 @@ package org.isoron.uhabits.acceptance.steps
 
 import android.os.Build
 import android.os.Build.VERSION.SDK_INT
+import androidx.annotation.IdRes
 import androidx.annotation.StringRes
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso
@@ -56,7 +57,7 @@ object CommonSteps : BaseUserInterfaceTest() {
     fun launchApp() {
         startActivity(ListHabitsActivity::class.java)
         assertTrue(
-            device.wait(Until.hasObject(By.pkg("org.isoron.uhabits")), 5000)
+            device.wait(Until.hasObject(By.pkg(BaseUserInterfaceTest.PKG)), 5000)
         )
         device.waitForIdle()
     }
@@ -104,6 +105,13 @@ object CommonSteps : BaseUserInterfaceTest() {
         scrollToText(text)
         Espresso.onView(ViewMatchers.withText(text))
             .check(ViewAssertions.matches(ViewMatchers.isEnabled()))
+    }
+
+    /** The overview ring draws its percentage on a canvas, so it is checked through its description. */
+    fun verifyContentDescriptionContains(@IdRes id: Int, text: String) {
+        Espresso.onView(ViewMatchers.withId(id)).check(
+            ViewAssertions.matches(ViewMatchers.withContentDescription(CoreMatchers.containsString(text)))
+        )
     }
 
     fun verifyDisplaysTextInSequence(vararg text: String?) {

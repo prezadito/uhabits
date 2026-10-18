@@ -21,9 +21,11 @@ package org.isoron.uhabits.acceptance.steps
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.By
 import org.isoron.uhabits.BaseUserInterfaceTest
 import org.isoron.uhabits.R
+import org.isoron.uhabits.core.models.PaletteColor
 
 object EditHabitSteps {
     fun clickSave() {
@@ -33,7 +35,7 @@ object EditHabitSteps {
     fun pickFrequency() {
         Espresso.onView(ViewMatchers.withId(R.id.boolean_frequency_picker))
             .perform(ViewActions.click())
-        Espresso.onView(ViewMatchers.withText("SAVE")).perform(ViewActions.click())
+        Espresso.onView(ViewMatchers.withText(R.string.save)).perform(ViewActions.click())
     }
 
     fun pickMonthFrequency() {
@@ -43,7 +45,7 @@ object EditHabitSteps {
             .perform(ViewActions.click())
         Espresso.onView(ViewMatchers.withId(R.id.xTimesPerMonthTextView))
             .perform(ViewActions.replaceText("1"))
-        Espresso.onView(ViewMatchers.withText("SAVE")).perform(ViewActions.click())
+        Espresso.onView(ViewMatchers.withText(R.string.save)).perform(ViewActions.click())
     }
 
     fun pickDailyFrequency() {
@@ -51,13 +53,16 @@ object EditHabitSteps {
             .perform(ViewActions.click())
         Espresso.onView(ViewMatchers.withId(R.id.everyDayRadioButton))
             .perform(ViewActions.click())
-        Espresso.onView(ViewMatchers.withText("SAVE")).perform(ViewActions.click())
+        Espresso.onView(ViewMatchers.withText(R.string.save)).perform(ViewActions.click())
     }
 
     fun pickColor(color: Int) {
         Espresso.onView(ViewMatchers.withId(R.id.colorButton)).perform(ViewActions.click())
-        BaseUserInterfaceTest.device.findObject(By.descStartsWith(String.format("Color %d", color)))
-            .click()
+        // Swatches are described by hue name, so map the classic palette index to its hue.
+        val hueNames = InstrumentationRegistry.getInstrumentation().targetContext
+            .resources.getStringArray(R.array.hue_names)
+        val name = hueNames[PaletteColor(color).hue]
+        BaseUserInterfaceTest.device.findObject(By.descStartsWith(name)).click()
     }
 
     fun typeName(name: String) {
