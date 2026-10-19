@@ -355,7 +355,7 @@ class HabitCardView(
     /** Streak for regular habits, clean time for quit habits. */
     private fun updateMeta(h: Habit) {
         metaLabel.text = when {
-            h.isQuit -> h.formatCleanStatus(resources)
+            h.isQuit -> h.formatCleanStatus(resources, includeSlipToday = false)
             else -> formatStreak(h)
         }
     }

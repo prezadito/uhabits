@@ -38,10 +38,13 @@ fun formatCleanTime(res: Resources, time: CleanTime): String = when {
 
 /**
  * Returns a short description of how long a quit habit has been kept clean, such as
- * "12d 4h clean", or "Slipped today · 2h 15m clean" if the user slipped today.
+ * "12d 4h clean", or "Slipped today · 2h 15m clean" if the user slipped today and
+ * [includeSlipToday] is set.
  */
-fun Habit.formatCleanStatus(res: Resources): String {
+fun Habit.formatCleanStatus(res: Resources, includeSlipToday: Boolean = true): String {
     val time = formatCleanTime(res, getCleanTime(DateUtils.getLocalTime()))
-    if (getLastSlipDate() == getToday()) return res.getString(R.string.slipped_today_clean_for, time)
+    if (includeSlipToday && getLastSlipDate() == getToday()) {
+        return res.getString(R.string.slipped_today_clean_for, time)
+    }
     return res.getString(R.string.clean_for, time)
 }
