@@ -66,5 +66,6 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           body_path: release-notes.md
-          prerelease: ${{ contains(github.ref_name, '-') }}
+          # Every fork tag carries a "-qol" suffix, so only flag explicit pre-release tags.
+          prerelease: ${{ contains(github.ref_name, '-alpha') || contains(github.ref_name, '-beta') || contains(github.ref_name, '-rc') }}
           files: uhabits-*.apk
