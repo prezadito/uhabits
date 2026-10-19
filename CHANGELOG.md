@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [2.5.2-qol] -- 2026-10-19
+
+### Changed
+
+- Quit habit cards show only the clean time, without the "Slipped today" prefix, since the clean time restarts after a slip
+
 ## [2.5.1-qol] -- 2026-10-19
 
 ### Changed
