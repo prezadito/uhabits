@@ -21,17 +21,12 @@ package org.isoron.uhabits.activities.habits.list.views
 
 import android.content.Context
 import android.graphics.PointF
-import android.graphics.Typeface
 import android.graphics.text.LineBreaker.BREAK_STRATEGY_BALANCED
 import android.os.Build
 import android.os.Build.VERSION.SDK_INT
 import android.os.Handler
 import android.os.Looper
-import android.text.SpannableStringBuilder
-import android.text.Spanned
 import android.text.TextUtils
-import android.text.style.ForegroundColorSpan
-import android.text.style.StyleSpan
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
@@ -149,7 +144,6 @@ class HabitCardView(
     private var scoreRing: RingView
 
     private var currentToggleTaskId = 0
-    private var metaInk = 0
 
     private val cleanTimeTicker = object : Runnable {
         override fun run() {
@@ -337,7 +331,6 @@ class HabitCardView(
             setColor(tileColors.fill)
             setInactiveColor(tileColors.tint)
         }
-        metaInk = tileColors.ink
         updateMeta(h)
         checkmarkPanel.apply {
             colors = tileColors
@@ -359,19 +352,12 @@ class HabitCardView(
         }
     }
 
-    /** "72% · Every day", with the percentage bold in the habit's ink color. */
+    /** Streak for regular habits, clean time for quit habits. */
     private fun updateMeta(h: Habit) {
-        val percent = "${scorePercent()}%"
-        val detail = when {
+        metaLabel.text = when {
             h.isQuit -> h.formatCleanStatus(resources)
             else -> formatStreak(h)
         }
-        val text = SpannableStringBuilder(percent).apply {
-            setSpan(StyleSpan(Typeface.BOLD), 0, length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-            setSpan(ForegroundColorSpan(metaInk), 0, length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-            append(" · ").append(detail)
-        }
-        metaLabel.text = text
     }
 
     /** "Streak: 7 days", or "Streak: 4 weeks" (weeks meeting the target) for "N times per week". */
