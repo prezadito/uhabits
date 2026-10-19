@@ -2,6 +2,17 @@
 
 ## [Unreleased]
 
+## [2.5.1-qol] -- 2026-10-19
+
+### Changed
+
+- Habit cards show the current streak (weeks meeting the target for "N times per week" habits) under the name instead of the score percentage and frequency; quit habits show their clean time. The score is still shown by the ring and on the habit screen
+- Remove the ring around today's tile on the habit list, since the header already highlights today
+
+### Fixed
+
+- Fix the "reverse order of days" setting not applying to some habit cards, such as quit habits, until the app was restarted
+
 ## [2.5.0-qol] -- 2026-10-17
 
 ### Changed
