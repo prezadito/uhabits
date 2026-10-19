@@ -290,10 +290,6 @@
         <item quantity="one">Streak: %1$d day</item>
         <item quantity="other">Streak: %1$d days</item>
     </plurals>
-    <plurals name="habit_card_streak_weeks">
-        <item quantity="one">Streak: %1$d week</item>
-        <item quantity="other">Streak: %1$d weeks</item>
-    </plurals>
 
     <!-- Habit color hue names -->
     <string-array name="hue_names">
