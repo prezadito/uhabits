@@ -27,6 +27,8 @@ data class Habit(
     var color: PaletteColor = PaletteColor(8),
     var description: String = "",
     var frequency: Frequency = Frequency.DAILY,
+    /** Name of a bundled Material icon (see the Android icon catalog), or null for none. */
+    var icon: String? = null,
     var id: Long? = null,
     var isArchived: Boolean = false,
     var name: String = "",
@@ -156,6 +158,7 @@ data class Habit(
         this.position = other.position
         this.question = other.question
         this.quitSince = other.quitSince
+        this.icon = other.icon
         this.reminder = other.reminder
         this.targetType = other.targetType
         this.targetValue = other.targetValue
@@ -177,6 +180,7 @@ data class Habit(
         if (position != other.position) return false
         if (question != other.question) return false
         if (quitSince != other.quitSince) return false
+        if (icon != other.icon) return false
         if (reminder != other.reminder) return false
         if (targetType != other.targetType) return false
         if (targetValue != other.targetValue) return false
@@ -197,6 +201,7 @@ data class Habit(
         result = 31 * result + position
         result = 31 * result + question.hashCode()
         result = 31 * result + (quitSince?.hashCode() ?: 0)
+        result = 31 * result + (icon?.hashCode() ?: 0)
         result = 31 * result + (reminder?.hashCode() ?: 0)
         result = 31 * result + targetType.value
         result = 31 * result + targetValue.hashCode()

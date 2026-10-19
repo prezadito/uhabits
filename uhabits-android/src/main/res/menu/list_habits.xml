@@ -86,6 +86,29 @@
             app:showAsAction="always"/>
 
         <item
+            android:id="@+id/actionViewMode"
+            android:orderInCategory="40"
+            android:title="@string/view_mode"
+            app:showAsAction="never">
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/actionViewWeekly"
+                        android:title="@string/view_weekly"/>
+                    <item
+                        android:id="@+id/actionViewMonthly"
+                        android:title="@string/view_monthly"/>
+                    <item
+                        android:id="@+id/actionViewGrid"
+                        android:title="@string/view_grid"/>
+                    <item
+                        android:id="@+id/actionViewCompact"
+                        android:title="@string/view_compact"/>
+                </group>
+            </menu>
+        </item>
+
+        <item
             android:id="@+id/actionToggleNightMode"
             android:checkable="true"
             android:enabled="true"

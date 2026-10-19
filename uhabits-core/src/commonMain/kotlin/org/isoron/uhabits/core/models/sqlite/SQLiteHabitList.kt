@@ -236,7 +236,8 @@ class SQLiteHabitList(private val modelFactory: ModelFactory) : HabitList() {
                 targetType = habit.targetType.value,
                 unit = habit.unit,
                 uuid = habit.uuid,
-                quitSince = habit.quitSince
+                quitSince = habit.quitSince,
+                icon = habit.icon
             )
         }
 
@@ -255,6 +256,7 @@ class SQLiteHabitList(private val modelFactory: ModelFactory) : HabitList() {
             habit.position = data.position
             habit.uuid = data.uuid
             habit.quitSince = data.quitSince
+            habit.icon = data.icon
             if (data.reminderHour != null && data.reminderMin != null) {
                 habit.reminder = Reminder(
                     data.reminderHour!!,

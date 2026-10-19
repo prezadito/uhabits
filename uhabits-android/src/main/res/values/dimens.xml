@@ -38,7 +38,7 @@
     <dimen name="ds_radius_lg">16dp</dimen> <!-- sheets, dialogs, habit-type choices -->
     <!-- sizes -->
     <dimen name="ds_tile">36dp</dimen> <!-- visible day tile inside the 48dp checkmarkWidth/Height target -->
-    <dimen name="ds_ring">28dp</dimen> <!-- score ring in a habit card, 3dp stroke -->
+    <dimen name="ds_ring_icon">40dp</dimen> <!-- ring around the habit icon in a habit card, 3dp stroke -->
     <dimen name="ds_ring_lg">56dp</dimen> <!-- score ring on the habit screen, 6dp stroke -->
     <dimen name="ds_ring_stroke">3dp</dimen>
     <dimen name="ds_ring_lg_stroke">6dp</dimen>

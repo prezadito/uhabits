@@ -91,6 +91,13 @@ open class Preferences(private val storage: Storage) {
             return if (unixTime < 0) null else LocalDate.fromUnixTime(unixTime)
         }
 
+    open var homeViewMode: HomeViewMode
+        get() = HomeViewMode.fromName(storage.getString("pref_home_view_mode", HomeViewMode.WEEKLY.name))
+        set(mode) {
+            storage.putString("pref_home_view_mode", mode.name)
+            for (l in listeners) l.onHomeViewModeChanged()
+        }
+
     open var showArchived: Boolean
         get() = storage.getBoolean("pref_show_archived", false)
         set(showArchived) {
@@ -248,6 +255,7 @@ open class Preferences(private val storage: Storage) {
 
     interface Listener {
         fun onCheckmarkSequenceChanged() {}
+        fun onHomeViewModeChanged() {}
         fun onNotificationsChanged() {}
         fun onQuestionMarksChanged() {}
     }

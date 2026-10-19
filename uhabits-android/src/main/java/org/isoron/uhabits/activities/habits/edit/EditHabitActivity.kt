@@ -45,6 +45,7 @@ import org.isoron.uhabits.R
 import org.isoron.uhabits.activities.AndroidThemeSwitcher
 import org.isoron.uhabits.activities.common.dialogs.ColorPickerDialogFactory
 import org.isoron.uhabits.activities.common.dialogs.FrequencyPickerDialog
+import org.isoron.uhabits.activities.common.dialogs.IconPickerDialog
 import org.isoron.uhabits.activities.common.dialogs.WeekdayPickerDialog
 import org.isoron.uhabits.core.commands.CommandRunner
 import org.isoron.uhabits.core.commands.CreateHabitCommand
@@ -58,6 +59,7 @@ import org.isoron.uhabits.core.models.Reminder
 import org.isoron.uhabits.core.models.WeekdayList
 import org.isoron.uhabits.core.models.quitTimestamp
 import org.isoron.uhabits.databinding.ActivityEditHabitBinding
+import org.isoron.uhabits.utils.HabitIcons
 import org.isoron.uhabits.utils.applyBottomInset
 import org.isoron.uhabits.utils.applyRootViewInsets
 import org.isoron.uhabits.utils.applySurfaceSystemBars
@@ -88,6 +90,7 @@ class EditHabitActivity : AppCompatActivity() {
     lateinit var habitType: HabitType
     var unit = ""
     var color = PaletteColor(11)
+    var icon: String? = null
     var androidColor = 0
     var freqNum = 1
     var freqDen = 1
@@ -117,6 +120,7 @@ class EditHabitActivity : AppCompatActivity() {
             val habit = component.habitList.getById(habitId)!!
             habitType = habit.type
             color = habit.color
+            icon = habit.icon
             freqNum = habit.frequency.numerator
             freqDen = habit.frequency.denominator
             targetType = habit.targetType
@@ -139,6 +143,7 @@ class EditHabitActivity : AppCompatActivity() {
             habitId = state.getLong("habitId")
             habitType = HabitType.fromInt(state.getInt("habitType"))
             color = PaletteColor(state.getInt("paletteColor"))
+            icon = state.getString("icon")
             freqNum = state.getInt("freqNum")
             freqDen = state.getInt("freqDen")
             reminderHour = state.getInt("reminderHour")
@@ -184,6 +189,13 @@ class EditHabitActivity : AppCompatActivity() {
                 updateColors()
             }
             picker.dismissCurrentAndShow(supportFragmentManager, "colorPicker")
+        }
+
+        binding.iconButton.setOnClickListener {
+            IconPickerDialog(this, icon, androidColor) { picked ->
+                icon = picked
+                updateIcon()
+            }.show()
         }
 
         populateFrequency()
@@ -340,6 +352,7 @@ class EditHabitActivity : AppCompatActivity() {
         habit.question = binding.questionInput.text.trim().toString()
         habit.description = binding.notesInput.text.trim().toString()
         habit.color = color
+        habit.icon = icon
         if (reminderHour >= 0) {
             habit.reminder = Reminder(reminderHour, reminderMin, reminderDays)
         } else {
@@ -434,8 +447,23 @@ class EditHabitActivity : AppCompatActivity() {
         }
     }
 
+    private fun updateIcon() {
+        val glyph = HabitIcons.glyph(this, icon)
+        binding.iconPreview.typeface = HabitIcons.typeface(this, icon)
+        binding.iconPreview.text = glyph ?: ""
+        binding.iconPreview.setTextColor(androidColor)
+        binding.iconPreview.visibility = if (glyph == null) View.GONE else View.VISIBLE
+        binding.iconName.text = if (glyph == null) {
+            getString(R.string.no_icon)
+        } else {
+            HabitIcons.displayName(icon!!)
+        }
+        binding.iconButton.contentDescription = "${getString(R.string.icon)}, ${binding.iconName.text}"
+    }
+
     private fun updateColors() {
         androidColor = themeSwitcher.currentTheme.habitFill(color).toInt()
+        updateIcon()
         (binding.colorSwatch.background.mutate() as GradientDrawable).setColor(androidColor)
         binding.colorName.text = resources.getStringArray(R.array.hue_names)[color.hue]
         binding.colorButton.contentDescription =
@@ -453,6 +481,7 @@ class EditHabitActivity : AppCompatActivity() {
             putLong("habitId", habitId)
             putInt("habitType", habitType.value)
             putInt("paletteColor", color.paletteIndex)
+            putString("icon", icon)
             putInt("androidColor", androidColor)
             putInt("freqNum", freqNum)
             putInt("freqDen", freqDen)

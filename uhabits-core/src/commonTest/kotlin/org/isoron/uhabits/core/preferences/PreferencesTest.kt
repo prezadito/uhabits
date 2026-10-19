@@ -51,6 +51,17 @@ class PreferencesTest : BaseUnitTest() {
     }
 
     @Test
+    fun testHomeViewMode() {
+        assertEquals(HomeViewMode.WEEKLY, prefs.homeViewMode)
+        for (mode in HomeViewMode.entries) {
+            prefs.homeViewMode = mode
+            assertEquals(mode, prefs.homeViewMode)
+        }
+        storage.putString("pref_home_view_mode", "NOT_A_MODE")
+        assertEquals(HomeViewMode.WEEKLY, prefs.homeViewMode)
+    }
+
+    @Test
     fun testHabitColor() {
         assertEquals(999, prefs.getDefaultHabitColor(999))
         prefs.setDefaultHabitColor(10)

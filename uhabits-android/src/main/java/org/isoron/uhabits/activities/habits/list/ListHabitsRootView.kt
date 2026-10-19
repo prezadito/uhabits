@@ -21,6 +21,7 @@ package org.isoron.uhabits.activities.habits.list
 
 import android.content.Context
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
+import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.FrameLayout
 import android.widget.RelativeLayout
 import androidx.recyclerview.widget.RecyclerView
@@ -29,6 +30,7 @@ import nl.dionsegijn.konfetti.xml.KonfettiView
 import org.isoron.uhabits.R
 import org.isoron.uhabits.activities.common.views.ScrollableChart
 import org.isoron.uhabits.activities.common.views.TaskProgressBar
+import org.isoron.uhabits.activities.habits.list.views.DaySelectorView
 import org.isoron.uhabits.activities.habits.list.views.EmptyListView
 import org.isoron.uhabits.activities.habits.list.views.HabitCardListAdapter
 import org.isoron.uhabits.activities.habits.list.views.HabitCardListView
@@ -36,6 +38,7 @@ import org.isoron.uhabits.activities.habits.list.views.HabitCardListViewFactory
 import org.isoron.uhabits.activities.habits.list.views.HeaderView
 import org.isoron.uhabits.activities.habits.list.views.HintView
 import org.isoron.uhabits.core.models.ModelObservable
+import org.isoron.uhabits.core.preferences.HomeViewMode
 import org.isoron.uhabits.core.preferences.Preferences
 import org.isoron.uhabits.core.tasks.TaskRunner
 import org.isoron.uhabits.core.ui.screens.habits.list.HintListFactory
@@ -61,12 +64,12 @@ const val MAX_CHECKMARK_COUNT = 60
 class ListHabitsRootView(
     @ActivityContext context: Context,
     hintListFactory: HintListFactory,
-    preferences: Preferences,
+    private val preferences: Preferences,
     midnightTimer: MidnightTimer,
     runner: TaskRunner,
     private val listAdapter: HabitCardListAdapter,
     habitCardListViewFactory: HabitCardListViewFactory
-) : FrameLayout(context), ModelObservable.Listener {
+) : FrameLayout(context), ModelObservable.Listener, Preferences.Listener {
 
     val listView: HabitCardListView = habitCardListViewFactory.create()
     val llEmpty = EmptyListView(context)
@@ -77,6 +80,11 @@ class ListHabitsRootView(
     val progressBar = TaskProgressBar(context, runner)
     val hintView: HintView
     val header = HeaderView(context, preferences, midnightTimer)
+    val daySelector = DaySelectorView(context)
+    private val headerContainer = FrameLayout(context).apply {
+        addView(header, MATCH_PARENT, WRAP_CONTENT)
+        addView(daySelector, MATCH_PARENT, WRAP_CONTENT)
+    }
 
     init {
         val hints = resources.getStringArray(R.array.hints)
@@ -87,10 +95,10 @@ class ListHabitsRootView(
             background = sres.getDrawable(R.attr.windowBackgroundColor)
             addAtTop(konfettiView)
             addAtTop(tbar)
-            addBelow(header, tbar)
-            addBelow(listView, header, height = MATCH_PARENT)
-            addBelow(llEmpty, header, height = MATCH_PARENT)
-            addBelow(progressBar, header) {
+            addBelow(headerContainer, tbar)
+            addBelow(listView, headerContainer, height = MATCH_PARENT)
+            addBelow(llEmpty, headerContainer, height = MATCH_PARENT)
+            addBelow(progressBar, headerContainer) {
                 it.topMargin = dp(-6.0f).toInt()
             }
             addAtBottom(hintView)
@@ -111,8 +119,25 @@ class ListHabitsRootView(
                 tbar.setScrolled(recyclerView.canScrollVertically(-1))
             }
         })
+        daySelector.onSelect = { offset -> listView.selectedDayOffset = offset }
         addView(rootView, MATCH_PARENT, MATCH_PARENT)
         listAdapter.setListView(listView)
+        applyViewMode()
+    }
+
+    override fun onHomeViewModeChanged() {
+        post { applyViewMode() }
+    }
+
+    /**
+     * Weekly shows the scrollable day header, compact a day row to pick the day the cards act on,
+     * and the history-based views (monthly, grid) need neither.
+     */
+    private fun applyViewMode() {
+        val mode = preferences.homeViewMode
+        header.visibility = if (mode == HomeViewMode.WEEKLY) VISIBLE else GONE
+        daySelector.visibility = if (mode == HomeViewMode.COMPACT) VISIBLE else GONE
+        listView.viewMode = mode
     }
 
     override fun onModelChange() {
@@ -132,11 +157,14 @@ class ListHabitsRootView(
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
         setupControllers()
+        preferences.addListener(this)
+        applyViewMode()
         listAdapter.observable.addListener(this)
     }
 
     override fun onDetachedFromWindow() {
         listAdapter.observable.removeListener(this)
+        preferences.removeListener(this)
         super.onDetachedFromWindow()
     }
 

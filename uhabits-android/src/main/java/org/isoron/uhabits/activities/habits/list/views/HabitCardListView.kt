@@ -39,6 +39,7 @@ import me.tatarka.inject.annotations.Inject
 import org.isoron.uhabits.R
 import org.isoron.uhabits.activities.common.views.BundleSavedState
 import org.isoron.uhabits.core.models.Habit
+import org.isoron.uhabits.core.preferences.HomeViewMode
 import org.isoron.uhabits.inject.ActivityContext
 
 @Inject
@@ -64,10 +65,32 @@ class HabitCardListView(
     var dataOffset: Int = 0
         set(value) {
             field = value
+            if (viewMode == HomeViewMode.COMPACT) return
             attachedHolders
                 .map { it.itemView as HabitCardView }
                 .forEach { it.dataOffset = value }
         }
+
+    /** Layout of the cards. Changing it rebinds every card. */
+    var viewMode: HomeViewMode = HomeViewMode.WEEKLY
+        set(value) {
+            if (field == value) return
+            field = value
+            adapter.notifyDataSetChanged()
+        }
+
+    /** In the compact view, how many days before today the cards show and edit. */
+    var selectedDayOffset: Int = 0
+        set(value) {
+            if (field == value) return
+            field = value
+            if (viewMode != HomeViewMode.COMPACT) return
+            attachedHolders
+                .map { it.itemView as HabitCardView }
+                .forEach { it.dataOffset = value }
+        }
+
+    private val isCompact get() = viewMode == HomeViewMode.COMPACT
 
     private val attachedHolders = mutableListOf<HabitCardViewHolder>()
     private val touchHelper = ItemTouchHelper(TouchHelperCallback()).apply {
@@ -119,9 +142,10 @@ class HabitCardListView(
         val cardView = holder.itemView as HabitCardView
         cardView.habit = habit
         cardView.isSelected = selected
+        cardView.viewMode = viewMode
         cardView.values = checkmarks
-        cardView.buttonCount = checkmarkCount
-        cardView.dataOffset = dataOffset
+        cardView.buttonCount = if (isCompact) 1 else checkmarkCount
+        cardView.dataOffset = if (isCompact) selectedDayOffset else dataOffset
         cardView.score = score
         cardView.unit = habit.unit
         cardView.threshold = habit.targetValue / habit.frequency.denominator
@@ -137,7 +161,8 @@ class HabitCardListView(
     }
 
     fun attachCardView(holder: HabitCardViewHolder) {
-        (holder.itemView as HabitCardView).dataOffset = dataOffset
+        (holder.itemView as HabitCardView).dataOffset =
+            if (isCompact) selectedDayOffset else dataOffset
         attachedHolders.add(holder)
     }
 
