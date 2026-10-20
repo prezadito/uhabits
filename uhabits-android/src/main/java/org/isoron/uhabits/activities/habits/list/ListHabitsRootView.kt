@@ -136,8 +136,14 @@ class ListHabitsRootView(
         applyViewMode()
     }
 
+    /** Switching views always goes back to today: the day row, the selection and Weekly's header. */
     override fun onHomeViewModeChanged() {
-        post { applyViewMode() }
+        post {
+            selectDay(0)
+            daySelector.refresh()
+            header.reset()
+            applyViewMode()
+        }
     }
 
     override fun atMidnight() {
