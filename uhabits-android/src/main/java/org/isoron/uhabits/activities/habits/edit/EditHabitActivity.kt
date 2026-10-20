@@ -192,7 +192,11 @@ class EditHabitActivity : AppCompatActivity() {
         }
 
         binding.iconButton.setOnClickListener {
-            IconPickerDialog(this, icon, androidColor) { picked ->
+            val usedIcons = component.habitList
+                .filter { it.id != habitId }
+                .mapNotNull { it.icon }
+                .toSet()
+            IconPickerDialog(this, icon, androidColor, usedIcons) { picked ->
                 icon = picked
                 updateIcon()
             }.show()

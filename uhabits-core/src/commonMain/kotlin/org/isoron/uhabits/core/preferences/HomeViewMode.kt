@@ -33,7 +33,13 @@ enum class HomeViewMode {
     /** One habit per line, checked for the day selected in a day row. */
     COMPACT;
 
+    /** Whether the list shows a day row, to pick the day the cards show and edit. */
+    val usesDayRow get() = this != WEEKLY
+
     companion object {
+        /** Days in the day row, ending today: a month back. */
+        const val DAY_ROW_LENGTH = 31
+
         fun fromName(name: String): HomeViewMode =
             entries.firstOrNull { it.name == name } ?: WEEKLY
     }

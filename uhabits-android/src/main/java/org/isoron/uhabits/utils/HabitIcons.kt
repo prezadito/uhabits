@@ -23,6 +23,7 @@ import android.content.Context
 import android.graphics.Typeface
 import androidx.annotation.RawRes
 import org.isoron.uhabits.R
+import org.isoron.uhabits.core.ui.IconCategory
 import org.isoron.uhabits.core.ui.IconEntry
 import org.isoron.uhabits.core.ui.IconSearch
 
@@ -82,6 +83,13 @@ object HabitIcons {
     fun search(context: Context, query: String): List<String> =
         IconSearch.search(catalog(context).entries, query).map { it.name }
 
+    /**
+     * What the picker lists: matches of [query] among all icons, or, with a blank query, the icons
+     * of [category] (all of them if null).
+     */
+    fun browse(context: Context, query: String, category: IconCategory?): List<String> =
+        IconSearch.browse(catalog(context).entries, query, category).map { it.name }
+
     @Synchronized
     private fun catalog(context: Context): Catalog {
         catalog?.let { return it }
@@ -94,6 +102,16 @@ object HabitIcons {
 
         fun glyphOf(hex: String): String? =
             hex.toIntOrNull(16)?.let { String(Character.toChars(it)) }
+
+        val categories = mutableMapOf<String, IconCategory>()
+        lines(R.raw.material_icon_categories) { line ->
+            val (name, id) = line.split('|', limit = 2).let { it[0] to it.getOrNull(1) }
+            categories[name] = IconCategory.fromId(id)
+        }
+        lines(R.raw.fa_icon_categories) { line ->
+            val (name, id) = line.split('|', limit = 2).let { it[0] to it.getOrNull(1) }
+            categories[FA_PREFIX + name] = IconCategory.fromId(id)
+        }
 
         val material = sortedMapOf<String, String>()
         lines(R.raw.material_icon_codepoints) { line ->
@@ -120,7 +138,7 @@ object HabitIcons {
 
         val ordered = SUGGESTED.filter { it in glyphs } + glyphs.keys.filter { it !in SUGGESTED }
         val result = Catalog(
-            entries = ordered.map { IconEntry(it, keywords[it] ?: "") },
+            entries = ordered.map { IconEntry(it, keywords[it] ?: "", categories[it] ?: IconCategory.SYMBOLS_MORE) },
             glyphs = glyphs
         )
         catalog = result

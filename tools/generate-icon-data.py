@@ -7,6 +7,8 @@ uhabits-android/src/main:
   res/raw/material_icon_codepoints.txt   "name hex" per line (Material Icons font)
   res/raw/material_icon_keywords.txt     "name|keywords" per line, used by the icon search
   res/raw/fa_icon_codepoints.txt         "name hex|keywords" per line (Font Awesome Free, solid)
+  res/raw/material_icon_categories.txt   "name|CATEGORY" per line, see icon_categories.py
+  res/raw/fa_icon_categories.txt         same for Font Awesome
   assets/MaterialIcons-Regular.ttf, assets/fa-solid-900.ttf
 
 Usage: tools/generate-icon-data.py
@@ -14,6 +16,8 @@ Usage: tools/generate-icon-data.py
 import json
 import urllib.request
 from pathlib import Path
+
+import icon_categories
 
 MATERIAL = "https://raw.githubusercontent.com/google/material-design-icons/master/font/"
 FA = "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/"
@@ -95,6 +99,9 @@ def main() -> None:
         extra -= set(words(name))
         lines.append(f"{name} {icon['unicode']}|{' '.join(sorted(extra))}")
     (MAIN / "res/raw/fa_icon_codepoints.txt").write_text("\n".join(lines) + "\n")
+
+    material, fa_icons = icon_categories.read_existing()
+    icon_categories.write_files(material, fa_icons)
 
 
 if __name__ == "__main__":

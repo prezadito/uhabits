@@ -20,7 +20,11 @@
 package org.isoron.uhabits.core.ui
 
 /** An icon that can be searched by its [name] and by related [keywords], e.g. "gym". */
-data class IconEntry(val name: String, val keywords: String)
+data class IconEntry(
+    val name: String,
+    val keywords: String,
+    val category: IconCategory = IconCategory.SYMBOLS_MORE
+)
 
 object IconSearch {
     /**
@@ -54,6 +58,15 @@ object IconSearch {
             if (worst >= 0) ranked.add(worst to entry)
         }
         return ranked.sortedBy { it.first }.map { it.second }
+    }
+
+    /**
+     * What the icon picker shows: with a query, the matches among all entries, whatever the
+     * [category]; with a blank query, the entries of [category], or all of them if it is null.
+     */
+    fun browse(entries: List<IconEntry>, query: String, category: IconCategory?): List<IconEntry> {
+        if (split(query).isNotEmpty()) return search(entries, query)
+        return if (category == null) entries else entries.filter { it.category == category }
     }
 
     private fun split(text: String): List<String> =

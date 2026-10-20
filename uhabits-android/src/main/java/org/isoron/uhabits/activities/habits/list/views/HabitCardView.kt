@@ -398,14 +398,14 @@ class HabitCardView(
     }
 
     /**
-     * Weekly: day tiles under the title. Compact: a single tile (the selected day) at the end of
-     * the title row. Monthly and grid: a read-only history under the title instead of the tiles.
+     * Weekly: day tiles under the title. The other views: a single tile (the day selected in the
+     * day row) at the end of the title row, plus, in monthly and grid, a read-only history under
+     * the title.
      */
     private fun applyViewMode() {
-        val compact = viewMode == HomeViewMode.COMPACT
         val showsHistory = viewMode == HomeViewMode.MONTHLY || viewMode == HomeViewMode.GRID
         (tileRow.parent as? ViewGroup)?.removeView(tileRow)
-        if (compact) {
+        if (viewMode.usesDayRow) {
             tileRow.layoutParams = LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
             topRow.addView(tileRow)
         } else {
@@ -414,7 +414,6 @@ class HabitCardView(
             }
             innerFrame.addView(tileRow, innerFrame.indexOfChild(history))
         }
-        tileRow.visibility = if (showsHistory) GONE else VISIBLE
         history.visibility = if (showsHistory) VISIBLE else GONE
         history.mode = viewMode
     }

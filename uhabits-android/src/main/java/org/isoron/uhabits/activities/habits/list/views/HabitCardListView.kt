@@ -65,7 +65,7 @@ class HabitCardListView(
     var dataOffset: Int = 0
         set(value) {
             field = value
-            if (viewMode == HomeViewMode.COMPACT) return
+            if (viewMode.usesDayRow) return
             attachedHolders
                 .map { it.itemView as HabitCardView }
                 .forEach { it.dataOffset = value }
@@ -79,18 +79,18 @@ class HabitCardListView(
             adapter.notifyDataSetChanged()
         }
 
-    /** In the compact view, how many days before today the cards show and edit. */
+    /** In the views with a day row, how many days before today the cards show and edit. */
     var selectedDayOffset: Int = 0
         set(value) {
             if (field == value) return
             field = value
-            if (viewMode != HomeViewMode.COMPACT) return
+            if (!viewMode.usesDayRow) return
             attachedHolders
                 .map { it.itemView as HabitCardView }
                 .forEach { it.dataOffset = value }
         }
 
-    private val isCompact get() = viewMode == HomeViewMode.COMPACT
+    private val usesDayRow get() = viewMode.usesDayRow
 
     private val attachedHolders = mutableListOf<HabitCardViewHolder>()
     private val touchHelper = ItemTouchHelper(TouchHelperCallback()).apply {
@@ -144,8 +144,8 @@ class HabitCardListView(
         cardView.isSelected = selected
         cardView.viewMode = viewMode
         cardView.values = checkmarks
-        cardView.buttonCount = if (isCompact) 1 else checkmarkCount
-        cardView.dataOffset = if (isCompact) selectedDayOffset else dataOffset
+        cardView.buttonCount = if (usesDayRow) 1 else checkmarkCount
+        cardView.dataOffset = if (usesDayRow) selectedDayOffset else dataOffset
         cardView.score = score
         cardView.unit = habit.unit
         cardView.threshold = habit.targetValue / habit.frequency.denominator
@@ -162,7 +162,7 @@ class HabitCardListView(
 
     fun attachCardView(holder: HabitCardViewHolder) {
         (holder.itemView as HabitCardView).dataOffset =
-            if (isCompact) selectedDayOffset else dataOffset
+            if (usesDayRow) selectedDayOffset else dataOffset
         attachedHolders.add(holder)
     }
 

@@ -28,6 +28,7 @@ import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Scroller
+import org.isoron.uhabits.core.ui.screens.habits.list.WeekPaging
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
@@ -42,6 +43,14 @@ abstract class ScrollableChart : View, GestureDetector.OnGestureListener, Animat
     private lateinit var scrollAnimator: ValueAnimator
     private lateinit var scrollController: ScrollController
     private var maxDataOffset = 12 * 200
+
+    /**
+     * If greater than 1, the chart snaps to whole pages of this many data points when a drag
+     * ends, and a fling moves one page. Only a page size of [WeekPaging.DAYS_PER_WEEK] is
+     * supported.
+     */
+    var pageSize = 1
+    private var pagedFling = false
 
     constructor(context: Context?) : super(context) {
         init(context)
@@ -61,6 +70,11 @@ abstract class ScrollableChart : View, GestureDetector.OnGestureListener, Animat
     }
 
     override fun onDown(e: MotionEvent): Boolean {
+        if (pageSize > 1) {
+            removeCallbacks(snapStep)
+            scroller.forceFinished(true)
+            pagedFling = false
+        }
         return true
     }
 
@@ -70,6 +84,11 @@ abstract class ScrollableChart : View, GestureDetector.OnGestureListener, Animat
         velocityX: Float,
         velocityY: Float
     ): Boolean {
+        if (pageSize > 1) {
+            pagedFling = true
+            snapToPage(if (direction * velocityX > 0) 1 else -1)
+            return true
+        }
         scroller.fling(
             scroller.currX,
             scroller.currY,
@@ -143,7 +162,32 @@ abstract class ScrollableChart : View, GestureDetector.OnGestureListener, Animat
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
-        return detector.onTouchEvent(event)
+        val handled = detector.onTouchEvent(event)
+        val ended = event.action == MotionEvent.ACTION_UP || event.action == MotionEvent.ACTION_CANCEL
+        if (pageSize > 1 && ended && !pagedFling) snapToPage(0)
+        return handled
+    }
+
+    /**
+     * Animates to a whole page: the nearest one, or, for [towards] 1 (older) and -1 (newer), the
+     * next one in that direction.
+     */
+    private fun snapToPage(towards: Int) {
+        if (scrollerBucketSize == 0) return
+        val current = Math.round(scroller.currX.toFloat() / scrollerBucketSize)
+        val target = WeekPaging.snap(current, maxDataOffset, towards) * scrollerBucketSize
+        scroller.startScroll(scroller.currX, 0, target - scroller.currX, 0, SNAP_DURATION_MS)
+        // Not a ValueAnimator: it does not run when the user has turned animations off.
+        removeCallbacks(snapStep)
+        postOnAnimation(snapStep)
+    }
+
+    private val snapStep = object : Runnable {
+        override fun run() {
+            val running = scroller.computeScrollOffset()
+            updateDataOffset()
+            if (running) postOnAnimation(this)
+        }
     }
 
     fun setScrollDirection(direction: Int) {
@@ -191,6 +235,10 @@ abstract class ScrollableChart : View, GestureDetector.OnGestureListener, Animat
             scrollController.onDataOffsetChanged(dataOffset)
             postInvalidate()
         }
+    }
+
+    private companion object {
+        const val SNAP_DURATION_MS = 220
     }
 
     interface ScrollController {
