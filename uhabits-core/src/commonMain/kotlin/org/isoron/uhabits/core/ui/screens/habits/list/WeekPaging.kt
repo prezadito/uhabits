@@ -37,12 +37,13 @@ object WeekPaging {
 
     /**
      * Snaps [offset] to a multiple of 7 within 0..[max]. Without [towards] it rounds to the
-     * nearest week. With [towards] set to 1 (older) or -1 (newer), it rounds that way, for flings.
+     * nearest week. With [towards] set to 1 (older) or -1 (newer), for flings, it goes to the
+     * next week in that direction, even if [offset] is already on a week.
      */
     fun snap(offset: Int, max: Int, towards: Int = 0): Int {
         val weeks = when {
-            towards > 0 -> (offset + DAYS_PER_WEEK - 1).floorDiv(DAYS_PER_WEEK)
-            towards < 0 -> offset.floorDiv(DAYS_PER_WEEK)
+            towards > 0 -> offset.floorDiv(DAYS_PER_WEEK) + 1
+            towards < 0 -> (offset + DAYS_PER_WEEK - 1).floorDiv(DAYS_PER_WEEK) - 1
             else -> (offset + DAYS_PER_WEEK / 2).floorDiv(DAYS_PER_WEEK)
         }
         return min(max(weeks * DAYS_PER_WEEK, 0), max(max, 0) / DAYS_PER_WEEK * DAYS_PER_WEEK)

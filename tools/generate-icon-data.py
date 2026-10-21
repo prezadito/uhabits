@@ -101,7 +101,9 @@ def main() -> None:
     (MAIN / "res/raw/fa_icon_codepoints.txt").write_text("\n".join(lines) + "\n")
 
     material, fa_icons = icon_categories.read_existing()
-    icon_categories.write_files(material, fa_icons)
+    counts = icon_categories.write_files(material, fa_icons)
+    for category in [*icon_categories.CATEGORIES, icon_categories.FALLBACK]:
+        print(f"{category:20} {counts[category]}")
 
 
 if __name__ == "__main__":

@@ -55,11 +55,20 @@ class WeekPagingTest {
     }
 
     @Test
-    fun testPageTowardsDirectionOfFling() {
-        // A fling moves a whole number of weeks even if it ends before the halfway point.
+    fun testFlingAlwaysMovesToTheNextWeek() {
+        // A fling moves a whole week even if it ends before the halfway point...
         assertEquals(7, WeekPaging.snap(2, max = 49, towards = 1))
         assertEquals(0, WeekPaging.snap(5, max = 49, towards = -1))
-        assertEquals(7, WeekPaging.snap(7, max = 49, towards = 1))
+        // ...and even if the drag ended exactly on a week boundary.
+        assertEquals(14, WeekPaging.snap(7, max = 49, towards = 1))
+        assertEquals(7, WeekPaging.snap(14, max = 49, towards = -1))
+        assertEquals(7, WeekPaging.snap(0, max = 49, towards = 1))
+    }
+
+    @Test
+    fun testFlingStopsAtTheEnds() {
         assertEquals(0, WeekPaging.snap(0, max = 49, towards = -1))
+        assertEquals(49, WeekPaging.snap(49, max = 49, towards = 1))
+        assertEquals(0, WeekPaging.snap(3, max = 0, towards = 1))
     }
 }
