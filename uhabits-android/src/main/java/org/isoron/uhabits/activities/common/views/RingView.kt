@@ -64,6 +64,7 @@ class RingView : View {
     private var textSize: Float
     private var isStrokedTextEnabled: Boolean = false
     private var enableFontAwesome = false
+    private var customTypeface: Typeface? = null
     private var internalDrawingCache: Bitmap? = null
     private var cacheCanvas: Canvas? = null
     private var isTransparencyEnabled = false
@@ -112,6 +113,12 @@ class RingView : View {
         invalidate()
     }
 
+    /** Typeface for the text inside the ring, e.g. an icon font. Takes precedence over bold. */
+    fun setTypeface(typeface: Typeface?) {
+        customTypeface = typeface
+        invalidate()
+    }
+
     fun setBoldText(bold: Boolean) {
         isBoldText = bold
         invalidate()
@@ -147,6 +154,7 @@ class RingView : View {
 
     fun setTextSize(textSize: Float) {
         this.textSize = textSize
+        invalidate()
     }
 
     fun setThickness(thickness: Float) {
@@ -192,17 +200,20 @@ class RingView : View {
                 pRing!!.strokeWidth = textSize / 15f
             }
 
-            if (enableFontAwesome) {
+            if (customTypeface != null) {
+                pRing!!.typeface = customTypeface
+            } else if (enableFontAwesome) {
                 pRing!!.typeface = getFontAwesome(context)
             } else if (isBoldText) {
                 pRing!!.typeface = Typeface.DEFAULT_BOLD
             }
-            activeCanvas.drawText(
-                text!!,
-                rect!!.centerX(),
-                rect!!.centerY() + 0.4f * em,
-                pRing!!
-            )
+            val baseline = if (customTypeface != null) {
+                val fm = pRing!!.fontMetrics
+                rect!!.centerY() - (fm.ascent + fm.descent) / 2
+            } else {
+                rect!!.centerY() + 0.4f * em
+            }
+            activeCanvas.drawText(text!!, rect!!.centerX(), baseline, pRing!!)
         }
         if (activeCanvas !== canvas) canvas.drawBitmap(internalDrawingCache!!, 0f, 0f, null)
     }

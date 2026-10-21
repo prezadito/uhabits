@@ -1,0 +1,1402 @@
+0 30|digit nada none zero zilch
+1 31|digit one
+2 32|digit two
+3 33|digit three
+4 34|digit four
+5 35|digit five
+6 36|digit six
+7 37|digit seven
+8 38|digit eight
+9 39|digit nine
+a 41|capital latin letter small
+address-book f2b9|black contact directory employee index little portfolio rolodex uer username
+address-card f2bb|about contact employee id identification portfolio postcard profile registration uer username
+align-center f037|format middle paragraph text
+align-justify f039|format paragraph text
+align-left f036|format paragraph text
+align-right f038|format paragraph text
+anchor f13d|berth boat dock embed link maritime moor port secure ship tool
+anchor-circle-check e4aa|affected enable marina not ok okay port validate working
+anchor-circle-exclamation e4ab|affected failed marina port
+anchor-circle-xmark e4ac|destroy marina port uncheck
+anchor-lock e4ad|closed lockdown marina padlock port privacy quarantine
+angle-down f107|arrow arrowhead caret download expand insert
+angle-left f104|arrow back caret less mark pointing previous quotation single
+angle-right f105|arrow care forward mark more next pointing quotation single
+angle-up f106|arrow arrowhead caret collapse upgrade upload
+angles-down f103|arrows caret download expand
+angles-left f100|angle arrows back caret double laquo mark pointing previous quotation quote
+angles-right f101|angle arrows caret double forward mark more next pointing quotation quote raquo
+angles-up f102|arrows caret collapse upload
+ankh f644|amulet ansata christianity copper coptic copts crux egypt venus
+apple-whole f5d1|fall fruit fuji green macintosh orchard red seasonal vegan
+archway f557|arc monument road street tunnel
+arrow-down f063|download downwards
+arrow-down-1-9 f162|arrange asc filter numbers numeric order sort
+arrow-down-9-1 f886|arrange asc filter numbers numeric order sort
+arrow-down-a-z f15d|alpha alphabetical arrange asc filter order sort
+arrow-down-long f175|download
+arrow-down-short-wide f884|amount arrange asc filter order sort
+arrow-down-up-across-line e4af|border crossing transfer
+arrow-down-up-lock e4b0|border closed crossing lockdown padlock privacy quarantine transfer
+arrow-down-wide-short f160|amount arrange asc filter number order sort
+arrow-down-z-a f881|alpha alphabetical arrange asc filter order sort
+arrow-left f060|back leftwards previous
+arrow-left-long f177|back previous
+arrow-pointer f245|cursor select
+arrow-right f061|forward next rightwards
+arrow-right-arrow-left f0ec|arrows leftwards over reciprocate return rightwards swap transfer
+arrow-right-from-bracket f08b|exit leave log logout out
+arrow-right-long f178|forward next
+arrow-right-to-bracket f090|enter in insert join log login sign signin signup up
+arrow-right-to-city e4b3|building exodus insert rural urban
+arrow-rotate-left f0e2|anticlockwise back circle control exchange oops open return swap z
+arrow-rotate-right f01e|circle clockwise forward open refresh reload renew repeat retry
+arrow-trend-down e097|line stocks
+arrow-trend-up e098|line stocks
+arrow-turn-down f149|
+arrow-turn-up f148|
+arrow-up f062|forward upgrade upload upwards
+arrow-up-1-9 f163|arrange desc filter numbers numeric order sort
+arrow-up-9-1 f887|arrange desc filter numbers numeric order sort
+arrow-up-a-z f15e|alpha alphabetical arrange desc filter order sort
+arrow-up-from-bracket e09a|share transfer upgrade upload
+arrow-up-from-ground-water e4b5|groundwater spring supply table upgrade
+arrow-up-from-water-pump e4b6|flood groundwater submersible sump upgrade
+arrow-up-long f176|upload
+arrow-up-right-dots e4b7|growth increase population upgrade
+arrow-up-right-from-square f08e|new open send share upgrade
+arrow-up-short-wide f885|amount arrange desc filter order sort
+arrow-up-wide-short f161|amount arrange desc filter order sort upgrade
+arrow-up-z-a f882|alpha alphabetical arrange desc filter order sort
+arrows-down-to-line e4b8|insert scale sink
+arrows-down-to-people e4b9|affected focus insert targeted together uer
+arrows-left-right f07e|expand horizontal landscape resize wide
+arrows-left-right-to-line e4ba|analysis expand gap
+arrows-rotate f021|and clockwise exchange left modify refresh reload renew retry right semicircle swap
+arrows-spin e4bb|cycle rotate whirl
+arrows-split-up-and-left e4bc|agile
+arrows-to-circle e4bd|center concentrate coordinate coordination focal focus insert point
+arrows-to-dot e4be|assembly center condense focus insert minimize point
+arrows-to-eye e4bf|assessment center coordinated focus
+arrows-turn-right e4c0|
+arrows-turn-to-dots e4c1|destination insert nexus
+arrows-up-down f07d|expand portrait resize tall vertical
+arrows-up-down-left-right f047|arrow bigger enlarge expand fullscreen move position reorder resize
+arrows-up-to-line e4c2|rise scale upgrade
+asterisk 2a|annotation details heavy reference required star
+at 40|address author commercial e email fluctuate handle mail
+atom f5d2|atheism atheist chemistry electron ion isotope knowledge neutron nuclear proton science symbol
+audio-description f29e|blind narration video visual
+austral-sign e0a9|currency
+award f559|guarantee honor praise prize recognition ribbon trophy warranty
+b 42|capital latin letter small
+baby f77c|people uer users
+baby-carriage f77d|buggy carrier infant push stroller transportation walk wheels
+backward f04a|arrow button double fast previous reverse rewind
+backward-fast f049|arrow beginning button first last previous quick rewind scene start track triangle
+backward-step f048|beginning first previous rewind start
+bacon f7e5|blt breakfast food ham lard meat pancetta pork rasher
+bacteria e059|19 antibiotic antibody covid health organism sick
+bacterium e05a|19 antibiotic antibody covid germ health organism sick
+bag-shopping f290|buy checkout grocery payment purchase
+bahai f666|bahá'í star
+baht-sign e0ac|currency
+ban f05e|404 abort block cancel delete deny disabled entry failed forbidden found hide no not prohibit prohibited remove stop trash
+ban-smoking f54d|cancel cigarette cigarettes deny disabled forbidden no non not prohibited quit stop tobacco
+bandage f462|adhesive aid boo first modify ouch
+bangladeshi-taka-sign e2e6|bdt currency tk
+barcode f02a|info laser price scan upc
+bars f0c9|checklist drag hamburger list menu nav navigation ol reorder settings todo ul
+bars-progress f828|checklist do downloading downloads loading management poll project settings to
+bars-staggered f550|flow list timeline
+baseball f433|ball foul glove hardball league leather mlb softball sport underarm
+baseball-bat-ball f432|league mlb slugger softball sport
+basket-shopping f291|buy checkout grocery payment purchase
+basketball f434|ball dribble dunk hoop nba
+bath f2cd|bathtub clean shower tub wash
+battery-empty f244|charge dead power status
+battery-full f240|batter charge power status
+battery-half f242|charge power status
+battery-quarter f243|charge low power status
+battery-three-quarters f241|charge power status
+bed f236|hospital hotel in lodging mattress patient person rest sleep travel uer
+bed-pulse f487|ekg electrocardiogram health hospital life patient vital
+beer-mug-empty f0fc|alcohol ale bar beverage brew brewery drink foam lager liquor stein
+bell f0f3|alarm alert bel chime notification reminder request
+bell-concierge f562|attention bellhop hotel receptionist request service support
+bell-slash f1f6|alert cancel disabled forbidden mute notification off quiet reminder silent with
+bezier-curve f55b|curves illustrator lines path vector
+bicycle f206|bike gears pedal transportation vehicle
+binoculars f1e5|glasses inspection magnifier magnify scenic spyglass view
+biohazard f780|19 covid danger dangerous epidemic hazmat medical pandemic radioactive sign toxic waste zombie
+bitcoin-sign e0b4|currency
+blender f517|cocktail milkshake mixer puree smoothie
+blender-phone f6b6|appliance cocktail fantasy milkshake mixer puree silly smoothie
+blog f781|2.0 journal log online personal post web wordpress writing
+bold f032|emphasis format text
+bolt f0e7|charge danger electric electricity flash high lightning voltage weather zap
+bolt-lightning e0b7|electricity flash weather zap
+bomb f1e2|comic error explode fuse grenade warning
+bone f5d7|calcium dog skeletal skeleton tibia
+bong f55c|aparatus cannabis marijuana pipe smoke smoking weed
+book f02d|cover decorated decorative diary documentation journal knowledge library notebook read research scholar with
+book-atlas f558|directions geography globe knowledge library map research travel wayfinding
+book-bible f647|catholicism christianity god holy
+book-bookmark e0bb|knowledge library research
+book-journal-whills f66a|force jedi sith star wars yoda
+book-medical f7e6|diary documentation health history journal library read record research
+book-open f518|flyer knowledge library notebook pamphlet reading research
+book-open-reader f5da|flyer library notebook pamphlet reading research
+book-quran f687|islam muslim religion
+book-skull f6b7|& arts crossbones d&d dark death dnd documentation dragons dungeons evil fantasy halloween holiday library necronomicon read research spell
+book-tanakh f827|jewish judaism religion
+bookmark f02e|favorite library mark marker read remember research save
+border-all f84c|cell grid outline stroke table
+border-none f850|cell grid outline stroke table
+border-top-left f853|cell outline stroke table
+bore-hole e4c3|bury drill
+bottle-droplet e4c4|alcohol drink oil olive wine
+bottle-water e4c5|h2o plastic
+bowl-food e4c6|catfood dogfood rice
+bowl-rice e2eb|boiled cooked steamed
+bowling-ball f436|alley candlepin gutter lane strike tenpin
+box f466|archive container package parcel storage
+box-archive f187|package save storage
+box-open f49e|archive container package storage unpack
+box-tissue e05b|19 cough covid kleenex mucus nose sneeze snot
+boxes-packing e4c7|archive box package storage supplies
+boxes-stacked f468|archives inventory storage warehouse
+braille f2a1|alphabet blind dots raised vision
+brain f5dc|cerebellum gray intellect intelligent knowledge matter meditation medulla mind mindfulness noodle oblongata scholar wit
+brazilian-real-sign e46c|currency
+bread-slice f7ec|bake bakery baking dough flour gluten grain sandwich sourdough toast wheat yeast
+bridge e4c8|road
+bridge-circle-check e4c9|affected enable not ok okay road validate working
+bridge-circle-exclamation e4ca|affected failed road
+bridge-circle-xmark e4cb|destroy road uncheck
+bridge-lock e4cc|closed lockdown padlock privacy quarantine road
+bridge-water e4ce|road
+briefcase f0b1|bag briefcas business luggage offer office portfolio work
+briefcase-medical f469|aid doctor emt first health
+broom f51a|2000 clean cleaning firebolt fly halloween nimbus quidditch sweep sweeping witch
+broom-ball f458|bludger golden harry hogwarts potter quaffle snitch sport wizard
+brush f55d|art bristles color handle maintenance modify paint
+bucket e4cf|pail sandcastle
+bug f188|beetle error glitch insect repair report
+bug-slash e490|beetle disabled fix glitch insect optimize repair report warning
+bugs e4d0|bedbug infestation lice plague ticks
+building f1ad|apartment business city company office urban work
+building-circle-arrow-right e4d1|center city distribution office
+building-circle-check e4d2|affected city enable not office ok okay validate working
+building-circle-exclamation e4d3|affected city failed office
+building-circle-xmark e4d4|city destroy office uncheck
+building-columns f19c|bank college education institution museum students
+building-flag e4d5|city diplomat embassy headquarters nations united
+building-lock e4d6|city closed lockdown padlock privacy quarantine secure
+building-ngo e4d7|city governmental non office organization
+building-shield e4d8|city police protect safety
+building-un e4d9|city nations office united
+building-user e4da|apartment city employee uer
+building-wheat e4db|agriculture city usda
+bullhorn f0a1|address announcement broadcast loud louder loudspeaker megaphone public request share
+bullseye f140|archery goal objective strategy target
+burger f805|bacon beef cheeseburger fast food grill ground king mcdonalds sandwich
+burst e4dc|boom crash explosion
+bus f207|oncoming public transportation travel vehicle
+bus-simple f55e|mta public transportation travel vehicle
+business-time f64a|alarm briefcase clock conchords flight of portfolio reminder socks the wednesday
+c 43|capital latin letter small
+cable-car f7da|aerial cableway gondola lift mountain tram tramway trolley
+cake-candles f1fd|anniversary bakery birthday celebration dessert frosting holiday party pastry sweet
+calculator f1ec|abacus addition arithmetic counting math multiplication pocket subtraction
+calendar f133|date day event month o off schedule tear time when year
+calendar-check f274|accept agree appointment confirm correct date day done enable event month ok schedule select success tick time todo validate warranty when working year
+calendar-day f783|date detail event focus month schedule single time today when year
+calendar-days f073|date day event month schedule time when year
+calendar-minus f272|date day delete event month negative remove schedule time when year
+calendar-plus f271|add create date day event month new positive schedule time when year
+calendar-week f784|date day detail event focus month schedule single time today when year
+calendar-xmark f273|archive date day delete event month remove schedule time uncheck when x year
+camera f030|image img lens photo picture record shutter video
+camera-retro f083|image img lens photo picture record shutter video
+camera-rotate e0d8|facing flip front img photo selfie
+campground f6bb|camping fall outdoors teepee tent tipi
+candy-cane f786|christmas holiday mint peppermint striped xmas
+cannabis f55f|bud chronic drugs endica endo ganja jane joint marijuana mary pot reefer sativa smoke smoking spliff tabacky weed whacky
+capsules f46b|drugs medicine pills prescription
+car f1b9|auto automobile oncoming sedan transportation travel vehicle
+car-battery f5df|auto electric mechanic power
+car-burst f5e1|accident auto automobile insurance sedan transportation vehicle wreck
+car-on e4dd|alarm carjack warning
+car-rear f5de|auto automobile sedan transportation travel vehicle
+car-side f5e4|auto automobile sedan transportation travel vehicle
+car-tunnel e4de|road
+caravan f8ff|camper home motor rv trailer travel
+caret-down f0d7|arrow dropdown expand menu more triangle
+caret-left f0d9|arrow back previous triangle
+caret-right f0da|arrow forward next triangle
+caret-up f0d8|arrow collapse triangle upgrade
+carrot f787|bugs bunny food orange vegan vegetable
+cart-arrow-down f218|download insert save shopping
+cart-flatbed f474|carry inventory shipping transport
+cart-flatbed-suitcase f59d|airport bag baggage travel
+cart-plus f217|add create new positive shopping
+cart-shopping f07a|buy checkout grocery payment purchase trolley
+cash-register f788|buy cha change checkout ching commerce leaerboard machine pay payment purchase store
+cat f6be|feline halloween holiday kitten kitty meow pet
+cedi-sign e0df|currency
+cent-sign e3f5|currency
+certificate f0a3|badge guarantee star verified
+chair f6c0|furniture seat sit
+chalkboard f51b|blackboard learning school teaching whiteboard writing
+chalkboard-user f51c|blackboard instructor learning professor school uer whiteboard writing
+champagne-glasses f79f|alcohol bar beverage celebrate celebration clink clinking drink eve glass holiday new party toast year's
+charging-station f5e7|electric ev tesla vehicle
+chart-area f1fe|analytics graph performance revenue statistics
+chart-bar f080|analytics graph performance statistics
+chart-column e0e3|bar graph performance revenue statistics track trend
+chart-diagram e695|algorithm analytics flow graph
+chart-gantt e0e4|graph performance statistics track trend
+chart-line f201|activity analytics dashboard gain graph increase performance revenue statistics
+chart-pie f200|analytics diagram graph performance revenue statistics
+chart-simple e473|analytics bar column graph performance revenue row statistics trend
+check f00c|accept agree checkmark confirm correct coupon done enable mark notice notification notify ok select success tick todo true validate working yes ✓
+check-double f560|accept agree all checkmark confirm correct coupon done enable notice notification notify ok select success tick todo validate working
+check-to-slot f772|accept cast election enable politics positive validate voting working yes
+cheese f7ef|cheddar curd gouda melt parmesan sandwich swiss wedge
+chess f439|board castle checkmate game king rook strategy tournament
+chess-bishop f43a|black board checkmate game strategy
+chess-board f43c|checkmate game strategy
+chess-king f43f|black board checkmate game strategy
+chess-knight f441|black board checkmate game horse strategy
+chess-pawn f443|board checkmate dupe expendable game strategy
+chess-queen f445|black board checkmate game strategy
+chess-rook f447|black board castle checkmate game strategy
+chevron-down f078|arrow download expand insert
+chevron-left f053|angle arrow back bracket pointing previous
+chevron-right f054|angle arrow bracket forward next pointing
+chevron-up f077|arrow collapse upgrade upload
+child f1ae|boy girl kid toddler uer young youth
+child-combatant e4e0|
+child-dress e59c|boy girl kid toddler uer young youth
+child-reaching e59d|boy girl kid toddler uer young youth
+children e4e1|boy child girl kid kids together uer young youth
+church f51d|building cathedral chapel christian community cross religion
+circle f111|black blue brown chart diameter dot ellipse fill geometric green large notification orange progress purple red round thin white yellow
+circle-arrow-down f0ab|download
+circle-arrow-left f0a8|back previous
+circle-arrow-right f0a9|forward next
+circle-arrow-up f0aa|upgrade upload
+circle-check f058|accept affected agree clear confirm correct coupon done enable ok select success tick todo validate working yes
+circle-chevron-down f13a|arrow download dropdown menu more
+circle-chevron-left f137|arrow back previous
+circle-chevron-right f138|arrow forward next
+circle-chevron-up f139|arrow collapse upgrade upload
+circle-dollar-to-slot f4b9|contribute generosity gift give premium
+circle-dot f192|bullseye button geometric notification radio target
+circle-down f358|arrow download o
+circle-exclamation f06a|affect alert attention damage danger error failed important notice notification notify problem required warning
+circle-h f47e|19 capital circled clinic covid emergency latin letter map
+circle-half-stroke f042|adjust black chart contrast dark fill left light pie progress saturation with
+circle-info f05a|details help information more support
+circle-left f359|arrow back o previous
+circle-minus f056|delete hide negative remove shape trash
+circle-nodes e4e2|cluster connect network
+circle-notch f1ce|diameter dot ellipse o round spinner
+circle-pause f28b|hold wait
+circle-play f144|audio music playing sound start video
+circle-plus f055|add create expand new positive shape
+circle-question f059|faq help information support unknown
+circle-radiation f7ba|danger dangerous deadly hazard nuclear radioactive sign warning
+circle-right f35a|arrow forward next o
+circle-stop f28d|block box square
+circle-up f35b|arrow o upgrade
+circle-user f2bd|employee people uer username users
+circle-xmark f057|close cross destroy exit incorrect notice notification notify problem uncheck wrong x
+city f64f|buildings busy cityscape skyscrapers urban windows
+clapperboard e131|board camera clapper director film movie record
+clipboard f328|clipboar copy notepad notes paste record
+clipboard-check f46c|accept agree confirm coupon done enable ok select success tick todo validate working yes
+clipboard-list f46d|cheatsheet checklist completed done finished intinerary ol schedule summary survey tick todo ul wishlist
+clipboard-question e4e3|assistance faq interview query
+clipboard-user f7f3|attendance employee record roster staff uer
+clock f017|00 4 4:00 date four hour late minute o'clock o’clock pending schedule ticking time timer timestamp watch
+clock-rotate-left f1da|machine pending reverse rewind time travel waiting
+clone f24d|arrange copy duplicate paste
+closed-captioning f20a|cc deaf hearing subtitle subtitling text video
+cloud f0c2|atmosphere fog overcast save upload weather
+cloud-arrow-down f0ed|download export save
+cloud-arrow-up f0ee|import save upgrade upload
+cloud-bolt f76c|lightning precipitation rain storm weather with
+cloud-meatball f73b|fldsmdfr food spaghetti storm
+cloud-moon f6c3|cloudy crescent evening lunar night partly sky
+cloud-moon-rain f73c|cloudy crescent evening lunar night partly precipitation sky storm
+cloud-rain f73d|precipitation sky storm with
+cloud-showers-heavy f740|precipitation rain sky storm
+cloud-showers-water e4e4|deluge flood rain storm surge
+cloud-sun f6c4|behind clear cloudy day daytime fall outdoors overcast partly
+cloud-sun-rain f743|behind day overcast precipitation storm summer sunshower
+clover e139|4 charm four leaf leprechaun luck lucky
+code f121|brackets development html mysql sql
+code-branch f126|git github mysql rebase sql svn vcs version
+code-commit f386|git github hash rebase svn vcs version
+code-compare e13a|git github svn version
+code-fork e13b|git github svn version
+code-merge f387|git github pr rebase svn vcs version
+code-pull-request e13c|git github pr svn version
+coins f51e|currency dime financial gold money penny premium
+colon-sign e140|currency
+comment f075|answer bubble chat commenting conversation discussion feedback message note notification right sms speech talk talking texting
+comment-dollar f651|answer bubble chat commenting conversation feedback message money note notification pay salary sms speech spend texting transfer
+comment-dots f4ad|answer balloon bubble chat comic commenting conversation dialog feedback message more note notification reply request sms speech texting
+comment-medical f7f5|advice answer bubble chat commenting conversation diagnose feedback message note notification prescription sms speech texting
+comment-nodes e696|ai artificial cluster intelligence language model network neuronal
+comment-slash f4b3|answer bubble cancel chat commenting conversation disabled feedback message mute note notification quiet sms speech texting
+comment-sms f7cd|answer chat conversation message mobile notification phone texting
+comments f086|answer bubble bubbles chat commenting conversation discussion feedback message note notification sms speech talk talking texting two
+comments-dollar f653|answer bubble chat commenting conversation feedback message money note notification pay salary sms speech spend texting transfer
+compact-disc f51f|album blu bluray cd computer disk dvd icon media movie music optical ray record video vinyl
+compass f14e|directions directory location magnetic menu navigation orienteering safari travel
+compass-drafting f568|design drawing map mechanical plot plotting
+compress f066|collapse fullscreen minimize move resize shrink smaller
+computer e4e5|desktop display monitor tower
+computer-mouse f8cc|click cursor input peripheral
+cookie f563|baked chips chocolate dessert eat good snack sweet treat
+cookie-bite f564|baked bitten chips chocolate eat good snack sweet treat
+copy f0c5|clone duplicate file files o paper paste
+copyright f1f9|brand c mark register trademark
+couch f4b8|chair cushion furniture relax sofa
+cow f6c8|agriculture animal beef bovine co farm fauna livestock mammal milk moo
+credit-card f09d|alt buy checkout debit money payment purchase
+crop f125|design frame mask modify resize shrink
+crop-simple f565|design frame mask modify resize shrink
+cross f654|catholicism christian christianity church heavy jesus latin religion
+crosshairs f05b|aim bullseye gpd picker position
+crow f520|bird bullfrog fauna halloween holiday toad
+crown f521|award clothing favorite king queen royal tiara vip
+crutch f7f7|cane injury mobility wheelchair
+cruzeiro-sign e152|currency
+cube f1b2|3d block dice package square tesseract
+cubes f1b3|3d block dice package pyramid square stack tesseract
+cubes-stacked e4e6|blocks sugar
+d 44|capital latin letter small
+database f1c0|computer development directory memory mysql sql storage
+delete-left f55a|command erase keyboard the to undo
+democrat f747|american democratic donkey election left liberal party politics usa wing
+desktop f390|computer cpu demo device imac machine monitor pc screen
+dharmachakra f655|buddhism buddhist dharma of religion wheel
+diagram-next e476|cells chart gantt row subtask successor table
+diagram-predecessor e477|cells chart gantt previous row subtask table
+diagram-project f542|chart graph network pert statistics
+diagram-successor e47a|cells chart gantt next row subtask table
+diamond f219|ace card cards game gem gemstone poker suit
+diamond-turn-right f5eb|map navigation sign
+dice f522|chance die gambling game roll
+dice-d20 f6cf|& chance d&d dnd dragons dungeons fantasy gambling game roll
+dice-d6 f6d1|& chance d&d dnd dragons dungeons fantasy gambling game roll
+dice-five f523|5 chance die face gambling game roll
+dice-four f524|4 chance die face gambling game roll
+dice-one f525|1 chance die face gambling game roll
+dice-six f526|6 chance die face gambling game roll
+dice-three f527|3 chance die face gambling game roll
+dice-two f528|2 chance die face gambling game roll
+disease f7fa|19 bacteria cancer coronavirus covid flu illness infection pandemic sickness virus
+display e163|computer desktop imac screen
+divide f529|arithmetic calculus division math sign ÷
+dna f471|biologist double evolution gene genetic genetics helix life molecule protein
+dog f6d3|animal canine fauna mammal pet pooch puppy woof
+dollar-sign 24|coupon currency heavy investment money premium revenue salary
+dolly f472|carry shipping transport
+dong-sign e169|currency
+door-closed f52a|doo enter exit locked privacy
+door-open f52b|enter exit welcome
+dove f4ba|bird fauna fly flying peace war
+down-left-and-up-right-to-center f422|collapse fullscreen minimize move resize scale shrink size smaller
+down-long f309|arrow download
+download f019|drive export hard insert save transfer
+dragon f6d5|& d&d dnd dragons dungeons fairy fantasy fire lizard serpent tale
+draw-polygon f5ee|anchors lines object render shape
+droplet f043|blood cold color comic drop raindrop sweat waterdrop
+droplet-slash f5c7|blood color disabled drop raindrop waterdrop
+drum f569|drumsticks instrument music percussion snare sound
+drum-steelpan f56a|calypso instrument music percussion reggae snare sound steel tropical
+drumstick-bite f6d7|bone chicken leg meat poultry turkey
+dumbbell f44b|exercise gym lifting strength weight workout
+dumpster f793|alley bin commercial trash waste
+dumpster-fire f794|alley bin commercial danger dangerous euphemism flame heat hot trash waste
+dungeon f6d9|& building d&d dnd door dragons dungeons entrance fantasy gate
+e 45|capital latin letter small
+ear-deaf f2a4|hearing language sign
+ear-listen f2a2|amplify audio deaf headset hearing sound
+earth-africa f57c|all country europe global globe gps language localize location map online place planet translate travel world
+earth-americas f57d|all america country global globe gps language localize location map online place planet translate travel world
+earth-asia f57e|all australia country global globe gps language localize location map online place planet translate travel world
+earth-europe f7a2|all country global globe gps language localize location map online place planet translate travel world
+earth-oceania e47b|all australia country global globe gps language localize location map melanesia micronesia new online place planet polynesia translate travel world zealand
+egg f7fb|breakfast chicken easter food shell yolk
+eject f052|abort button cancel cd discharge
+elevator e16d|accessibility hoist lift people uer users
+ellipsis f141|dots drag kebab list menu nav navigation ol pacman reorder settings three ul
+ellipsis-vertical f142|bullet dots drag kebab list menu nav navigation ol reorder settings three ul
+envelope f0e0|back e email letter mail message newsletter notification of offer support
+envelope-circle-check e4e8|affected email enable mail not ok okay read sent validate working
+envelope-open f2b6|e email letter mail message newsletter notification offer support
+envelope-open-text f658|e email letter mail message newsletter notification offer support
+envelopes-bulk f674|archive envelope letter newsletter offer office post postal postcard send stamp usps
+equals 3d|arithmetic even match math sign
+eraser f12d|art delete remove rubber
+ethernet f796|5 6 cable cat connection hardware internet network wired
+euro-sign f153|currency
+exclamation 21|! alert attention danger error failed important mark notice notification notify outlined problem punctuation red required warning white
+expand f065|arrows bigger enlarge fullscreen maximize resize scale size viewfinder
+explosion e4e9|blast blowup boom crash detonation
+eye f06e|body look optic see seen show sight views visible
+eye-dropper f1fb|beaker clone color copy eyedropper pipette
+eye-low-vision f2a8|blind sight
+eye-slash f070|blind disabled hide nofap nsfw porn show toggle unseen views visible visiblity
+f 46|capital latin letter small
+face-angry f556|disapprove emoticon mad upset
+face-dizzy f567|dazed dead disapprove emoticon
+face-flushed f579|dazed embarrassed emoticon
+face-frown f119|disapprove emoticon frowning rating sad uer
+face-frown-open f57a|disapprove emoticon frowning mouth rating sad with
+face-grimace f57f|cringe emoticon grimacing teeth
+face-grin f580|emoticon grinning laugh smile
+face-grin-beam f582|emoticon eye eyes grinning laugh mouth open smile smiling with
+face-grin-beam-sweat f583|cold embarass emoticon grinning open smile with
+face-grin-hearts f584|emoticon eye eyes heart love smile smiling with
+face-grin-squint f585|emoticon grinning laugh mouth satisfied smile squinting
+face-grin-squint-tears f586|emoticon floor happy laugh laughing on rolling smile the
+face-grin-stars f587|emoticon eyed eyes grinning quality star starry struck vip
+face-grin-tears f588|emoticon joy laugh lol of tear with
+face-grin-tongue f589|emoticon lol with
+face-grin-tongue-squint f58a|emoticon eye horrible lol squinting taste with
+face-grin-tongue-wink f58b|emoticon eye joke lol winking with
+face-grin-wide f581|big emoticon eyes grinning laugh mouth open smile with
+face-grin-wink f58c|emoticon flirt laugh smile
+face-kiss f596|beso emoticon kissing love smooch
+face-kiss-beam f597|beso emoticon eye eyes kissing love smile smiling smooch with
+face-kiss-wink-heart f598|a beso blowing emoticon love smooch
+face-laugh f599|emoticon lol smile
+face-laugh-beam f59a|beaming emoticon eye eyes grin happy lol smile smiling with
+face-laugh-squint f59b|emoticon happy lol smile
+face-laugh-wink f59c|emoticon happy lol smile
+face-meh f11a|deadpan default emoticon neutral rating uer
+face-meh-blank f5a4|emoticon mouth neutral quiet rating silent without
+face-rolling-eyes f5a5|emoticon eyeroll neutral rating with
+face-sad-cry f5b3|crying emoticon loudly sob tear tears
+face-sad-tear f5b4|cry crying emoticon tears
+face-smile f118|approve default emoticon happy rating satisfied slightly smiling uer
+face-smile-beam f5b8|blush emoticon eye eyes happy positive smiling with
+face-smile-wink f4da|emoticon happy hint joke winking
+face-surprise f5c2|emoticon mouth open shocked sympathy with
+face-tired f5c8|angry emoticon grumpy upset
+fan f863|ac air blade blower conditioning cool hot
+faucet e005|19 covid drinking drip house hygiene kitchen potable sanitation sink water
+faucet-drip e006|drinking house hygiene kitchen potable sanitation sink water
+fax f1ac|business communicate copy facsimile icon machine send
+feather f52d|bird flight light plucked plumage quill write
+feather-pointed f56b|bird light plucked quill write
+ferry e4ea|barge boat carry ferryboat ship
+file f15b|cv document empty facing new page pdf resume up
+file-arrow-down f56d|archive document export insert save
+file-arrow-up f574|document import page save upgrade
+file-audio f1c7|document mp3 music page play sound
+file-circle-check e5a0|affected document enable not ok okay paper validate working
+file-circle-exclamation e4eb|document failed paper
+file-circle-minus e4ed|document paper
+file-circle-plus e494|add document new page paper pdf
+file-circle-question e4ef|document paper
+file-circle-xmark e5a1|document paper uncheck
+file-code f1c9|css development document html mysql sql
+file-contract f56c|agreement binding document legal signature username
+file-csv f6dd|document excel numbers spreadsheets table
+file-excel f1c3|csv document numbers spreadsheets table
+file-export f56e|download save
+file-fragment e697|block data partial piece
+file-half-dashed e698|data fragment partial piece
+file-image f1c5|document img jpg photo picture png with
+file-import f56f|copy document insert send upload
+file-invoice f570|account bill charge document payment receipt
+file-invoice-dollar f571|$ account bill charge document money payment receipt revenue salary sign usd
+file-lines f15c|document invoice new page pdf text with
+file-medical f477|document health history prescription record
+file-pdf f1c1|acrobat document preview save
+file-pen f31c|edit memo modify pencil update write
+file-powerpoint f1c4|display document keynote presentation
+file-prescription f572|document drugs medical medicine rx
+file-shield e4f0|antivirus data document protect safe safety secure
+file-signature f573|contract document hancock john name username
+file-video f1c8|document m4v movie mp4 play
+file-waveform f478|document health history prescription record
+file-word f1c2|document edit page text writing
+file-zipper f1c6|.zip bundle compress compression download zip
+fill f575|bucket color paint
+fill-drip f576|bucket color drop paint spill
+film f008|cinema frames movie strip video
+filter f0b0|funnel options separate sort
+filter-circle-dollar f662|money options premium separate sort
+filter-circle-xmark e17b|cancel funnel options remove separate sort uncheck
+fingerprint f577|human id identification lock privacy smudge touch unique unlock
+fire f06d|burn caliente flame heat hot popular tool
+fire-burner e4f1|cook flame kitchen stove
+fire-extinguisher f134|burn caliente extinguish fighter flame heat hot quench rescue
+fire-flame-curved f7e4|burn caliente heat hot popular
+fire-flame-simple f46a|caliente energy gas heat hot
+fish f578|fauna gold pisces seafood swimming zodiac
+fish-fins e4f2|fishery pisces seafood
+flag f024|black country notice notification notify pole report symbol waving
+flag-checkered f11e|chequered finish notice notification notify pole racing report start symbol win
+flag-usa f74d|betsy country fla flag: glory old ross stars states stripes symbol united
+flask f0c3|beaker chemicals experiment experimental knowledge labs liquid potion science vial
+flask-vial e4f3|ampule beaker chemicals chemistry experiment experimental lab laboratory labs liquid potion science test tube
+floppy-disk f0c7|black computer download hard o shell
+florin-sign e184|currency
+folder f07b|archive black directory document file
+folder-closed e185|file
+folder-minus f65d|archive delete directory document file negative remove
+folder-open f07c|archive directory document empty file new
+folder-plus f65e|add archive create directory document file new positive
+folder-tree f802|archive directory document file search structure
+font f031|alphabet glyph text type typeface
+font-awesome f2b4|flag icons typeface
+football f44e|american ball fall nfl pigskin seasonal
+forward f04e|arrow button double fast next skip
+forward-fast f050|arrow button end last next quick scene track triangle
+forward-step f051|end last next
+franc-sign e18f|currency french
+frog f52e|amphibian bullfrog fauna hop kermit kiss prince ribbit toad wart
+futbol f1e3|ball football mls soccer
+g 47|capital latin letter small
+gamepad f11b|arcade controller d game joystick pad playstore video
+gas-pump f52f|car diesel fuel fuelpump gasoline petrol station
+gauge f624|dashboard fast odometer speed speedometer
+gauge-high f625|dashboard fast odometer quick speed speedometer
+gauge-simple f629|dashboard fast odometer speed speedometer
+gauge-simple-high f62a|dashboard fast odometer quick speed speedometer
+gavel f0e3|hammer judge law lawyer opinion
+gear f013|cog cogwheel configuration mechanical modify settings sprocket tool wheel
+gears f085|configuration mechanical modify settings sprocket wheel
+gem f3a5|diamond jewel jewelry sapphire stone treasure
+genderless f22d|androgynous asexual gender sexless
+ghost f6e2|apparition blinky clyde creature face fairy fantasy floating halloween holiday inky monster pacman pinky spirit tale
+gift f06b|box celebration christmas generosity giving holiday party present wrapped xmas
+gifts f79c|christmas generosity giving holiday party present wrapped xmas
+glass-water e4f4|potable
+glass-water-droplet e4f5|potable
+glasses f530|hipster nerd reading sight spectacles vision
+globe f0ac|all coordinates country earth global gps internet language localize location map meridians network online place planet translate travel with world www
+golf-ball-tee f450|caddy eagle putt
+gopuram f664|building entrance hinduism temple tower
+graduation-cap f19d|celebration ceremony clothing college graduate hat learning school student
+greater-than 3e|arithmetic compare math sign
+greater-than-equal f532|arithmetic compare math
+grip f58d|affordance drag drop grab handle
+grip-lines f7a4|affordance drag drop grab handle
+grip-lines-vertical f7a5|affordance drag drop grab handle
+grip-vertical f58e|affordance drag drop grab handle
+group-arrows-rotate e4f6|community engagement spin sync
+guarani-sign e19a|currency
+guitar f7a6|acoustic and instrument music rock roll song strings
+gun e19b|firearm pistol weapon
+h 48|capital latin letter small
+hammer f6e3|admin configuration equipment fix maintenance modify recovery repair settings tool
+hamsa f665|amulet christianity islam jewish judaism muslim protection
+hand f256|back backhand game halt of palm raised request roshambo stop
+hand-back-fist f255|game roshambo
+hand-dots f461|allergy freckles hives palm pox skin spots
+hand-fist f6de|& clenched combat d&d dnd dragons dungeons fantasy ki monk punch raised resist strength unarmed
+hand-holding f4bd|carry lift
+hand-holding-dollar f4c0|$ carry coupon donate donation giving investment lift money premium price revenue salary sign
+hand-holding-droplet f4c1|19 blood carry covid drought grow lift sanitation
+hand-holding-hand e4f7|care give help hold protect
+hand-holding-heart f4be|carry charity gift lift package wishlist
+hand-holding-medical e05c|19 care covid donate help
+hand-lizard f258|game roshambo
+hand-middle-finger f806|bird flip gesture hate rude the
+hand-peace f25b|rest truce v victory
+hand-point-down f0a7|finger o
+hand-point-left f0a5|back finger o previous
+hand-point-right f0a4|finger forward next o
+hand-point-up f0a6|finger index o pointing request upgrade
+hand-pointer f25a|arrow cursor select
+hand-scissors f257|cut game roshambo
+hand-sparkles e05d|19 clean covid hygiene magic palm soap wash
+hand-spock f259|finger live long palm prosper salute star trek vulcan
+handcuffs e4f8|arrest criminal jail lock police wrist
+hands f2a7|asl deaf translate
+hands-asl-interpreting f2a3|deaf finger hand interpret speak
+hands-bound e4f9|abduction handcuff wrist
+hands-bubbles e05e|19 covid hygiene soap wash
+hands-clapping e1a8|applause clap hand
+hands-holding f4c2|carry hold lift
+hands-holding-child e4fa|care give help hold parent protect
+hands-holding-circle e4fb|gift protection
+hands-praying f684|kneel meditate meditation prayer preach religion worship
+handshake f2b5|agreement greeting meeting partnership
+handshake-angle f4c4|aid assistance partnership volunteering
+handshake-simple f4c6|agreement greeting hand meeting partnership shake
+handshake-simple-slash e05f|19 broken covid disabled distance social
+handshake-slash e060|19 broken covid disabled distance social
+hanukiah f6e6|candelabrum candle candlestick hanukkah jewish judaism light menorah religion
+hard-drive f0a0|cpu disk harddrive machine save storage
+hashtag 23|instagram media number pound sign social tag twitter
+hat-cowboy f8c0|b. buckaroo horse jackeroo john old pardner ranch rancher rodeo west western wrangler
+hat-cowboy-side f8c1|b. buckaroo horse jackeroo john old pardner ranch rancher rodeo west western wrangler
+hat-wizard f6e8|& accessory buckle clothing d&d dnd dragons dungeons fantasy halloween head holiday mage magic pointy witch
+head-side-cough e061|19 covid germs lungs respiratory sick uer
+head-side-cough-slash e062|19 covid disabled germs lungs respiratory sick uer
+head-side-mask e063|19 breath coronavirus covid filter flu infection pandemic respirator uer virus
+head-side-virus e064|19 cold coronavirus covid flu infection pandemic sick uer
+heading f1dc|format header text title
+headphones f025|audio earbud headphone listen music sound speaker
+headphones-simple f58f|audio listen music sound speaker
+headset f590|audio caller chat gamer gaming listen live microphone shot sound support telemarketer
+heart f004|ace black blue brown card evil favorite game green like love orange purple red relationship suit valentine white wicked wishlist yellow
+heart-circle-bolt e4fc|cardiogram ekg electric love pacemaker
+heart-circle-check e4fd|affected enable favorite love not ok okay validate working
+heart-circle-exclamation e4fe|failed favorite love
+heart-circle-minus e4ff|favorite love
+heart-circle-plus e500|favorite love
+heart-circle-xmark e501|favorite love uncheck
+heart-crack f7a9|break breakup broken crushed dislike dumped grief love lovesick relationship sad
+heart-pulse f21e|ekg electrocardiogram health lifeline signs vital
+helicopter f533|airwolf apache chopper flight fly travel vehicle
+helicopter-symbol e502|chopper landing pad whirlybird
+helmet-safety f807|construction hardhat maintenance
+helmet-un e503|nations united
+hexagon-nodes e699|action ai artificial cluster graph intelligence language llm model network neuronal
+hexagon-nodes-bolt e69a|action ai artificial cluster graph intelligence language llm model network neuronal
+highlighter f591|edit marker modify sharpie update write
+hill-avalanche e507|mudslide snow winter
+hill-rockslide e508|mudslide
+hippo f6ed|animal fauna hippopotamus hungry mammal
+hockey-puck f453|ice nhl sport
+holly-berry f7aa|catwoman christmas decoration flora halle holiday munroe ororo plant storm xmas
+horse f6f0|equestrian equus fauna mammmal mare neigh pony racehorse racing
+horse-head f7ab|equus fauna mammmal mare neigh pony
+hospital f0f8|19 building center covid doctor emergency medical medicine room
+hospital-user f80d|19 care covid doctor network patient primary uer
+hot-tub-person f593|jacuzzi spa uer
+hotdog f80f|bun chili dog frankfurt frankfurter hot kosher polish sandwich sausage vienna weiner
+hotel f594|building inn lodging motel resort travel
+hourglass f254|done hour minute not sand stopwatch time timer
+hourglass-end f253|done hour minute pending sand stopwatch time timer waiting
+hourglass-half f252|hour minute pending sand stopwatch time waiting
+hourglass-start f251|hour minute sand stopwatch time waiting
+house f015|abode building home main residence
+house-chimney e3af|abode building main residence smokestack
+house-chimney-crack f6f1|building devastation disaster earthquake home insurance
+house-chimney-medical f7f2|19 covid doctor general hospital infirmary medicine office outpatient practitioner
+house-chimney-user e065|19 covid home isolation quarantine uer
+house-chimney-window e00d|abode building family home residence
+house-circle-check e509|abode affected enable home not ok okay validate working
+house-circle-exclamation e50a|abode affected failed home
+house-circle-xmark e50b|abode destroy home uncheck
+house-crack e3b1|building devastation disaster earthquake home insurance
+house-fire e50c|burn emergency home
+house-flag e50d|camp home
+house-flood-water e50e|damage
+house-flood-water-circle-arrow-right e50f|damage
+house-laptop e066|19 computer covid device from home office remote work
+house-lock e510|closed home lockdown padlock privacy quarantine
+house-medical e3b2|19 covid doctor facility general health hospital infirmary medicine office outpatient practitioner
+house-medical-circle-check e511|affected clinic enable hospital not ok okay validate working
+house-medical-circle-exclamation e512|affected clinic failed hospital
+house-medical-circle-xmark e513|clinic destroy hospital uncheck
+house-medical-flag e514|clinic hospital mash
+house-signal e012|abode building connect family home residence smart wifi www
+house-tsunami e515|damage flood tidal wave
+house-user e1b0|uer
+hryvnia-sign f6f2|currency
+hurricane f751|coriolis cyclone effect eye storm tropical typhoon
+i 49|capital latin letter small
+i-cursor f246|beam editing type writing
+ice-cream f810|chocolate cone dessert frozen scoop sorbet sweet vanilla yogurt
+icicles f7ad|cold frozen hanging ice seasonal sharp
+icons f86d|bolt category emoji heart image music photo symbols
+id-badge f2c1|address contact identification license profile uer username
+id-card f2c2|contact demographics document identification issued profile registration uer username
+id-card-clip f47f|contact demographics document identification issued profile uer username
+igloo f7ae|dome dwelling eskimo home house ice snow
+image f03e|album img landscape photo picture
+image-portrait f3e0|id img photo picture selfie uer username
+images f302|album img landscape photo picture
+inbox f01c|archive desk email mail message
+indent f03c|align justify paragraph tab
+indian-rupee-sign e1bc|currency
+industry f275|building factory industrial manufacturing mill warehouse
+infinity f534|eternity forever math unbounded universal
+info f129|details help information more support
+italic f033|edit emphasis font format text type
+j 4a|capital latin letter small
+jar e516|jam jelly storage
+jar-wheat e517|flour storage
+jedi f669|crest force sith skywalker star wars yoda
+jet-fighter f0fb|airforce airplane airport fast fly goose gun marines maverick military plane quick top transportation travel
+jet-fighter-up e518|airforce airplane airport fast fly goose gun marines maverick military plane quick top transportation travel
+joint f595|blunt cannabis doobie drugs marijuana roach smoke smoking spliff weed
+jug-detergent e519|laundry soap wash
+k 4b|capital latin letter small
+kaaba f66b|building cube islam muslim religion
+key f084|lock password private secret unlock
+keyboard f11c|accessory computer edit input text type write
+khanda f66d|adi chakkar shakti sikh sikhism sword
+kip-sign e1c4|currency
+kit-medical f479|emergency emt health rescue
+kitchen-set e51a|chef cook cup pan pot skillet
+kiwi-bird f535|fauna new zealand
+l 4c|capital latin letter small
+land-mine-on e51b|bomb danger explosion war
+landmark f66f|building classical historic memorable monument museum politics society
+landmark-dome f752|building historic memorable monument politics
+landmark-flag e51c|capitol memorial
+language f1ab|dialect idiom localize speech translate vernacular
+laptop f109|computer cpu dell demo device fabook fb mac macbook machine pc personal
+laptop-code f5fc|computer cpu dell demo develop device fabook fb mac macbook machine mysql pc sql
+laptop-file e51d|computer education learning remote work
+laptop-medical f812|computer device ehr electronic health history records
+lari-sign e1c8|currency
+layer-group f5fd|arrange category develop layers map platform stack
+leaf f06c|eco flora nature plant vegan
+left-long f30a|arrow back previous
+left-right f337|arrow arrows expand h horizontal landscape resize wide
+lemon f094|citrus fruit lemonade lime tart
+less-than 3c|arithmetic compare math sign
+less-than-equal f537|arithmetic compare math
+life-ring f1cd|coast guard help overboard save support
+lightbulb f0eb|bulb comic electric energy idea innovation inspiration light mechanical
+lines-leaning e51e|canted domino falling resilience resilient tipped
+link f0c1|attach attachment chain connect lin
+link-slash f127|attachment broken chain disabled disconnect remove
+lira-sign f195|currency
+list f03a|bullet category cheatsheet checklist completed done finished ol summary todo ul
+list-check f0ae|bullet cheatsheet checklist do downloading downloads enable loading management progress project settings summary to validate working
+list-ol f0cb|cheatsheet checklist completed done finished numbers summary todo ul
+list-ul f0ca|bullet cheatsheet checklist completed done finished ol summary survey todo
+litecoin-sign e1d3|currency
+location-arrow f124|address compass coordinate direction gps map navigation place
+location-crosshairs f601|address coordinate direction gps map navigation place where
+location-dot f3c5|address coordinates destination gps interest localize map navigation of paper pin place point position route travel
+location-pin f041|address coordinates destination gps interest localize map navigation of paper place point position route travel
+location-pin-lock e51f|closed lockdown map padlock privacy quarantine
+lock f023|admin closed locked open padlock password privacy private protect security
+lock-open f3c1|admin padlock password privacy private protect security unlock
+locust e520|horde infestation plague swarm
+lungs f604|19 air breath covid exhalation inhalation organ respiration respiratory
+lungs-virus e067|19 breath coronavirus covid flu infection pandemic respiratory sick
+m 4d|capital latin letter small
+magnet f076|attract attraction horseshoe lodestone magnetic tool
+magnifying-glass f002|bigger enlarge equipment find inspection left magnifier magnify preview search tilted tool zoom
+magnifying-glass-arrow-right e521|find magnifier next search
+magnifying-glass-chart e522|analysis data graph intelligence magnifier market revenue
+magnifying-glass-dollar f688|bigger enlarge find magnifier magnify money preview zoom
+magnifying-glass-location f689|bigger enlarge find magnifier magnify preview zoom
+magnifying-glass-minus f010|magnifier minify negative out smaller zoom
+magnifying-glass-plus f00e|bigger enlarge in magnifier magnify positive zoom
+manat-sign e1d5|currency
+map f279|address coordinates destination gps interest localize location navigation of paper pin place point position route travel world
+map-location f59f|address coordinates destination gps interest localize navigation of paper pin place point position route travel
+map-location-dot f5a0|address coordinates destination gps interest localize navigation of paper pin place point position route travel
+map-pin f276|address agree coordinates destination gps localize location marker navigation place position pushpin round travel
+marker f5a1|design edit modify sharpie update write
+mars f222|gender male man sign
+mars-and-venus f224|female gender intersex male sign transgender
+mars-and-venus-burst e523|gender uer violence
+mars-double f227|doubled gay gender male men sign
+mars-stroke f229|gender male sign transgender with
+mars-stroke-right f22b|gender horizontal male sign with
+mars-stroke-up f22a|gender male sign vertical with
+martini-glass f57b|alcohol bar beverage cocktail drink liquor
+martini-glass-citrus f561|alcohol beverage drink gin margarita vodka
+martini-glass-empty f000|alcohol bar beverage drink liquor
+mask f6fa|carnivale costume disguise halloween hero secret super
+mask-face e1d7|19 breath coronavirus covid filter flu infection pandemic respirator virus
+mask-ventilator e524|breath gas oxygen respirator
+masks-theater f630|art arts comedy mask perform performing theatre tragedy
+mattress-pillow e525|air rest sleep
+maximize f31e|arrows bigger enlarge expand fullscreen resize scale size
+medal f5a2|award guarantee quality ribbon sports star trophy warranty
+memory f538|dimm hardware ram storage technology
+menorah f676|candle hanukkah jewish judaism light
+mercury f223|gender hybrid transgender
+message f27a|answer bubble chat commenting conversation discussion feedback note notification sms speech talk talking texting
+meteor f753|armageddon asteroid comet shooting space star
+microchip f2db|cpu hardware processor technology
+microphone f130|address audio information podcast public record sing sound talking voice
+microphone-lines f3c9|audio mic music podcast record sing sound studio talking voice
+microphone-lines-slash f539|audio disable disabled disconnect mute podcast record sing sound voice
+microphone-slash f131|audio disable disabled mute podcast record sing sound voice
+microscope f610|19 covid electron knowledge lens optics science shrink testing tool
+mill-sign e1ed|currency
+minimize f78c|collapse fullscreen move resize shrink smaller
+minus f068|collapse dash delete en hide math minify negative remove sign trash −
+mitten f7b5|clothing cold glove hands knitted seasonal warmth
+mobile f3ce|android call cell device number phone screen telephone text
+mobile-button f10b|apple call cell device iphone number phone screen telephone
+mobile-retro e527|cellphone cellular phone
+mobile-screen f3cf|android call cell device number phone telephone text
+mobile-screen-button f3cd|apple call cell device iphone number phone telephone
+money-bill f0d6|buy cash checkout coupon investment payment premium price purchase revenue salary
+money-bill-1 f3d1|buy cash checkout payment premium price purchase salary
+money-bill-1-wave f53b|buy cash checkout payment premium price purchase salary
+money-bill-transfer e528|bank conversion deposit investment salary withdrawal
+money-bill-trend-up e529|bank bonds inflation investment market revenue salary stocks trade
+money-bill-wave f53a|buy cash checkout payment premium price purchase salary
+money-bill-wheat e52a|agribusiness agriculture farming food investment livelihood subsidy
+money-bills e1f3|atm cash investment moolah premium revenue salary
+money-check f53c|bank buy checkout cheque payment price purchase salary
+money-check-dollar f53d|bank buy checkout cheque payment price purchase salary
+monument f5a6|building historic landmark memorable
+moon f186|contrast crescent dark lunar night power sleep symbol
+mortar-pestle f5a7|crush culinary grind medical mix pharmacy prescription spices
+mosque f678|building islam landmark muslim religion
+mosquito e52b|bite bug nile west
+mosquito-net e52c|bite malaria
+motorcycle f21c|bike machine racing transportation vehicle
+mound e52d|barrier hill pitcher speedbump
+mountain f6fc|capped cold glacier hiking hill landscape snow travel view
+mountain-city e52e|location rural urban
+mountain-sun e52f|country hiking landscape rural travel view
+mug-hot f7b6|beverage caliente chocolate cocoa coffee cup drink holiday steam steaming tea warmth
+mug-saucer f0f4|beverage breakfast cafe drink fall morning seasonal tea
+music f001|lyrics melody musical note sing sound
+n 4e|capital latin letter nay no small
+naira-sign e1f6|currency
+network-wired f6ff|computer connect ethernet internet intranet
+neuter f22c|gender
+newspaper f1ea|article editorial headline journal journalism news newsletter paper press
+not-equal f53e|arithmetic compare math
+notdef e1fe|404 close found missing not
+note-sticky f249|message paper reminder sticker
+notes-medical f481|clipboard doctor ehr health history records
+o 4f|capital latin letter small
+object-group f247|combine copy design merge select
+object-ungroup f248|copy design merge select separate
+oil-can f613|auto crude gasoline grease lubricate petroleum
+oil-well e532|drill rig
+om f679|buddhism hindu hinduism jainism mantra religion
+otter f700|animal badger fauna fishing fur mammal marten playful
+outdent f03b|align justify paragraph tab
+p 50|capital latin letter small
+pager f815|beeper cell communication page phone
+paint-roller f5aa|acrylic art brush color fill maintenance pigment watercolor
+paintbrush f1fc|acrylic art brush color fill modify paint painting pigment watercolor
+palette f53f|acrylic art artist brush color fill museum paint painting pigment watercolor
+pallet f482|archive box inventory shipping warehouse
+panorama e209|image img landscape photo wide
+paper-plane f1d8|air float fold mail send
+paperclip f0c6|attach attachment connect link papercli
+parachute-box f4cd|aid assistance goods relief rescue supplies
+paragraph f1dd|edit format pilcrow sign text writing
+passport f5ab|document id identification issued travel
+paste f0ea|clipboard copy document paper
+pause f04c|bar button double hold vertical wait
+paw f1b0|animal cat dog pet print
+peace f67c|serenity symbol tranquility truce war
+pen f304|ballpoint design edit modify update write
+pen-clip f305|design edit modify update write
+pen-fancy f5ac|black design edit fountain modify nib update write
+pen-nib f5ad|design edit fountain modify update write
+pen-ruler f5ae|design draft draw maintenance modify pencil
+pen-to-square f044|edit modify pencil update write
+pencil f303|design draw edit lead left lower maintenance modify update write
+people-arrows e068|conversation discussion distance distancing insert isolation separate social talk talking together uer users
+people-carry-box f4ce|together uer users
+people-group e533|crowd family team together uer
+people-line e534|crowd group need together uer
+people-pulling e535|forced return together uer yanking
+people-robbery e536|criminal hands looting steal uer up
+people-roof e537|crowd family group manage safe shelter together uer
+pepper-hot f816|buffalo capsicum chili chilli habanero jalapeno mexican spicy tabasco vegetable wings
+percent 25|discount fraction proportion rate ratio sign
+person f183|default man stand standing uer woman
+person-arrow-down-to-line e538|ground indigenous insert native uer
+person-arrow-up-from-line e539|population rise uer upgrade
+person-biking f84a|bicycle bike cyclist pedal summer uer wheel
+person-booth f756|changing curtain room uer vote voting
+person-breastfeeding e53a|baby child infant mother nutrition parent sustenance uer
+person-burst e53b|abuse accident crash explode uer violence
+person-cane e53c|aging elderly old staff uer
+person-chalkboard e53d|blackboard instructor keynote lesson presentation teacher uer
+person-circle-check e53e|affected approved enable not ok okay uer validate working
+person-circle-exclamation e53f|affected alert failed lost missing uer
+person-circle-minus e540|delete remove uer
+person-circle-plus e541|add follow found uer
+person-circle-question e542|faq lost missing request uer
+person-circle-xmark e543|dead removed uer uncheck
+person-digging f85e|at bury construction debris dig maintenance men uer work
+person-dots-from-line f470|allergy diagnosis uer
+person-dress f182|man skirt uer woman
+person-dress-burst e544|abuse accident crash explode uer violence
+person-drowning e545|drown emergency swim uer
+person-falling e546|accident fall trip uer
+person-falling-burst e547|accident crash death fall homicide murder uer
+person-half-dress e548|gender man restroom transgender uer woman
+person-harassing e549|abuse scream shame shout uer yell
+person-hiking f6ec|autumn fall follow hike mountain outdoors summer uer walk
+person-military-pointing e54a|army customs guard uer
+person-military-rifle e54b|armed army forces uer war
+person-military-to-person e54c|civilian coordination uer
+person-praying f683|kneel meditate meditation of place prayer religion thank uer worship
+person-pregnant e31e|baby birth child parent uer woman
+person-rays e54d|affected focus shine uer
+person-rifle e54e|army combatant gun military uer war
+person-running f70c|cardio exit flee follow jog jogging marathon race uer workout
+person-shelter e54f|house inside roof safe safety uer
+person-skating f7c5|figure ice olympics rink skate uer winter
+person-skiing f7c9|downhill olympics ski skier snow uer winter
+person-skiing-nordic f7ca|country cross olympics uer winter
+person-snowboarding f7ce|olympics ski snow snowboard snowboarder uer winter
+person-swimming f5c4|ocean pool sea swim uer water
+person-through-window e5a9|door entry exit forced leave robbery steal uer
+person-walking f554|crosswalk exercise follow hike move uer walk workout
+person-walking-arrow-loop-left e551|follow population return uer
+person-walking-arrow-right e552|displaced exit follow internally leave refugee uer
+person-walking-dashed-line-arrow-right e553|exit follow refugee uer
+person-walking-luggage e554|bag baggage briefcase carry deployment follow on rolling uer
+person-walking-with-cane f29d|blind follow uer
+peseta-sign e221|currency
+peso-sign e222|currency
+phone f095|call earphone hand left number receiver support talking telephone voice
+phone-flip f879|call earphone hand number receiver right support telephone voice
+phone-slash f3dd|call cancel disabled disconnect earphone mute number support telephone voice
+phone-volume f2a0|call control earphone number ring ringing sound support talking telephone voice
+photo-film f87c|av image library media
+piggy-bank f4d3|salary save savings
+pills f484|drugs medicine prescription tablets
+pizza-slice f818|cheese chicago italian mozzarella mutant new ninja pepperoni pie teenage tomato turtles york
+place-of-worship f67f|building church holy mosque synagogue
+plane f072|airplane airport destination fly location mode travel trip
+plane-arrival f5af|aeroplane airplane airport arrivals arriving destination fly land landing location mode travel trip
+plane-circle-check e555|affected airplane airport enable flight fly not ok okay travel validate working
+plane-circle-exclamation e556|affected airplane airport failed flight fly travel
+plane-circle-xmark e557|airplane airport destroy flight fly travel uncheck
+plane-departure f5b0|aeroplane airplane airport check departing departures destination fly in location mode off take taking travel trip
+plane-lock e558|airplane airport closed flight fly lockdown padlock privacy quarantine travel
+plane-slash e069|19 airplane airport canceled covid delayed disabled grounded mode travel
+plane-up e22d|airplane airport internet signal sky wifi wireless
+plant-wilt e5aa|drought planting vegetation
+plate-wheat e55a|bowl hunger rations
+play f04b|arrow audio button music playing right sound start triangle video
+plug f1e6|connect electric electricity online power
+plug-circle-bolt e55b|electric electricity power
+plug-circle-check e55c|affected electric electricity enable not ok okay power validate working
+plug-circle-exclamation e55d|affected electric electricity failed power
+plug-circle-minus e55e|disconnect electric electricity power
+plug-circle-plus e55f|electric electricity power
+plug-circle-xmark e560|destroy disconnect electric electricity outage power uncheck
+plus 2b|+ add create expand follow math modify new positive shape sign
+plus-minus e43c|add math sign subtract
+podcast f2ce|audio broadcast music sound
+poo f2fe|crap dung face monster of pile poop shit smile turd uer
+poo-storm f75a|bolt cloud euphemism lightning mess poop shit turd
+poop f619|crap shit smile turd
+power-off f011|cancel computer on reboot restart symbol
+prescription f5b1|drugs medical medicine pharmacy rx
+prescription-bottle f485|drugs medical medicine pharmacy rx
+prescription-bottle-medical f486|drugs medicine pharmacy rx
+print f02f|business computer copy document icon office paper printer screen symbol
+pump-medical e06a|19 anti bacterial clean covid disinfect grade hygiene sanitizer soap
+pump-soap e06b|19 anti bacterial clean covid disinfect hygiene sanitizer
+puzzle-piece f12e|add addon clue game interlocking jigsaw on section
+q 51|capital latin letter small
+qrcode f029|barcode info information scan
+question 3f|? faq help information mark outlined punctuation red request support unknown white
+quote-left f10d|double mark mention note phrase quotation text type
+quote-right f10e|double mark mention note phrase quotation text type
+r 52|capital latin letter small
+radiation f7b9|danger dangerous deadly hazard nuclear radioactive warning
+radio f8d7|am broadcast fm frequency music news receiver transmitter tuner video
+rainbow f75b|gold leprechaun prism rain sky
+ranking-star e561|chart first place podium quality rank revenue win
+receipt f543|accounting bookkeeping check coupon evidence invoice money pay proof table
+record-vinyl f8d9|album analog lp music phonograph sound
+rectangle-ad f641|advertisement media newspaper promotion publicity
+rectangle-list f022|cheatsheet checklist completed done finished ol summary todo ul
+rectangle-xmark f410|browser cancel computer development uncheck
+recycle f1b8|compost for garbage generic materials recycling reuse symbol trash universal waste
+registered f25d|copyright mark r trademark
+repeat f363|arrow button clockwise flip reload renew retry rewind switch
+reply f3e5|mail message respond
+reply-all f122|mail message respond
+republican f75e|american conservative election elephant party politics right usa wing
+restroom f7bd|bathroom closet toilet uer water wc
+retweet f079|refresh reload renew retry share swap
+ribbon f4d6|badge cause celebration lapel pin reminder
+right-from-bracket f2f5|arrow exit leave log logout out sign
+right-left f362|arrow arrows exchange reciprocate return swap transfer
+right-long f30b|arrow forward next
+right-to-bracket f2f6|arrow enter in join log login sign signin signup up
+ring f70b|& band binding d&d dnd dragons dungeons engagement fantasy gold gollum jewelry marriage precious premium
+road f018|highway map motorway pavement route street travel
+road-barrier e562|block border entry no roadblock
+road-bridge e563|infrastructure travel
+road-circle-check e564|affected enable freeway highway not ok okay pavement validate working
+road-circle-exclamation e565|affected failed freeway highway pavement
+road-circle-xmark e566|destroy freeway highway pavement uncheck
+road-lock e567|closed freeway highway lockdown padlock pavement privacy quarantine
+road-spikes e568|barrier roadblock
+robot f544|android automate computer cyborg face monster
+rocket f135|aircraft app jet launch nasa space
+rotate f2f1|arrow clockwise exchange modify refresh reload renew retry swap withershins
+rotate-left f2ea|back control exchange oops return swap z
+rotate-right f2f9|forward refresh reload renew repeat retry
+route f4d7|directions navigation travel
+rss f09e|blog feed journal news writing
+ruble-sign f158|currency
+rug e569|blanket carpet textile
+ruler f545|design draft edge length measure planning straight
+ruler-combined f546|design draft length measure planning
+ruler-horizontal f547|design draft length measure planning
+ruler-vertical f548|design draft length measure planning
+rupee-sign f156|currency
+rupiah-sign e23d|currency
+s 53|capital latin letter small
+sack-dollar f81d|bag burlap cash investment money moneybag premium robber salary santa usd
+sack-xmark e56a|bag burlap coupon rations salary uncheck
+sailboat e445|dinghy mast sailing yacht
+satellite f7bf|communications hardware orbit space
+satellite-dish f7c0|antenna communications hardware radar receiver saucer seti signal space
+scale-balanced f24e|balance justice law legal libra measure rule weight zodiac
+scale-unbalanced f515|justice legal measure weight
+scale-unbalanced-flip f516|justice legal measure weight
+school f549|building education learn student teacher
+school-circle-check e56b|affected enable not ok okay schoolhouse validate working
+school-circle-exclamation e56c|affected failed schoolhouse
+school-circle-xmark e56d|destroy schoolhouse uncheck
+school-flag e56e|educate schoolhouse
+school-lock e56f|closed lockdown padlock privacy quarantine schoolhouse
+scissors f0c4|black clip cutting equipment modify safety snip tool white
+screwdriver f54a|admin configuration equipment fix maintenance mechanic modify repair screw settings tool
+screwdriver-wrench f7d9|admin configuration equipment fix maintenance modify repair settings tools
+scroll f70e|& announcement d&d dnd dragons dungeons fantasy paper scholar script
+scroll-torah f6a0|book jewish judaism religion
+sd-card f7c2|image img memory photo save
+section e447|law legal sign silcrow
+seedling f4d8|environment flora grow investment plant sapling vegan young
+server f233|computer cpu database hardware mysql network sql
+shapes f61f|blocks build circle square triangle
+share f064|forward save send social
+share-from-square f14d|forward save send social
+share-nodes f1e0|forward save send social
+sheet-plastic e571|protect tarp tarpaulin waterproof wrap
+shekel-sign f20b|currency ils money new sheqel
+shield f132|achievement armor award block cleric defend defense holy paladin protect safety security weapon winner
+shield-cat e572|animal feline pet protect safety veterinary
+shield-dog e573|animal canine pet protect safety veterinary
+shield-halved f3ed|achievement armor award block cleric defend defense holy paladin privacy security weapon winner
+shield-heart e574|love protect safe safety wishlist
+shield-virus e06c|19 antibodies barrier coronavirus covid flu health infection pandemic protect safety vaccine
+ship f21a|boat passenger sea water
+shirt f553|clothing fashion garment short sleeve t tshirt
+shoe-prints f54b|feet footprints steps walk
+shop f54f|bodega building buy market purchase shopping store
+shop-lock e4a5|bodega building buy closed lockdown market padlock privacy purchase quarantine shopping store
+shop-slash e070|19 building buy closed covid disabled purchase shopping
+shower f2cc|bath clean faucet water
+shrimp e448|allergy crustacean prawn seafood shellfish tail
+shuffle f074|arrow arrows button crossed sort swap switch tracks transfer
+shuttle-space f197|astronaut machine nasa rocket transportation
+sign-hanging f4d9|directions estate real signage wayfinding
+signal f012|antenna bar bars cell graph mobile online phone reception status
+signature f5b7|cursive hancock john name username writing
+signs-post f277|directions directory map signage wayfinding
+sim-card f7c4|drive hard hardware portable storage technology tiny
+sink e06d|19 bathroom covid faucet kitchen wash
+sitemap f0e8|architecture directory hierarchy ia information organization
+skull f54c|bones death face fairy monster ray skeleton tale uer x yorick
+skull-crossbones f714|& alert and area black bones d&d danger dangerous dead deadly death dnd dragons dungeons face fantasy halloween holiday jolly monster pirate poison roger skeleton warning
+slash f715|cancel close mute off stop x
+sleigh f7cc|christmas claus fly holiday santa sled snow xmas
+sliders f1de|adjust configuration modify settings toggle
+smog f75f|dragon fog haze pollution smoke weather
+smoking f48d|cancer cigarette nicotine status tobacco
+snowflake f2dc|chevron cold heavy precipitation rain snow snowfall winter
+snowman f7d0|cold decoration frost frosty holiday snow without
+snowplow f7d2|clean cold road storm up winter
+soap e06e|19 bar bathing bubbles clean cleaning covid hygiene lather soapdish wash
+socks f696|business clothing conchords feet flight of stocking the time wednesday
+solar-panel f5ba|clean eco energy friendly green sun
+sort f0dc|filter order
+sort-down f0dd|arrow desc descending filter insert order
+sort-up f0de|arrow asc ascending filter order upgrade
+spa f5bb|flora massage mindfulness plant wellness
+spaghetti-monster-flying f67b|agnosticism atheism fsm
+spell-check f891|dictionary edit editor enable grammar text validate working
+spider f717|arachnid bug charlotte crawl eight halloween insect
+spinner f110|circle loading pending progress
+splotch f5bc|blob blotch glob ink stain
+spoon f2e5|cutlery dining scoop silverware tableware
+spray-can f5bd|aerosol design graffiti paint tag
+spray-can-sparkles f5d0|car clean deodorize fresh pine scent
+square f0c8|black block box geometric medium shape white
+square-arrow-up-right f14c|diagonal new open send share
+square-binary e69b|ai data language llm model programming token
+square-caret-down f150|arrow dropdown expand insert menu more o triangle
+square-caret-left f191|arrow back o previous triangle
+square-caret-right f152|arrow forward next o triangle
+square-caret-up f151|arrow collapse o triangle upgrade upload
+square-check f14a|accept agree box button checkmark confirm correct coupon done enable mark ok select success tick todo validate with working yes ✓
+square-envelope f199|e email letter mail message notification offer support
+square-full f45c|black block blue box brown geometric green large orange purple red shape white yellow
+square-h f0fd|directions emergency hospital hotel letter map
+square-minus f146|collapse delete hide minify negative remove shape trash
+square-nfi e576|food item non supplies
+square-parking f540|auto car garage meter
+square-pen f14b|edit modify pencil update write
+square-person-confined e577|captivity uer
+square-phone f098|call earphone number support telephone voice
+square-phone-flip f87b|call earphone number support telephone voice
+square-plus f0fe|add create expand new positive shape
+square-poll-horizontal f682|chart graph results statistics survey trend vote voting
+square-poll-vertical f681|chart graph results revenue statistics survey trend vote voting
+square-root-variable f698|arithmetic calculus division math
+square-rss f143|blog feed journal news writing
+square-share-nodes f1e1|forward save send social
+square-up-right f360|arrow diagonal direction external intercardinal link new northeast open share
+square-virus e578|19 coronavirus covid disease flu infection pandemic
+square-xmark f2d3|button close cross incorrect mark notice notification notify problem uncheck window wrong x ×
+staff-snake e579|asclepius asklepian health serpent wellness
+stairs e289|exit steps up
+stamp f5bf|art certificate imprint rubber seal
+stapler e5af|desktop milton office paperclip staple
+star f005|achievement award favorite important night quality rating score vip
+star-and-crescent f699|islam muslim religion
+star-half f089|achievement award empty full rating score
+star-half-stroke f5c0|achievement award empty full rating score
+star-of-david f69a|jew jewish judaism religion
+star-of-life f621|aid doctor emt first health medical
+sterling-sign f154|currency pound
+stethoscope f0f1|19 covid diagnosis doctor general heart hospital infirmary medicine office outpatient practitioner
+stop f04d|block box button square
+stopwatch f2f2|clock reminder time waiting
+stopwatch-20 e06f|19 abcs birthday countdown covid happy i reminder seconds survive time timer will
+store f54e|bodega building buy market purchase shopping
+store-slash e071|19 building buy closed covid disabled purchase shopping
+street-view f21d|directions location map navigation uer
+strikethrough f0cc|cancel edit font format modify text type
+stroopwafel f551|caramel cookie dessert sweets waffle
+subscript f12c|edit font format text type
+suitcase f0f2|baggage luggage move packing travel trip
+suitcase-medical f0fa|aid first firstaid health help supply support
+suitcase-rolling f5c1|baggage luggage move travel trip
+sun f185|bright brighten contrast day lighter rays sol solar star sunny weather
+sun-plant-wilt e57a|arid droop drought
+superscript f12b|edit exponential font format text type
+swatchbook f5c3|color design hue palette pantone
+synagogue f69b|building david jew jewish judaism of religion star temple
+syringe f48e|19 covid doctor immunizations medical medicine needle shot sick vaccinate vaccine
+t 54|capital latin letter small
+table f0ce|category data excel spreadsheet
+table-cells f00a|blocks boxes category excel grid spreadsheet squares
+table-cells-column-lock e678|blocks boxes category excel grid spreadsheet squares
+table-cells-large f009|blocks boxes category excel grid spreadsheet squares
+table-cells-row-lock e67a|blocks boxes category column excel grid spreadsheet squares
+table-cells-row-unlock e691|blocks boxes category column excel grid lock spreadsheet squares
+table-columns f0db|browser category dashboard organize panes split
+table-list f00b|category cheatsheet checklist completed done finished ol summary todo ul
+table-tennis-paddle-ball f45d|bat game ping pong
+tablet f3fb|device kindle screen
+tablet-button f10a|apple device ipad kindle screen
+tablet-screen-button f3fa|apple device ipad kindle
+tablets f490|drugs medicine pills prescription
+tachograph-digital f566|data distance speed tachometer
+tag f02b|discount labe label price shopping
+tags f02c|discount label price shopping
+tape f4db|design package sticky
+tarp e57b|protection tent waterproof
+tarp-droplet e57c|protection tent waterproof
+taxi f1ba|cab cabbie car lyft machine oncoming service transportation travel uber vehicle
+teeth f62e|bite dental dentist gums mouth smile tooth
+teeth-open f62f|bite dental dentist gums mouth smile tooth
+temperature-arrow-down e03f|air cold conditioner heater mercury thermometer winter
+temperature-arrow-up e040|air cold conditioner heater mercury thermometer winter
+temperature-empty f2cb|cold mercury status
+temperature-full f2c7|fever hot mercury status
+temperature-half f2c9|mercury status thermometer weather
+temperature-high f769|19 cook covid mercury summer thermometer warm
+temperature-low f76b|19 cold cool covid mercury thermometer winter
+temperature-quarter f2ca|mercury status
+temperature-three-quarters f2c8|mercury status
+tenge-sign f7d7|currency
+tent e57d|bivouac campground campsite refugee shelter
+tent-arrow-down-to-line e57e|bivouac campground campsite permanent refugee shelter
+tent-arrow-left-right e57f|bivouac campground campsite refugee shelter transition
+tent-arrow-turn-left e580|bivouac campground campsite refugee shelter temporary
+tent-arrows-down e581|bivouac campground campsite insert refugee shelter spontaneous
+tents e582|bivouac campground campsite refugee shelter tent
+terminal f120|code coding command console development prompt
+text-height f034|edit font format modify type
+text-slash f87d|cancel disabled font format remove style
+text-width f035|edit font format modify type
+thermometer f491|19 covid mercury status temperature
+thumbs-down f165|1 disagree disapprove dislike hand o social thumb
+thumbs-up f164|+1 agree approve dude favorite got hand it like o ok okay social success thumb yes you
+thumbtack f08d|black coordinates location marker pin pushpin tack thumb
+thumbtack-slash e68f|black coordinates location marker pin pushpin tack thumb unpin
+ticket f145|admission coupon movie pass support tickets voucher
+ticket-simple f3ff|admission coupon movie pass support voucher
+timeline e29c|chronological deadline history linear
+toggle-off f204|button on switch
+toggle-on f205|button off switch
+toilet f7d8|bathroom flush john loo pee plumbing poop porcelain potty restroom throne toile washroom waste wc
+toilet-paper f71e|19 bathroom covid halloween holiday lavatory of prank privy restroom roll towels wipe
+toilet-paper-slash e072|19 bathroom covid disabled halloween holiday lavatory leaves oh prank privy restroom roll trouble ut wipe
+toilet-portable e583|outhouse
+toilets-portable e584|outhouse toilet
+toolbox f552|admin chest configuration container equipment fix maintenance mechanic modify repair settings tool tools
+tooth f5c9|bicuspid brush brushing dental dentist floss flossing molar mouth teeth
+torii-gate f6a1|building religion shinto shintoism shrine
+tornado f76f|cloud cyclone dorothy landspout toto twister vortext waterspout weather whirlwind
+tower-broadcast f519|airwaves antenna communication emergency radio reception signal waves
+tower-cell e585|airwaves antenna communication radio reception signal waves
+tower-observation e586|fire view
+tractor f722|agriculture farm vehicle
+trademark f25c|copyright mark register symbol tm trade
+traffic-light f637|direction go road signal slow stop travel vertical
+trailer e041|carry haul moving travel
+train f238|bullet commute locomotive railway subway
+train-subway f239|machine railway transportation vehicle
+train-tram e5b4|crossing machine mountains seasonal transportation trolleybus
+transgender f225|female gender intersex male symbol
+trash f1f8|delete garbage hide remove
+trash-arrow-up f829|back control delete garbage hide oops remove undo upgrade z
+trash-can f2ed|delete garbage hide o remove
+trash-can-arrow-up f82a|back control delete garbage hide oops remove undo upgrade z
+tree f1bb|bark evergreen fall flora forest investment nature plant seasonal
+tree-city e587|building urban
+triangle-exclamation f071|alert attention danger error failed important notice notification notify problem required warnin warning
+trophy f091|achievement award cup game prize winner
+trowel e589|build construction equipment maintenance tool
+trowel-bricks e58a|build construction maintenance reconstruction tool
+truck f0d1|black cargo delivery shipping vehicle
+truck-arrow-right e58b|access fast shipping transport
+truck-droplet e58c|blood supply thirst water
+truck-fast f48b|express fedex mail overnight package quick ups
+truck-field e58d|supplies
+truck-field-un e58e|nations supplies united
+truck-front e2b7|shuttle van
+truck-medical f0f9|19 ambulance clinic covid emergency emt er help hospital mobile support vehicle
+truck-monster f63b|offroad vehicle wheel
+truck-moving f4df|cargo inventory rental vehicle
+truck-pickup f63c|cargo maintenance pick up vehicle
+truck-plane e58f|airplane transportation vehicle
+truck-ramp-box f4de|cargo delivery inventory moving rental vehicle
+tty f1e4|communication deaf telephone teletypewriter text
+turkish-lira-sign e2bb|currency
+turn-down f3be|arrow curving level right
+turn-up f3bf|arrow curving level right
+tv f26c|computer display monitor television
+u 55|capital latin letter small
+umbrella f0e9|protection rain storm wet
+umbrella-beach f5ca|protection recreation sand shade summer sun with
+underline f0cd|edit emphasis format modify text writing
+universal-access f29a|people uer users
+unlock f09c|admin lock open padlock password privacy private protect unlocked
+unlock-keyhole f13e|admin lock padlock password privacy private protect
+up-down f338|arrow arrows black expand portrait resize tall v vertical
+up-down-left-right f0b2|arrow arrows bigger enlarge expand fullscreen move position reorder resize
+up-long f30c|arrow upgrade upload
+up-right-and-down-left-from-center f424|arrows bigger enlarge expand fullscreen maximize resize scale size
+up-right-from-square f35d|external link new open share upgrade
+upload f093|drive hard import publish upgrade
+user f007|adult bust default employee gender in neutral people person profile silhouette uer unspecified username users
+user-astronaut f4fb|avatar clothing cosmonaut nasa space suit uer
+user-check f4fc|employee enable people uer users validate working
+user-clock f4fd|employee people uer users
+user-doctor f0f0|19 covid health job medical nurse occupation physician profile surgeon uer worker
+user-gear f4fe|employee people together uer users
+user-graduate f501|people uer users
+user-group f500|bust busts crowd employee in people silhouette together uer users
+user-injured f728|employee people uer users
+user-large f406|employee people uer users
+user-large-slash f4fa|disabled disconnect employee people uer users
+user-lock f502|employee padlock people privacy uer users
+user-minus f503|delete employee negative remove uer
+user-ninja f504|assassin avatar dangerous deadly fighter hidden sneaky stealth uer
+user-nurse f82f|19 covid doctor health md medical midwife physician practitioner surgeon uer worker
+user-pen f4ff|employee modify people uer users
+user-plus f234|add avatar employee follow positive sign signup team uer up
+user-secret f21b|detective people sleuth spy uer users
+user-shield f505|employee protect safety uer
+user-slash f506|ban delete deny disabled disconnect employee remove uer
+user-tag f507|employee people uer users
+user-tie f508|administrator avatar business clothing employee formal offer portfolio professional suit uer
+user-xmark f235|archive delete employee remove uer uncheck x
+users f0c0|employee people together uer
+users-between-lines e591|covered crowd employee group people together uer
+users-gear f509|employee people uer
+users-line e592|crowd employee group need people together uer
+users-rays e593|affected crowd employee focused group people uer
+users-rectangle e594|crowd employee focus group people reached uer
+users-slash e073|disabled disconnect employee people together uer
+users-viewfinder e595|crowd focus group people targeted uer
+utensils f2e7|and cooking cutlery dining dinner eat food fork knife restaurant
+v 56|capital latin letter small
+van-shuttle f5b6|airport bus machine minibus public transportation travel vehicle
+vault e2c5|bank important investment lock money premium privacy safe salary
+vector-square f5cb|anchors lines object render shape
+venus f221|female gender sign woman
+venus-double f226|doubled female gender lesbian sign
+venus-mars f228|and female gender heterosexual interlocked male sign
+vest e085|biker fashion style
+vest-patches e086|biker fashion style
+vial f492|ampule chemist chemistry experiment knowledge lab sample science test tube
+vial-circle-check e596|affected ampule chemist chemistry enable not ok okay success test tube vaccine validate working
+vial-virus e597|19 ampule coronavirus covid flue infection lab laboratory pandemic test tube vaccine
+vials f493|ampule experiment knowledge lab sample science test tube
+video f03d|camera film movie record
+video-slash f4e2|add create disabled disconnect film new positive record
+vihara f6a7|buddhism buddhist building monastery
+virus e074|19 bug coronavirus covid flu health infection pandemic sick vaccine viral
+virus-covid e4a8|19 bug flu health infection pandemic vaccine viral
+virus-covid-slash e4a9|19 bug disabled flu health infection pandemic vaccine viral
+virus-slash e075|19 bug coronavirus covid cure disabled eliminate flu health infection pandemic sick vaccine viral
+viruses e076|19 bugs coronavirus covid flu health infection multiply pandemic sick spread vaccine viral
+voicemail f897|answer inbox message phone
+volcano f770|caldera eruption lava magma mountain smoke
+volleyball f45f|ball beach game olympics sport
+volume-high f028|audio higher loud louder music sound speaker
+volume-low f027|audio lower music quieter soft sound speaker
+volume-off f026|audio ban music mute quiet silent sound
+volume-xmark f6a9|audio music quiet sound speaker
+vr-cardboard f729|3d augment google reality virtual
+w 57|capital latin letter small
+walkie-talkie f8ef|communication copy intercom over portable radio two way
+wallet f555|billfold cash currency money salary
+wand-magic f0d0|autocomplete automatic mage spell witch wizard
+wand-magic-sparkles e2ca|auto trick witch wizard
+wand-sparkles f72b|autocomplete automatic fantasy halloween holiday magic weapon witch wizard
+warehouse f494|building capacity garage inventory storage
+water f773|lake liquid ocean sea swim wet
+water-ladder f5c5|recreation swim
+wave-square f83e|frequency pulse signal
+web-awesome e682|coding components crown
+weight-hanging f5cd|anvil heavy measurement
+weight-scale f496|health measurement
+wheat-awn e2cd|agriculture autumn fall farming grain
+wheat-awn-circle-exclamation e598|affected failed famine food gluten hunger starve straw
+wheelchair f193|disabled people uer users
+wheelchair-move e2ce|access disabled handicap impairment physical symbol uer
+whiskey-glass f7a0|alcohol bar beverage bourbon drink liquor neat rye scotch shot tumbler whisky
+wifi f1eb|connection hotspot internet network signal wireless www
+wind f72e|air blow breeze fall seasonal weather
+window-maximize f2d0|browser computer development expand
+window-minimize f2d1|browser collapse computer development
+window-restore f2d2|browser computer development
+wine-bottle f72f|alcohol beverage cabernet drink glass grapes merlot sauvignon
+wine-glass f4e3|alcohol bar beverage cabernet drink grapes merlot sauvignon
+wine-glass-empty f5ce|alcohol beverage cabernet drink grapes merlot sauvignon
+won-sign f159|currency
+worm e599|dirt garden wriggle
+wrench f0ad|configuration construction equipment fix mechanic modify plumbing settings spanner tool update
+x 58|capital latin letter small uncheck
+x-ray f497|health images medical radiological radiology skeleton
+xmark f00d|cancel cancellation close cross error exit incorrect mark multiplication multiply notice notification notify problem sign uncheck wrong x ×
+xmarks-lines e59a|barricade barrier fence poison roadblock
+y 59|capital latin letter small yay yes
+yen-sign f157|currency
+yin-yang f6ad|daoism opposites religion tao taoism taoist
+z 5a|capital latin letter small

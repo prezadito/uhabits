@@ -28,6 +28,7 @@ import androidx.appcompat.widget.SearchView
 import me.tatarka.inject.annotations.Inject
 import org.isoron.uhabits.R
 import org.isoron.uhabits.core.models.HabitList
+import org.isoron.uhabits.core.preferences.HomeViewMode
 import org.isoron.uhabits.core.preferences.Preferences
 import org.isoron.uhabits.core.ui.ThemeSwitcher
 import org.isoron.uhabits.core.ui.screens.habits.list.ListHabitsMenuBehavior
@@ -67,6 +68,7 @@ class ListHabitsMenu(
         val hideArchivedItem = menu.findItem(R.id.actionHideArchived)
         val hideCompletedItem = menu.findItem(R.id.actionHideCompleted)
         nightModeItem.isChecked = themeSwitcher.isNightMode
+        menu.findItem(viewModeItemId(preferences.homeViewMode)).isChecked = true
         hideArchivedItem.isChecked = !preferences.showArchived
         hideCompletedItem.isChecked = !preferences.showCompleted
         if (preferences.areQuestionMarksEnabled || preferences.isSkipEnabled) {
@@ -122,6 +124,20 @@ class ListHabitsMenu(
         }
     }
 
+    private fun viewModeItemId(mode: HomeViewMode) = when (mode) {
+        HomeViewMode.WEEKLY -> R.id.actionViewWeekly
+        HomeViewMode.MONTHLY -> R.id.actionViewMonthly
+        HomeViewMode.GRID -> R.id.actionViewGrid
+        HomeViewMode.COMPACT -> R.id.actionViewCompact
+    }
+
+    private fun viewModeOfItem(itemId: Int) = when (itemId) {
+        R.id.actionViewMonthly -> HomeViewMode.MONTHLY
+        R.id.actionViewGrid -> HomeViewMode.GRID
+        R.id.actionViewCompact -> HomeViewMode.COMPACT
+        else -> HomeViewMode.WEEKLY
+    }
+
     fun onItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.actionToggleNightMode -> {
@@ -131,6 +147,15 @@ class ListHabitsMenu(
 
             R.id.actionCreateHabit -> {
                 behavior.onCreateHabit()
+                return true
+            }
+
+            R.id.actionViewWeekly,
+            R.id.actionViewMonthly,
+            R.id.actionViewGrid,
+            R.id.actionViewCompact -> {
+                preferences.homeViewMode = viewModeOfItem(item.itemId)
+                item.isChecked = true
                 return true
             }
 

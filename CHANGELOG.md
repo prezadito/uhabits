@@ -2,6 +2,18 @@
 
 ## [Unreleased]
 
+### Added
+
+- Four views for the habit list, chosen from the "View" entry of the overflow menu: Weekly (the existing day tiles), Monthly (the current month of each habit as a calendar), Grid (a dense heatmap of the last weeks) and Compact (one habit per line, with a day row to pick the day to check)
+- Habit icons: pick one of about 3,600 Material and Font Awesome icons when creating or editing a habit. Search matches keywords as well as names (for example "gym", "weed" or "floss"), and common habit icons are listed first. The icon is shown inside the score ring of the habit card, which shows the first letter of the name for habits without an icon
+- The icon picker can be filtered by category (Fitness & Sports, Health & Care, Mind & Sleep, Food & Drink, Learning & Work, Home & Chores, Money, Family & Friends, Hobbies & Creativity, Nature & Travel, Quit & Limit, Time & Routine, Symbols & More). Searching looks in all categories, and icons already used by other habits are dimmed and marked
+- Monthly and Grid views have the day row too, and a tile next to the habit name to check the selected day. The day row scrolls back up to a month
+
+### Changed
+
+- The title of the habit list is the date: today, or the selected day in the Monthly, Grid and Compact views
+- In the Weekly view, swiping the day header moves by whole weeks
+
 ## [2.5.2-qol] -- 2026-10-19
 
 ### Changed

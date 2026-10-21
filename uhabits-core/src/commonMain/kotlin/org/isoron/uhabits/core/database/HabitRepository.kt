@@ -25,7 +25,8 @@ data class HabitData(
     var targetType: Int = 0,
     var unit: String = "",
     var uuid: String? = null,
-    var quitSince: Long? = null
+    var quitSince: Long? = null,
+    var icon: String? = null
 )
 
 class HabitRepository(private val db: Database) {
@@ -33,7 +34,7 @@ class HabitRepository(private val db: Database) {
         db.prepareStatement(
             """SELECT id, name, description, question, freq_num, freq_den, color,
                position, reminder_hour, reminder_min, reminder_days, highlight,
-               archived, type, target_value, target_type, unit, uuid, quit_since
+               archived, type, target_value, target_type, unit, uuid, quit_since, icon
                FROM Habits ORDER BY position"""
         )
     }
@@ -42,8 +43,8 @@ class HabitRepository(private val db: Database) {
         db.prepareStatement(
             """INSERT INTO Habits(name, description, question, freq_num, freq_den,
                color, position, reminder_hour, reminder_min, reminder_days,
-               highlight, archived, type, target_value, target_type, unit, uuid, quit_since)
-               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
+               highlight, archived, type, target_value, target_type, unit, uuid, quit_since, icon)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
         )
     }
 
@@ -51,8 +52,8 @@ class HabitRepository(private val db: Database) {
         db.prepareStatement(
             """INSERT INTO Habits(id, name, description, question, freq_num, freq_den,
                color, position, reminder_hour, reminder_min, reminder_days,
-               highlight, archived, type, target_value, target_type, unit, uuid, quit_since)
-               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
+               highlight, archived, type, target_value, target_type, unit, uuid, quit_since, icon)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
         )
     }
 
@@ -61,7 +62,7 @@ class HabitRepository(private val db: Database) {
             """UPDATE Habits SET name=?, description=?, question=?, freq_num=?,
                freq_den=?, color=?, position=?, reminder_hour=?, reminder_min=?,
                reminder_days=?, highlight=?, archived=?, type=?, target_value=?,
-               target_type=?, unit=?, uuid=?, quit_since=? WHERE id=?"""
+               target_type=?, unit=?, uuid=?, quit_since=?, icon=? WHERE id=?"""
         )
     }
 
@@ -95,7 +96,7 @@ class HabitRepository(private val db: Database) {
     fun update(data: HabitData) {
         updateStmt.reset()
         bindForInsert(updateStmt, data)
-        updateStmt.bindLong(19, data.id!!)
+        updateStmt.bindLong(20, data.id!!)
         updateStmt.step()
     }
 
@@ -129,6 +130,7 @@ class HabitRepository(private val db: Database) {
         stmt.bindText(16 + o, data.unit)
         if (data.uuid != null) stmt.bindText(17 + o, data.uuid!!) else stmt.bindNull(17 + o)
         if (data.quitSince != null) stmt.bindLong(18 + o, data.quitSince!!) else stmt.bindNull(18 + o)
+        if (data.icon != null) stmt.bindText(19 + o, data.icon!!) else stmt.bindNull(19 + o)
     }
 
     private fun readRow(stmt: PreparedStatement): HabitData {
@@ -151,7 +153,8 @@ class HabitRepository(private val db: Database) {
             targetType = stmt.getInt(15),
             unit = stmt.getText(16),
             uuid = stmt.getTextOrNull(17),
-            quitSince = stmt.getLongOrNull(18)
+            quitSince = stmt.getLongOrNull(18),
+            icon = stmt.getTextOrNull(19)
         )
     }
 }

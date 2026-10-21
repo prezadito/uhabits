@@ -29,6 +29,7 @@ import android.os.Looper
 import android.text.TextUtils
 import android.view.Gravity
 import android.view.View
+import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.view.ViewOutlineProvider
@@ -45,9 +46,11 @@ import org.isoron.uhabits.core.models.ModelObservable
 import org.isoron.uhabits.core.models.PaletteColor
 import org.isoron.uhabits.core.models.getCurrentWeeklyStreak
 import org.isoron.uhabits.core.models.isWeeklyTarget
+import org.isoron.uhabits.core.preferences.HomeViewMode
 import org.isoron.uhabits.core.preferences.Preferences
 import org.isoron.uhabits.core.ui.screens.habits.list.ListHabitsBehavior
 import org.isoron.uhabits.inject.ActivityContext
+import org.isoron.uhabits.utils.HabitIcons
 import org.isoron.uhabits.utils.currentTheme
 import org.isoron.uhabits.utils.dim
 import org.isoron.uhabits.utils.dp
@@ -89,6 +92,13 @@ class HabitCardView(
             numberPanel.dataOffset = value
         }
 
+    var viewMode = HomeViewMode.WEEKLY
+        set(value) {
+            if (field == value) return
+            field = value
+            applyViewMode()
+        }
+
     var habit: Habit? = null
         set(newHabit) {
             if (isAttachedToWindow) {
@@ -120,6 +130,7 @@ class HabitCardView(
         set(values) {
             checkmarkPanel.values = values
             numberPanel.values = values.map { it / 1000.0 }.toDoubleArray()
+            history.invalidate()
         }
 
     var threshold: Double
@@ -142,6 +153,9 @@ class HabitCardView(
     private var metaLabel: TextView
     private var labelContainer: LinearLayout
     private var scoreRing: RingView
+    private var topRow: LinearLayout
+    private var tileRow: FrameLayout
+    private var history: HabitHistoryView
 
     private var currentToggleTaskId = 0
 
@@ -154,7 +168,7 @@ class HabitCardView(
 
     init {
         scoreRing = RingView(context).apply {
-            val ringSize = dim(R.dimen.ds_ring).toInt()
+            val ringSize = dim(R.dimen.ds_ring_icon).toInt()
             layoutParams = LinearLayout.LayoutParams(ringSize, ringSize).apply {
                 marginEnd = dp(12f).toInt()
                 gravity = Gravity.CENTER
@@ -188,7 +202,7 @@ class HabitCardView(
             addView(metaLabel)
         }
 
-        val topRow = LinearLayout(context).apply {
+        topRow = LinearLayout(context).apply {
             gravity = Gravity.CENTER_VERTICAL
             orientation = LinearLayout.HORIZONTAL
             layoutParams = LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
@@ -227,7 +241,14 @@ class HabitCardView(
             }
         }
 
-        val tileRow = FrameLayout(context).apply {
+        history = HabitHistoryView(context, prefs).apply {
+            visibility = GONE
+            layoutParams = LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT).apply {
+                topMargin = dp(10f).toInt()
+            }
+        }
+
+        tileRow = FrameLayout(context).apply {
             layoutParams = LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT).apply {
                 topMargin = dp(8f).toInt()
             }
@@ -246,6 +267,7 @@ class HabitCardView(
 
             addView(topRow)
             addView(tileRow)
+            addView(history)
 
             setOnTouchListener { v, event ->
                 v.background.setHotspot(event.x, event.y)
@@ -253,6 +275,7 @@ class HabitCardView(
             }
         }
 
+        applyViewMode()
         clipToPadding = false
         layoutParams = LayoutParams(MATCH_PARENT, WRAP_CONTENT)
         setPadding(dp(16f).toInt(), 0, dp(16f).toInt(), dp(8f).toInt())
@@ -330,7 +353,11 @@ class HabitCardView(
         scoreRing.apply {
             setColor(tileColors.fill)
             setInactiveColor(tileColors.tint)
+            setTextColor(tileColors.fill)
         }
+        updateRingGlyph(h)
+        history.habit = h
+        history.colors = tileColors
         updateMeta(h)
         checkmarkPanel.apply {
             colors = tileColors
@@ -350,6 +377,45 @@ class HabitCardView(
                 false -> View.GONE
             }
         }
+    }
+
+    /** The habit's icon inside the ring, or the first letter of its name when it has none. */
+    private fun updateRingGlyph(h: Habit) {
+        val glyph = HabitIcons.glyph(context, h.icon)
+        scoreRing.apply {
+            if (glyph != null) {
+                setTypeface(HabitIcons.typeface(context, h.icon))
+                setBoldText(false)
+                setText(glyph)
+                setTextSize(dim(R.dimen.ds_ring_icon) * ICON_TEXT_RATIO)
+            } else {
+                setTypeface(null)
+                setBoldText(true)
+                setText(h.name.trim().firstOrNull()?.uppercaseChar()?.toString() ?: "")
+                setTextSize(dim(R.dimen.ds_ring_icon) * LETTER_TEXT_RATIO)
+            }
+        }
+    }
+
+    /**
+     * Weekly: day tiles under the title. The other views: a single tile (the day selected in the
+     * day row) at the end of the title row, plus, in monthly and grid, a read-only history under
+     * the title.
+     */
+    private fun applyViewMode() {
+        val showsHistory = viewMode == HomeViewMode.MONTHLY || viewMode == HomeViewMode.GRID
+        (tileRow.parent as? ViewGroup)?.removeView(tileRow)
+        if (viewMode.usesDayRow) {
+            tileRow.layoutParams = LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
+            topRow.addView(tileRow)
+        } else {
+            tileRow.layoutParams = LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT).apply {
+                topMargin = dp(8f).toInt()
+            }
+            innerFrame.addView(tileRow, innerFrame.indexOfChild(history))
+        }
+        history.visibility = if (showsHistory) VISIBLE else GONE
+        history.mode = viewMode
     }
 
     /** Streak for regular habits, clean time for quit habits. */
@@ -391,6 +457,8 @@ class HabitCardView(
     companion object {
         private const val CLEAN_TIME_REFRESH_INTERVAL = 60_000L
         private const val GRAPHITE_HUE = 11
+        private const val ICON_TEXT_RATIO = 0.5f
+        private const val LETTER_TEXT_RATIO = 0.42f
 
         fun (() -> Unit).delay(delayInMillis: Long) {
             Handler(Looper.getMainLooper()).postDelayed(this, delayInMillis)

@@ -137,6 +137,37 @@
                 </LinearLayout>
             </LinearLayout>
 
+            <!-- Habit Icon -->
+            <LinearLayout style="@style/FormOuterBox">
+                <TextView
+                    style="@style/FormLabel"
+                    android:text="@string/icon" />
+                <LinearLayout
+                    android:id="@+id/iconButton"
+                    style="@style/FormInnerBox"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:minHeight="48dp"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/ds_space_16"
+                    android:paddingEnd="@dimen/ds_space_16">
+                    <TextView
+                        android:id="@+id/iconPreview"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:gravity="center"
+                        android:importantForAccessibility="no"
+                        android:textSize="26sp" />
+                    <TextView
+                        android:id="@+id/iconName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/ds_space_12"
+                        android:textAppearance="@style/TextAppearance.Ds.Body" />
+                </LinearLayout>
+            </LinearLayout>
+
             <!-- Habit Question -->
             <LinearLayout style="@style/FormOuterBox">
 <TextView

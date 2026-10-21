@@ -37,6 +37,7 @@ import org.isoron.platform.time.getToday
 import org.isoron.uhabits.R
 import org.isoron.uhabits.activities.common.views.ScrollableChart
 import org.isoron.uhabits.core.preferences.Preferences
+import org.isoron.uhabits.core.ui.screens.habits.list.WeekPaging
 import org.isoron.uhabits.core.utils.MidnightTimer
 import org.isoron.uhabits.utils.dim
 import org.isoron.uhabits.utils.dp
@@ -86,6 +87,7 @@ class HeaderView(
 
     init {
         setScrollerBucketSize(dim(R.dimen.checkmarkWidth).toInt())
+        pageSize = WeekPaging.DAYS_PER_WEEK
         setBackgroundColor(sres.getColor(R.attr.dsSurface))
         elevation = 0f
         ViewCompat.setAccessibilityDelegate(this, columnHelper)

@@ -59,6 +59,15 @@ under the SIL OFL 1.1.
     requirement for fonts to remain under this license does not apply
     to any document created using the fonts or their derivatives.
 
+## Font Awesome Free 6
+
+<https://fontawesome.com>
+
+The habit icon picker bundles the solid icons of Font Awesome Free 6. The icons
+are licensed under CC BY 4.0 (<https://creativecommons.org/licenses/by/4.0/>)
+and the font files under the SIL OFL 1.1 (<https://scripts.sil.org/OFL>).
+Copyright Fonticons, Inc.
+
 ## Material Design Icons
 
 <https://github.com/google/material-design-icons>

@@ -20,15 +20,19 @@
 package org.isoron.uhabits.activities.habits.list
 
 import android.content.Context
+import android.text.format.DateFormat
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
+import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.FrameLayout
 import android.widget.RelativeLayout
 import androidx.recyclerview.widget.RecyclerView
 import me.tatarka.inject.annotations.Inject
 import nl.dionsegijn.konfetti.xml.KonfettiView
+import org.isoron.platform.time.getToday
 import org.isoron.uhabits.R
 import org.isoron.uhabits.activities.common.views.ScrollableChart
 import org.isoron.uhabits.activities.common.views.TaskProgressBar
+import org.isoron.uhabits.activities.habits.list.views.DaySelectorView
 import org.isoron.uhabits.activities.habits.list.views.EmptyListView
 import org.isoron.uhabits.activities.habits.list.views.HabitCardListAdapter
 import org.isoron.uhabits.activities.habits.list.views.HabitCardListView
@@ -36,9 +40,11 @@ import org.isoron.uhabits.activities.habits.list.views.HabitCardListViewFactory
 import org.isoron.uhabits.activities.habits.list.views.HeaderView
 import org.isoron.uhabits.activities.habits.list.views.HintView
 import org.isoron.uhabits.core.models.ModelObservable
+import org.isoron.uhabits.core.preferences.HomeViewMode
 import org.isoron.uhabits.core.preferences.Preferences
 import org.isoron.uhabits.core.tasks.TaskRunner
 import org.isoron.uhabits.core.ui.screens.habits.list.HintListFactory
+import org.isoron.uhabits.core.ui.screens.habits.list.WeekPaging
 import org.isoron.uhabits.core.utils.MidnightTimer
 import org.isoron.uhabits.inject.ActivityContext
 import org.isoron.uhabits.inject.ActivityScope
@@ -51,6 +57,8 @@ import org.isoron.uhabits.utils.dp
 import org.isoron.uhabits.utils.setScrolled
 import org.isoron.uhabits.utils.setupToolbar
 import org.isoron.uhabits.utils.sres
+import java.time.LocalDate
+import java.util.Locale
 import kotlin.math.max
 import kotlin.math.min
 
@@ -61,12 +69,15 @@ const val MAX_CHECKMARK_COUNT = 60
 class ListHabitsRootView(
     @ActivityContext context: Context,
     hintListFactory: HintListFactory,
-    preferences: Preferences,
-    midnightTimer: MidnightTimer,
+    private val preferences: Preferences,
+    private val midnightTimer: MidnightTimer,
     runner: TaskRunner,
     private val listAdapter: HabitCardListAdapter,
     habitCardListViewFactory: HabitCardListViewFactory
-) : FrameLayout(context), ModelObservable.Listener {
+) : FrameLayout(context),
+    ModelObservable.Listener,
+    Preferences.Listener,
+    MidnightTimer.MidnightListener {
 
     val listView: HabitCardListView = habitCardListViewFactory.create()
     val llEmpty = EmptyListView(context)
@@ -77,6 +88,11 @@ class ListHabitsRootView(
     val progressBar = TaskProgressBar(context, runner)
     val hintView: HintView
     val header = HeaderView(context, preferences, midnightTimer)
+    val daySelector = DaySelectorView(context)
+    private val headerContainer = FrameLayout(context).apply {
+        addView(header, MATCH_PARENT, WRAP_CONTENT)
+        addView(daySelector, MATCH_PARENT, WRAP_CONTENT)
+    }
 
     init {
         val hints = resources.getStringArray(R.array.hints)
@@ -87,10 +103,10 @@ class ListHabitsRootView(
             background = sres.getDrawable(R.attr.windowBackgroundColor)
             addAtTop(konfettiView)
             addAtTop(tbar)
-            addBelow(header, tbar)
-            addBelow(listView, header, height = MATCH_PARENT)
-            addBelow(llEmpty, header, height = MATCH_PARENT)
-            addBelow(progressBar, header) {
+            addBelow(headerContainer, tbar)
+            addBelow(listView, headerContainer, height = MATCH_PARENT)
+            addBelow(llEmpty, headerContainer, height = MATCH_PARENT)
+            addBelow(progressBar, headerContainer) {
                 it.topMargin = dp(-6.0f).toInt()
             }
             addAtBottom(hintView)
@@ -103,7 +119,7 @@ class ListHabitsRootView(
         }
         rootView.setupToolbar(
             toolbar = tbar,
-            title = context.applicationInfo.loadLabel(context.packageManager).toString(),
+            title = dateTitle(0),
             displayHomeAsUpEnabled = false
         )
         listView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -111,8 +127,64 @@ class ListHabitsRootView(
                 tbar.setScrolled(recyclerView.canScrollVertically(-1))
             }
         })
+        daySelector.onSelect = { offset ->
+            listView.selectedDayOffset = offset
+            updateTitle()
+        }
         addView(rootView, MATCH_PARENT, MATCH_PARENT)
         listAdapter.setListView(listView)
+        applyViewMode()
+    }
+
+    /** Switching views always goes back to today: the day row, the selection and Weekly's header. */
+    override fun onHomeViewModeChanged() {
+        post {
+            selectDay(0)
+            daySelector.refresh()
+            header.reset()
+            applyViewMode()
+        }
+    }
+
+    override fun atMidnight() {
+        post {
+            selectDay(0)
+            daySelector.refresh()
+        }
+    }
+
+    /**
+     * Weekly shows the scrollable day header; the other views show a day row to pick the day the
+     * cards act on, and go back to today when Weekly is shown.
+     */
+    private fun applyViewMode() {
+        val mode = preferences.homeViewMode
+        header.visibility = if (mode == HomeViewMode.WEEKLY) VISIBLE else GONE
+        daySelector.visibility = if (mode.usesDayRow) VISIBLE else GONE
+        if (!mode.usesDayRow) selectDay(0)
+        listView.viewMode = mode
+        updateTitle()
+    }
+
+    private fun selectDay(offset: Int) {
+        daySelector.selectedOffset = offset
+        listView.selectedDayOffset = offset
+        updateTitle()
+    }
+
+    /** Today's date, or in the views with a day row the selected day's. */
+    private fun updateTitle() {
+        val offset = if (preferences.homeViewMode.usesDayRow) daySelector.selectedOffset else 0
+        tbar.title = dateTitle(offset)
+    }
+
+    /** "Mon, Oct 19" in the language of the device, for the day [offset] days before today. */
+    private fun dateTitle(offset: Int): String {
+        val day = getToday().minus(offset)
+        val date = LocalDate.of(day.year, day.month, day.day)
+        val locale = Locale.getDefault()
+        val pattern = DateFormat.getBestDateTimePattern(locale, "EEEMMMd")
+        return java.time.format.DateTimeFormatter.ofPattern(pattern, locale).format(date)
     }
 
     override fun onModelChange() {
@@ -132,18 +204,23 @@ class ListHabitsRootView(
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
         setupControllers()
+        preferences.addListener(this)
+        midnightTimer.addListener(this)
+        applyViewMode()
         listAdapter.observable.addListener(this)
     }
 
     override fun onDetachedFromWindow() {
         listAdapter.observable.removeListener(this)
+        midnightTimer.removeListener(this)
+        preferences.removeListener(this)
         super.onDetachedFromWindow()
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         val count = getCheckmarkCount()
         header.buttonCount = count
-        header.setMaxDataOffset(max(MAX_CHECKMARK_COUNT - count, 0))
+        header.setMaxDataOffset(WeekPaging.maxOffset(MAX_CHECKMARK_COUNT, count))
         listView.checkmarkCount = count
         super.onSizeChanged(w, h, oldw, oldh)
     }
