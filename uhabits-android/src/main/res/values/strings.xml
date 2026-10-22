@@ -188,6 +188,9 @@
     <string name="view_grid">Grid</string>
     <string name="view_compact">Compact</string>
     <string name="icon">Icon</string>
+    <string name="category">Category</string>
+    <string name="category_hint">e.g. Health</string>
+    <string name="category_all">All</string>
     <string name="no_icon">No icon</string>
     <string name="search_icons">Search icons</string>
     <string name="no_icons_found">No icons found</string>

@@ -168,6 +168,22 @@
                 </LinearLayout>
             </LinearLayout>
 
+            <!-- Habit Category -->
+            <LinearLayout style="@style/FormOuterBox">
+                <TextView
+                    style="@style/FormLabel"
+                    android:text="@string/category" />
+                <LinearLayout style="@style/FormInnerBox">
+                    <AutoCompleteTextView
+                        android:id="@+id/categoryInput"
+                        style="@style/FormInput"
+                        android:completionThreshold="1"
+                        android:hint="@string/category_hint"
+                        android:inputType="textCapWords"
+                        android:maxLines="1" />
+                </LinearLayout>
+            </LinearLayout>
+
             <!-- Habit Question -->
             <LinearLayout style="@style/FormOuterBox">
 <TextView

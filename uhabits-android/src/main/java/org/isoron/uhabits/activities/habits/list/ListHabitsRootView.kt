@@ -24,6 +24,7 @@ import android.text.format.DateFormat
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.FrameLayout
+import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.recyclerview.widget.RecyclerView
 import me.tatarka.inject.annotations.Inject
@@ -32,6 +33,7 @@ import org.isoron.platform.time.getToday
 import org.isoron.uhabits.R
 import org.isoron.uhabits.activities.common.views.ScrollableChart
 import org.isoron.uhabits.activities.common.views.TaskProgressBar
+import org.isoron.uhabits.activities.habits.list.views.CategoryChipsView
 import org.isoron.uhabits.activities.habits.list.views.DaySelectorView
 import org.isoron.uhabits.activities.habits.list.views.EmptyListView
 import org.isoron.uhabits.activities.habits.list.views.HabitCardListAdapter
@@ -39,6 +41,7 @@ import org.isoron.uhabits.activities.habits.list.views.HabitCardListView
 import org.isoron.uhabits.activities.habits.list.views.HabitCardListViewFactory
 import org.isoron.uhabits.activities.habits.list.views.HeaderView
 import org.isoron.uhabits.activities.habits.list.views.HintView
+import org.isoron.uhabits.core.models.HabitList
 import org.isoron.uhabits.core.models.ModelObservable
 import org.isoron.uhabits.core.preferences.HomeViewMode
 import org.isoron.uhabits.core.preferences.Preferences
@@ -73,6 +76,7 @@ class ListHabitsRootView(
     private val midnightTimer: MidnightTimer,
     runner: TaskRunner,
     private val listAdapter: HabitCardListAdapter,
+    private val habitList: HabitList,
     private val menu: ListHabitsMenu,
     habitCardListViewFactory: HabitCardListViewFactory
 ) : FrameLayout(context),
@@ -90,9 +94,15 @@ class ListHabitsRootView(
     val hintView: HintView
     val header = HeaderView(context, preferences, midnightTimer)
     val daySelector = DaySelectorView(context)
-    private val headerContainer = FrameLayout(context).apply {
+    val categoryChips = CategoryChipsView(context)
+    private val dateRow = FrameLayout(context).apply {
         addView(header, MATCH_PARENT, WRAP_CONTENT)
         addView(daySelector, MATCH_PARENT, WRAP_CONTENT)
+    }
+    private val headerContainer = LinearLayout(context).apply {
+        orientation = LinearLayout.VERTICAL
+        addView(dateRow, MATCH_PARENT, WRAP_CONTENT)
+        addView(categoryChips, MATCH_PARENT, WRAP_CONTENT)
     }
 
     init {
@@ -134,6 +144,10 @@ class ListHabitsRootView(
             listView.selectedDayOffset = offset
             updateTitle()
         }
+        categoryChips.onSelect = { category ->
+            menu.behavior.onCategorySelected(category)
+            updateCategoryChips()
+        }
         addView(rootView, MATCH_PARENT, MATCH_PARENT)
         listAdapter.setListView(listView)
         applyViewMode()
@@ -141,8 +155,8 @@ class ListHabitsRootView(
 
     /**
      * Slides the toolbar (the date title and the menu) out of view while scrolling down and back in
-     * while scrolling up, fading it as it goes. The day row is anchored below it, so it stays pinned to the top and the list takes over
-     * the freed space. The toolbar is left alone when the
+     * while scrolling up, fading it as it goes. The day row and the category chips are anchored below it, so they stay pinned to the top
+     * and the list takes over the freed space. The toolbar is left alone when the
      * list is too short to scroll once the toolbar is gone, since it could not be brought back, and
      * while searching, since the search field lives in the toolbar.
      */
@@ -217,7 +231,15 @@ class ListHabitsRootView(
     }
 
     override fun onModelChange() {
+        updateCategoryChips()
         updateEmptyView()
+    }
+
+    /** Shows a chip per non-empty category. */
+    private fun updateCategoryChips() {
+        val behavior = menu.behavior
+        val categories = behavior.updateCategories(habitList)
+        categoryChips.update(categories, behavior.selectedCategory)
     }
 
     private fun setupControllers() {
@@ -236,6 +258,7 @@ class ListHabitsRootView(
         preferences.addListener(this)
         midnightTimer.addListener(this)
         applyViewMode()
+        updateCategoryChips()
         listAdapter.observable.addListener(this)
     }
 

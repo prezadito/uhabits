@@ -57,7 +57,9 @@ object EditHabitSteps {
     }
 
     fun pickColor(color: Int) {
-        Espresso.onView(ViewMatchers.withId(R.id.colorButton)).perform(ViewActions.click())
+        // The form scrolls when a field further down gets focus, so bring the button back into view.
+        Espresso.onView(ViewMatchers.withId(R.id.colorButton))
+            .perform(ViewActions.scrollTo(), ViewActions.click())
         // Swatches are described by hue name, so map the classic palette index to its hue.
         val hueNames = InstrumentationRegistry.getInstrumentation().targetContext
             .resources.getStringArray(R.array.hue_names)

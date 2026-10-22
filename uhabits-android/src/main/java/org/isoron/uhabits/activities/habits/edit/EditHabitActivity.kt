@@ -52,6 +52,7 @@ import org.isoron.uhabits.core.commands.CreateHabitCommand
 import org.isoron.uhabits.core.commands.EditHabitCommand
 import org.isoron.uhabits.core.models.Frequency
 import org.isoron.uhabits.core.models.Habit
+import org.isoron.uhabits.core.models.HabitCategories
 import org.isoron.uhabits.core.models.HabitType
 import org.isoron.uhabits.core.models.NumericalHabitType
 import org.isoron.uhabits.core.models.PaletteColor
@@ -132,6 +133,7 @@ class EditHabitActivity : AppCompatActivity() {
             binding.nameInput.setText(habit.name)
             binding.questionInput.setText(habit.question)
             binding.notesInput.setText(habit.description)
+            binding.categoryInput.setText(habit.category ?: "")
             binding.unitInput.setText(habit.unit)
             binding.targetInput.setText(habit.targetValue.toString())
             habit.quitSince?.let { quitSince = it }
@@ -190,6 +192,11 @@ class EditHabitActivity : AppCompatActivity() {
             }
             picker.dismissCurrentAndShow(supportFragmentManager, "colorPicker")
         }
+
+        val categories = HabitCategories.distinct(component.habitList)
+        binding.categoryInput.setAdapter(
+            ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, categories)
+        )
 
         binding.iconButton.setOnClickListener {
             val usedIcons = component.habitList
@@ -357,6 +364,7 @@ class EditHabitActivity : AppCompatActivity() {
         habit.description = binding.notesInput.text.trim().toString()
         habit.color = color
         habit.icon = icon
+        habit.category = HabitCategories.normalize(binding.categoryInput.text.toString())
         if (reminderHour >= 0) {
             habit.reminder = Reminder(reminderHour, reminderMin, reminderDays)
         } else {

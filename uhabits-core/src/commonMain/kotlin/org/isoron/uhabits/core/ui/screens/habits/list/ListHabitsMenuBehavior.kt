@@ -19,6 +19,7 @@
 package org.isoron.uhabits.core.ui.screens.habits.list
 
 import me.tatarka.inject.annotations.Inject
+import org.isoron.uhabits.core.models.HabitCategories
 import org.isoron.uhabits.core.models.HabitList
 import org.isoron.uhabits.core.models.HabitMatcher
 import org.isoron.uhabits.core.preferences.Preferences
@@ -34,6 +35,10 @@ class ListHabitsMenuBehavior(
     private var showCompleted: Boolean
     private var showArchived: Boolean
     var searchQuery: String = ""
+        private set
+
+    /** The category chip selected on the home screen, or null for "All". Not persisted. */
+    var selectedCategory: String? = null
         private set
 
     fun onCreateHabit() {
@@ -54,6 +59,12 @@ class ListHabitsMenuBehavior(
 
     fun onSearchQueryChanged(query: String) {
         searchQuery = query
+        updateAdapterFilter()
+    }
+
+    fun onCategorySelected(category: String?) {
+        if (HabitCategories.isSame(category, selectedCategory)) return
+        selectedCategory = HabitCategories.normalize(category)
         updateAdapterFilter()
     }
 
@@ -109,24 +120,43 @@ class ListHabitsMenuBehavior(
         updateAdapterFilter()
     }
 
-    private fun updateAdapterFilter() {
+    /**
+     * Returns the categories to offer as chips: those of the habits shown by the archived setting.
+     * Neither the search nor hiding completed habits removes a chip, so that checking off the last
+     * habit of the selected category does not silently switch the filter back to "All".
+     *
+     * If the selected category is no longer one of them (for example its last habit was moved to
+     * another category), the selection falls back to "All".
+     */
+    fun updateCategories(habits: HabitList): List<String> {
+        val matcher = HabitMatcher(isArchivedAllowed = showArchived)
+        val categories = HabitCategories.distinct(habits.filter { matcher.matches(it) })
+        if (selectedCategory != null) {
+            val resolved = HabitCategories.resolve(selectedCategory, categories)
+            if (resolved == null) onCategorySelected(null) else selectedCategory = resolved
+        }
+        return categories
+    }
+
+    private fun buildMatcher(category: String?) =
         if (preferences.areQuestionMarksEnabled) {
-            adapter.setFilter(
-                HabitMatcher(
-                    isArchivedAllowed = showArchived,
-                    isEnteredAllowed = showCompleted,
-                    searchQuery = searchQuery
-                )
+            HabitMatcher(
+                isArchivedAllowed = showArchived,
+                isEnteredAllowed = showCompleted,
+                searchQuery = searchQuery,
+                category = category
             )
         } else {
-            adapter.setFilter(
-                HabitMatcher(
-                    isArchivedAllowed = showArchived,
-                    isCompletedAllowed = showCompleted,
-                    searchQuery = searchQuery
-                )
+            HabitMatcher(
+                isArchivedAllowed = showArchived,
+                isCompletedAllowed = showCompleted,
+                searchQuery = searchQuery,
+                category = category
             )
         }
+
+    private fun updateAdapterFilter() {
+        adapter.setFilter(buildMatcher(selectedCategory))
         adapter.refresh()
     }
 
