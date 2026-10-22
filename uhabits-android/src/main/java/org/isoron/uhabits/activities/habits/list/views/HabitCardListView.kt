@@ -20,7 +20,6 @@
 package org.isoron.uhabits.activities.habits.list.views
 
 import android.content.Context
-import android.graphics.Rect
 import android.os.Bundle
 import android.os.Parcelable
 import android.view.GestureDetector
@@ -60,7 +59,6 @@ class HabitCardListView(
 ) : RecyclerView(context, null, R.attr.scrollableRecyclerViewStyle) {
 
     var checkmarkCount: Int = 0
-    private var insetDecorationsAdded: Boolean = false
 
     var dataOffset: Int = 0
         set(value) {
@@ -105,24 +103,17 @@ class HabitCardListView(
         super.setAdapter(adapter)
     }
 
+    /**
+     * Keeps the last card above the navigation bar. This is padding instead of a bottom offset on
+     * the last item: RecyclerView caches an item's offsets, so an item that was the last one while
+     * the list was still being filled (habits are inserted one at a time) kept the extra space
+     * after more habits were added below it, leaving a gap between cards.
+     */
     private fun applyBottomInset() {
+        clipToPadding = false
         ViewCompat.setOnApplyWindowInsetsListener(this) { _, insets ->
-            if (insetDecorationsAdded) return@setOnApplyWindowInsetsListener insets
-            insetDecorationsAdded = true
             val systemBarsInsets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            addItemDecoration(object : ItemDecoration() {
-                override fun getItemOffsets(
-                    outRect: Rect,
-                    view: View,
-                    parent: RecyclerView,
-                    state: State
-                ) {
-                    val itemCount = parent.adapter?.itemCount
-                    if (parent.getChildAdapterPosition(view) == itemCount?.minus(1)) {
-                        outRect.bottom = systemBarsInsets.bottom
-                    }
-                }
-            })
+            setPadding(paddingLeft, paddingTop, paddingRight, systemBarsInsets.bottom)
             insets
         }
     }
