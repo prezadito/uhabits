@@ -8,6 +8,7 @@
 - Habit icons: pick one of about 3,600 Material and Font Awesome icons when creating or editing a habit. Search matches keywords as well as names (for example "gym", "weed" or "floss"), and common habit icons are listed first. The icon is shown inside the score ring of the habit card, which shows the first letter of the name for habits without an icon
 - The icon picker can be filtered by category (Fitness & Sports, Health & Care, Mind & Sleep, Food & Drink, Learning & Work, Home & Chores, Money, Family & Friends, Hobbies & Creativity, Nature & Travel, Quit & Limit, Time & Routine, Symbols & More). Searching looks in all categories, and icons already used by other habits are dimmed and marked
 - Monthly and Grid views have the day row too, and a tile next to the habit name to check the selected day. The day row scrolls back up to a month
+- Habit categories: give a habit a category when creating or editing it (free text, with suggestions from the categories you already use). A row of chips under the date row shows "All" and every category in use, and tapping one shows only the habits in that category. The row is hidden until a habit has a category, manual reordering is off while a category is selected, and the selection is not remembered between launches
 
 ### Changed
 
