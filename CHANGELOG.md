@@ -9,6 +9,7 @@
 - The icon picker can be filtered by category (Fitness & Sports, Health & Care, Mind & Sleep, Food & Drink, Learning & Work, Home & Chores, Money, Family & Friends, Hobbies & Creativity, Nature & Travel, Quit & Limit, Time & Routine, Symbols & More). Searching looks in all categories, and icons already used by other habits are dimmed and marked
 - Monthly and Grid views have the day row too, and a tile next to the habit name to check the selected day. The day row scrolls back up to a month
 - Habit categories: give a habit a category when creating or editing it (free text, with suggestions from the categories you already use). A row of chips under the date row shows "All" and every category in use, and tapping one shows only the habits in that category. The row is hidden until a habit has a category, manual reordering is off while a category is selected, and the selection is not remembered between launches
+- On the habit list, the toolbar with the date and the menu slides out of the way when you scroll down and comes back when you scroll up, while the day row and the category chips stay at the top. It stays in place while searching, and when the list is too short to scroll without it
 
 ### Changed
 

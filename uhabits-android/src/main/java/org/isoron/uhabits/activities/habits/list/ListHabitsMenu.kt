@@ -46,7 +46,10 @@ class ListHabitsMenu(
 ) {
     val activity = context as AppCompatActivity
     private var menu: Menu? = null
-    private var isSearchActive = false
+
+    /** True while the search field replaces the menu items in the toolbar. */
+    var isSearchActive = false
+        private set
 
     fun onCreate(inflater: MenuInflater, menu: Menu) {
         this.menu = menu

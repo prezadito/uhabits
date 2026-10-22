@@ -136,8 +136,10 @@ class ListHabitsRootView(
         listView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 tbar.setScrolled(recyclerView.canScrollVertically(-1))
+                moveToolbar(dy)
             }
         })
+        listView.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ -> moveToolbar(0) }
         daySelector.onSelect = { offset ->
             listView.selectedDayOffset = offset
             updateTitle()
@@ -149,6 +151,32 @@ class ListHabitsRootView(
         addView(rootView, MATCH_PARENT, MATCH_PARENT)
         listAdapter.setListView(listView)
         applyViewMode()
+    }
+
+    /**
+     * Slides the toolbar (the date title and the menu) out of view while scrolling down and back in
+     * while scrolling up, fading it as it goes. The day row and the category chips are anchored below it, so they stay pinned to the top
+     * and the list takes over the freed space. The toolbar is left alone when the
+     * list is too short to scroll once the toolbar is gone, since it could not be brought back, and
+     * while searching, since the search field lives in the toolbar.
+     */
+    private fun moveToolbar(dy: Int) {
+        val params = tbar.layoutParams as? MarginLayoutParams ?: return
+        val hideable = tbar.height - tbar.paddingTop
+        val hidden = -params.topMargin
+        val canHide = hideable > 0 &&
+            !menu.isSearchActive &&
+            listView.computeVerticalScrollRange() > listView.height - hidden + hideable
+        val wanted = when {
+            !canHide || !listView.canScrollVertically(-1) -> 0
+            else -> (hidden + dy).coerceIn(0, hideable)
+        }
+        if (wanted != hidden) {
+            params.topMargin = -wanted
+            tbar.layoutParams = params
+        }
+        // The status bar area is drawn over the toolbar's last pixels, so fade it out too.
+        tbar.alpha = if (hideable > 0) 1f - wanted.toFloat() / hideable else 1f
     }
 
     /** Switching views always goes back to today: the day row, the selection and Weekly's header. */
