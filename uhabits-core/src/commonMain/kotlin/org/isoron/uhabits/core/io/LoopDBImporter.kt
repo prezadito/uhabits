@@ -129,7 +129,7 @@ class LoopDBImporter(
         db.query(
             "SELECT id, name, description, question, freq_num, freq_den, color, " +
                 "position, reminder_hour, reminder_min, reminder_days, highlight, " +
-                "archived, type, target_value, target_type, unit, uuid, quit_since, icon " +
+                "archived, type, target_value, target_type, unit, uuid, quit_since, icon, category " +
                 "FROM Habits ORDER BY position"
         ) { stmt ->
             result.add(
@@ -153,7 +153,8 @@ class LoopDBImporter(
                     unit = stmt.getTextOrNull(16) ?: "",
                     uuid = stmt.getTextOrNull(17),
                     quitSince = stmt.getLongOrNull(18),
-                    icon = stmt.getTextOrNull(19)
+                    icon = stmt.getTextOrNull(19),
+                    category = stmt.getTextOrNull(20)
                 )
             )
         }

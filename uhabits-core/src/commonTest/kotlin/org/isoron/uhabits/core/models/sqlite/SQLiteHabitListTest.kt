@@ -138,6 +138,23 @@ class SQLiteHabitListTest : BaseUnitTest() {
     }
 
     @Test
+    fun testAdd_category() = dbTest {
+        val habit = modelFactory.buildHabit()
+        habit.name = "Lift"
+        habit.category = "Health"
+        habitList.add(habit)
+        assertEquals("Health", repository.findAll().find { it.id == habit.id }!!.category)
+
+        (habitList as SQLiteHabitList).reload()
+        assertEquals("Health", habitList.getById(habit.id!!)!!.category)
+
+        habit.category = null
+        habitList.update(habit)
+        (habitList as SQLiteHabitList).reload()
+        assertNull(habitList.getById(habit.id!!)!!.category)
+    }
+
+    @Test
     fun testAdd_withoutId() = dbTest {
         val habit = modelFactory.buildHabit()
         habit.name = "Hello world"

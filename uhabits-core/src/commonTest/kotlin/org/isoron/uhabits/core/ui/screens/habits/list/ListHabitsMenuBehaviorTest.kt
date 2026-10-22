@@ -182,4 +182,93 @@ class ListHabitsMenuBehaviorTest : BaseUnitTest() {
         verify { adapter.refresh() }
         assertEquals("yoga", capturedMatcher?.searchQuery)
     }
+
+    @Test
+    fun testOnCategorySelected() {
+        every { adapter.setFilter(any()) } calls { args ->
+            capturedMatcher = args.arg<HabitMatcher>(0)
+            Unit
+        }
+        assertEquals(null, behavior.selectedCategory)
+
+        behavior.onCategorySelected(" Health ")
+        assertEquals("Health", behavior.selectedCategory)
+        assertEquals("Health", capturedMatcher?.category)
+        verify { adapter.refresh() }
+
+        // Selecting the same category again changes nothing.
+        resetCalls(adapter)
+        behavior.onCategorySelected("health")
+        verify(notCalled) { adapter.setFilter(any()) }
+
+        behavior.onCategorySelected(null)
+        assertEquals(null, behavior.selectedCategory)
+        assertEquals(null, capturedMatcher?.category)
+    }
+
+    @Test
+    fun testUpdateCategories() {
+        every { prefs.areQuestionMarksEnabled } returns false
+        every { prefs.showArchived } returns false
+        every { prefs.showCompleted } returns true
+        behavior = ListHabitsMenuBehavior(screen, adapter, prefs, themeSwitcher)
+
+        val shown = modelFactory.buildHabit().apply { name = "A"; category = "Work" }
+        val other = modelFactory.buildHabit().apply { name = "B"; category = "Health" }
+        val archived = modelFactory.buildHabit().apply { name = "C"; category = "Old"; isArchived = true }
+        habitList.add(shown)
+        habitList.add(other)
+        habitList.add(archived)
+
+        assertEquals(listOf("Health", "Work"), behavior.updateCategories(habitList))
+
+        // Neither the selected category nor a search hides the other chips.
+        behavior.onCategorySelected("Work")
+        behavior.onSearchQueryChanged("zzz")
+        assertEquals(listOf("Health", "Work"), behavior.updateCategories(habitList))
+        assertEquals("Work", behavior.selectedCategory)
+    }
+
+    @Test
+    fun testUpdateCategoriesFallsBackToAll() {
+        every { prefs.areQuestionMarksEnabled } returns false
+        every { prefs.showArchived } returns false
+        every { prefs.showCompleted } returns true
+        every { adapter.setFilter(any()) } calls { args ->
+            capturedMatcher = args.arg<HabitMatcher>(0)
+            Unit
+        }
+        behavior = ListHabitsMenuBehavior(screen, adapter, prefs, themeSwitcher)
+
+        val work = modelFactory.buildHabit().apply { name = "A"; category = "Work" }
+        val health = modelFactory.buildHabit().apply { name = "B"; category = "Health" }
+        habitList.add(work)
+        habitList.add(health)
+        behavior.onCategorySelected("Work")
+        assertEquals("Work", capturedMatcher?.category)
+
+        // The last habit of the selected category moves to another category.
+        work.category = "Health"
+        assertEquals(listOf("Health"), behavior.updateCategories(habitList))
+        assertEquals(null, behavior.selectedCategory)
+        assertEquals(null, capturedMatcher?.category)
+    }
+
+    @Test
+    fun testUpdateCategoriesKeepsSelectionWhenOnlyTheCaseChanges() {
+        every { prefs.areQuestionMarksEnabled } returns false
+        every { prefs.showArchived } returns false
+        every { prefs.showCompleted } returns true
+        behavior = ListHabitsMenuBehavior(screen, adapter, prefs, themeSwitcher)
+
+        val habit = modelFactory.buildHabit().apply { name = "A"; category = "Health" }
+        habitList.add(habit)
+        behavior.onCategorySelected("Health")
+        resetCalls(adapter)
+
+        habit.category = "health"
+        assertEquals(listOf("health"), behavior.updateCategories(habitList))
+        assertEquals("health", behavior.selectedCategory)
+        verify(notCalled) { adapter.setFilter(any()) }
+    }
 }

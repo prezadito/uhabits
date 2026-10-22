@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView
 import me.tatarka.inject.annotations.Inject
 import org.isoron.uhabits.activities.habits.list.MAX_CHECKMARK_COUNT
 import org.isoron.uhabits.core.models.Habit
+import org.isoron.uhabits.core.models.HabitCategories
 import org.isoron.uhabits.core.models.HabitList
 import org.isoron.uhabits.core.models.HabitMatcher
 import org.isoron.uhabits.core.models.ModelObservable
@@ -109,7 +110,10 @@ class HabitCardListAdapter(
     val isSelectionEmpty: Boolean
         get() = selected.isEmpty()
     val isSortable: Boolean
-        get() = cache.primaryOrder == HabitList.Order.BY_POSITION
+        get() = cache.primaryOrder == HabitList.Order.BY_POSITION && !isCategoryFiltered
+
+    /** Set while a category chip is selected: manual reordering is ambiguous in a partial list. */
+    private var isCategoryFiltered = false
 
     /**
      * Notify the adapter that it has been attached to a ListView.
@@ -218,6 +222,7 @@ class HabitCardListAdapter(
     }
 
     override fun setFilter(matcher: HabitMatcher) {
+        isCategoryFiltered = HabitCategories.normalize(matcher.category) != null
         cache.setFilter(matcher)
     }
 
