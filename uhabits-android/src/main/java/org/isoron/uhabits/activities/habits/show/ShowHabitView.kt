@@ -23,13 +23,17 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewGroup.MarginLayoutParams
 import android.widget.FrameLayout
 import androidx.core.view.ViewCompat
+import androidx.core.view.doOnAttach
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayoutMediator
+import android.content.res.ColorStateList
 import org.isoron.platform.time.LocalDate
+import org.isoron.platform.time.getToday
 import org.isoron.platform.gui.toInt
 import org.isoron.uhabits.core.ui.screens.habits.show.ShowHabitPresenter
 import org.isoron.uhabits.core.ui.screens.habits.show.ShowHabitState
@@ -57,9 +61,20 @@ class ShowHabitView(context: Context) : FrameLayout(context) {
         journal.journalList.adapter = journalAdapter
         ViewCompat.setOnApplyWindowInsetsListener(journal.journalList) { list, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            list.setPadding(list.paddingLeft, list.paddingTop, list.paddingRight, systemBars.bottom)
+            val clearance = resources.getDimensionPixelSize(R.dimen.journal_list_bottom_clearance)
+            list.setPadding(list.paddingLeft, list.paddingTop, list.paddingRight, systemBars.bottom + clearance)
             insets
         }
+        val fabMargin = resources.getDimensionPixelSize(R.dimen.ds_space_16)
+        ViewCompat.setOnApplyWindowInsetsListener(journal.journalAdd) { fab, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            (fab.layoutParams as MarginLayoutParams).bottomMargin = fabMargin + systemBars.bottom
+            fab.requestLayout()
+            insets
+        }
+        // The journal page joins the window after the first insets dispatch, so ask again.
+        journal.journalAdd.doOnAttach { ViewCompat.requestApplyInsets(it) }
+        journal.journalList.doOnAttach { ViewCompat.requestApplyInsets(it) }
 
         overview.scrollView.setOnScrollChangeListener { _, _, scrollY, _, _ ->
             binding.toolbar.setScrolled(scrollY > 0)
@@ -138,6 +153,8 @@ class ShowHabitView(context: Context) : FrameLayout(context) {
         if (!data.isQuit) overview.quitCard.visibility = GONE
         overview.linearLayout.applyBottomInset()
 
+        journal.journalAdd.backgroundTintList =
+            ColorStateList.valueOf(data.theme.color(data.color).toInt())
         journalAdapter.setState(data.journal)
         val isEmpty = data.journal.entries.isEmpty()
         journal.journalEmpty.visibility = if (isEmpty) VISIBLE else GONE
@@ -148,6 +165,7 @@ class ShowHabitView(context: Context) : FrameLayout(context) {
         overview.scoreCard.setListener(presenter.scoreCardPresenter)
         overview.historyCard.setListener(presenter.historyCardPresenter)
         overview.barCard.setListener(presenter.barCardPresenter)
+        journal.journalAdd.setOnClickListener { presenter.historyCardPresenter.onEditEntry(getToday()) }
         journalAdapter.onEntryClicked = { date: LocalDate -> presenter.historyCardPresenter.onEditEntry(date) }
     }
 }
