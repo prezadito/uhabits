@@ -50,6 +50,9 @@
     </plurals>
     <string name="title_activity_show_habit" translatable="false"/>
     <string name="overview">Overview</string>
+    <string name="journal">Journal</string>
+    <string name="add_note">Add note</string>
+    <string name="journal_empty">No notes yet. Tap + to add one.</string>
     <string name="habit_strength">Habit strength</string>
     <string name="history">History</string>
     <string name="clear">Clear</string>

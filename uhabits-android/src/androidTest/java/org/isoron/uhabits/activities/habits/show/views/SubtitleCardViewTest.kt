@@ -44,7 +44,7 @@ class SubtitleCardViewTest : BaseViewTest() {
         super.setUp()
         view = LayoutInflater
             .from(targetContext)
-            .inflate(R.layout.show_habit, null)
+            .inflate(R.layout.show_habit_tab_overview, null)
             .findViewById(R.id.subtitleCard)
         view.setState(
             SubtitleCardState(

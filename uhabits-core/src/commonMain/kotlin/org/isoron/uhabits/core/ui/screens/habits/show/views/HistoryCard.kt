@@ -98,6 +98,21 @@ class HistoryCardPresenter(
         }
     }
 
+    /**
+     * Opens the editor that lets the user change the value and notes of the entry on the given
+     * date, regardless of the short-toggle preference.
+     */
+    fun onEditEntry(date: LocalDate) {
+        screen.showFeedback()
+        if (habit.isQuit) {
+            quitSlipBehavior.onEditNotes(habit, date)
+        } else if (habit.isNumerical) {
+            showNumberPopup(date)
+        } else {
+            showCheckmarkPopup(date)
+        }
+    }
+
     private fun showCheckmarkPopup(date: LocalDate) {
         val entry = habit.computedEntries.get(date)
         screen.showCheckmarkPopup(

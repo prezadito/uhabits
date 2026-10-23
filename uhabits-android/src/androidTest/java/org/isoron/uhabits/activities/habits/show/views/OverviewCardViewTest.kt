@@ -42,7 +42,7 @@ class OverviewCardViewTest : BaseViewTest() {
         super.setUp()
         view = LayoutInflater
             .from(targetContext)
-            .inflate(R.layout.show_habit, null)
+            .inflate(R.layout.show_habit_tab_overview, null)
             .findViewById<View>(R.id.overviewCard) as OverviewCardView
         view.setState(
             OverviewCardState(
