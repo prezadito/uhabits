@@ -24,6 +24,7 @@ import androidx.annotation.IdRes
 import androidx.annotation.StringRes
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso
+import androidx.test.espresso.AmbiguousViewMatcherException
 import androidx.test.espresso.PerformException
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.PositionAssertions
@@ -83,7 +84,12 @@ object CommonSteps : BaseUserInterfaceTest() {
                 .findObject(UiSelector().className(RecyclerView::class.java))
                 .exists()
             ) {
-                Espresso.onView(CoreMatchers.instanceOf(RecyclerView::class.java)).perform(
+                Espresso.onView(
+                    CoreMatchers.allOf(
+                        CoreMatchers.instanceOf(RecyclerView::class.java),
+                        ViewMatchers.isDisplayed()
+                    )
+                ).perform(
                     RecyclerViewActions.scrollTo<RecyclerView.ViewHolder>(
                         ViewMatchers.hasDescendant(ViewMatchers.withText(text))
                     )
@@ -92,6 +98,8 @@ object CommonSteps : BaseUserInterfaceTest() {
                 Espresso.onView(ViewMatchers.withText(text)).perform(ViewActions.scrollTo())
             }
         } catch (e: PerformException) {
+            // ignored
+        } catch (e: AmbiguousViewMatcherException) {
             // ignored
         }
     }

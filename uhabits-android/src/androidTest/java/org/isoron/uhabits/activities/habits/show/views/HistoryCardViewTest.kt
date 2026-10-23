@@ -43,7 +43,7 @@ class HistoryCardViewTest : BaseViewTest() {
         val habit = fixtures.createLongHabit()
         view = LayoutInflater
             .from(targetContext)
-            .inflate(R.layout.show_habit, null)
+            .inflate(R.layout.show_habit_tab_overview, null)
             .findViewById<View>(R.id.historyCard) as HistoryCardView
         view.setState(
             HistoryCardPresenter.buildState(

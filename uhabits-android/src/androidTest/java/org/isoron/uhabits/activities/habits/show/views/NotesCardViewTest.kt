@@ -42,7 +42,7 @@ class NotesCardViewTest : BaseViewTest() {
         super.setUp()
         view = LayoutInflater
             .from(targetContext)
-            .inflate(R.layout.show_habit, null)
+            .inflate(R.layout.show_habit_tab_overview, null)
             .findViewById(R.id.notesCard)
         view.setState(NotesCardState(description = "This is a test description"))
         measureView(view, 800f, 200f)
