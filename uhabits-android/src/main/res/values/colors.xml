@@ -34,6 +34,10 @@
         <item>#a17adf</item>
         <item>#d268b2</item>
         <item>#8d8d8d</item>
+        <item>#a8714a</item>
+        <item>#4fb0e8</item>
+        <item>#35b585</item>
+        <item>#e5668a</item>
     </array>
     <array name="dsPaletteDark">
         <item>#cd5c57</item>
@@ -48,6 +52,10 @@
         <item>#8f70c4</item>
         <item>#b9619e</item>
         <item>#7f7f7f</item>
+        <item>#8c5f3f</item>
+        <item>#3d93c4</item>
+        <item>#2b9a6e</item>
+        <item>#c75a78</item>
     </array>
     <color name="note_delete">#E05A47</color>
 </resources>

@@ -20,6 +20,7 @@ package org.isoron.uhabits.acceptance.steps
 
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.By
@@ -65,6 +66,12 @@ object EditHabitSteps {
             .resources.getStringArray(R.array.hue_names)
         val name = hueNames[PaletteColor(color).hue]
         BaseUserInterfaceTest.device.findObject(By.descStartsWith(name)).click()
+    }
+
+    fun verifyColorName(name: String) {
+        Espresso.onView(ViewMatchers.withId(R.id.colorName))
+            .perform(ViewActions.scrollTo())
+            .check(ViewAssertions.matches(ViewMatchers.withText(name)))
     }
 
     fun typeName(name: String) {
