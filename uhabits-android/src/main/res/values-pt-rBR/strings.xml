@@ -74,10 +74,6 @@
     <string name="interval_custom">Personalizar...</string>
     <string name="pref_toggle_title">Marcar repetições com um toque curto</string>
     <string name="pref_toggle_description_2">Adicione marcações com um simples toque, ao invés de pressionar e segurar.</string>
-    <string name="pref_rate_this_app">Avaliar esse app no Google Play</string>
-    <string name="pref_send_feedback">Mandar sugestões para o desenvolvedor</string>
-    <string name="pref_view_source_code">Ver código-fonte no GitHub</string>
-    <string name="links">Links</string>
     <string name="name">Nome</string>
     <string name="settings">Configurações</string>
     <string name="select_snooze_delay">Selecionar duração do \"mais tarde\"</string>
@@ -102,16 +98,11 @@
     <string name="clear_label">Limpar</string>
     <string name="select_hours">Selecionar horas</string>
     <string name="select_minutes">Selecionar minutos</string>
-    <string name="about">Sobre</string>
-    <string name="translators">Tradutores</string>
-    <string name="developers">Desenvolvedores</string>
-    <string name="version_n">Versão %s</string>
     <string name="frequency">Frequência</string>
     <string name="checkmark">Marcações</string>
     <string name="best_streaks">Correntes mais longas</string>
     <string name="every_day">Todo dia</string>
     <string name="every_week">Toda semana</string>
-    <string name="help">Ajuda &amp; FAQ</string>
     <string name="could_not_export">Erro ao exportar dados.</string>
     <string name="could_not_import">Erro ao importar dados.</string>
     <string name="file_not_recognized">Arquivo não reconhecido.</string>
@@ -124,7 +115,6 @@
     <string name="bug_report_failed">Erro ao gerar relatório de erros.</string>
     <string name="generate_bug_report">Gerar relatório de erros.</string>
     <string name="troubleshooting">Solução de problemas</string>
-    <string name="help_translate">Ajude a traduzir este app</string>
     <string name="night_mode">Modo noturno</string>
     <string name="use_pure_black">Usar preto em modo noturno</string>
     <string name="pure_black_description">Substitui os tons de cinza por preto puro em modo noturno. Economiza bateria em telefones com tela AMOLED.</string>
@@ -178,8 +168,6 @@
     <string name="no">Não</string>
     <string name="customize_notification_summary">Alterar som, vibração, luz e outras configurações de notificação</string>
     <string name="customize_notification">Personalizar notificações</string>
-    <string name="pref_view_privacy">Ver política de privacidade</string>
-    <string name="view_all_contributors">Exibir todos os colaboradores&#8230;</string>
     <string name="database">Banco de dados</string>
     <string name="widget_opacity_title">Opacidade dos widgets</string>
     <string name="widget_opacity_description">Torna os widgets mais transparentes ou mais opacos na tela inicial.</string>
@@ -212,7 +200,6 @@
     <string name="pref_skip_description">Clique duas vezes para adicionar um dia de folga. Esses dias mantêm a estabilidade do hábito inalterada e não quebram a corrente.</string>
     <string name="pref_unknown_title">Mostrar interrogação para dados ausentes</string>
     <string name="pref_unknown_description">Mostra dias sem dados e dias com lapsos de forma diferente. Para inserir um lapso, clique duas vezes.</string>
-    <string name="you_are_now_a_developer">Você agora é um desenvolvedor!</string>
     <string name="activity_not_found">Nenhum app encontrado para executar esta ação</string>
     <string name="pref_midnight_delay_title">Prolongar dia algumas horas depois da meia-noite</string>
     <string name="pref_midnight_delay_description">Espere até às 3:00 para mostrar um novo dia. Útil se você costuma dormir depois da meia-noite. Requer reinicialização do aplicativo.</string>

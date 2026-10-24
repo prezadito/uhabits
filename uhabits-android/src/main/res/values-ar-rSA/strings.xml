@@ -90,10 +90,6 @@
     <string name="interval_custom">مخصص...   </string>
     <string name="pref_toggle_title">تبديل وضعية العادة بضغطة قصيرة   </string>
     <string name="pref_toggle_description_2">ضع علامات اختيار بنقرة واحدة بدلاً من الضغط مع الاستمرار.</string>
-    <string name="pref_rate_this_app">تقييم هذا التطبيق على جوجل بلاي   </string>
-    <string name="pref_send_feedback">أرسل الملاحظات إلى المطور   </string>
-    <string name="pref_view_source_code">إفحص التعليمات البرمجية على GitHub   </string>
-    <string name="links">روابط </string>
     <string name="name">الاسم</string>
     <string name="settings">إعدادات</string>
     <string name="select_snooze_delay">حدد تأخير الغفوة   </string>
@@ -126,16 +122,11 @@
     <string name="clear_label">نظف</string>
     <string name="select_hours">تحديد ساعات   </string>
     <string name="select_minutes">تحديد دقائق    </string>
-    <string name="about">معلومات حول   </string>
-    <string name="translators">المترجمين   </string>
-    <string name="developers">المطورين   </string>
-    <string name="version_n">الإصدار %s   </string>
     <string name="frequency">تردد   </string>
     <string name="checkmark">علامة الاختيار   </string>
     <string name="best_streaks">أكثر تقدم   </string>
     <string name="every_day">كل يوم   </string>
     <string name="every_week">كل اسبوع   </string>
-    <string name="help">مساعدة والأسئلة المتداولة   </string>
     <string name="could_not_export">فشل في تصدير البيانات.   </string>
     <string name="could_not_import">فشل في استيراد البيانات.   </string>
     <string name="file_not_recognized">لم يتم التعرف على الملف.   </string>
@@ -148,7 +139,6 @@
     <string name="bug_report_failed">فشل في توليد تقرير الاعطال   </string>
     <string name="generate_bug_report">توليد تقرير الاعطال. </string>
     <string name="troubleshooting">استكشاف الأخطاء وإصلاحها. </string>
-    <string name="help_translate">المساعدة في ترجمة هذا البرنامج. </string>
     <string name="night_mode">الوضع الليلي</string>
     <string name="use_pure_black">استخدام أسود نقي في الوضع الليلي. </string>
     <string name="pure_black_description">يستبدل خلفيات رمادية مع أسود نقي في الوضع الليلي. يقلل من استهلاك البطارية في الهواتف مع شاشة AMOLED. .</string>
@@ -202,8 +192,6 @@
     <string name="no">لا</string>
     <string name="customize_notification_summary">Change sound, vibration, light and other notification settings</string>
     <string name="customize_notification">Customize notifications</string>
-    <string name="pref_view_privacy">عرض نهج الخصوصية</string>
-    <string name="view_all_contributors">عرض جميع المساهمين&#8230;</string>
     <string name="database">قاعدة البيانات</string>
     <string name="widget_opacity_title">شفافية اختصار الشاشة الرئيسية</string>
     <string name="widget_opacity_description">Makes widgets more transparent or more opaque in your home screen.</string>
@@ -236,7 +224,6 @@
     <string name="pref_skip_description">بدّل مرتين لإضافة تخطي بدلاً من علامة اختيار. التخطيات تحافظ على درجاتك دون تغيير أو خسارة سلسلة الانتصارات.</string>
     <string name="pref_unknown_title">إظهار علامات الاستفهام للبيانات المفقودة</string>
     <string name="pref_unknown_description">التفريق بين الأيام التي لا تحتوي على بيانات من الهفوات الفعلية. للدخول في اللقطات المتتابعة ، قم بالتبديل مرتين.</string>
-    <string name="you_are_now_a_developer">أنت الآن مطوَِر برمجيات!</string>
     <string name="activity_not_found">لم يتم العثور على تطبيق لإتمام هذا الإجراء</string>
     <string name="pref_midnight_delay_title">تمديد اليوم بضع ساعات بعد منتصف الليل</string>
     <string name="pref_midnight_delay_description">انتظر حتى 3:00 صباحاً لعرض يوم جديد. مفيد إذا كنت عادة تذهب إلى السكون بعد منتصف الليل. يتطلب إعادة تشغيل التطبيق.</string>

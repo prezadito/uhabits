@@ -82,10 +82,6 @@
     <string name="interval_custom">Własne ustawienia...</string>
     <string name="pref_toggle_title">Przełącz powtarzanie krótkim naciśnięciem</string>
     <string name="pref_toggle_description_2">Umieść znaczniki wyboru jednym dotknięciem zamiast naciśnięcia i przytrzymania.</string>
-    <string name="pref_rate_this_app">Oceń tę aplikację w Google Play</string>
-    <string name="pref_send_feedback">Prześlij uwagi do programisty</string>
-    <string name="pref_view_source_code">Zobacz kod źródłowy na GitHub\'ie</string>
-    <string name="links">Linki</string>
     <string name="name">Nazwa</string>
     <string name="settings">Ustawienia</string>
     <string name="select_snooze_delay">Wybierz długość drzemki</string>
@@ -114,16 +110,11 @@
     <string name="clear_label">Wyczyść</string>
     <string name="select_hours">Wybierz godziny</string>
     <string name="select_minutes">Wybierz minuty</string>
-    <string name="about">O aplikacji</string>
-    <string name="translators">Tłumacze</string>
-    <string name="developers">Programiści</string>
-    <string name="version_n">Wersja %s</string>
     <string name="frequency">Częstotliwość</string>
     <string name="checkmark">Znacznik</string>
     <string name="best_streaks">Najlepsze serie</string>
     <string name="every_day">Codziennie</string>
     <string name="every_week">Co tydzień</string>
-    <string name="help">Pomoc &amp; FAQ</string>
     <string name="could_not_export">Eksportowanie danych nie powiodło się.</string>
     <string name="could_not_import">Importowanie danych nie powiodło się.</string>
     <string name="file_not_recognized">Plik nierozpoznany.</string>
@@ -136,7 +127,6 @@
     <string name="bug_report_failed">Nie udało się wygenerować raportu o błędach.</string>
     <string name="generate_bug_report">Wygeneruj raport o błędach</string>
     <string name="troubleshooting">Rozwiązywanie problemów</string>
-    <string name="help_translate">Pomóż w tłumaczeniu tej aplikacji</string>
     <string name="night_mode">Tryb nocny</string>
     <string name="use_pure_black">Używaj pełnej czerni w trybie nocnym</string>
     <string name="pure_black_description">Zamienia szare tła na pełną czerń w trybie nocnym. Zmniejsza zużycie baterii w telefonach z ekranem AMOLED.</string>
@@ -190,8 +180,6 @@
     <string name="no">Nie</string>
     <string name="customize_notification_summary">Zmień dźwięk, wibrację, światło i inne ustawienia powiadomień</string>
     <string name="customize_notification">Dostosuj powiadomienia</string>
-    <string name="pref_view_privacy">Zobacz politykę prywatności</string>
-    <string name="view_all_contributors">Zobacz wszystkich współtwórców</string>
     <string name="database">Baza danych</string>
     <string name="widget_opacity_title">Przezroczystość widżetu</string>
     <string name="widget_opacity_description">Sprawia, że widżety są bardziej lub mniej przezroczyste na ekranie głównym.</string>
@@ -224,7 +212,6 @@
     <string name="pref_skip_description">Przełącz dwukrotnie, aby dodać pominięcie zamiast znacznika wyboru. Pomijanie utrzymuje niezmieniony wynik i nie przerywa passy.</string>
     <string name="pref_unknown_title">Pokaż znaki zapytania dla brakujących danych</string>
     <string name="pref_unknown_description">Odróżnij dni bez danych od faktycznych przerw. Aby wprowadzić przerwę, przełącz dwukrotnie.</string>
-    <string name="you_are_now_a_developer">Jesteś teraz programistą</string>
     <string name="activity_not_found">Nie znaleziono aplikacji obsługującej to działanie</string>
     <string name="pref_midnight_delay_title">Przedłuż dzień o kilka godzin po północy</string>
     <string name="pref_midnight_delay_description">Poczekaj do 3:00, aby pokazać nowy dzień. Przydatne, jeśli zwykle kładziesz się spać po północy. Wymaga ponownego uruchomienia aplikacji.</string>

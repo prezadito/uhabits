@@ -82,10 +82,6 @@
     <string name="interval_custom">Vlastní...</string>
     <string name="pref_toggle_title">Označte krátkým stisknutím</string>
     <string name="pref_toggle_description_2">Zaškrtněte jediným klepnutím namísto dlouhého podržení.</string>
-    <string name="pref_rate_this_app">Ohodnotit aplikaci v Google Play</string>
-    <string name="pref_send_feedback">Odeslat zpětnou vazbu vývojáři</string>
-    <string name="pref_view_source_code">Zobrazit zdrojový kód na GitHub</string>
-    <string name="links">Odkazy</string>
     <string name="name">Název</string>
     <string name="settings">Nastavení</string>
     <string name="select_snooze_delay">Nastavit délku odložení</string>
@@ -114,16 +110,11 @@
     <string name="clear_label">Smazat</string>
     <string name="select_hours">Vyberte hodiny</string>
     <string name="select_minutes">Vyberte minuty</string>
-    <string name="about">O nás</string>
-    <string name="translators">Překladatelé</string>
-    <string name="developers">Vývojáři</string>
-    <string name="version_n">Verze %s</string>
     <string name="frequency">Frekvence</string>
     <string name="checkmark">Zaškrtnutí</string>
     <string name="best_streaks">Nejlepší série</string>
     <string name="every_day">Každý den</string>
     <string name="every_week">Každý týden</string>
-    <string name="help">Pomoc a FAQ</string>
     <string name="could_not_export">Export selhal.</string>
     <string name="could_not_import">Import selhal.</string>
     <string name="file_not_recognized">Soubor nerozpoznán.</string>
@@ -136,7 +127,6 @@
     <string name="bug_report_failed">Generace výpisu chyb selhala.</string>
     <string name="generate_bug_report">Generovat výpis chyb</string>
     <string name="troubleshooting">Řešení problémů</string>
-    <string name="help_translate">Pomozte s překladem aplikace</string>
     <string name="night_mode">Temný motiv</string>
     <string name="use_pure_black">Zobrazit čistě černou v temném motivu</string>
     <string name="pure_black_description">Nahrazuje v temném motivu šedé pozadí čistou černou. Snižuje spotřebu baterie v telefonech s AMOLED displejem.</string>
@@ -190,8 +180,6 @@
     <string name="no">Ne</string>
     <string name="customize_notification_summary">Změnit zvuk, vibrace, světlo a další nastavení upozornění</string>
     <string name="customize_notification">Přizpůsobit upozornění</string>
-    <string name="pref_view_privacy">Zobrazit zásady ochrany osobních údajů</string>
-    <string name="view_all_contributors">Zobrazit všechny přispěvatele&#8230;</string>
     <string name="database">Databáze</string>
     <string name="widget_opacity_title">Průhlednost widgetu</string>
     <string name="widget_opacity_description">Upravuje průhlednost pozadí widgetu na domovské obrazovce.</string>
@@ -224,7 +212,6 @@
     <string name="pref_skip_description">Klikněte dvakrát pro přeskočení namísto zaškrtnutí. Pomlčka nezmění vaše skóre, ani nepřeruší vaši sérii. </string>
     <string name="pref_unknown_title">Zobrazit otazník pro chybějící data</string>
     <string name="pref_unknown_description">Odlište dny bez údajů od nesplněného návyku. Pro zadání \"nesplněno\", klikněte dvakrát. </string>
-    <string name="you_are_now_a_developer">Nyní jste vývojář</string>
     <string name="activity_not_found">Nenalezen program podporující tento krok</string>
     <string name="pref_midnight_delay_title">Prodloužit den o pár hodin po půlnoci</string>
     <string name="pref_midnight_delay_description">Počkat do tří ráno pro zobrazení nového dne. Užitečné, pokud chodíte spát po půlnoci. Vyžaduje restartování aplikace. </string>

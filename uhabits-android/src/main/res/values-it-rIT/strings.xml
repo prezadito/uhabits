@@ -74,10 +74,6 @@
     <string name="interval_custom">Personalizza...</string>
     <string name="pref_toggle_title">Spunta le ripetizioni velocemente</string>
     <string name="pref_toggle_description_2">Metti i segni di spunta con un tocco rapido invece di tenere premuto.</string>
-    <string name="pref_rate_this_app">Valuta quest\'app su Google Play</string>
-    <string name="pref_send_feedback">Manda un feedback allo sviluppatore</string>
-    <string name="pref_view_source_code">Vedi il codice sorgente su GitHub</string>
-    <string name="links">Links</string>
     <string name="name">Nome</string>
     <string name="settings">Impostazioni</string>
     <string name="select_snooze_delay">Seleziona ritardo posticipo</string>
@@ -102,16 +98,11 @@
     <string name="clear_label">Annulla</string>
     <string name="select_hours">Ore selezionate</string>
     <string name="select_minutes">Minuti selezionati</string>
-    <string name="about">Info su</string>
-    <string name="translators">Traduttori</string>
-    <string name="developers">Sviluppatori</string>
-    <string name="version_n">Versione %s</string>
     <string name="frequency">Frequenza</string>
     <string name="checkmark">Spunta</string>
     <string name="best_streaks">Serie migliori</string>
     <string name="every_day">Ogni giorno</string>
     <string name="every_week">Ogni settimana</string>
-    <string name="help">Aiuto &amp; FAQ</string>
     <string name="could_not_export">Esportazione non riuscita.</string>
     <string name="could_not_import">Importazione non riuscita.</string>
     <string name="file_not_recognized">File non riconosciuto.</string>
@@ -124,7 +115,6 @@
     <string name="bug_report_failed">Generazione del bug report fallita</string>
     <string name="generate_bug_report">Genera bug report</string>
     <string name="troubleshooting">Risoluzione dei problemi</string>
-    <string name="help_translate">Aiuta a tradurre questa app</string>
     <string name="night_mode">Modalità notte</string>
     <string name="use_pure_black">Usa nero puro nella modalità notte</string>
     <string name="pure_black_description">Sostituisce gli sfondi grigi con sfondi neri nella modalità notte. Riduce il consumo di batteria nei dispositivi con schermo AMOLED.</string>
@@ -178,8 +168,6 @@
     <string name="no">No</string>
     <string name="customize_notification_summary">Cambia suono, vibrazione, luce e altre impostazioni di notifica</string>
     <string name="customize_notification">Personalizza notifiche</string>
-    <string name="pref_view_privacy">Visualizza informativa sulla privacy</string>
-    <string name="view_all_contributors">Visualizza tutti i collaboratori&#8230;</string>
     <string name="database">Banca dati</string>
     <string name="widget_opacity_title">Opacità del widget</string>
     <string name="widget_opacity_description">Rende i widget più trasparenti o più opachi nella schermata iniziale.</string>
@@ -212,7 +200,6 @@
     <string name="pref_skip_description">Attiva/disattiva due volte per aggiungere un salto invece di una spunta. Un salto mantiene il tuo punteggio invariato e non interrompe il tuo punteggio.</string>
     <string name="pref_unknown_title">Mostra punti interrogativi per i dati mancanti</string>
     <string name="pref_unknown_description">Differenzia i giorni senza dati dagli intervalli effettivi. Per inserire un intervallo, attiva due volte.</string>
-    <string name="you_are_now_a_developer">Ora sei uno sviluppatore</string>
     <string name="activity_not_found">Nessuna app disponibile per gestire questa azione</string>
     <string name="pref_midnight_delay_title">Prolunga il giorno di alcune ore dopo la mezzanotte</string>
     <string name="pref_midnight_delay_description">Attendere fino alle 3:00 per mostrare il nuovo giorno. Utile se solitamente vai a dormire dopo mezzanotte. È necessario riavviare l\'app.</string>

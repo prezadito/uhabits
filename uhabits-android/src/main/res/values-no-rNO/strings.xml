@@ -55,10 +55,6 @@
     <string name="interval_24_hour">1 døgn</string>
     <string name="interval_custom">Egendefinert...</string>
     <string name="pref_toggle_title">Veksl med enkelttrykk</string>
-    <string name="pref_rate_this_app">Vurdér denne appen på Google Play</string>
-    <string name="pref_send_feedback">Send tilbakemelding til utviklerne</string>
-    <string name="pref_view_source_code">Vis kildekode på GitHub</string>
-    <string name="links">Lenker</string>
     <string name="name">Navn</string>
     <string name="settings">Innstillinger</string>
     <string name="hint_title">Visste du at?</string>
@@ -74,16 +70,11 @@
     <string name="clear_label">Fjern</string>
     <string name="select_hours">Velg timer</string>
     <string name="select_minutes">Velg minutter</string>
-    <string name="about">Om</string>
-    <string name="translators">Translatører</string>
-    <string name="developers">Utviklere</string>
-    <string name="version_n">Versjon %s</string>
     <string name="frequency">Hyppighet</string>
     <string name="checkmark">Hake</string>
     <string name="best_streaks">Beste gjentakelser</string>
     <string name="every_day">Hver dag</string>
     <string name="every_week">Hver uke</string>
-    <string name="help">Hjelp og FAQ</string>
     <string name="could_not_export">Mislyktes i å eksportere data.</string>
     <string name="could_not_import">Mislyktes i å importere data.</string>
     <string name="file_not_recognized">Fil ikke gjenkjent.</string>
@@ -96,7 +87,6 @@
     <string name="bug_report_failed">Mislyktes i å generere feilrapport.</string>
     <string name="generate_bug_report">Generér feilrapport</string>
     <string name="troubleshooting">Feilsøkning</string>
-    <string name="help_translate">Hjelp med å oversette denne appen</string>
     <string name="night_mode">Nattmodus</string>
     <string name="use_pure_black">Bruk batterisparing i nattmodus</string>
     <string name="pure_black_description">Bytter ut grå bakgunner med helt svarte i nattmodus. Reduserer betteribruk hos telefoner med AMOLED-skjerm.</string>

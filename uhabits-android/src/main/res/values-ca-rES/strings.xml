@@ -66,10 +66,6 @@
     <string name="interval_custom">Personalitza...</string>
     <string name="pref_toggle_title">Activar/desactivar repeticions prement curt</string>
     <string name="pref_toggle_description_2">Posa les marques de verificació amb un sol toc en lloc de prémer</string>
-    <string name="pref_rate_this_app">Valora aquesta app a Google Play</string>
-    <string name="pref_send_feedback">Enviar resposta al desenvolupador</string>
-    <string name="pref_view_source_code">Veure codi font a Github</string>
-    <string name="links">Enllaços</string>
     <string name="name">Nom</string>
     <string name="settings">Ajustaments</string>
     <string name="select_snooze_delay">Selecciona el retard de l\'endarreriment</string>
@@ -94,16 +90,11 @@
     <string name="clear_label">Treure</string>
     <string name="select_hours">Selecciona les hores</string>
     <string name="select_minutes">Selecciona els minuts</string>
-    <string name="about">En quant a</string>
-    <string name="translators">Traductors</string>
-    <string name="developers">Desenvolupadors</string>
-    <string name="version_n">Versió %s</string>
     <string name="frequency">Freqüència</string>
     <string name="checkmark">Marca</string>
     <string name="best_streaks">Millors ratxes</string>
     <string name="every_day">Cada dia</string>
     <string name="every_week">Cada setmana</string>
-    <string name="help">Ajuda i Preguntes Freqüents</string>
     <string name="could_not_export">Error exportant dades.</string>
     <string name="could_not_import">Error important dades.</string>
     <string name="file_not_recognized">Fitxer no reconegut.</string>
@@ -116,7 +107,6 @@
     <string name="bug_report_failed">Ha fallat la generació de l\'informe d\'error.</string>
     <string name="generate_bug_report">Generar informe d\'error</string>
     <string name="troubleshooting">Resolució de problemes</string>
-    <string name="help_translate">Ajuda a traduïr aquesta app</string>
     <string name="night_mode">Mode nocturn</string>
     <string name="use_pure_black">Utilitzar negre pur en el mode nocturn</string>
     <string name="pure_black_description">Reemplaça fons grisos per negre pur en el mode nocturn. Redueix consum de bateria en telèfons amb pantalla AMOLED.</string>
@@ -169,8 +159,6 @@
     <string name="no">No</string>
     <string name="customize_notification_summary">Canviar so, vibració, llum i altres ajustaments de notificacions</string>
     <string name="customize_notification">Personalitzar les notificacions</string>
-    <string name="pref_view_privacy">Veure la política de privadesa</string>
-    <string name="view_all_contributors">Veure tots els col·laboradors&#8230;</string>
     <string name="database">Base de dades</string>
     <string name="widget_opacity_title">Opacitat del giny</string>
     <string name="widget_opacity_description">Fa que els ginys siguin més transparents o més opacs a la pantalla d\'inici.</string>
@@ -203,7 +191,6 @@
     <string name="pref_skip_description">Toca dues vegades per a afegir una omissió en compte d\'una marca de verificació. Les omissions mantenen la teua puntuació sense canvis i no trenquen la ratxa.</string>
     <string name="pref_unknown_title">Mostra signes d\'interrogació per a les dades que falten</string>
     <string name="pref_unknown_description">Diferenciar els dies sense dades dels lapses reals. Per introduir un lapse, canvia dues vegades.</string>
-    <string name="you_are_now_a_developer">Ara eres un desenvolupador</string>
     <string name="activity_not_found">No s\'ha trobat cap aplicació per a gestionar aquesta acció</string>
     <string name="pref_midnight_delay_title">Ampliar el dia unes hores després de la mitjanit</string>
     <string name="pref_midnight_delay_description">Esperar fins a les 3:00 per mostrar un nou dia. Útil si normalment vas a dormir després de la mitjanit. Requereix el reinici de l\'aplicació.</string>

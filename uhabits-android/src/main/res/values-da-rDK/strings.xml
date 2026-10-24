@@ -73,10 +73,6 @@
     <string name="interval_always_ask">Spørg altid</string>
     <string name="interval_custom">Brugerdefineret...</string>
     <string name="pref_toggle_title">Tjek vaner med kort tryk</string>
-    <string name="pref_rate_this_app">Bedøm denne app på Google Play</string>
-    <string name="pref_send_feedback">Send feedback til udvikleren</string>
-    <string name="pref_view_source_code">Se kildekoden på GitHub</string>
-    <string name="links">Henvisninger</string>
     <string name="name">Navn</string>
     <string name="settings">Indstillinger</string>
     <string name="select_snooze_delay">Vælg snooze-forsinkelse</string>
@@ -105,10 +101,6 @@
         <item>hints</item>
         <item>hints</item>
     </string-array>
-    <string name="about">Om</string>
-    <string name="translators">Oversættere</string>
-    <string name="developers">Udviklere</string>
-    <string name="version_n">Version %s</string>
     <string name="frequency">Hyppighed</string>
     <string name="checkmark">Afkrydsning</string>
     <string name="checkmark_stack_widget" formatted="false">Afkryds stakkontrol</string>
@@ -119,7 +111,6 @@
     <string name="best_streaks">Bedste streak</string>
     <string name="every_day">Hver dag</string>
     <string name="every_week">Hver uge</string>
-    <string name="help">Hjælp &amp; FAQ</string>
     <string name="could_not_export">Kunne ikke eksportere data</string>
     <string name="could_not_import">Kunne ikke importere data</string>
     <string name="file_not_recognized">Fil ikke genkendt.</string>
@@ -132,7 +123,6 @@
     <string name="bug_report_failed">Kunne ikke generere fejlrapport.</string>
     <string name="generate_bug_report">Generer fejlrapport</string>
     <string name="troubleshooting">Fejlfinding</string>
-    <string name="help_translate">Hjælpe med at oversætte denne app</string>
     <string name="night_mode">Nat-tilstand</string>
     <string name="use_pure_black">Brug ren sort i nat-tilstand</string>
     <string name="pure_black_description">Erstatter grå baggrunde med ren sort i nat-tilstand. Reducerer batteriforbruget i telefoner med AMOLED skærm.</string>
@@ -181,8 +171,6 @@
     <string name="no">Nej</string>
     <string name="customize_notification_summary">Skift lyd-, vibrations-, lys- og andre notifikationsindstillinger</string>
     <string name="customize_notification">Tilpas notifikationer</string>
-    <string name="pref_view_privacy">Se privatlivspolitik</string>
-    <string name="view_all_contributors">Se alle bidragsydere&#8230;</string>
     <string name="database">Database</string>
     <string name="widget_opacity_title">Gennemsigtighed af widget</string>
     <string name="widget_opacity_description">Gør widgets mere gennemsigtige eller mere uigennemsigtige på din startskærm.</string>
@@ -215,7 +203,6 @@
     <string name="pref_skip_description">Skift to gange for at tilføje et overspring i stedet for et flueben. Spring over holder din score uændret og bryder ikke din række.</string>
     <string name="pref_unknown_title">Vis spørgsmålstegn for manglende data</string>
     <string name="pref_unknown_description">Differentiér dage uden data fra faktiske udeladelser. For at indtaste en udeladelse, skiftes to gange.</string>
-    <string name="you_are_now_a_developer">Du er nu udvikler</string>
     <string name="activity_not_found">Ingen app fundet til at understøtte denne handling</string>
     <string name="pref_midnight_delay_title">Forlæng dagen et par timer efter midnat</string>
     <string name="pref_midnight_delay_description">Vent til 3:00 for at vise en ny dag. Nyttigt, hvis du typisk går i seng efter midnat. Kræver genstart af app.</string>

@@ -70,10 +70,6 @@
     <string name="interval_custom">自定义</string>
     <string name="pref_toggle_title">短按切换</string>
     <string name="pref_toggle_description_2">只需点击一下即可打卡，而不是长按。</string>
-    <string name="pref_rate_this_app">去 Play 商店评价此应用</string>
-    <string name="pref_send_feedback">发送反馈给开发者</string>
-    <string name="pref_view_source_code">在 GitHub 上查看源代码</string>
-    <string name="links">链接</string>
     <string name="name">习惯标题</string>
     <string name="settings">设置</string>
     <string name="select_snooze_delay">设定稍后提醒的时间间隔</string>
@@ -96,16 +92,11 @@
     <string name="clear_label">取消</string>
     <string name="select_hours">选择小时</string>
     <string name="select_minutes">选择分钟</string>
-    <string name="about">关于应用</string>
-    <string name="translators">翻译者</string>
-    <string name="developers">开发者</string>
-    <string name="version_n">当前版本：%s</string>
     <string name="frequency">频率</string>
     <string name="checkmark">标记</string>
     <string name="best_streaks">最佳连续完成次数</string>
     <string name="every_day">每天</string>
     <string name="every_week">每周</string>
-    <string name="help">帮助 &amp; 常见问题</string>
     <string name="could_not_export">导出数据失败</string>
     <string name="could_not_import">导入数据失败</string>
     <string name="file_not_recognized">无法识别文件</string>
@@ -118,7 +109,6 @@
     <string name="bug_report_failed">错误报告生成失败</string>
     <string name="generate_bug_report">生成错误报告</string>
     <string name="troubleshooting">故障排除</string>
-    <string name="help_translate">帮助翻译本应用</string>
     <string name="night_mode">深色主题</string>
     <string name="use_pure_black">在深色主题中使用纯黑色</string>
     <string name="pure_black_description">以纯黑色背景代替深色主题中的灰色背景。
@@ -173,8 +163,6 @@
     <string name="no">未完成</string>
     <string name="customize_notification_summary">更改声音、振动、指示灯（呼吸灯）和其他通知设置</string>
     <string name="customize_notification">自定义通知</string>
-    <string name="pref_view_privacy">查看隐私政策</string>
-    <string name="view_all_contributors">查看所有贡献者</string>
     <string name="database">数据库</string>
     <string name="widget_opacity_title">微件不透明度</string>
     <string name="widget_opacity_description">调整主屏幕上小部件的不透明度。</string>
@@ -207,7 +195,6 @@
     <string name="pref_skip_description">切换两次以添加跳过而不是复选标记。跳过将保持您的得分不变，且不会打破你的连续纪录</string>
     <string name="pref_unknown_title">对丢失的数据显示问号</string>
     <string name="pref_unknown_description">区分无数据和未完成习惯的日期。要输入一个习惯未完成，请切换两次。</string>
-    <string name="you_are_now_a_developer">你现在是一个开发者！</string>
     <string name="activity_not_found">找不到支持此操作的应用</string>
     <string name="pref_midnight_delay_title">将一天延长到午夜后的几个小时</string>
     <string name="pref_midnight_delay_description">凌晨 3 点后再显示新的一天。如果你通常在午夜后入睡，这会很有用。重启应用后生效。</string>

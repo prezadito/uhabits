@@ -70,10 +70,6 @@
     <string name="interval_custom">カスタム...</string>
     <string name="pref_toggle_title">タップでチェックをON/OFF</string>
     <string name="pref_toggle_description_2">長押しの代わりにワンタップでチェックマークをつけます。</string>
-    <string name="pref_rate_this_app">Google Play でこのアプリを評価</string>
-    <string name="pref_send_feedback">開発者にフィードバックを送信</string>
-    <string name="pref_view_source_code">GitHub でソースコードを参照</string>
-    <string name="links">リンク</string>
     <string name="name">タイトル</string>
     <string name="settings">設定</string>
     <string name="select_snooze_delay">スヌーズの遅延時間を設定</string>
@@ -96,16 +92,11 @@
     <string name="clear_label">クリア</string>
     <string name="select_hours">何時にするかを決めます</string>
     <string name="select_minutes">何分するかを決めます</string>
-    <string name="about">アプリについて</string>
-    <string name="translators">翻訳者</string>
-    <string name="developers">開発者</string>
-    <string name="version_n">バージョン %s</string>
     <string name="frequency">頻度</string>
     <string name="checkmark">チェック</string>
     <string name="best_streaks">最長の連続記録</string>
     <string name="every_day">毎日</string>
     <string name="every_week">毎週</string>
-    <string name="help">ヘルプ &amp; FAQ</string>
     <string name="could_not_export">データのエクスポートに失敗しました。</string>
     <string name="could_not_import">データのインポートに失敗しました。</string>
     <string name="file_not_recognized">ファイルを認識できません。</string>
@@ -118,7 +109,6 @@
     <string name="bug_report_failed">バグレポートの作成に失敗しました。</string>
     <string name="generate_bug_report">バグレポートの作成</string>
     <string name="troubleshooting">トラブルシューティング</string>
-    <string name="help_translate">このアプリの翻訳を支援する</string>
     <string name="night_mode">ダークテーマ</string>
     <string name="use_pure_black">ダークテーマで完全な黒を使用する</string>
     <string name="pure_black_description">夜間モードで灰色の背景を完全な黒で置き換えます。AMOLED ディスプレイの電話でバッテリー使用量を抑えます。</string>
@@ -172,8 +162,6 @@
     <string name="no">いいえ</string>
     <string name="customize_notification_summary">音、バイブレーション、通知ランプ、その他の通知設定を変更する</string>
     <string name="customize_notification">通知をカスタマイズする</string>
-    <string name="pref_view_privacy">プライバシーポリシーを見る</string>
-    <string name="view_all_contributors">すべての貢献者を表示&#8230;</string>
     <string name="database">データベース</string>
     <string name="widget_opacity_title">ウィジェットの透明度</string>
     <string name="widget_opacity_description">ホーム画面のウィジェットの透明度を調節します。</string>
@@ -206,7 +194,6 @@
     <string name="pref_skip_description">2回切り替えることで、チェックマークの代わりにスキップを追加できます。スキップはスコアに影響を与えず、連続記録を継続させたままにできます。</string>
     <string name="pref_unknown_title">入力のない日に？マークを表示する</string>
     <string name="pref_unknown_description">データが未入力である日と実行しなかった日とを区別します。実行しなかったことを記録するには、2回切り替えます。</string>
-    <string name="you_are_now_a_developer">これで開発者になりました!</string>
     <string name="activity_not_found">この操作を行うアプリが見つかりませんでした。</string>
     <string name="pref_midnight_delay_title">一日の終わりを午前0時から数時間延長する</string>
     <string name="pref_midnight_delay_description">一日の始まりを午前3時にします。よく午前0時以降に就寝する場合に役立ちます。アプリの再起動が必要です。</string>

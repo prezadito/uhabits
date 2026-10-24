@@ -74,10 +74,6 @@
     <string name="interval_custom">Персонализирано...</string>
     <string name="pref_toggle_title">Маркиране с кратко натискане</string>
     <string name="pref_toggle_description_2">Поставяне на отметки с кратко натискане вместо с натискане и задържане</string>
-    <string name="pref_rate_this_app">Оценяване на това приложение в Google Play</string>
-    <string name="pref_send_feedback">Изпращане на отзиви към разработчика</string>
-    <string name="pref_view_source_code">Преглед на програмния код в GitHub</string>
-    <string name="links">Препратки</string>
     <string name="name">Име</string>
     <string name="settings">Настройки</string>
     <string name="select_snooze_delay">Избор на време за отлагане</string>
@@ -102,16 +98,11 @@
     <string name="clear_label">Изчистване</string>
     <string name="select_hours">Избиране на час</string>
     <string name="select_minutes">Избиране на минута</string>
-    <string name="about">За приложението</string>
-    <string name="translators">Преводачи</string>
-    <string name="developers">Разработчици</string>
-    <string name="version_n">Версия %s</string>
     <string name="frequency">Честота</string>
     <string name="checkmark">Отметка</string>
     <string name="best_streaks">Най-добри поредици</string>
     <string name="every_day">Всеки ден</string>
     <string name="every_week">Всяка седмица</string>
-    <string name="help">Помощ &amp; ЧЗВ</string>
     <string name="could_not_export">Неуспешно експортиране на данни.</string>
     <string name="could_not_import">Неуспешно импортиране на данни.</string>
     <string name="file_not_recognized">Файлът не е разпознат.</string>
@@ -124,7 +115,6 @@
     <string name="bug_report_failed">Неуспешно генериране на доклад за грешки.</string>
     <string name="generate_bug_report">Генериране на доклад за грешки</string>
     <string name="troubleshooting">Отстраняване на проблеми</string>
-    <string name="help_translate">Помагане за превода на това приложение</string>
     <string name="night_mode">Тъмна тема</string>
     <string name="use_pure_black">Използване на чисто черно при тъмна тема</string>
     <string name="pure_black_description">Заменя сивите фонове с чисто черни при тъмна тема. Намаля разхода на батерията при телефони с AMOLED дисплеи.</string>
@@ -178,8 +168,6 @@
     <string name="no">Не</string>
     <string name="customize_notification_summary">Промяна на звук, вибрация, светлина и други настройки на известията</string>
     <string name="customize_notification">Персонализиране на известията</string>
-    <string name="pref_view_privacy">Преглед на политиката за поверителност</string>
-    <string name="view_all_contributors">Преглед на всички сътрудници...</string>
     <string name="database">База данни</string>
     <string name="widget_opacity_title">Прозрачност на приспособлението</string>
     <string name="widget_opacity_description">Прави приспособленията по-прозрачни или по-непрозрачни на началния ви екран</string>
@@ -212,7 +200,6 @@
     <string name="pref_skip_description">Маркирайте два пъти за да добавите пропускане вместо отметка. Пропусканията поддържат силата на навика ви непроменена и не прекъсват поредицата ви.</string>
     <string name="pref_unknown_title">Показване на питанки при липсващи данни</string>
     <string name="pref_unknown_description">Разграничаване на дните без данни от реални пропуски. За да добавите пропуск, маркирайте два пъти.</string>
-    <string name="you_are_now_a_developer">Вие вече сте разработчик</string>
     <string name="activity_not_found">Не е намерено приложение, което да поддържа това действие</string>
     <string name="pref_midnight_delay_title">Удължаване на деня с няколко часа след полунощ</string>
     <string name="pref_midnight_delay_description">Изчакване до 3:00 часа сутринта за показване на нов ден. Полезно, ако обичайно си лягате да спите след полунощ. Изисква рестартиране на приложението.</string>

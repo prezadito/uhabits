@@ -53,10 +53,6 @@
     <string name="interval_24_hour">Sólarhring</string>
     <string name="interval_always_ask">Alltaf spyrja</string>
     <string name="interval_custom">Sérsniðið…</string>
-    <string name="pref_rate_this_app">Gefa forriti einkunn á Google Play</string>
-    <string name="pref_send_feedback">Senda athugasemdir til höfunda</string>
-    <string name="pref_view_source_code">Skoða frumkóðann á GitHub</string>
-    <string name="links">Tenglar</string>
     <string name="name">Heiti</string>
     <string name="settings">Stillingar</string>
     <string name="select_snooze_delay">Stilla töf á blundi</string>
@@ -74,15 +70,10 @@
     <string name="clear_label">Hreinsa</string>
     <string name="select_hours">Veldu klukkustundir</string>
     <string name="select_minutes">Veldu mínútur</string>
-    <string name="about">Um</string>
-    <string name="translators">Þýðendur</string>
-    <string name="developers">Hönnuðir</string>
-    <string name="version_n">Útgáfa %s</string>
     <string name="frequency">Tíðni</string>
     <string name="checkmark">Gátmerki</string>
     <string name="every_day">Daglega</string>
     <string name="every_week">Vikulega</string>
-    <string name="help">Aðstoð og algengar spurningar</string>
     <string name="could_not_export">Mistókst að flytja gögn út.</string>
     <string name="could_not_import">Mistókst að flytja inn gögn.</string>
     <string name="file_not_recognized">Skrá ekki þekkt.</string>
@@ -92,7 +83,6 @@
     <string name="bug_report_failed">Mistókst að búa til villuskýrslu.</string>
     <string name="generate_bug_report">Búa til villuskýrslu</string>
     <string name="troubleshooting">Leysa vandamál</string>
-    <string name="help_translate">Hjálpa til við að þýða</string>
     <string name="night_mode">Dökkt þema</string>
     <string name="use_pure_black">Nota kolsvarta þemu</string>
     <string name="interface_preferences">Viðmót</string>
@@ -139,8 +129,6 @@
     <string name="no">Nei</string>
     <string name="customize_notification_summary">Breyta hljóði, titringi, ljósi og öðrum tilkynningastillingum</string>
     <string name="customize_notification">Sérsníða tilkynningar</string>
-    <string name="pref_view_privacy">Skoða persónuverndarstefnu</string>
-    <string name="view_all_contributors">Skoða alla þátttakendur&#8230;</string>
     <string name="database">Gagnagrunnur</string>
     <string name="widget_opacity_title">Ógegnsæi græju</string>
     <string name="first_day_of_the_week">Fyrsti dagur vikunar</string>

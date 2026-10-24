@@ -74,10 +74,6 @@
     <string name="interval_custom">Pertsonalizatua...</string>
     <string name="pref_toggle_title">Ukitze laburrarekin markatu</string>
     <string name="pref_toggle_description_2">Jarri kontrol-markak ukitu bakar batekin sakatu eta eutsi beharrean.</string>
-    <string name="pref_rate_this_app">Aplikazio hau Google Playen puntuatu</string>
-    <string name="pref_send_feedback">Zure iritzia garatzaileari bidali</string>
-    <string name="pref_view_source_code">Iturburu kodea GitHuben ikusi</string>
-    <string name="links">Loturak</string>
     <string name="name">Izena</string>
     <string name="settings">Ezarpenak</string>
     <string name="select_snooze_delay">Aukeratu atzerapen denbora</string>
@@ -102,16 +98,11 @@
     <string name="clear_label">Garbitu</string>
     <string name="select_hours">Orduak hautatu</string>
     <string name="select_minutes">Minutuak hautatu</string>
-    <string name="about">Honi buruz</string>
-    <string name="translators">Itzultzaileak</string>
-    <string name="developers">Garatzaileak</string>
-    <string name="version_n">%s bertsioa</string>
     <string name="frequency">Maiztasuna</string>
     <string name="checkmark">Egiaztatze marka</string>
     <string name="best_streaks">Bolada onenak</string>
     <string name="every_day">Egunero</string>
     <string name="every_week">Astero</string>
-    <string name="help">Laguntza eta ohiko galderak</string>
     <string name="could_not_export">Huts datuak esportatzerakoan.</string>
     <string name="could_not_import">Huts datuak inportatzerakoan.</string>
     <string name="file_not_recognized">Fitxategi ezezaguna.</string>
@@ -124,7 +115,6 @@
     <string name="bug_report_failed">Huts akats txostena sortzerakoan.</string>
     <string name="generate_bug_report">Akats txostena sortu</string>
     <string name="troubleshooting">Arazoen konponketa</string>
-    <string name="help_translate">Lagundu aplikazio hau itzultzen</string>
     <string name="night_mode">Azal iluna</string>
     <string name="use_pure_black">erabili beltz hutsa azal ilunean</string>
     <string name="pure_black_description">Atzeko plano grisak beltz hutsez aldatzen ditu azal ilunean. Bateriaren erabilera gutxitzen du AMOLED duten gailuetan.</string>
@@ -178,8 +168,6 @@
     <string name="no">Ez</string>
     <string name="customize_notification_summary">Aldatu soinua, bibrazioa, argia eta bestelako jakinarazpen-ezarpen</string>
     <string name="customize_notification">Pertsonalizatu jakinarazpenak</string>
-    <string name="pref_view_privacy">Ikusi pribatutasun politika</string>
-    <string name="view_all_contributors">Ikusi laguntzaile guztiak&#8230;</string>
     <string name="database">Datu-basea</string>
     <string name="widget_opacity_title">Trepetaren opakutasuna</string>
     <string name="widget_opacity_description">Trepetak gardenagoak edo opakoagoak bihurtzen ditu hasierako pantailan.</string>
@@ -210,7 +198,6 @@
     <string name="pref_skip_description">Sakatu bi aldiz kontrol-markaren ordez atseden bat gehitzeko. Atsedenek zure puntuazioa aldatu gabe mantentzen dute eta ez dute segida hausten.</string>
     <string name="pref_unknown_title">Adierazi galdera ikurra falta diren datuetan</string>
     <string name="pref_unknown_description">Bereizi daturik gabeko egunak benetako hutsegiteetatik. Hutsegite bat sartzeko, sakatu bi aldiz.</string>
-    <string name="you_are_now_a_developer">Garatzailea zara!</string>
     <string name="activity_not_found">Ez da aurkitu akzio hau gauzatu dezakeen aplikaziorik</string>
     <string name="pref_midnight_delay_title">Luzatu eguna gauerdia osteko ordu batzuetara</string>
     <string name="pref_midnight_delay_description">Itxaron goizeko 3:00ak arte egun berri bat erakusteko. Erabilgarria normalean gauerdia pasata lotara joaten bazara. Aplikazioa berrabiarazi behar da.</string>

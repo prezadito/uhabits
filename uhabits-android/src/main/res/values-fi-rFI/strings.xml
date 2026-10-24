@@ -74,10 +74,6 @@
     <string name="interval_custom">Muu</string>
     <string name="pref_toggle_title">Vaihda merkintää lyhyellä painalluksella</string>
     <string name="pref_toggle_description_2">Lisää valinnat yhdellä napautuksella pitkään painettuna pitämisen sijaan.</string>
-    <string name="pref_rate_this_app">Arvostele Google Playssä</string>
-    <string name="pref_send_feedback">Lähetä palautetta kehittäjälle</string>
-    <string name="pref_view_source_code">Katso lähdekoodi GitHubissa</string>
-    <string name="links">Linkit</string>
     <string name="name">Nimi</string>
     <string name="settings">Asetukset</string>
     <string name="select_snooze_delay">Aseta torkkuaika</string>
@@ -102,16 +98,11 @@
     <string name="clear_label">Tyhjennä</string>
     <string name="select_hours">Valitse tunnit</string>
     <string name="select_minutes">Valitse minuutit</string>
-    <string name="about">Tietoa sovelluksesta</string>
-    <string name="translators">Kääntäjät</string>
-    <string name="developers">Kehittäjät</string>
-    <string name="version_n">Versio %s</string>
     <string name="frequency">Toistuvuus</string>
     <string name="checkmark">Valintamerkki</string>
     <string name="best_streaks">Parhaat putket</string>
     <string name="every_day">Joka päivä</string>
     <string name="every_week">Joka viikko</string>
-    <string name="help">Ohjeita ja usein kysyttyä</string>
     <string name="could_not_export">Tietojen vienti ei onnistunut.</string>
     <string name="could_not_import">Tietojen tuominen ei onnistunut.</string>
     <string name="file_not_recognized">Tiedostoa ei tunnistettu.</string>
@@ -124,7 +115,6 @@
     <string name="bug_report_failed">Virheraportin luonti epäonnistui.</string>
     <string name="generate_bug_report">Luo virheraportti</string>
     <string name="troubleshooting">Apua</string>
-    <string name="help_translate">Auta kääntämään tämä sovellus</string>
     <string name="night_mode">Yötila</string>
     <string name="use_pure_black">Käytä puhdasta mustaa yötilassa</string>
     <string name="pure_black_description">Korvaa harmaat taustat puhtaalla mustalla tummalla teemalla. Vähentää akun käyttöä puhelimissa AMOLED-näytöllä.</string>
@@ -178,8 +168,6 @@
     <string name="no">Ei</string>
     <string name="customize_notification_summary">Muuta ilmoitusten ääntä, värinää, valoa ja muita asetuksia</string>
     <string name="customize_notification">Mukauta ilmoituksia</string>
-    <string name="pref_view_privacy">Katso tietosuojakäytäntö</string>
-    <string name="view_all_contributors">Näytä kaikki osallistujat&#8230;</string>
     <string name="database">Tietokanta</string>
     <string name="widget_opacity_title">Widgetin läpinäkyvyys</string>
     <string name="widget_opacity_description">Muuttaa kotinäkymän widgettien läpinäkyvyyttä.</string>
@@ -212,7 +200,6 @@
     <string name="pref_skip_description">Valitse kahdesti lisätäksesi ohituksen valinnan sijaan. Ohitukset pitävät pisteesi muuttumattomana eivätkä riko suoritusputkeasi.</string>
     <string name="pref_unknown_title">Näytä kysymysmerkki puuttuvan tiedon kohdalla</string>
     <string name="pref_unknown_description">Erota päivät ilman tietoja todellisista väliin jäämisistä. Lisätäksesi väliin jäämisen, valitse kahdesti.</string>
-    <string name="you_are_now_a_developer">Olet nyt kehittäjä</string>
     <string name="activity_not_found">Tälle toiminnolle ei löytynyt yhtään sovellusta</string>
     <string name="pref_midnight_delay_title">Pidennä päivää muutama tunti keskiyön jälkeen</string>
     <string name="pref_midnight_delay_description">Odota kello 3.00 asti ennen uuden päivän näyttämistä. Hyödyllinen jos menet nukkumaan yleensä keskiyön jälkeen. Vaatii sovelluksen uudelleenkäynnistyksen.</string>

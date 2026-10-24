@@ -51,7 +51,6 @@ import org.isoron.uhabits.notifications.AndroidNotificationTray.Companion.create
 import org.isoron.uhabits.notifications.RingtoneManager
 import org.isoron.uhabits.utils.StyledResources
 import org.isoron.uhabits.utils.applyBottomInset
-import org.isoron.uhabits.utils.startActivitySafely
 import org.isoron.uhabits.widgets.WidgetUpdater
 import java.util.Locale
 
@@ -134,11 +133,6 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                 intent.putExtra(Settings.EXTRA_APP_PACKAGE, requireContext().packageName)
                 intent.putExtra(Settings.EXTRA_CHANNEL_ID, NotificationTray.REMINDERS_CHANNEL_ID)
                 startActivity(intent)
-                return true
-            }
-            "rateApp" -> {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.playStoreURL)))
-                activity?.startActivitySafely(intent)
                 return true
             }
             "publicBackupFolder" -> {

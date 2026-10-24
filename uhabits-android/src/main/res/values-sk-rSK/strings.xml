@@ -82,10 +82,6 @@
     <string name="interval_custom">Vlastné ...</string>
     <string name="pref_toggle_title">Prepnúť krátkym stlačením</string>
     <string name="pref_toggle_description_2">Začiarknite jediným klepnutím namiesto stlačenia a podržania.</string>
-    <string name="pref_rate_this_app">Ohodnoťte túto aplikáciu na Google Play</string>
-    <string name="pref_send_feedback">Odošlite spätnú väzbu vývojárovi</string>
-    <string name="pref_view_source_code">Zobraziť zdrojový kód na stránke GitHub</string>
-    <string name="links">Odkazy</string>
     <string name="name">Názov</string>
     <string name="settings">Nastavenia</string>
     <string name="select_snooze_delay">Nastaviť dĺžku odloženia</string>
@@ -114,16 +110,11 @@
     <string name="clear_label">Zmazať</string>
     <string name="select_hours">Vyberte hodiny</string>
     <string name="select_minutes">Vyberte minúty</string>
-    <string name="about">O aplikácii</string>
-    <string name="translators">Prekladatelia</string>
-    <string name="developers">Vývojári</string>
-    <string name="version_n">Verzia %s</string>
     <string name="frequency">Frekvencia</string>
     <string name="checkmark">Začiarknutie</string>
     <string name="best_streaks">Najlepšie série</string>
     <string name="every_day">Každý deň</string>
     <string name="every_week">Každý týždeň</string>
-    <string name="help">Pomoc &amp; FAQ</string>
     <string name="could_not_export">Export údajov zlyhal.</string>
     <string name="could_not_import">Import údajov zlyhal.</string>
     <string name="file_not_recognized">Súbor nebol rozpoznaný.</string>
@@ -136,7 +127,6 @@
     <string name="bug_report_failed">Vygenerovanie hlásenia o chybe zlyhalo.</string>
     <string name="generate_bug_report">Vygenerujte hlásenie o chybe</string>
     <string name="troubleshooting">Riešenie problémov</string>
-    <string name="help_translate">Pomôžte preložiť túto aplikáciu</string>
     <string name="night_mode">Tmavá téma</string>
     <string name="use_pure_black">Použite čisto čiernu farbu v tmavej téme</string>
     <string name="pure_black_description">Nahrádza sivé pozadie čisto čiernym v tmavej téme. Znižuje spotrebu batérie v telefónoch s displejom AMOLED.</string>
@@ -190,8 +180,6 @@
     <string name="no">Nie</string>
     <string name="customize_notification_summary">Zmeňte nastavenie zvuku, vibrácií, svetla a ďalších nastavení upozornení</string>
     <string name="customize_notification">Prispôsobiť oznámenia</string>
-    <string name="pref_view_privacy">Zobraziť zásady ochrany osobných údajov</string>
-    <string name="view_all_contributors">Zobraziť všetkých prispievateľov&#8230;</string>
     <string name="database">Databáza</string>
     <string name="widget_opacity_title">Nepriehľadnosť widgetu</string>
     <string name="widget_opacity_description">Zvyšuje priehľadnosť alebo nepriehľadnosť widgetov na vašej domovskej obrazovke.</string>
@@ -224,7 +212,6 @@
     <string name="pref_skip_description">Dvojitým prepnutím pridáte namiesto začiarknutia preskočenie. Preskočenia udržia vaše skóre nezmenené a neprerušia vašu sériu.</string>
     <string name="pref_unknown_title">Zobraziť otázniky pre chýbajúce údaje</string>
     <string name="pref_unknown_description">Odlíšte dni bez údajov od skutočných prerušení. Ak chcete zadať prerušenie, dvakrát prepnite.</string>
-    <string name="you_are_now_a_developer">Teraz ste vývojár</string>
     <string name="activity_not_found">Nenašla sa žiadna aplikácia podporujúca túto akciu</string>
     <string name="pref_midnight_delay_title">Predĺžte deň o niekoľko hodín po polnoci</string>
     <string name="pref_midnight_delay_description">Na zobrazenie nového dňa počkajte do 3:00. Užitočné, ak zvyčajne chodíte spať po polnoci. Vyžaduje reštart aplikácie.</string>

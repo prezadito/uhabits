@@ -37,8 +37,6 @@ import java.util.LinkedList
 object ListHabitsSteps {
     fun clickMenu(item: MenuItem?) {
         when (item) {
-            MenuItem.ABOUT -> clickTextInsideOverflowMenu(R.string.about)
-            MenuItem.HELP -> clickTextInsideOverflowMenu(R.string.help)
             MenuItem.SETTINGS -> clickTextInsideOverflowMenu(R.string.settings)
             MenuItem.ADD -> clickViewWithId(R.id.actionCreateHabit)
             MenuItem.EDIT -> clickViewWithId(R.id.action_edit_habit)
@@ -128,6 +126,6 @@ object ListHabitsSteps {
     }
 
     enum class MenuItem {
-        ABOUT, HELP, SETTINGS, EDIT, DELETE, ARCHIVE, TOGGLE_ARCHIVED, UNARCHIVE, TOGGLE_COMPLETED, ADD
+        SETTINGS, EDIT, DELETE, ARCHIVE, TOGGLE_ARCHIVED, UNARCHIVE, TOGGLE_COMPLETED, ADD
     }
 }

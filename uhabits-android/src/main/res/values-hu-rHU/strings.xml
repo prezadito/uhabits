@@ -74,10 +74,6 @@
     <string name="interval_custom">Egyedi...</string>
     <string name="pref_toggle_title">Bejelölés rövid koppintással</string>
     <string name="pref_toggle_description_2">Nyomva tartás helyett koppintással tudja a napokat kipipálni.</string>
-    <string name="pref_rate_this_app">Értékeld az alkalmazást a Google Play-en</string>
-    <string name="pref_send_feedback">Visszajelzés küldése a fejlesztőnek</string>
-    <string name="pref_view_source_code">Forráskód megtekintése a GitHub-on</string>
-    <string name="links">Linkek</string>
     <string name="name">Megnevezés</string>
     <string name="settings">Beállítások</string>
     <string name="select_snooze_delay">Szundi beállítása</string>
@@ -102,10 +98,6 @@
     <string name="clear_label">Törlés</string>
     <string name="select_hours">Óra kiválasztása</string>
     <string name="select_minutes">Perc kiválasztása</string>
-    <string name="about">Névjegy</string>
-    <string name="translators">Fordítók</string>
-    <string name="developers">Fejlesztők</string>
-    <string name="version_n">Verzió %s</string>
     <string name="frequency">Gyakoriság</string>
     <string name="checkmark">Pipa</string>
     <string name="checkmark_stack_widget" formatted="false">Pipa Stack Widget</string>
@@ -116,7 +108,6 @@
     <string name="best_streaks">Legjobb széria</string>
     <string name="every_day">Minden nap</string>
     <string name="every_week">Minden héten</string>
-    <string name="help">Súgó és GYIK</string>
     <string name="could_not_export">Nem sikerült az adatok exportálása.</string>
     <string name="could_not_import">Nem sikerült az adatok importálása</string>
     <string name="file_not_recognized">A fájlt nem sikerült felismerni.</string>
@@ -129,7 +120,6 @@
     <string name="bug_report_failed">Nem sikerült a hibajelentés generálása</string>
     <string name="generate_bug_report">Hibabejelentés generálása</string>
     <string name="troubleshooting">Hibaelhárítás</string>
-    <string name="help_translate">Segíts lefordítani ezt az alkalmazást</string>
     <string name="night_mode">Éjszakai mód</string>
     <string name="use_pure_black">Fekete használata éjszakai módban</string>
     <string name="pure_black_description">A szürke hátteret tiszta feketére cseréli éjszakai módban. Csökkenti az energiafelhasználást AMOLED kijelzős telefonokon.</string>
@@ -183,8 +173,6 @@
     <string name="no">Nem</string>
     <string name="customize_notification_summary">Hang, rezgés, fény és egyéb értesítések beállítása</string>
     <string name="customize_notification">Értesítések beállítása</string>
-    <string name="pref_view_privacy">Adatvédelmi nyilatkozat</string>
-    <string name="view_all_contributors">Az összes közreműködő megtekintése&#8230;</string>
     <string name="database">Adatbázis</string>
     <string name="widget_opacity_title">A widget áttetszősége</string>
     <string name="widget_opacity_description">A widgetet átlátszóbbá vagy takaróbbá teszi az induló képernyőn.</string>
@@ -217,7 +205,6 @@
     <string name="pref_skip_description">Váltás kétszer, ha kihagyást szeretne hozzáadni a pipa helyett. A kihagyások változatlanul tartják a pontszámot, és nem szakítják meg a sorozatot.</string>
     <string name="pref_unknown_title">Kérdőjelek megjelenítése a hiányzó adatoknál</string>
     <string name="pref_unknown_description">Az adatok nélküli napok megkülönböztetése a tényleges kihagyásoktól. Kihagyás megadásához váltson kétszer.</string>
-    <string name="you_are_now_a_developer">Ön mostantól már fejlesztő!</string>
     <string name="activity_not_found">Ezen művelet elvégzéséhez nem található alkalmazás.</string>
     <string name="pref_midnight_delay_title">A nap meghosszabbítása éjfél után néhány órával</string>
     <string name="pref_midnight_delay_description">Várjon hajnali 3 -ig, hogy új napot mutasson. Hasznos, ha általában éjfél után fekszik le. Az alkalmazás újraindítását igényli.</string>

@@ -82,10 +82,6 @@
     <string name="interval_custom">התאמה אישית...</string>
     <string name="pref_toggle_title">סימון הרגלים בלחיצה קצרה</string>
     <string name="pref_toggle_description_2">סימון הרגלים בלחיצה פשוטה במקום לחיצה והחזקה.</string>
-    <string name="pref_rate_this_app">דירוג היישום ב־Google Play</string>
-    <string name="pref_send_feedback">שליחת משוב למפתח</string>
-    <string name="pref_view_source_code">צפייה בקוד המקור ב־GitHub</string>
-    <string name="links">קישורים</string>
     <string name="name">שם</string>
     <string name="settings">הגדרות</string>
     <string name="select_snooze_delay">נא לבחור בכמה זמן לדחות את התזכורת</string>
@@ -114,16 +110,11 @@
     <string name="clear_label">ניקוי</string>
     <string name="select_hours">בחירת שעות</string>
     <string name="select_minutes">בחירת דקות</string>
-    <string name="about">מידע כללי</string>
-    <string name="translators">תרגום</string>
-    <string name="developers">פיתוח</string>
-    <string name="version_n">גרסה %s</string>
     <string name="frequency">תדירות</string>
     <string name="checkmark">סימון הרגל</string>
     <string name="best_streaks">שיאי התמדה</string>
     <string name="every_day">כל יום</string>
     <string name="every_week">כל שבוע</string>
-    <string name="help">עזרה ושאלות נפוצות</string>
     <string name="could_not_export">ייצוא הנתונים נכשל.</string>
     <string name="could_not_import">ייבוא הנתונים נכשל.</string>
     <string name="file_not_recognized">קובץ לא מזוהה.</string>
@@ -136,7 +127,6 @@
     <string name="bug_report_failed">יצירת דו״ח התקלה נכשלה.</string>
     <string name="generate_bug_report">יצירת דו״ח תקלה</string>
     <string name="troubleshooting">פתרון תקלות</string>
-    <string name="help_translate">סיוע בתרגום היישום</string>
     <string name="night_mode">ערכת נושא כהה</string>
     <string name="use_pure_black">רקע שחור מוחלט בערכת הנושא הכהה</string>
     <string name="pure_black_description">החלפת הרקע האפור בערכת הנושא הכהה לשחור מוחלט. מפחית את צריכת הסוללה במכשירים עם תצוגת AMOLED.</string>
@@ -190,8 +180,6 @@
     <string name="no">לא</string>
     <string name="customize_notification_summary">שינוי הצליל, הרטט, התאורה והגדרות התראה אחרות</string>
     <string name="customize_notification">אפשרויות התראה</string>
-    <string name="pref_view_privacy">צפייה במדיניות הפרטיות</string>
-    <string name="view_all_contributors">הצגת כל המתנדבים&#8230;</string>
     <string name="database">מסד נתונים</string>
     <string name="widget_opacity_title">אטימות היישומונים</string>
     <string name="widget_opacity_description">הפיכת היישומונים במסך הבית לשקופים או אטומים יותר.</string>
@@ -224,7 +212,6 @@
     <string name="pref_skip_description">סימון כפול כדי לדלג במקום לסמן. הדילוג שומר על הציון שלך ללא שינוי ואינו שובר את הרצף שלך.</string>
     <string name="pref_unknown_title">הצגת סימני שאלה לנתונים חסרים</string>
     <string name="pref_unknown_description">הפרדת הימים ללא הנתונים מהלולאות בפועל. כדי להיכנס ללולאה, יש לסמן פעמיים.</string>
-    <string name="you_are_now_a_developer">מצב הפיתוח הופעל כעת</string>
     <string name="activity_not_found">לא נמצא יישום שתומך בפעולה זו</string>
     <string name="pref_midnight_delay_title">הארכת היום בכמה שעות לאחר החצות</string>
     <string name="pref_midnight_delay_description">המתנה עד 3:00 לפני הצגת יום חדש. שימושי אם לרוב הולכים לישון אחרי חצות. דורש הפעלה מחדש של היישום.</string>

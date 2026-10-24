@@ -22,7 +22,7 @@ package org.isoron.uhabits.regression
 import androidx.test.filters.LargeTest
 import org.isoron.uhabits.BaseUserInterfaceTest
 import org.isoron.uhabits.acceptance.steps.CommonSteps.launchApp
-import org.isoron.uhabits.activities.about.AboutActivity
+import org.isoron.uhabits.activities.settings.SettingsActivity
 import org.junit.Test
 import java.lang.Thread.sleep
 
@@ -38,7 +38,7 @@ class SavedStateTest : BaseUserInterfaceTest() {
     @Throws(Exception::class)
     fun testBundleSavedState() {
         launchApp()
-        startActivity(AboutActivity::class.java)
+        startActivity(SettingsActivity::class.java)
         sleep(1000)
         device.pressBack()
     }

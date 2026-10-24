@@ -70,10 +70,6 @@
     <string name="interval_custom">Tùy chỉnh...</string>
     <string name="pref_toggle_title">Bấm nhanh để chuyển trạng thái</string>
     <string name="pref_toggle_description_2">Đặt dấu kiểm bằng một lần nhấn thay vì nhấn và giữ.</string>
-    <string name="pref_rate_this_app">Đánh giá ứng dụng trên Google Play</string>
-    <string name="pref_send_feedback">Gửi phản hồi cho nhà phát triển</string>
-    <string name="pref_view_source_code">Xem mã nguồn trên Github</string>
-    <string name="links">Liên kết</string>
     <string name="name">Tên</string>
     <string name="settings">Cài đặt</string>
     <string name="select_snooze_delay">Chọn độ trễ báo lại</string>
@@ -96,16 +92,11 @@
     <string name="clear_label">Xoá</string>
     <string name="select_hours">Chọn giờ</string>
     <string name="select_minutes">Chọn phút</string>
-    <string name="about">Giới thiệu</string>
-    <string name="translators">Dịch giả</string>
-    <string name="developers">Nhà phát triển</string>
-    <string name="version_n">Phiên bản %s</string>
     <string name="frequency">Tần suất</string>
     <string name="checkmark">Đánh dấu</string>
     <string name="best_streaks">Chuỗi dài nhất</string>
     <string name="every_day">Hàng ngày</string>
     <string name="every_week">Hàng tuần</string>
-    <string name="help">Trợ giúp &amp; Câu hỏi</string>
     <string name="could_not_export">Xuất dữ liệu thất bại.</string>
     <string name="could_not_import">Nhập dữ liệu thất bại.</string>
     <string name="file_not_recognized">Không nhận ra được tệp.</string>
@@ -118,7 +109,6 @@
     <string name="bug_report_failed">Tạo báo cáo về lỗi.</string>
     <string name="generate_bug_report">Tạo báo cáo lỗi</string>
     <string name="troubleshooting">Xử lí sự cố</string>
-    <string name="help_translate">Giúp dịch ứng dụng</string>
     <string name="night_mode">Chế độ ban đêm</string>
     <string name="use_pure_black">Sử dụng màu đen thuần trong chế độ ban đêm</string>
     <string name="pure_black_description">Thay thế nền màu xám bởi màu đen thuần trong chế độ ban đêm. Giảm thiểu việc sử dụng pin của điện thoại có màn hình AMOLED.</string>
@@ -172,8 +162,6 @@
     <string name="no">Không</string>
     <string name="customize_notification_summary">Thay đổi âm thanh, độ rung, ánh sáng và các cài đặt thông báo khác</string>
     <string name="customize_notification">Tùy chỉnh thông báo</string>
-    <string name="pref_view_privacy">Xem chính sách bảo mật</string>
-    <string name="view_all_contributors">Xem tất cả những người đóng góp&#8230;</string>
     <string name="database">Cơ sở dữ liệu</string>
     <string name="widget_opacity_title">Độ mờ của tiện ích</string>
     <string name="widget_opacity_description">Làm cho các tiện ích trong suốt hơn hoặc mờ hơn trên màn hình chính của bạn.</string>
@@ -206,7 +194,6 @@
     <string name="pref_skip_description">Bật/tắt hai lần để thêm một lần bỏ qua thay vì dấu kiểm. Bỏ qua giữ cho số điểm của bạn không thay đổi và không phá vỡ chuỗi của bạn.</string>
     <string name="pref_unknown_title">Hiện dấu hỏi cho dữ liệu bị thiếu</string>
     <string name="pref_unknown_description">Phân biệt những ngày không có dữ liệu với những lần trôi đi thực tế. Để nhập một lần trôi đi, hãy bật/tắt hai lần.</string>
-    <string name="you_are_now_a_developer">Bạn đã là nhà phát triển</string>
     <string name="activity_not_found">Không tìm thấy ứng dụng nào để hỗ trợ hành động này</string>
     <string name="pref_midnight_delay_title">Kéo dài ngày thêm một vài giờ sau nửa đêm</string>
     <string name="pref_midnight_delay_description">Chờ đến 3:00 sáng để hiện một ngày mới. Rất hữu ích nếu bạn thường đi ngủ sau nửa đêm. Yêu cầu khởi động lại ứng dụng.</string>

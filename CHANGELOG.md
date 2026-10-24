@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+### Changed
+
+- Generate bug report sends the log to the fork's maintainer instead of the original app's developer
+- Dropped the Links section of Settings (Help & FAQ, Rate this app on Google Play and About), since every link in it led to the original app's pages. This also removes the About screen
+
 ## [2.6.0-qol] -- 2026-10-24
 
 ### Added

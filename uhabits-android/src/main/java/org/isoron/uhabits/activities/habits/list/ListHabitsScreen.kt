@@ -164,11 +164,6 @@ class ListHabitsScreen(
         activity.restartWithFade(ListHabitsActivity::class.java)
     }
 
-    override fun showAboutScreen() {
-        val intent = intentFactory.startAboutActivity(activity)
-        activity.startActivity(intent)
-    }
-
     override fun showSelectHabitTypeDialog() {
         val dialog = HabitTypeDialog()
         dialog.show(activity.supportFragmentManager, "habitType")
@@ -180,11 +175,6 @@ class ListHabitsScreen(
 
     override fun showEditHabitsScreen(selected: List<Habit>) {
         val intent = intentFactory.startEditActivity(activity, selected[0])
-        activity.startActivity(intent)
-    }
-
-    override fun showFAQScreen() {
-        val intent = intentFactory.viewFAQ(activity)
         activity.startActivity(intent)
     }
 

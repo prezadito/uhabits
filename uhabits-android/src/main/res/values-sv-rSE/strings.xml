@@ -74,10 +74,6 @@
     <string name="interval_custom">Anpassad...</string>
     <string name="pref_toggle_title">Växla med snabb tryckning</string>
     <string name="pref_toggle_description_2">Sätt bockar med en enkel tryckning i stället för att trycka och hålla nere.</string>
-    <string name="pref_rate_this_app">Betygsätt oss på Google Play</string>
-    <string name="pref_send_feedback">Skicka feedback till utvecklarna</string>
-    <string name="pref_view_source_code">Visa källkod på GitHub</string>
-    <string name="links">Länkar</string>
     <string name="name">Namn</string>
     <string name="settings">Inställningar</string>
     <string name="select_snooze_delay">Välj snoozelängd</string>
@@ -106,10 +102,6 @@
         <item>@string/hint_drag</item>
         <item>@string/hint_landscape</item>
     </string-array>
-    <string name="about">Om</string>
-    <string name="translators">Översättare</string>
-    <string name="developers">Utvecklare</string>
-    <string name="version_n">Version %s</string>
     <string name="frequency">Frekvens</string>
     <string name="checkmark">Kryssruta</string>
     <string name="checkmark_stack_widget" formatted="false">Stapelwidget med kryssruta</string>
@@ -120,7 +112,6 @@
     <string name="best_streaks">Bästa serie</string>
     <string name="every_day">Varje dag</string>
     <string name="every_week">Varje vecka</string>
-    <string name="help">Hjälp och FAQ</string>
     <string name="could_not_export">Det gick inte att exportera.</string>
     <string name="could_not_import">Det gick inte att importera.</string>
     <string name="file_not_recognized">Kunde inte känna igen filen.</string>
@@ -133,7 +124,6 @@
     <string name="bug_report_failed">Det gick inte att generera felrapport.</string>
     <string name="generate_bug_report">Generera felrapport</string>
     <string name="troubleshooting">Felsökning</string>
-    <string name="help_translate">Hjälp till att översätta appen</string>
     <string name="night_mode">Nattläge</string>
     <string name="use_pure_black">Använd svart färg i nattläge</string>
     <string name="pure_black_description">Ersätter gråa bakgrunder med svart färg i nattläge. Reducerar batterianvändningen för telefoner med AMOLED-skärm.</string>
@@ -187,8 +177,6 @@
     <string name="no">Nej</string>
     <string name="customize_notification_summary">Ändra ljud, vibration, ljus och andra aviseringsinställningar</string>
     <string name="customize_notification">Anpassa aviseringar</string>
-    <string name="pref_view_privacy">Visa integritetspolicy</string>
-    <string name="view_all_contributors">Visa alla medverkande&#8230;</string>
     <string name="database">Databas</string>
     <string name="widget_opacity_title">Widgetopacitet</string>
     <string name="widget_opacity_description">Gör widgetar mer eller mindre transparenta på hemskärmen.</string>
@@ -221,7 +209,6 @@
     <string name="pref_skip_description">Växla två gånger för att hoppa över istället för att bocka för. Att hoppa över behåller dina poäng oförändrade och bryter inte din serie.</string>
     <string name="pref_unknown_title">Visa frågetecken för data som saknas</string>
     <string name="pref_unknown_description">Skilj dagar utan data från faktiska misslyckanden. För att ange ett misslyckanden, växla två gånger.</string>
-    <string name="you_are_now_a_developer">Du är nu en utvecklare</string>
     <string name="activity_not_found">Ingen app som stödjer åtgärden hittades.</string>
     <string name="pref_midnight_delay_title">Förläng dagen några timmar efter midnatt</string>
     <string name="pref_midnight_delay_description">Vänta till 3:00 innan en ny dag visas. Användbart om du vanligtvis går och lägger dig efter midnatt. Kräver omstart av appen.</string>

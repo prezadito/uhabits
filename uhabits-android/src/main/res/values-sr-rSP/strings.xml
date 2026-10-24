@@ -78,10 +78,6 @@
     <string name="interval_custom">Прилагођено...</string>
     <string name="pref_toggle_title">Мењај стање додиром</string>
     <string name="pref_toggle_description_2">Ставите квачице једним додиром уместо притискањем и држањем.</string>
-    <string name="pref_rate_this_app">Оцени апликацију</string>
-    <string name="pref_send_feedback">Повратне информације</string>
-    <string name="pref_view_source_code">Изворни кôд на Гитхабу</string>
-    <string name="links">Везе</string>
     <string name="name">Назив</string>
     <string name="settings">Поставке</string>
     <string name="select_snooze_delay">Изаберите време одлагања</string>
@@ -108,16 +104,11 @@
     <string name="clear_label">Обриши</string>
     <string name="select_hours">Избор часова</string>
     <string name="select_minutes">Избор минута</string>
-    <string name="about">О програму</string>
-    <string name="translators">Преводиоци</string>
-    <string name="developers">Програмери</string>
-    <string name="version_n">верзија %s</string>
     <string name="frequency">Учесталост</string>
     <string name="checkmark">Квачица</string>
     <string name="best_streaks">Најбољи низови</string>
     <string name="every_day">сваког дана</string>
     <string name="every_week">сваке недеље</string>
-    <string name="help">Помоћ и ЧПП</string>
     <string name="could_not_export">Не могу да извезем податке.</string>
     <string name="could_not_import">Не могу да увезем податке.</string>
     <string name="file_not_recognized">Фајл није препознат.</string>
@@ -130,7 +121,6 @@
     <string name="bug_report_failed">Не могу да направим извештај о грешци.</string>
     <string name="generate_bug_report">Направи извештај о грешци</string>
     <string name="troubleshooting">Решавање проблема</string>
-    <string name="help_translate">Помозите превођење</string>
     <string name="night_mode">Тамна тема</string>
     <string name="use_pure_black">Чиста црна у тамној теми</string>
     <string name="pure_black_description">Мења сиву позадину са чистом црном у тамној теми. Смањује потрошњу батерије код телефона са АМОЛЕД екраном.</string>
@@ -184,8 +174,6 @@
     <string name="no">Не</string>
     <string name="customize_notification_summary">Мењајте звук, вибрацију, светло и друге поставке обавештавања</string>
     <string name="customize_notification">Прилагодите обавештења</string>
-    <string name="pref_view_privacy">Приказ политике приватности</string>
-    <string name="view_all_contributors">прикажи све сараднике&#8230;</string>
     <string name="database">База података</string>
     <string name="widget_opacity_title">Прозирност виџета</string>
     <string name="widget_opacity_description">Мења прозирност виџета на почетном екрану.</string>
@@ -218,7 +206,6 @@
     <string name="pref_skip_description">Двапут промените да бисте прескочили уместо откачињања. Прескакање задржава резултат непромењеним и не прекида низ.</string>
     <string name="pref_unknown_title">Приказ упитника где нема података</string>
     <string name="pref_unknown_description">Разликује дане без података са стварним пропуштањем. За прескок, потврдите два пута.</string>
-    <string name="you_are_now_a_developer">Постали сте програмер</string>
     <string name="activity_not_found">Нема апликације која подржава ову радњу</string>
     <string name="pref_midnight_delay_title">Продужите дан неколико сати иза поноћи</string>
     <string name="pref_midnight_delay_description">Чека до 03:00 да покаже нови дан. Корисно ако обично идете на спавање после поноћи. Захтева поновно покретање.</string>

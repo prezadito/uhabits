@@ -70,10 +70,6 @@
     <string name="interval_custom">自訂</string>
     <string name="pref_toggle_title">換成輕碰來記錄習慣</string>
     <string name="pref_toggle_description_2">輕碰即可打勾，不需要長按</string>
-    <string name="pref_rate_this_app">在 Google Play 上評價這個 App</string>
-    <string name="pref_send_feedback">傳送改進意見給開發者</string>
-    <string name="pref_view_source_code">在 GitHub 上查看原始碼</string>
-    <string name="links">連結</string>
     <string name="name">習慣名稱</string>
     <string name="settings">偏好設定</string>
     <string name="select_snooze_delay">選擇延後通知</string>
@@ -96,16 +92,11 @@
     <string name="clear_label">清除</string>
     <string name="select_hours">選擇小時</string>
     <string name="select_minutes">選擇分鐘</string>
-    <string name="about">關於本程式</string>
-    <string name="translators">翻譯人員</string>
-    <string name="developers">開發團隊</string>
-    <string name="version_n">%s 版</string>
     <string name="frequency">頻率</string>
     <string name="checkmark">選取標記</string>
     <string name="best_streaks">最佳紀錄</string>
     <string name="every_day">每天</string>
     <string name="every_week">每週</string>
-    <string name="help">幫助 &amp; 常見問題</string>
     <string name="could_not_export">輸出資料失敗</string>
     <string name="could_not_import">匯入資料失敗</string>
     <string name="file_not_recognized">無法辨識檔案</string>
@@ -122,7 +113,6 @@
     <string name="bug_report_failed">錯誤報告：製作失敗</string>
     <string name="generate_bug_report">製作錯誤報告</string>
     <string name="troubleshooting">問題排除</string>
-    <string name="help_translate">協助翻譯本程式</string>
     <string name="night_mode">夜間模式</string>
     <string name="use_pure_black">在夜間模式中使用深色設定</string>
     <string name="pure_black_description">在夜間模式中，使用黑色背景取代灰色背景。這樣可以減少 AMOLED 螢幕手機的電量消耗。</string>
@@ -176,8 +166,6 @@
     <string name="no">否</string>
     <string name="customize_notification_summary">變更音效、震動、燈光和其他通知設定</string>
     <string name="customize_notification">自訂通知</string>
-    <string name="pref_view_privacy">檢視隱私權政策</string>
-    <string name="view_all_contributors">查看全部的貢獻者</string>
     <string name="database">資料庫</string>
     <string name="widget_opacity_title">小工具透明度</string>
     <string name="widget_opacity_description">調整主畫面小工具的透明度。</string>
@@ -210,7 +198,6 @@
     <string name="pref_skip_description">切換兩次、設定跳過，以取代完成標記。跳過功能將維持你的分數不變，不打破你的連續紀錄。</string>
     <string name="pref_unknown_title">在資料缺漏處顯示問號</string>
     <string name="pref_unknown_description">將沒有數據的天數與逾期者分開。要更改逾期設定，請切換兩次。</string>
-    <string name="you_are_now_a_developer">你現在已成為開發人員！</string>
     <string name="activity_not_found">找不到可以處理這個動作的應用程式。</string>
     <string name="pref_midnight_delay_title">將一天延長到午夜過後幾個小時</string>
     <string name="pref_midnight_delay_description">凌晨3點後再顯示新的一天。如果你通常在午夜以後才睡，這能幫上忙。重新啟動後才生效。</string>

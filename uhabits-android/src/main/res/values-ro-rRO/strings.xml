@@ -58,10 +58,6 @@
     <string name="interval_custom">Alt interval...</string>
     <string name="pref_toggle_title">Comută repetițiile printr-o apăsare scurtă</string>
     <string name="pref_toggle_description_2">Bifează cu o singură atingere în loc să ții apăsat.</string>
-    <string name="pref_rate_this_app">Evaluează aplicația pe Google Play</string>
-    <string name="pref_send_feedback">Trimite feedback dezvoltatorului</string>
-    <string name="pref_view_source_code">Vezi codul sursă pe GitHub</string>
-    <string name="links">Linkuri</string>
     <string name="name">Nume</string>
     <string name="settings">Setări</string>
     <string name="select_snooze_delay">Selectează durata amânării</string>
@@ -83,16 +79,11 @@
     <string name="clear_label">Golește</string>
     <string name="select_hours">Selectează orele</string>
     <string name="select_minutes">Selectează minutele</string>
-    <string name="about">Despre</string>
-    <string name="translators">Traducători</string>
-    <string name="developers">Dezvoltatori</string>
-    <string name="version_n">Versiunea %s</string>
     <string name="frequency">Frecvență</string>
     <string name="checkmark">Bifă</string>
     <string name="best_streaks">Cele mai multe zile consecutive</string>
     <string name="every_day">În fiecare zi</string>
     <string name="every_week">În fiecare săptămână</string>
-    <string name="help">Ajutor &amp; Întrebări frecvente</string>
     <string name="could_not_export">Exportare nereușită.</string>
     <string name="could_not_import">Importare nereușită.</string>
     <string name="file_not_recognized">Fișier nerecunoscut.</string>
@@ -105,7 +96,6 @@
     <string name="bug_report_failed">Generare raport de erori nereușită.</string>
     <string name="generate_bug_report">Generează raport de erori</string>
     <string name="troubleshooting">Depanare</string>
-    <string name="help_translate">Ajută la traducerea aplicației</string>
     <string name="night_mode">Mod întunecat</string>
     <string name="use_pure_black">Utilizează modul întunecat</string>
     <string name="pure_black_description">Înlocuiește fundalurile gri cu negru pur în modul întunecat. Reduce utilizarea bateriei la telefoanele cu ecran AMOLED.</string>
@@ -157,8 +147,6 @@
     <string name="no">Nu</string>
     <string name="customize_notification_summary">Schimbați setările de sunet, vibrații, lumină și altele pentru notificări</string>
     <string name="customize_notification">Personalizați notificările</string>
-    <string name="pref_view_privacy">Consultați politica de confidențialitate</string>
-    <string name="view_all_contributors">Vizualizați toți colaboratorii&#8230;</string>
     <string name="database">Bază de date</string>
     <string name="widget_opacity_title">Opacitatea widget-ului</string>
     <string name="widget_opacity_description">Face widget-urile mai transparente sau mai opace pe ecranul de pornire.</string>
@@ -187,7 +175,6 @@
     <string name="no_boolean_habits">Nu au fost găsite obiceiuri cu \"Da\" sau \"Nu\"</string>
     <string name="pref_skip_title">Activați omiterea de zile</string>
     <string name="pref_unknown_title">Arată semnele de întrebare pentru datele lipsă</string>
-    <string name="you_are_now_a_developer">Acum ești un dezvoltator</string>
     <string name="activity_not_found">Nu a fost găsită nicio aplicație care să efectueze această acțiune.</string>
     <string name="pref_midnight_delay_title">Extinde ziua câteva ore după miezul nopții</string>
     <string name="pref_midnight_delay_description">Așteaptă până la ora 3:00 dimineața pentru a arăta o nouă zi. O funcție utilă dacă în mod normal obișnuiești să mergi la somn după miezul nopții. Necesită repornirea aplicației.</string>

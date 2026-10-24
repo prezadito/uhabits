@@ -23,8 +23,6 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import me.tatarka.inject.annotations.Inject
-import org.isoron.uhabits.R
-import org.isoron.uhabits.activities.about.AboutActivity
 import org.isoron.uhabits.activities.habits.edit.EditHabitActivity
 import org.isoron.uhabits.activities.habits.show.ShowHabitActivity
 import org.isoron.uhabits.activities.intro.IntroActivity
@@ -34,25 +32,10 @@ import org.isoron.uhabits.core.models.Habit
 @Inject
 class IntentFactory() {
 
-    fun helpTranslate(context: Context) =
-        buildViewIntent(context.getString(R.string.translateURL))
-
     fun openDocument() = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
         addCategory(Intent.CATEGORY_OPENABLE)
         type = "*/*"
     }
-
-    fun rateApp(context: Context) =
-        buildViewIntent(context.getString(R.string.playStoreURL))
-
-    fun sendFeedback(context: Context) =
-        buildSendToIntent(context.getString(R.string.feedbackURL))
-
-    fun privacyPolicy(context: Context) =
-        buildViewIntent(context.getString(R.string.privacyPolicyURL))
-
-    fun startAboutActivity(context: Context) =
-        Intent(context, AboutActivity::class.java)
 
     fun startIntroActivity(context: Context) =
         Intent(context, IntroActivity::class.java)
@@ -64,25 +47,6 @@ class IntentFactory() {
         Intent(context, ShowHabitActivity::class.java).apply {
             data = Uri.parse(habit.uriString)
         }
-
-    fun viewFAQ(context: Context) =
-        buildViewIntent(context.getString(R.string.helpURL))
-
-    fun viewSourceCode(context: Context) =
-        buildViewIntent(context.getString(R.string.sourceCodeURL))
-
-    private fun buildSendToIntent(url: String) = Intent().apply {
-        action = Intent.ACTION_SENDTO
-        data = Uri.parse(url)
-    }
-
-    private fun buildViewIntent(url: String) = Intent().apply {
-        action = Intent.ACTION_VIEW
-        data = Uri.parse(url)
-    }
-
-    fun codeContributors(context: Context) =
-        buildViewIntent(context.getString(R.string.codeContributorsURL))
 
     private fun startEditActivity(context: Context): Intent {
         return Intent(context, EditHabitActivity::class.java)

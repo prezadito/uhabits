@@ -45,7 +45,6 @@
     <string name="interval_8_hour">8 ժամ</string>
     <string name="interval_24_hour">24 ժամ</string>
     <string name="interval_always_ask">Միշտ հարցնել</string>
-    <string name="links">Հղումներ</string>
     <string name="name">Անուն</string>
     <string name="settings">Կարգավորումներ</string>
     <string name="hint_title">Գիտե՞ք</string>
@@ -53,9 +52,6 @@
     <string name="select_weekdays">Նշել օրեր</string>
     <string name="done_label">Պատրաստ է</string>
     <string name="clear_label">Մաքրել</string>
-    <string name="about">Մասին</string>
-    <string name="translators">Թարգմանիչներ</string>
-    <string name="version_n">Տարբերակ %s</string>
     <string name="frequency">Հաճախություն</string>
     <string name="every_day">Ամեն օր</string>
     <string name="every_week">Ամեն շաբաթ</string>
