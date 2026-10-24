@@ -36,6 +36,7 @@ import org.isoron.uhabits.core.models.PaletteColor
 import org.isoron.uhabits.core.ui.views.Theme
 import org.isoron.uhabits.utils.dim
 import org.isoron.uhabits.utils.dp
+import org.isoron.uhabits.utils.drawNotesIndicator
 import org.isoron.uhabits.utils.getFontAwesome
 import org.isoron.uhabits.utils.sp
 import org.isoron.uhabits.utils.sres
@@ -143,6 +144,10 @@ class DayTilePainter(private val view: View) {
     fun text(canvas: Canvas, label: String, p: TextPaint, centerY: Float) {
         val fm = p.fontMetrics
         canvas.drawText(label, rect.centerX(), centerY - (fm.ascent + fm.descent) / 2, p)
+    }
+
+    fun notesDot(canvas: Canvas, color: Int, notes: String) {
+        view.drawNotesIndicator(paint, canvas, rect, color, notes)
     }
 
     /** Draws a 24dp vector icon, tinted with [color], centered on the tile. */

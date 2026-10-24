@@ -60,6 +60,12 @@ class CheckmarkPanelView(
             setupButtons()
         }
 
+    var showNotesDot = false
+        set(value) {
+            field = value
+            setupButtons()
+        }
+
     var isQuit = false
         set(value) {
             field = value
@@ -97,6 +103,7 @@ class CheckmarkPanelView(
             button.colors = colors
             button.date = date
             button.isQuit = isQuit
+            button.showNotesDot = showNotesDot
             button.onToggle = { value, notes -> onToggle(date, value, notes) }
             button.onEdit = { onEdit(date) }
         }

@@ -42,7 +42,7 @@ class QuitSlipBehavior(
     private val commandRunner: CommandRunner,
     private val screen: Screen
 ) {
-    fun onTap(habit: Habit, date: LocalDate) {
+    fun onTap(habit: Habit, date: LocalDate, onEditNotes: (() -> Unit)? = null) {
         val slips = habit.slips.getByDate(date)
         if (slips.isEmpty()) {
             addSlip(habit, date)
@@ -57,7 +57,8 @@ class QuitSlipBehavior(
             onEdit = { timestamp -> editSlip(habit, date, timestamp) },
             onDelete = { timestamp ->
                 commandRunner.run(DeleteSlipCommand(habitList, habit, timestamp))
-            }
+            },
+            onEditNotes = onEditNotes
         )
     }
 
@@ -106,7 +107,8 @@ class QuitSlipBehavior(
             isToday: Boolean,
             onAdd: () -> Unit,
             onEdit: (timestamp: Long) -> Unit,
-            onDelete: (timestamp: Long) -> Unit
+            onDelete: (timestamp: Long) -> Unit,
+            onEditNotes: (() -> Unit)?
         )
     }
 }

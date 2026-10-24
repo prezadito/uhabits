@@ -108,6 +108,14 @@ class NumberButtonView(
             updateDescription()
             invalidate()
         }
+
+    /** Whether a dot marks the days that have notes, which the weekly view needs. */
+    var showNotesDot = false
+        set(value) {
+            field = value
+            invalidate()
+        }
+
     var notes = ""
         set(value) {
             field = value
@@ -211,6 +219,7 @@ class NumberButtonView(
                     drawNumber(canvas, if (recorded) value.toShortString() else "0", textColor)
                 }
             }
+            if (showNotesDot) tile.notesDot(canvas, textColor, notes)
         }
 
         /** Shrinks the number to fit inside the tile, down to a 9sp minimum. */

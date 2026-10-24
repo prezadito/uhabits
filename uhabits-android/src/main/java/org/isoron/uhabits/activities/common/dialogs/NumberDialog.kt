@@ -29,6 +29,9 @@ class NumberDialog : AppCompatDialogFragment() {
     var onToggle: (Double, String) -> Unit = { _, _ -> }
     var onDismiss: () -> Unit = {}
 
+    /** When set, the dialog offers a button that opens the note editor for the same day. */
+    var onEditNotes: (() -> Unit)? = null
+
     /** Notes are edited in the note editor, so they only travel through this dialog untouched. */
     private var notes: String = ""
     private var originalValue: Double = 0.0
@@ -79,6 +82,17 @@ class NumberDialog : AppCompatDialogFragment() {
             save()
         }
 
+        onEditNotes?.let { edit ->
+            view.notesBtnNumber.apply {
+                visibility = View.VISIBLE
+                setImageResource(if (notes.isBlank()) R.drawable.ic_note_add else R.drawable.ic_note)
+                setColorFilter(view.root.sres.getColor(R.attr.dsInkMuted))
+                setOnClickListener {
+                    requireDialog().dismiss()
+                    edit()
+                }
+            }
+        }
         view.value.requestFocusWithKeyboard()
         val dialog = Dialog(requireContext())
         dialog.setContentView(view.root)

@@ -431,6 +431,11 @@ class HabitCardView(
             }
             innerFrame.addView(tileRow, innerFrame.indexOfChild(history))
         }
+        // The weekly view has no single day to attach a note to, so it only marks the days that
+        // have notes.
+        notesButton.visibility = if (viewMode.usesDayRow) VISIBLE else GONE
+        checkmarkPanel.showNotesDot = !viewMode.usesDayRow
+        numberPanel.showNotesDot = !viewMode.usesDayRow
         history.visibility = if (showsHistory) VISIBLE else GONE
         history.mode = viewMode
     }

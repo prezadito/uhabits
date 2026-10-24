@@ -316,9 +316,10 @@ class ListHabitsScreen(
         isToday: Boolean,
         onAdd: () -> Unit,
         onEdit: (timestamp: Long) -> Unit,
-        onDelete: (timestamp: Long) -> Unit
+        onDelete: (timestamp: Long) -> Unit,
+        onEditNotes: (() -> Unit)?
     ) {
-        QuitSlipDialogs.showSlipList(activity, date, slips, isToday, onAdd, onEdit, onDelete)
+        QuitSlipDialogs.showSlipList(activity, date, slips, isToday, onAdd, onEdit, onDelete, onEditNotes)
     }
 
     private fun getExecuteString(command: Command): String? {

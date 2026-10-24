@@ -129,6 +129,21 @@ class QuitSlipBehaviorTest : BaseUnitTest() {
         )
     }
 
+    @Test
+    fun testTapOnDayWithSlips_offersNotesWhenAsked() {
+        val date = getToday().minus(5)
+        var opened = false
+        behavior.onTap(habit, date) { opened = true }
+        screen.onEditNotes!!()
+        assertTrue(opened)
+    }
+
+    @Test
+    fun testTapOnDayWithSlips_hasNoNotesActionByDefault() {
+        behavior.onTap(habit, getToday().minus(5))
+        assertNull(screen.onEditNotes)
+    }
+
     class FakeScreen : QuitSlipBehavior.Screen {
         var pickerDate: LocalDate? = null
         var pickerInitial: Pair<Int, Int>? = null
@@ -139,6 +154,7 @@ class QuitSlipBehaviorTest : BaseUnitTest() {
         var onAdd: (() -> Unit)? = null
         var onEdit: ((Long) -> Unit)? = null
         var onDelete: ((Long) -> Unit)? = null
+        var onEditNotes: (() -> Unit)? = null
 
         override fun showSlipTimePicker(
             date: LocalDate,
@@ -159,8 +175,10 @@ class QuitSlipBehaviorTest : BaseUnitTest() {
             isToday: Boolean,
             onAdd: () -> Unit,
             onEdit: (timestamp: Long) -> Unit,
-            onDelete: (timestamp: Long) -> Unit
+            onDelete: (timestamp: Long) -> Unit,
+            onEditNotes: (() -> Unit)?
         ) {
+            this.onEditNotes = onEditNotes
             listDate = date
             listSlips = slips
             listIsToday = isToday

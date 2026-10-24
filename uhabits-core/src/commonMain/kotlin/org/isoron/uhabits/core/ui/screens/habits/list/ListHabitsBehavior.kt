@@ -58,7 +58,8 @@ open class ListHabitsBehavior(
 
     open fun onEdit(habit: Habit, date: LocalDate, x: Float, y: Float) {
         if (habit.isQuit) {
-            quitSlipBehavior.onTap(habit, date)
+            // Slips are added or removed by tapping, so long presses are left for notes.
+            onEditNotes(habit, date)
             return
         }
         val entry = habit.computedEntries.get(date)

@@ -40,6 +40,9 @@ class CheckmarkDialog : AppCompatDialogFragment() {
     var onToggle: (Int, String) -> Unit = { _, _ -> }
     var onDismiss: () -> Unit = {}
 
+    /** When set, the dialog offers a button that opens the note editor for the same day. */
+    var onEditNotes: (() -> Unit)? = null
+
     /** Notes are edited in the note editor, so they only travel through this dialog untouched. */
     private var notes: String = ""
     private var originalValue: Int = 0
@@ -64,6 +67,17 @@ class CheckmarkDialog : AppCompatDialogFragment() {
         if (!prefs.isSkipEnabled) view.skipBtn.visibility = GONE
         if (!prefs.areQuestionMarksEnabled) view.unknownBtn.visibility = GONE
         view.booleanButtons.visibility = VISIBLE
+        onEditNotes?.let { edit ->
+            view.notesBtn.apply {
+                visibility = VISIBLE
+                setImageResource(if (notes.isBlank()) R.drawable.ic_note_add else R.drawable.ic_note)
+                setColorFilter(view.root.sres.getColor(R.attr.dsInkMuted))
+                setOnClickListener {
+                    requireDialog().dismiss()
+                    edit()
+                }
+            }
+        }
         markSelected(originalValue)
         val dialog = Dialog(requireContext())
         dialog.setContentView(view.root)

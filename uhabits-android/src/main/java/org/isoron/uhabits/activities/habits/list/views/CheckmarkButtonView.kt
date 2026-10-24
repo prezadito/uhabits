@@ -89,6 +89,13 @@ class CheckmarkButtonView(
             invalidate()
         }
 
+    /** Whether a dot marks the days that have notes, which the weekly view needs. */
+    var showNotesDot = false
+        set(value) {
+            field = value
+            invalidate()
+        }
+
     var onToggle: (Int, String) -> Unit = { _, _ -> }
 
     var onEdit: () -> Unit = { }
@@ -170,7 +177,7 @@ class CheckmarkButtonView(
 
         fun draw(canvas: Canvas) {
             tile.layout()
-            val state = resolveState() ?: return
+            val state = resolveState() ?: return drawBlank(canvas)
             when (state) {
                 State.DONE -> {
                     tile.fill(canvas, colors.fill)
@@ -194,6 +201,17 @@ class CheckmarkButtonView(
                     tile.glyph(canvas, R.string.fa_question, 13f, tile.inkMuted)
                 }
             }
+            if (showNotesDot) tile.notesDot(canvas, glyphColor(state), notes)
+        }
+
+        private fun drawBlank(canvas: Canvas) {
+            if (showNotesDot) tile.notesDot(canvas, colors.ink, notes)
+        }
+
+        private fun glyphColor(state: State) = when (state) {
+            State.DONE -> tile.onHabit
+            State.AUTO, State.SKIPPED -> colors.ink
+            else -> tile.inkMuted
         }
 
         /** Null when nothing is drawn (quit habits, days before the quit date). */

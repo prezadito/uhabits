@@ -58,6 +58,11 @@
             android:id="@+id/unknownBtn"
             style="@style/CheckmarkPopupBtn"
             android:text="@string/fa_question" />
+
+        <ImageView
+            android:id="@+id/notesBtn"
+            style="@style/NotesPopupBtn"
+            android:contentDescription="@string/edit_note" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -94,5 +99,10 @@
             android:id="@+id/unknownBtnNumber"
             style="@style/CheckmarkPopupBtn"
             android:text="@string/fa_question" />
+
+        <ImageView
+            android:id="@+id/notesBtnNumber"
+            style="@style/NotesPopupBtn"
+            android:contentDescription="@string/edit_note" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.appcompat.widget.LinearLayoutCompat>
