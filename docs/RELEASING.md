@@ -47,20 +47,18 @@ Releases are built and published by GitHub Actions
   `uhabits-v<version>-debug.apk`. A `-debug` filename means the secrets were
   missing and the APK cannot update a signed install.
 - Copies the matching `CHANGELOG.md` section into the release notes.
-- Marks the release as a **pre-release** whenever the tag contains `-`, which
-  every `-qol` tag does.
+- Marks the release as a **pre-release** only when the tag contains `-alpha`,
+  `-beta` or `-rc`. `-qol` tags are normal releases and become the latest one.
 
 ## After the build
 
 1. **Check the release page.** It should have the APK attached, with notes from
    the changelog, and no `-debug` in the filename.
-2. **Untick "pre-release"** on the release if you want it shown as the latest
-   release (Edit -> "Set as the latest release").
-3. **Test an in-place update on your phone.** Download the APK and install it
+2. **Test an in-place update on your phone.** Download the APK and install it
    over the previous version. It should keep your data and show "Habits+".
    If Android reports a signature conflict, don't uninstall; export a backup
    first, then investigate.
-4. Optionally verify the signature:
+3. Optionally verify the signature:
 
    ```
    apksigner verify --print-certs uhabits-v2.4.2-qol.apk
