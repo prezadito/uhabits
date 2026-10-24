@@ -67,7 +67,7 @@ class IntroActivity : AppIntro2() {
             AppIntroFragment.newInstance(
                 getString(R.string.intro_title_4),
                 getString(R.string.intro_description_4),
-                R.drawable.intro_icon_1,
+                R.drawable.intro_icon_4,
                 Color.parseColor("#e57373")
             )
         )
