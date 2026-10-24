@@ -156,7 +156,7 @@ class HabitCardView(
     private var labelContainer: LinearLayout
     private var scoreRing: RingView
     private var topRow: LinearLayout
-    private var tileRow: LinearLayout
+    private var tileRow: FrameLayout
     private var notesButton: NotesButtonView
     private var history: HabitHistoryView
 
@@ -205,12 +205,19 @@ class HabitCardView(
             addView(metaLabel)
         }
 
+        notesButton = NotesButtonView(context).apply {
+            onEdit = {
+                habit?.let { behavior.onEditNotes(it, getToday().minus(dataOffset)) }
+            }
+        }
+
         topRow = LinearLayout(context).apply {
             gravity = Gravity.CENTER_VERTICAL
             orientation = LinearLayout.HORIZONTAL
             layoutParams = LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
             addView(scoreRing)
             addView(labelContainer)
+            addView(notesButton)
         }
 
         checkmarkPanel = checkmarkPanelFactory.create().apply {
@@ -251,25 +258,13 @@ class HabitCardView(
             }
         }
 
-        notesButton = NotesButtonView(context).apply {
-            onEdit = {
-                habit?.let { behavior.onEditNotes(it, getToday().minus(dataOffset)) }
-            }
-        }
-
-        val panels = FrameLayout(context).apply {
-            addView(checkmarkPanel, FrameLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT))
-            addView(numberPanel, FrameLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT))
-        }
-
-        tileRow = LinearLayout(context).apply {
-            orientation = LinearLayout.HORIZONTAL
-            gravity = Gravity.END or Gravity.CENTER_VERTICAL
+        tileRow = FrameLayout(context).apply {
             layoutParams = LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT).apply {
                 topMargin = dp(8f).toInt()
             }
-            addView(notesButton)
-            addView(panels)
+            val end = FrameLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT, Gravity.END)
+            addView(checkmarkPanel, end)
+            addView(numberPanel, FrameLayout.LayoutParams(end))
         }
 
         innerFrame = LinearLayout(context).apply {
