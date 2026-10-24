@@ -82,10 +82,6 @@
     <string name="interval_custom">Po meri...</string>
     <string name="pref_toggle_title">Preklopi ponovitve s kratkim pritiskom</string>
     <string name="pref_toggle_description_2">Postavite kljukice z enim dotikom namesto s pritiskom in držanjem.</string>
-    <string name="pref_rate_this_app">Oceni to aplikacijo na Google Play</string>
-    <string name="pref_send_feedback">Pošlji povratne informacije razvijalcem</string>
-    <string name="pref_view_source_code">Poglej izvorno kodo na GitHub</string>
-    <string name="links">Povezave</string>
     <string name="name">Ime</string>
     <string name="settings">Nastavitve</string>
     <string name="select_snooze_delay">Izberite zakasnitev dremeža</string>
@@ -114,16 +110,11 @@
     <string name="clear_label">Počisti</string>
     <string name="select_hours">Izberi ure</string>
     <string name="select_minutes">Izberi minute</string>
-    <string name="about">O aplikaciji</string>
-    <string name="translators">Prevajalci</string>
-    <string name="developers">Razvijalci</string>
-    <string name="version_n">Verzija %s</string>
     <string name="frequency">Pogostost</string>
     <string name="checkmark">Kljukica</string>
     <string name="best_streaks">Najboljša serija</string>
     <string name="every_day">Vsak dan</string>
     <string name="every_week">Vsak teden</string>
-    <string name="help">Pomoč &amp; Pogosta vprašanja</string>
     <string name="could_not_export">Neuspešen izvoz podatkov.</string>
     <string name="could_not_import">Neuspešen uvoz podatkov.</string>
     <string name="file_not_recognized">Datoteka ni bila prepoznana.</string>
@@ -136,7 +127,6 @@
     <string name="bug_report_failed">Neuspeh pri ustvarjanju poročila o napakah</string>
     <string name="generate_bug_report">Ustvari poročilo o napakah</string>
     <string name="troubleshooting">Odpravljanje napak</string>
-    <string name="help_translate">Pomagajte prevesti to aplikacijo</string>
     <string name="night_mode">Nočni način</string>
     <string name="use_pure_black">Uporabite popolno črnino v nočnem načinu</string>
     <string name="pure_black_description">Zamenja siva ozadja s popolno črnino v nočnem načinu. Zmanjša porabo baterije na telefonih z AMOLED zasloni.</string>
@@ -190,8 +180,6 @@
     <string name="no">Ne</string>
     <string name="customize_notification_summary">Spremenite nastavitve zvoka, vibriranja, svetlobe in drugih obvestil</string>
     <string name="customize_notification">Prilagoditve obvestil</string>
-    <string name="pref_view_privacy">Oglejte si pravilnik o zasebnosti</string>
-    <string name="view_all_contributors">Poglej vse sodelavce&#8230;</string>
     <string name="database">Baza podatkov</string>
     <string name="widget_opacity_title">Prosojnost pripomočka</string>
     <string name="widget_opacity_description">Pripomočke naredi bolj pregledne ali bolj neprozorne na domačem zaslonu.</string>
@@ -224,7 +212,6 @@
     <string name="pref_skip_description">Dvakrat preklopite, da dodate preskok namesto kljukice. Preskoki ohranjajo vaš rezultat nespremenjen in ne prekinejo vašega niza.</string>
     <string name="pref_unknown_title">Pokaži vprašaj za manjkajoče podatke</string>
     <string name="pref_unknown_description">Razlikujte dneve brez podatkov od dejanskih zamud. Če želite vnesti presledek, dvakrat preklopite.</string>
-    <string name="you_are_now_a_developer">Zdaj ste razvijalec</string>
     <string name="activity_not_found">Najdena ni bila nobena aplikacija, ki bi podpirala to dejanje</string>
     <string name="pref_midnight_delay_title">Podaljšajte dan nekaj ur čez polnoč</string>
     <string name="pref_midnight_delay_description">Počakajte do 3.00, da prikažete nov dan. Uporabno, če greste običajno spat po polnoči. Zahteva ponovni zagon aplikacije.</string>

@@ -74,10 +74,6 @@
     <string name="interval_custom">პერსონალიზებული…</string>
     <string name="pref_toggle_title">გადართვა ხანმოკლე შეხებით</string>
     <string name="pref_toggle_description_2">ხანგრძლივი დაჭერის მაგივრად თოლიების (✓) ხანმოკლე შეხებით ჩანიშვნა.</string>
-    <string name="pref_rate_this_app">აპლიკაციის შეფასება Google Play-ზე</string>
-    <string name="pref_send_feedback">გამოეხმაურე დეველოპერს</string>
-    <string name="pref_view_source_code">საწყისი კოდის ნახვა GitHub-ზე</string>
-    <string name="links">ბმულები</string>
     <string name="name">სათაური</string>
     <string name="settings">პარამეტრები</string>
     <string name="select_snooze_delay">გადადების დროის არჩევა</string>
@@ -102,16 +98,11 @@
     <string name="clear_label">წაშლა</string>
     <string name="select_hours">საათების მონიშვნა</string>
     <string name="select_minutes">წუთების მონიშვნა</string>
-    <string name="about">Loop-ის შესახებ</string>
-    <string name="translators">მთარგმნელები</string>
-    <string name="developers">დეველოპერები</string>
-    <string name="version_n">ვერსია: %s</string>
     <string name="frequency">სიხშირე</string>
     <string name="checkmark">თოლია</string>
     <string name="best_streaks">საუკეთესო სერიები</string>
     <string name="every_day">ყოველდღე</string>
     <string name="every_week">ყოველკვირა</string>
-    <string name="help">დახმარება და ხდკ</string>
     <string name="could_not_export">მონაცემების ექსპორტი ვერ მოხერხდა.</string>
     <string name="could_not_import">მონაცემების იმპორტირება ვერ მოხერხდა.</string>
     <string name="file_not_recognized">ფაილის ამოცნობა ვერ მოხერხდა.</string>
@@ -124,7 +115,6 @@
     <string name="bug_report_failed">ხარვეზების ანგარიში ვერ შეიქმნა.</string>
     <string name="generate_bug_report">ხარვეზების ანგარიშის შექმნა</string>
     <string name="troubleshooting">უწესივრობათა დიაგნოსტიკა და აღმოფხვრა</string>
-    <string name="help_translate">მოგვეხმარე აპლიკაციის გადათარგმნაში</string>
     <string name="night_mode">მუქი რეჟიმი</string>
     <string name="use_pure_black">მუქ რეჟიმში სუფთა შავის გამოყენება</string>
     <string name="pure_black_description">მუქ რეჟიმში რუხი ფონები სუფთა შავით ჩანაცვლდება. AMOLED-ეკრანიან ტელეფონებში ეს ელემენტის ენერგიას ზოგავს.</string>
@@ -178,8 +168,6 @@
     <string name="no">არა</string>
     <string name="customize_notification_summary">ხმის, ვიბრაციის, სინათლისა და შეტყობინებების სხვა პარამეტრების შეცვლა.</string>
     <string name="customize_notification">შეტყობინებების მორგება</string>
-    <string name="pref_view_privacy">კონფიდენციალურობის პოლიტიკა</string>
-    <string name="view_all_contributors">ყველა წვლილის შემტანის ნახვა&#8230;</string>
     <string name="database">მონაცემთა ბაზა</string>
     <string name="widget_opacity_title">ვიჯეტის გამჭვირვალობა</string>
     <string name="widget_opacity_description">ცვლის საწყისი ეკრანის ვიჯეტების გამჭვირვალობას.</string>
@@ -212,7 +200,6 @@
     <string name="pref_skip_description">ორჯერ გადართე, რათა გამოტოვება ჩაამატო თოლიის (✓) მაგივრად. გამოტოვებების მეშვეობით შეფასება უცვლელი დარჩება, ხოლო სერია შენარჩუნდება.</string>
     <string name="pref_unknown_title">კითხვის ნიშნის ჩვენება მონაცემთა არარსებობის შემთხვევაში</string>
     <string name="pref_unknown_description">უმონაცემო დღეებისა და გაცდენების განსხვავებულად განხილვა. გაცდენის შესატანად ორჯერ გადართე.</string>
-    <string name="you_are_now_a_developer">ახლა დეველოპერი ხარ</string>
     <string name="activity_not_found">ვერ მოიძებნა აპლიკაცია ამ ოპერაციის განსახორციელებლად</string>
     <string name="pref_midnight_delay_title">ახალი დღის დასაწყისის გადატანა ნაშუაღამევის რამდენიმე საათისთვის</string>
     <string name="pref_midnight_delay_description">ახალი დღის 03:00 საათზე დაწყება. ხელსაყრელია თუ ზოგადად შუაღამის შემდეგ იძინებ. საჭიროებს აპლიკაციის გადატვირთვას.</string>

@@ -74,10 +74,6 @@
     <string name="interval_custom">Προσαρμογή...</string>
     <string name="pref_toggle_title">Κάντε εναλλαγή των επαναλήψεων με σύντομο πάτημα</string>
     <string name="pref_toggle_description_2">Τοποθέτηση σημείων ελέγχου με ένα μόνο πάτημα αντί για πάτημα και αναμονή.</string>
-    <string name="pref_rate_this_app">Βαθμολογήστε αυτή την εφαρμογή στο Google Play</string>
-    <string name="pref_send_feedback">Αποστολή σχολίων στον προγραμματιστή</string>
-    <string name="pref_view_source_code">Δείτε τον πηγαίο κώδικα στο GitHub</string>
-    <string name="links">Σύνδεσμοι</string>
     <string name="name">Όνομα</string>
     <string name="settings">Ρυθμίσεις</string>
     <string name="select_snooze_delay">Επιλογή καθυστέρησης αναβολής</string>
@@ -102,16 +98,11 @@
     <string name="clear_label">Εκκαθάριση</string>
     <string name="select_hours">Επιλογή ωρών</string>
     <string name="select_minutes">Επιλογή λεπτών</string>
-    <string name="about">Σχετικά με</string>
-    <string name="translators">Μεταφραστές</string>
-    <string name="developers">Προγραμματιστές</string>
-    <string name="version_n">Έκδοση %s</string>
     <string name="frequency">Συχνότητα</string>
     <string name="checkmark">Σημάδι επιλογής</string>
     <string name="best_streaks">Τα καλύτερα σερί</string>
     <string name="every_day">Κάθε μέρα</string>
     <string name="every_week">Κάθε εβδομάδα</string>
-    <string name="help">Βοήθεια &amp; Συχνές Ερωτήσεις</string>
     <string name="could_not_export">Αποτυχία εξαγωγής δεδομένων.</string>
     <string name="could_not_import">Αποτυχία εισαγωγής δεδομένων.</string>
     <string name="file_not_recognized">Άγνωστο αρχείο.</string>
@@ -124,7 +115,6 @@
     <string name="bug_report_failed">Απέτυχε ή παραγωγή αναφοράς bug.</string>
     <string name="generate_bug_report">Παραγωγή αναφοράς bug.</string>
     <string name="troubleshooting">Αντιμετ.Προβλημάτων</string>
-    <string name="help_translate">Βοηθήστε στη μετάφραση της εφαρμογής</string>
     <string name="night_mode">Σκοτεινό θέμα</string>
     <string name="use_pure_black">Χρήση απόλυτου μαύρου στη νυχτ.λειτουργία</string>
     <string name="pure_black_description">Αντικαθιστά τα γκρί υπόβαθρα με απόλυτα μαύρα σε νυχτ.λειτουργία. Μειώνει την κατανάλωση μπαταρίας σε συσκευές με οθόνη AMOLED.</string>
@@ -178,8 +168,6 @@
     <string name="no">Όχι</string>
     <string name="customize_notification_summary">Αλλαγή ρυθμίσεων ήχου, δόνησης, φωτισμού και άλλων ειδοποιήσεων</string>
     <string name="customize_notification">Προσαρμογή ειδοποιήσεων</string>
-    <string name="pref_view_privacy">Προβολή πολιτικής απορρήτου</string>
-    <string name="view_all_contributors">Προβολή όλων των συντελεστών&#8230;</string>
     <string name="database">Βάση δεδομένων</string>
     <string name="widget_opacity_title">Διαφάνεια widget</string>
     <string name="widget_opacity_description">Κάνει τα widgets περισσότερο ή λιγότερο διαφανή στην αρχική οθόνη.</string>
@@ -212,7 +200,6 @@
     <string name="pref_skip_description">Εναλλαγή δύο φορές για να προσθέσετε μια παράκαμψη αντί για ένα σημάδι ελέγχου. Οι παραλείψεις κρατούν το σκορ σας αμετάβλητο και να δε σπάνε το σερί σας.</string>
     <string name="pref_unknown_title">Εμφάνιση ερωτηματικών για τα δεδομένα που λείπουν</string>
     <string name="pref_unknown_description">Διαφορικές ημέρες χωρίς δεδομένα από πραγματικές παραλήψεις. Για να εισάγετε μια παράληψη, κάντε εναλλαγή δύο φορές.</string>
-    <string name="you_are_now_a_developer">Είστε πλέον προγραμματιστής</string>
     <string name="activity_not_found">Δεν βρέθηκε εφαρμογή για την υποστήριξη αυτής της ενέργειας</string>
     <string name="pref_midnight_delay_title">Επεκτείνετε την ημέρα λίγες ώρες μετά τα μεσάνυχτα</string>
     <string name="pref_midnight_delay_description">Περιμένετε μέχρι τις 3:00 πμ για να εμφανιστεί μια νέα μέρα. Χρήσιμο αν συνήθως πάτε για ύπνο μετά τα μεσάνυχτα. Απαιτεί επανεκκίνηση της εφαρμογής.</string>

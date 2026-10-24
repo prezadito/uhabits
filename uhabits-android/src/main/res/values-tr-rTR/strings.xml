@@ -74,10 +74,6 @@
     <string name="interval_custom">Özel...</string>
     <string name="pref_toggle_title">Tek dokunuşla işaretle</string>
     <string name="pref_toggle_description_2">Basılı tutma yerine tek bir dokunuşla onay işaretleri koy.</string>
-    <string name="pref_rate_this_app">Google Play\'de uygulamayı oyla</string>
-    <string name="pref_send_feedback">Geliştiriciye geri bildirim gönder</string>
-    <string name="pref_view_source_code">Github\'da kaynak kodunu görüntüle</string>
-    <string name="links">Bağlantılar</string>
     <string name="name">Alışkanlık ismi</string>
     <string name="settings">Ayarlar</string>
     <string name="select_snooze_delay">Erteleme süresini ayarla</string>
@@ -102,16 +98,11 @@
     <string name="clear_label">Temizle</string>
     <string name="select_hours">Saat seç</string>
     <string name="select_minutes">Dakika seç</string>
-    <string name="about">Hakkında</string>
-    <string name="translators">Çevirmenler</string>
-    <string name="developers">Geliştiriciler</string>
-    <string name="version_n">Sürüm %s</string>
     <string name="frequency">Sıklık</string>
     <string name="checkmark">Yapıldı işareti</string>
     <string name="best_streaks">En iyi seriler</string>
     <string name="every_day">Her gün</string>
     <string name="every_week">Her hafta</string>
-    <string name="help">Yardım &amp; SSS</string>
     <string name="could_not_export">Dışarı veri aktarımı başarısız.</string>
     <string name="could_not_import">İçeri veri aktarımı başarısız.</string>
     <string name="file_not_recognized">Dosya tanınamadı.</string>
@@ -124,7 +115,6 @@
     <string name="bug_report_failed">Hata raporu oluşturulamadı.</string>
     <string name="generate_bug_report">Hata raporu oluştur</string>
     <string name="troubleshooting">Sorun Giderme</string>
-    <string name="help_translate">Bu uygulamanın çevirisinde yardım et</string>
     <string name="night_mode">Gece modu</string>
     <string name="use_pure_black">Gece modunda saf siyah kullan</string>
     <string name="pure_black_description">Gece modunda gri arkaplanı saf siyah ile değiştirir. AMOLED ekranlı cihazlarda pil kullanımını azaltır.</string>
@@ -178,8 +168,6 @@
     <string name="no">Hayır</string>
     <string name="customize_notification_summary">Ses, titreşim, ışık ve diğer bildirim ayarlarını değiştir</string>
     <string name="customize_notification">Bildirimleri özelleştir</string>
-    <string name="pref_view_privacy">Gizlilik politikasını görüntüle</string>
-    <string name="view_all_contributors">Katkıda bulunanları görüntüle&#8230;</string>
     <string name="database">Veritabanı</string>
     <string name="widget_opacity_title">Widget saydamlığı</string>
     <string name="widget_opacity_description">Ana ekrandaki widget\'ları daha saydam veya daha opak hâle getir.</string>
@@ -212,7 +200,6 @@
     <string name="pref_skip_description">Gün atlamak için ikinci kez işaretleme yapın. Atlanmış günler puanınızı etkilemez ve serinizi bozmaz.</string>
     <string name="pref_unknown_title">Eksik verileri soru işaretiyle göster</string>
     <string name="pref_unknown_description">Eksik verilerle boş günleri ayırt etmenizde yardımcı olur. Boş gün girmek için iki kere işaretleme yapın.</string>
-    <string name="you_are_now_a_developer">Artık bir geliştiricisin</string>
     <string name="activity_not_found">Bu işlemi gerçekleştirebilecek bir uygulama bulunamadı.</string>
     <string name="pref_midnight_delay_title">Yeni günü gece yarısından birkaç saat sonra başlat</string>
     <string name="pref_midnight_delay_description">Yeni gün saat 03:00\'ten sonra başlar. Geç saatlerde uyuyanlar için kullanışlıdır. Uygulamanın yeniden başlatılmasını gerektirir.</string>

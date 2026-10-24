@@ -82,10 +82,6 @@
     <string name="interval_custom">Настроить...</string>
     <string name="pref_toggle_title">Отмечать коротким нажатием</string>
     <string name="pref_toggle_description_2">Галочки в одно касание вместо нажатия и удержания</string>
-    <string name="pref_rate_this_app">Оценить приложение в Google Play</string>
-    <string name="pref_send_feedback">Отправить сообщение разработчику</string>
-    <string name="pref_view_source_code">Посмотреть исходный код на GitHub</string>
-    <string name="links">Ссылки</string>
     <string name="name">Название</string>
     <string name="settings">Настройки</string>
     <string name="select_snooze_delay">Задержка повтора</string>
@@ -114,16 +110,11 @@
     <string name="clear_label">Очистить</string>
     <string name="select_hours">Выберите часы</string>
     <string name="select_minutes">Выберите минуты</string>
-    <string name="about">О приложении</string>
-    <string name="translators">Переводчики</string>
-    <string name="developers">Разработчики</string>
-    <string name="version_n">Версия %s</string>
     <string name="frequency">Частота</string>
     <string name="checkmark">Галочка</string>
     <string name="best_streaks">Лучшие серии</string>
     <string name="every_day">Каждый день</string>
     <string name="every_week">Каждую неделю</string>
-    <string name="help">Помощь и FAQ</string>
     <string name="could_not_export">Ошибка экспорта данных.</string>
     <string name="could_not_import">Ошибка импорта данных.</string>
     <string name="file_not_recognized">Невозможно определить тип файла.</string>
@@ -138,7 +129,6 @@
     <string name="bug_report_failed">Ошибка генерации отчёта об ошибке.</string>
     <string name="generate_bug_report">Сгенерировать отчёт об ошибке</string>
     <string name="troubleshooting">Устранение неполадок</string>
-    <string name="help_translate">Помогите перевести это приложение</string>
     <string name="night_mode">Ночной режим</string>
     <string name="use_pure_black">Использовать подлинный чёрный в ночном режиме</string>
     <string name="pure_black_description">Заменяет серый фон на подлинный чёрный в ночном режиме. Сокращает расход батареи в телефонах с дисплеем AMOLED.</string>
@@ -192,8 +182,6 @@
     <string name="no">Нет</string>
     <string name="customize_notification_summary">Настройка параметров уведомлений: звук, вибрация, свет и др.</string>
     <string name="customize_notification">Настройка уведомлений</string>
-    <string name="pref_view_privacy">Посмотреть политику конфиденциальности</string>
-    <string name="view_all_contributors">Посмотреть всех участников&#8230;</string>
     <string name="database">База данных</string>
     <string name="widget_opacity_title">Непрозрачность виджета</string>
     <string name="widget_opacity_description">Делает виджеты более прозрачными или непрозрачными на главном экране.</string>
@@ -226,7 +214,6 @@
     <string name="pref_skip_description">Переключите дважды, чтобы добавить пропуск вместо галочки. Пропуски сохраняют ваш результат неизменным и не прерывают серию.</string>
     <string name="pref_unknown_title">Показывать вопросительные знаки при отсутствии данных</string>
     <string name="pref_unknown_description">Отличать дни без данных от фактических пропусков. Чтобы ввести пропуск, переключите дважды.</string>
-    <string name="you_are_now_a_developer">Теперь вы разработчик</string>
     <string name="activity_not_found">Не найдено приложения для обработки данного действия</string>
     <string name="pref_midnight_delay_title">Продлить день на несколько часов после полуночи</string>
     <string name="pref_midnight_delay_description">Подождать до 3:00 перед показом нового дня. Полезно, если вы обычно ложитесь спать после полуночи. Требуется перезапуск приложения.</string>

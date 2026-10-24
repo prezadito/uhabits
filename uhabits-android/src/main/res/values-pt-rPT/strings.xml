@@ -56,10 +56,6 @@
     <string name="interval_always_ask">Perguntar sempre</string>
     <string name="interval_custom">Personalizar...</string>
     <string name="pref_toggle_title">Toque para alternar entre repetições</string>
-    <string name="pref_rate_this_app">Avaliar a app no Google Play</string>
-    <string name="pref_send_feedback">Enviar feedback ao programador</string>
-    <string name="pref_view_source_code">Ver código-fonte no GitHub</string>
-    <string name="links">Hiperligações</string>
     <string name="name">Nome</string>
     <string name="settings">Definições</string>
     <string name="select_snooze_delay">Definir tempo de suspensão</string>
@@ -76,16 +72,11 @@
     <string name="clear_label">Limpar</string>
     <string name="select_hours">Selecionar horas</string>
     <string name="select_minutes">Selecionar minutos</string>
-    <string name="about">Sobre</string>
-    <string name="translators">Tradutores</string>
-    <string name="developers">Programadores</string>
-    <string name="version_n">Versão %s</string>
     <string name="frequency">Frequência</string>
     <string name="checkmark">Marca</string>
     <string name="best_streaks">Melhores séries</string>
     <string name="every_day">Todos os dias</string>
     <string name="every_week">Todas as semanas</string>
-    <string name="help">Ajuda &amp; FAQ</string>
     <string name="could_not_export">Falha ao exportar dados.</string>
     <string name="could_not_import">Falha ao importar dados.</string>
     <string name="file_not_recognized">Ficheiro não reconhecido.</string>
@@ -98,7 +89,6 @@
     <string name="bug_report_failed">Falha a gerar relatório de erros.</string>
     <string name="generate_bug_report">Gerar relatório de erros</string>
     <string name="troubleshooting">Resolução de problemas</string>
-    <string name="help_translate">Ajude a traduzir esta aplicação</string>
     <string name="night_mode">Modo noturno</string>
     <string name="use_pure_black">Usar preto puro no modo noturno</string>
     <string name="pure_black_description">Substitui os fundos cinzentos por pretos puros no modo noturno. Reduz a utilização da bateria em telemóveis com ecrã AMOLED.</string>
@@ -148,8 +138,6 @@
     <string name="no">Não</string>
     <string name="customize_notification_summary">Alterar som, vibração, luz e outras configurações de notificação</string>
     <string name="customize_notification">Personalizar notificações</string>
-    <string name="pref_view_privacy">Ver política de privacidade</string>
-    <string name="view_all_contributors">Ver todos os colaboradores&#8230;</string>
     <string name="database">Banco de dados</string>
     <string name="widget_opacity_title">Opacidade do widget</string>
     <string name="widget_opacity_description">Torna os widgets mais transparentes ou mais opacos na sua tela inicial.</string>
@@ -174,7 +162,6 @@
     <string name="enter">Registar</string>
     <string name="increment">Acrescentar</string>
     <string name="decrement">Decrementar</string>
-    <string name="you_are_now_a_developer">Agora é um programador!</string>
     <string name="activity_not_found">Nenhuma aplicação foi encontrada para oferecer suporte a esta ação</string>
     <string name="select_public_backup_folder">Selecionar pasta pública de cópia de segurança</string>
     <string name="no_public_backup_folder_selected">Nenhuma pasta selecionada</string>

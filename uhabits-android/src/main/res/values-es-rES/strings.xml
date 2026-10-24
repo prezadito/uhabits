@@ -74,10 +74,6 @@
     <string name="interval_custom">Personalizar...</string>
     <string name="pref_toggle_title">Marca las repeticiones con una pulsación corta</string>
     <string name="pref_toggle_description_2">Ponga marcas de verificación con un solo toque en lugar de mantener presionado.</string>
-    <string name="pref_rate_this_app">Califica esta aplicación en Google Play</string>
-    <string name="pref_send_feedback">Enviar sugerencias al desarrollador</string>
-    <string name="pref_view_source_code">Ver código fuente en GitHub</string>
-    <string name="links">Enlaces</string>
     <string name="name">Nombre</string>
     <string name="settings">Configuración</string>
     <string name="select_snooze_delay">Seleccione el retardo de la interrupción</string>
@@ -102,16 +98,11 @@
     <string name="clear_label">Quitar</string>
     <string name="select_hours">Seleccionar horas</string>
     <string name="select_minutes">Seleccionar minutos</string>
-    <string name="about">Acerca de</string>
-    <string name="translators">Traductores</string>
-    <string name="developers">Desarrolladores</string>
-    <string name="version_n">Versión %s</string>
     <string name="frequency">Frecuencia</string>
     <string name="checkmark">Marca de verificación</string>
     <string name="best_streaks">Mejores rachas</string>
     <string name="every_day">Diariamente</string>
     <string name="every_week">Semanalmente</string>
-    <string name="help">Ayuda &amp; Preguntas frecuentes</string>
     <string name="could_not_export">Error al exportar datos.</string>
     <string name="could_not_import">Error al importar datos.</string>
     <string name="file_not_recognized">Archivo no reconocido.</string>
@@ -124,7 +115,6 @@
     <string name="bug_report_failed">Error al generar el reporte de error.</string>
     <string name="generate_bug_report">Generar informe de bug</string>
     <string name="troubleshooting">Solución de problemas</string>
-    <string name="help_translate">Ayuda a traducir esta aplicación</string>
     <string name="night_mode">Modo nocturno</string>
     <string name="use_pure_black">Utilizar color negro en modo nocturno</string>
     <string name="pure_black_description">Reemplaza fondos grises por color negro en modo nocturno. Reduce el consumo de batería en teléfonos con pantalla AMOLED.</string>
@@ -178,8 +168,6 @@
     <string name="no">No</string>
     <string name="customize_notification_summary">Cambiar sonido, vibración, luz y otros ajustes de notificación</string>
     <string name="customize_notification">Personalizar las notificaciones</string>
-    <string name="pref_view_privacy">Ver política de privacidad</string>
-    <string name="view_all_contributors">Ver todos los colaboradores&#8230;</string>
     <string name="database">Base de datos</string>
     <string name="widget_opacity_title">Opacidad del widget</string>
     <string name="widget_opacity_description">Hace que los widgets sean más transparentes u opacos en la pantalla de inicio.</string>
@@ -212,7 +200,6 @@
     <string name="pref_skip_description">Presionar dos veces para agregar un salto en lugar de una marca de verificación. Los saltos mantienen tu puntaje sin cambios y no rompen tu racha.</string>
     <string name="pref_unknown_title">Mostrar signos de interrogación para datos faltantes</string>
     <string name="pref_unknown_description">Diferenciar los días sin datos de los lapsos reales. Para ingresar un lapso, presionar dos veces.</string>
-    <string name="you_are_now_a_developer">Ahora eres desarrollador</string>
     <string name="activity_not_found">No se encontró ninguna aplicación que admita esta acción</string>
     <string name="pref_midnight_delay_title">Ampliar día unas horas después de medianoche</string>
     <string name="pref_midnight_delay_description">Esperar hasta las 3:00 AM para mostrar un nuevo día. Útil si normalmente vas a dormir después de medianoche. Requiere reiniciar la aplicación.</string>

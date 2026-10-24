@@ -74,10 +74,6 @@
     <string name="interval_custom">سفارشی‌سازی </string>
     <string name="pref_toggle_title">با اشاره‌ی کوتاه‌مدت وضعیت عادت را تغییر بده</string>
     <string name="pref_toggle_description_2">به جای فشار دادن و نگه‌داشتن، با یک ضربه تیک بزنید.</string>
-    <string name="pref_rate_this_app">به این برنامه در گوگل‌پلی امتیاز بدهید </string>
-    <string name="pref_send_feedback">ارسال بازخورد به توسعه‌دهنده</string>
-    <string name="pref_view_source_code">دیدن منبع برنامه در گیت‌هاب </string>
-    <string name="links">پیوند‌ها</string>
     <string name="name">نام</string>
     <string name="settings">تنظیمات</string>
     <string name="select_snooze_delay">تأخیر تعویق را انتخاب کنید </string>
@@ -102,16 +98,11 @@
     <string name="clear_label">پاک کردن</string>
     <string name="select_hours">انتخاب ساعت </string>
     <string name="select_minutes">انتخاب دقیقه </string>
-    <string name="about">درباره</string>
-    <string name="translators">مترجمان </string>
-    <string name="developers">توسعه‌دهندگان</string>
-    <string name="version_n">نسخه %s </string>
     <string name="frequency">تناوب‌</string>
     <string name="checkmark">علامت </string>
     <string name="best_streaks">بهترین استمرار </string>
     <string name="every_day">هر روز </string>
     <string name="every_week">هر هفته </string>
-    <string name="help">راهنما و سوالات متداول </string>
     <string name="could_not_export">خطا در خروجی گرفتن از دیتا.</string>
     <string name="could_not_import">خطا در وارد کردن دیتا.</string>
     <string name="file_not_recognized">فایل شناخته شده نیست.</string>
@@ -124,7 +115,6 @@
     <string name="bug_report_failed">خطایی در تولید گزارش مشکلات بوجود آمد.</string>
     <string name="generate_bug_report">ایجاد گزارش مشکلات</string>
     <string name="troubleshooting">ایرادیابی</string>
-    <string name="help_translate">کمک برای ترجمه این برنامه</string>
     <string name="night_mode">حالت تیره</string>
     <string name="use_pure_black">استفاده از رنگ سیاه خالص در حالت تیره</string>
     <string name="pure_black_description">جایگزینی پس‌زمینه خاکستری با سیاه خالص در حالت تیره. استفاده از باتری را در گوشی‌های با صفحه نمایش AMOLED کاهش می‌دهد.</string>
@@ -178,8 +168,6 @@
     <string name="no">نه</string>
     <string name="customize_notification_summary">صدا، لرزش، نور و سایر تنظیمات را تغییر دهید</string>
     <string name="customize_notification">اعلان‌ها را سفارشی‌سازی کنید</string>
-    <string name="pref_view_privacy">مشاهده سیاست حفظ حریم خصوصی</string>
-    <string name="view_all_contributors">مشاهده همه همکاران&#8230;</string>
     <string name="database">دیتابیس</string>
     <string name="widget_opacity_title">تیرگی ویجت</string>
     <string name="widget_opacity_description">ویجت‌ها را در صفحه اصلی شفاف‌تر یا مات‌تر می‌کند.</string>
@@ -212,7 +200,6 @@
     <string name="pref_skip_description">دو بار تپ کنید تا به جای تیک زدن، از آن روز بپرید. پریدن از یک روز، امتیاز شما را دست‌نخورده نگه‌می‌دارد و استمرار عادت را خراب نمی‌کند.</string>
     <string name="pref_unknown_title">نمایش علامت سوال برای مواردی که دیتایی وجود ندارد</string>
     <string name="pref_unknown_description">روزهایی که دیتا ندارند و آن‌هایی که از رویشان پریده‌اید را متفاوت نشان می‌دهد. برای پریدن از روی یک روز، دو بار روی آن تپ کنید.</string>
-    <string name="you_are_now_a_developer">شما اکنون یک توسعه‌دهنده هستید</string>
     <string name="activity_not_found">هیچ برنامه‌ای برای انجام این کار یافت نشد.</string>
     <string name="pref_midnight_delay_title">تمدید کردن روز تا چند ساعت بعد از نیمه‌شب</string>
     <string name="pref_midnight_delay_description">تا ساعت ۳ نیمه‌شب برای نمایش یک روز جدید صبر می‌کند. اگر معمولاً بعد از نیمه‌شب می‌خوابید، برای شما می‌تواند مفید باشد. نیازمند راه‌اندازی مجدد برنامه است.</string>

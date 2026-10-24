@@ -72,10 +72,6 @@
     <string name="interval_always_ask">Uvijek pitaj</string>
     <string name="interval_custom">Prilagođeno …</string>
     <string name="pref_toggle_title">Označi ponavljanja sa kratkim pritisk.</string>
-    <string name="pref_rate_this_app">Ocijeni ovu aplikaciju na Google Playu</string>
-    <string name="pref_send_feedback">Pošalji povratne informacije raz. programeru</string>
-    <string name="pref_view_source_code">Pogledaj izvorni kod na GitHubu</string>
-    <string name="links">Poveznice</string>
     <string name="name">Naziv</string>
     <string name="settings">Postavke</string>
     <string name="select_snooze_delay">Odaberi vrijeme odgode</string>
@@ -92,16 +88,11 @@
     <string name="clear_label">Očisti</string>
     <string name="select_hours">Odaberi sate</string>
     <string name="select_minutes">Odaberite minute</string>
-    <string name="about">O aplikaciji</string>
-    <string name="translators">Prevoditelji</string>
-    <string name="developers">Razvojni programeri</string>
-    <string name="version_n">Verzija %s</string>
     <string name="frequency">Učestalost</string>
     <string name="checkmark">Kvačica</string>
     <string name="best_streaks">Najbolji nizovi</string>
     <string name="every_day">Svaki dan</string>
     <string name="every_week">Svaki tjedan</string>
-    <string name="help">Pomoć i pitanja</string>
     <string name="could_not_export">Izvoz podataka nije uspio.</string>
     <string name="could_not_import">Uvoz podataka nije uspio.</string>
     <string name="file_not_recognized">Datoteka nije prepoznata.</string>
@@ -114,7 +105,6 @@
     <string name="bug_report_failed">Generiranje izvješća o pogrešci nije uspjelo.</string>
     <string name="generate_bug_report">Generiraj izvješće o pogreški</string>
     <string name="troubleshooting">Rješavanje problema</string>
-    <string name="help_translate">Pomozi prevesti ovu aplikaciju</string>
     <string name="night_mode">Noćni način</string>
     <string name="use_pure_black">Koristi crnu boju za noćni način</string>
     <string name="pure_black_description">Zamjenjuje sivu pozadinu sa crnom u noćnom načinu. To smanjuje potrošnju bateriju na uređajima s AMOLED zaslonima.</string>
@@ -168,8 +158,6 @@
     <string name="no">Ne</string>
     <string name="customize_notification_summary">Postavi zvuk, vibraciju, svjetlo i druge postavke obavijesti</string>
     <string name="customize_notification">Prilagodi obavijesti</string>
-    <string name="pref_view_privacy">Prikaži pravila o privatnosti</string>
-    <string name="view_all_contributors">Pregledaj sve suradnike&#8230;</string>
     <string name="database">Baza podataka</string>
     <string name="widget_opacity_title">Prozirnost widgeta</string>
     <string name="widget_opacity_description">Povećava ili smanjuje prozirnost widgeta na početnom zaslonu.</string>

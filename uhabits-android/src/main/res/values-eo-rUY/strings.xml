@@ -56,10 +56,6 @@
     <string name="interval_always_ask">Ĉiam demandu</string>
     <string name="interval_custom">Kutimo</string>
     <string name="pref_toggle_title">Ŝalti per mallonga gazetaro</string>
-    <string name="pref_rate_this_app">Taksu ĉi tiun aplikaĵon en Google Play</string>
-    <string name="pref_send_feedback">Sendu reagojn al programisto</string>
-    <string name="pref_view_source_code">Vidu fontkodon ĉe GitHub</string>
-    <string name="links">Ligilo</string>
     <string name="name">Nomo</string>
     <string name="settings">Agordoj</string>
     <string name="select_snooze_delay">Elektu dormetigas prokrasti</string>
@@ -76,16 +72,11 @@
     <string name="clear_label">Liberigi</string>
     <string name="select_hours">Elekti horojn</string>
     <string name="select_minutes">Elekti minutojn</string>
-    <string name="about">Pri programo</string>
-    <string name="translators">Tradukantoj</string>
-    <string name="developers">Evoluigantoj</string>
-    <string name="version_n">Versio %s</string>
     <string name="frequency">Frekvenco</string>
     <string name="checkmark">Markobutono</string>
     <string name="best_streaks">Plej bonaj strioj</string>
     <string name="every_day">Ĉiu tago</string>
     <string name="every_week">Ĉiu semajno</string>
-    <string name="help">Helpo &amp; Ofte Demandite</string>
     <string name="could_not_export">Malsukcesis eksporti datumojn.</string>
     <string name="could_not_import">Malsukcesis importi datumojn.</string>
     <string name="file_not_recognized">Dosiero ne rekonita.</string>
@@ -98,7 +89,6 @@
     <string name="bug_report_failed">Malsukcesis generi raporton pri eraroj.</string>
     <string name="generate_bug_report">Generu raporton pri eraroj</string>
     <string name="troubleshooting">Problemserĉado</string>
-    <string name="help_translate">Helpu traduki ĉi tiun aplikon</string>
     <string name="night_mode">Nokta reĝimo</string>
     <string name="use_pure_black">Uzu puran nigron en malhela temo</string>
     <string name="pure_black_description">Anstataŭigas grizajn fonojn per pura nigra en malhela temo. Reduktas baterian uzon en telefonoj kun AMOLED-ekrano.</string>
@@ -146,8 +136,6 @@
     <string name="no">Ne</string>
     <string name="customize_notification_summary">Ŝanĝu sonon, vibron, lumon kaj aliajn sciigajn agordojn</string>
     <string name="customize_notification">Adaptitaj sciigoj</string>
-    <string name="pref_view_privacy">Vidu privatecan politikon</string>
-    <string name="view_all_contributors">Rigardi ĉiujn kontribuantojn&#8230;</string>
     <string name="database">Datumbazo</string>
     <string name="select_public_backup_folder">Elektu publikan sekurkopi-dosierujon</string>
     <string name="no_public_backup_folder_selected">Neniu dosierujo elektita</string>

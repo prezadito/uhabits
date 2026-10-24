@@ -74,10 +74,6 @@
     <string name="interval_custom">Personnaliser...</string>
     <string name="pref_toggle_title">Valider l\'habitude avec un appui court</string>
     <string name="pref_toggle_description_2">Cochez les cases d\'un simple appui au lieu de les maintenir</string>
-    <string name="pref_rate_this_app">Notez cette app sur le Google Play Store</string>
-    <string name="pref_send_feedback">Envoyez un avis au développeur</string>
-    <string name="pref_view_source_code">Voir le code source sur GitHub</string>
-    <string name="links">Liens</string>
     <string name="name">Nom</string>
     <string name="settings">Paramètres</string>
     <string name="select_snooze_delay">Définir le délai de répétition</string>
@@ -102,16 +98,11 @@
     <string name="clear_label">Supprimer</string>
     <string name="select_hours">Sélectionner les heures</string>
     <string name="select_minutes">Sélectionner les minutes</string>
-    <string name="about">À propos</string>
-    <string name="translators">Traducteurs</string>
-    <string name="developers">Développeurs</string>
-    <string name="version_n">Version %s</string>
     <string name="frequency">Fréquence</string>
     <string name="checkmark">Case à cocher</string>
     <string name="best_streaks">Meilleures séries</string>
     <string name="every_day">Tous les jours</string>
     <string name="every_week">Toutes les semaines</string>
-    <string name="help">Aide &amp; FAQ</string>
     <string name="could_not_export">Export des données échoué.</string>
     <string name="could_not_import">Import des données échoué.</string>
     <string name="file_not_recognized">Fichier non reconnu</string>
@@ -124,7 +115,6 @@
     <string name="bug_report_failed">La génération du rapport de bug a échouée.</string>
     <string name="generate_bug_report">Générer un rapport de bug.</string>
     <string name="troubleshooting">Résolution de problèmes</string>
-    <string name="help_translate">Aider à traduire cette application</string>
     <string name="night_mode">Mode Nuit</string>
     <string name="use_pure_black">Utiliser un noir pur dans le mode nuit</string>
     <string name="pure_black_description">Remplace le fond gris par un noir pur dans le mode nuit ; cela réduit l’usage de la batterie des appareils ayant un écran AMOLED.</string>
@@ -178,8 +168,6 @@
     <string name="no">Non</string>
     <string name="customize_notification_summary">Modifier le son, les vibrations, la lumière et d\'autres paramètres de notification</string>
     <string name="customize_notification">Personnaliser les notifications</string>
-    <string name="pref_view_privacy">Voir la politique de confidentialité</string>
-    <string name="view_all_contributors">Voir tous les contributeurs&#8230;</string>
     <string name="database">Base de données</string>
     <string name="widget_opacity_title">Opacité des widgets</string>
     <string name="widget_opacity_description">Rend les widgets plus transparents ou plus opaques sur votre écran d\'accueil.</string>
@@ -213,7 +201,6 @@ Combien de pages avez-vous lu ?</string>
     <string name="pref_skip_description">Appuyer deux fois pour passer un jour au lieu de valider. Passer des jours ne change pas votre score et ne brise pas votre série.</string>
     <string name="pref_unknown_title">Afficher des points d\'interrogations pour les données manquantes</string>
     <string name="pref_unknown_description">Différentié les jours sans donnée des jours sans avoir fait les habitudes. Pour passer un jour, appuyez deux fois longtemps au lieu d\'une seul fois.</string>
-    <string name="you_are_now_a_developer">Vous êtes désormais un développeur !</string>
     <string name="activity_not_found">Aucune application trouvée pour faire cette action</string>
     <string name="pref_midnight_delay_title">Prolonger les jours de quelques heures après minuit </string>
     <string name="pref_midnight_delay_description">Attendre jusqu\'à trois heures du matin pour changer de jour. Très utile si vous avez l\'habitude d\'aller dormir après minuit. (Redémarrage nécessaire)</string>

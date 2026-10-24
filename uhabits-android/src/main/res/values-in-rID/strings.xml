@@ -70,10 +70,6 @@
     <string name="interval_custom">Kustom...</string>
     <string name="pref_toggle_title">Tandai dengan cepat</string>
     <string name="pref_toggle_description_2">Beri tanda centang dengan satu ketukan alih-alih tekan-dan-tahan.</string>
-    <string name="pref_rate_this_app">Berikan rating aplikasi ini di Google Play</string>
-    <string name="pref_send_feedback">Kirimkan umpan balik kepada Developer</string>
-    <string name="pref_view_source_code">Lihat kode program di GitHub</string>
-    <string name="links">Tautan</string>
     <string name="name">Nama</string>
     <string name="settings">Pengaturan</string>
     <string name="select_snooze_delay">Pilih jeda penundaan</string>
@@ -100,10 +96,6 @@
         <item>@string/hint_drag</item>
         <item>@string/hint_landscape</item>
     </string-array>
-    <string name="about">Tentang</string>
-    <string name="translators">Penerjemah</string>
-    <string name="developers">Developer</string>
-    <string name="version_n">Versi %s</string>
     <string name="frequency">Frekuensi</string>
     <string name="checkmark">Tanda centang</string>
     <string name="checkmark_stack_widget" formatted="false">Widget susunan tanda centang</string>
@@ -114,7 +106,6 @@
     <string name="best_streaks">Rentetan terbaik</string>
     <string name="every_day">Setiap hari</string>
     <string name="every_week">Setiap minggu</string>
-    <string name="help">Bantuan &amp; FAQ</string>
     <string name="could_not_export">Gagal mengekspor data.</string>
     <string name="could_not_import">Gagal mengimpor data.</string>
     <string name="file_not_recognized">File tidak dikenali.</string>
@@ -127,7 +118,6 @@
     <string name="bug_report_failed">Gagal membuat laporan masalah.</string>
     <string name="generate_bug_report">Membuat laporan masalah</string>
     <string name="troubleshooting">Troubleshoot</string>
-    <string name="help_translate">Bantu menerjemahkan aplikasi ini</string>
     <string name="night_mode">Mode malam</string>
     <string name="use_pure_black">Gunakan warna hitam pekat pada mode malam</string>
     <string name="pure_black_description">Ganti warna latar abu-abu dengan warna hitam pada mode malam. Mengurangi penggunaan baterai pada layar AMOLED.</string>
@@ -181,8 +171,6 @@
     <string name="no">Tidak</string>
     <string name="customize_notification_summary">Ubah suara, getaran, cahaya, dan pengaturan notifikasi lainnya</string>
     <string name="customize_notification">Sesuaikan notifikasi</string>
-    <string name="pref_view_privacy">Lihat Kebijakan Privasi</string>
-    <string name="view_all_contributors">Lihat semua kontributor</string>
     <string name="database">Basis data</string>
     <string name="widget_opacity_title">Opasitas widget</string>
     <string name="widget_opacity_description">Menjadikan widget lebih transparan atau lebih pekat di layar berandamu.</string>
@@ -215,7 +203,6 @@
     <string name="pref_skip_description">Alihkan dua kali untuk menambahkan sebuah skip, bukannya tanda centang. Skip membuat skormu tidak berubah dan tidak merusak rentetanmu.</string>
     <string name="pref_unknown_title">Tampilkan tanda tanya untuk data yang hilang</string>
     <string name="pref_unknown_description">Membedakan hari tanpa data dari selang waktu yang aktual. Untuk memasukkan selang waktu, alihkan dua kali.</string>
-    <string name="you_are_now_a_developer">Kamu sekarang adalah seorang developer</string>
     <string name="activity_not_found">Aplikasi untuk mendukung tindakan ini tidak ditemukan</string>
     <string name="pref_midnight_delay_title">Perpanjang hari beberapa jam setelah tengah malam</string>
     <string name="pref_midnight_delay_description">Tunggu sampai jam 3 pagi untuk menampilkan hari yang baru. Berguna jika kamu biasanya tidur setelah tengah malam. Aplikasi perlu dimulai ulang.</string>

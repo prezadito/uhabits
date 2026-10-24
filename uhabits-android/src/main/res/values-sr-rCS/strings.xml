@@ -77,10 +77,6 @@
     <string name="interval_always_ask">Uvek pitaj</string>
     <string name="interval_custom">Prilagođeno...</string>
     <string name="pref_toggle_title">Menjaj stanje dodirom</string>
-    <string name="pref_rate_this_app">Oceni aplikaciju</string>
-    <string name="pref_send_feedback">Povratne informacije</string>
-    <string name="pref_view_source_code">Izvorni kôd na Githabu</string>
-    <string name="links">Veze</string>
     <string name="name">Naziv</string>
     <string name="settings">Postavke</string>
     <string name="select_snooze_delay">Izaberite vreme odlaganja</string>
@@ -107,16 +103,11 @@
     <string name="clear_label">Očisti</string>
     <string name="select_hours">Izbor časova</string>
     <string name="select_minutes">Izbor minuta</string>
-    <string name="about">O programu</string>
-    <string name="translators">Prevodioci</string>
-    <string name="developers">Programeri</string>
-    <string name="version_n">verzija %s</string>
     <string name="frequency">Učestalost</string>
     <string name="checkmark">Kvačica</string>
     <string name="best_streaks">Najbolji nizovi</string>
     <string name="every_day">svakog dana</string>
     <string name="every_week">svake nedelje</string>
-    <string name="help">Pomoć i ČPP</string>
     <string name="could_not_export">Ne mogu da izvezem podatke.</string>
     <string name="could_not_import">Ne mogu da uvezem podatke.</string>
     <string name="file_not_recognized">Fajl nije prepoznat.</string>
@@ -129,7 +120,6 @@
     <string name="bug_report_failed">Ne mogu da napravim izveštaj o grešci.</string>
     <string name="generate_bug_report">Napravi izveštaj o grešci</string>
     <string name="troubleshooting">Rešavanje problema</string>
-    <string name="help_translate">Pomozite prevođenje</string>
     <string name="night_mode">Tamna tema</string>
     <string name="use_pure_black">Čista crna u tamnoj temi</string>
     <string name="pure_black_description">Menja sivu pozadinu sa čistom crnom u tamnoj temi. Smanjuje potrošnju baterije kod telefona sa AMOLED ekranom.</string>
@@ -178,8 +168,6 @@
     <string name="no">Ne</string>
     <string name="customize_notification_summary">Menjajte zvuk, vibraciju, svetlo i druge postavke obaveštavanja</string>
     <string name="customize_notification">Prilagodite obaveštenja</string>
-    <string name="pref_view_privacy">Prikaz politike privatnosti</string>
-    <string name="view_all_contributors">prikaži sve saradnike&#8230;</string>
     <string name="database">Baza podataka</string>
     <string name="widget_opacity_title">Prozirnost vidžeta</string>
     <string name="widget_opacity_description">Menja prozirnost vidžeta na početnom ekranu.</string>
@@ -211,7 +199,6 @@
     <string name="pref_skip_description">Dvaput promenite da biste preskočili umesto otkačinjanja. Preskakanje zadržava rezultat nepromenjenim i ne prekida niz.</string>
     <string name="pref_unknown_title">Prikaz upitnika gde nema podataka</string>
     <string name="pref_unknown_description">Razlikuje dane bez podataka sa stvarnim propuštanjem. Za preskok, potvrdite dva puta.</string>
-    <string name="you_are_now_a_developer">Postali ste programer</string>
     <string name="activity_not_found">Nema aplikacije koja podržava ovu radnju</string>
     <string name="pref_midnight_delay_title">Produžite dan nekoliko sati iza ponoći</string>
     <string name="pref_midnight_delay_description">Čeka do 03:00 da pokaže novi dan. Korisno ako obično idete na spavanje posle ponoći. Zahteva ponovno pokretanje.</string>

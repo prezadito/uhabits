@@ -161,35 +161,6 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-            android:key="linksCategory"
-            android:title="@string/links">
-
-        <Preference
-                android:title="@string/help"
-                app:iconSpaceReserved="false">
-            <intent
-                    android:action="android.intent.action.VIEW"
-                    android:data="@string/helpURL" />
-        </Preference>
-
-        <Preference
-                android:key="rateApp"
-                android:title="@string/pref_rate_this_app"
-                app:iconSpaceReserved="false">
-        </Preference>
-
-        <Preference
-                android:title="@string/about"
-                app:iconSpaceReserved="false">
-            <intent
-                    android:action="android.intent.action.VIEW"
-                    android:targetClass="org.isoron.uhabits.activities.about.AboutActivity"
-                    android:targetPackage="org.isoron.uhabits" />
-        </Preference>
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
             android:key="devCategory"
             android:title="Development">
 

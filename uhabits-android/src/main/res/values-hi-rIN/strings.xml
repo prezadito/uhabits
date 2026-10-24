@@ -75,11 +75,6 @@
     <string name="interval_custom">अपने तरीके से बनाएं</string>
     <string name="pref_toggle_title">टॉगल पुनरावृत्ति  हल्का दबाने से</string>
     <string name="pref_toggle_description_2">प्रेस-एंड-होल्ड के बजाय एक टैप से चेकमार्क लगाएं।</string>
-    <string name="pref_rate_this_app">\"
-गूगले प्ले पर इस ऐप्लिकेशन को रेट करें\"</string>
-    <string name="pref_send_feedback">डेवेलपर को प्रतिक्रिया भेजें </string>
-    <string name="pref_view_source_code">Github मे सोर्स कोड देखें</string>
-    <string name="links">लिंक</string>
     <string name="name">नाम</string>
     <string name="settings">सेटिंग्स</string>
     <string name="select_snooze_delay">स्नूज़ देरी का चयन करें</string>
@@ -110,13 +105,6 @@
 साफ़\"</string>
     <string name="select_hours">घंटे चुनें</string>
     <string name="select_minutes">मिनट चुनें</string>
-    <string name="about">\"
-बारे में\"</string>
-    <string name="translators">\"
-अनुवादक\"</string>
-    <string name="developers">\"
-डिवेलपर\"</string>
-    <string name="version_n">वर्ज़न %s</string>
     <string name="frequency">आवृत्ति</string>
     <string name="checkmark">सही का चिह्न</string>
     <string name="best_streaks">बेस्ट स्ट्रीक्स</string>
@@ -124,8 +112,6 @@
 हर दिन\"</string>
     <string name="every_week">\"
 प्रति सप्ताह\"</string>
-    <string name="help">\"
-मदद और बार-बार सवाल पूछने वाले सवाल\"</string>
     <string name="could_not_export">\"
 डेटा निर्यात करने में विफल\"</string>
     <string name="could_not_import">डेटा आयात करने में विफल रहा है</string>
@@ -144,8 +130,6 @@
     <string name="generate_bug_report">बग रिपोर्ट जनरेट करें</string>
     <string name="troubleshooting">\"
 समस्या निवारण\"</string>
-    <string name="help_translate">\"
-इस एप्लिकेशन का अनुवाद करने में मदद करें\"</string>
     <string name="night_mode">नाइट मोड</string>
     <string name="use_pure_black">नाइट मोड मे पूरा काला यूज़ करें</string>
     <string name="pure_black_description">\"
@@ -204,8 +188,6 @@
     <string name="no">नहीं</string>
     <string name="customize_notification_summary">ध्वनि, कंपन, प्रकाश और अन्य अधिसूचना सेटिंग्स बदलें</string>
     <string name="customize_notification">सूचनाएं कस्टमाइज़ करें</string>
-    <string name="pref_view_privacy">गोपनीयता नीति देखें</string>
-    <string name="view_all_contributors">सभी योगदानकर्ता देखें&#8230;</string>
     <string name="database">डेटाबेस</string>
     <string name="widget_opacity_title">विजेट अपारदर्शिता</string>
     <string name="widget_opacity_description">आपके होम स्क्रीन में अधिक पारदर्शी या अधिक अपारदर्शी बनाता है।</string>
@@ -240,7 +222,6 @@
     <string name="pref_skip_description">चेकमार्क के बजाय स्किप जोड़ने के लिए दो बार टॉगल करें। स्किप आपके स्कोर को जारी रखते हैं और आपकी स्ट्रीक को नहीं तोड़ते हैं।</string>
     <string name="pref_unknown_title">खोयी जानकारी के लिए प्रश्न चिह्न दिखाएं</string>
     <string name="pref_unknown_description">वास्तविक चूकों और बिना जानकारीवाले दिनों में अंतर करें। चूक दर्ज करने के लिए, दो बार टॉगल करें।</string>
-    <string name="you_are_now_a_developer">अब आप एक विकसक हैं</string>
     <string name="activity_not_found">इस कार्रवाई को संभालने के लिए कोई ऐप नहीं मिला</string>
     <string name="pref_midnight_delay_title">मध्यरात्रि से कुछ घंटे बाद तक दिन बढ़ाएँ</string>
     <string name="pref_midnight_delay_description">नया दिन दिखाने के लिए सुबह 3:00 बजे तक प्रतीक्षा करें। उपयोगी अगर आप आमतौर पर आधी रात के बाद सोने जाते हैं। ऐप पुनरारंभ की आवश्यकता होगी।</string>

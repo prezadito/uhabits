@@ -74,10 +74,6 @@
     <string name="interval_custom">Benutzerdefiniert...</string>
     <string name="pref_toggle_title">Markierung durch kurzes Tippen ändern</string>
     <string name="pref_toggle_description_2">Häkchen durch einfaches Antippen setzen, anstatt durch Drücken und Halten.</string>
-    <string name="pref_rate_this_app">Bewerte diese App auf Google Play</string>
-    <string name="pref_send_feedback">Sende dem Entwickler Feedback</string>
-    <string name="pref_view_source_code">Zeige den Quellcode auf GitHub</string>
-    <string name="links">Links</string>
     <string name="name">Name</string>
     <string name="settings">Einstellungen</string>
     <string name="select_snooze_delay">Schlummer-Intervall auswählen</string>
@@ -102,16 +98,11 @@
     <string name="clear_label">Löschen</string>
     <string name="select_hours">Stunden auswählen</string>
     <string name="select_minutes">Minuten auswählen</string>
-    <string name="about">Über Loop</string>
-    <string name="translators">Übersetzer</string>
-    <string name="developers">Entwickler</string>
-    <string name="version_n">Version %s</string>
     <string name="frequency">Häufigkeit</string>
     <string name="checkmark">Häkchen</string>
     <string name="best_streaks">Beste Serien</string>
     <string name="every_day">Jeden Tag</string>
     <string name="every_week">Jede Woche</string>
-    <string name="help">Hilfe &amp; FAQ</string>
     <string name="could_not_export">Fehler beim Exportieren der Daten.</string>
     <string name="could_not_import">Fehler beim Importieren der Daten.</string>
     <string name="file_not_recognized">Datei nicht erkannt.</string>
@@ -124,7 +115,6 @@
     <string name="bug_report_failed">Fehler beim Erstellen eines Fehlerberichts.</string>
     <string name="generate_bug_report">Erstelle einen Fehlerbericht</string>
     <string name="troubleshooting">Fehlerbehebung</string>
-    <string name="help_translate">Hilf mit, diese App zu übersetzen</string>
     <string name="night_mode">Nachtmodus</string>
     <string name="use_pure_black">Verwende reines Schwarz im Nachtmodus</string>
     <string name="pure_black_description">Ersetzt im Nachtmodus das Grau des Hintergrunds durch Schwarz. Reduziert den Stromverbrauch von Smartphones mit AMOLED Displays.</string>
@@ -178,8 +168,6 @@
     <string name="no">Nein</string>
     <string name="customize_notification_summary">Töne, Vibrationen, Licht und weitere Einstellungen ändern</string>
     <string name="customize_notification">Benachrichtigungen anpassen</string>
-    <string name="pref_view_privacy">Datenschutzrichtlinie anzeigen</string>
-    <string name="view_all_contributors">Alle Mitwirkende anzeigen&#8230;</string>
     <string name="database">Datenbank</string>
     <string name="widget_opacity_title">Widget Deckkraft</string>
     <string name="widget_opacity_description">Stellt die Durchsichtigkeit des Hintergrundes der Widgets auf dem Startbildschirm ein.</string>
@@ -212,7 +200,6 @@
     <string name="pref_skip_description">Zwei mal markieren, um eine Lücke einzutragen statt abzuhaken. Lücken lassen deine Wertung unverändert und beenden deine Serie nicht.</string>
     <string name="pref_unknown_title">Fragezeichen für fehlende Daten anzeigen</string>
     <string name="pref_unknown_description">Tage ohne Daten von tatsächlichen Lücken unterscheiden. Um eine Lücke einzutragen zweimal markieren.</string>
-    <string name="you_are_now_a_developer">Du bist nun ein Entwickler</string>
     <string name="activity_not_found">Für diese Aktion wurde keine App gefunden.</string>
     <string name="pref_midnight_delay_title">Verlängere den Tag um ein paar Stunden nach Mitternacht</string>
     <string name="pref_midnight_delay_description">Bis 3:00 Uhr warten, bevor ein neuer Tag angezeigt wird. Nützlich, wenn du normalerweise nach Mitternacht schlafen gehst. Benötigt einen Neustart der App.</string>
