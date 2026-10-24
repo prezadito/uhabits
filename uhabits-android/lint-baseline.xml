@@ -5160,9 +5160,9 @@
 
     <issue
         id="IconLocation"
-        message="Found bitmap drawable `res/drawable/intro_icon_4.png` in densityless folder">
+        message="Found bitmap drawable `res/drawable/intro_icon_5.png` in densityless folder">
         <location
-            file="src/main/res/drawable/intro_icon_4.png"/>
+            file="src/main/res/drawable/intro_icon_5.png"/>
     </issue>
 
     <issue
