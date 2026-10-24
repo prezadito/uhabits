@@ -68,7 +68,7 @@ class NoteEditorActivity : AppCompatActivity() {
         binding = ActivityNoteEditorBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.topBar.applyToolbarInsets()
-        binding.note.applyBottomInset()
+        binding.root.applyBottomInset()
         applyColors(themeSwitcher)
 
         val javaDate = java.time.LocalDate.of(date.year, date.month, date.day)
