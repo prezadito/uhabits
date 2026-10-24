@@ -74,7 +74,8 @@ object QuitSlipDialogs {
         isToday: Boolean,
         onAdd: () -> Unit,
         onEdit: (timestamp: Long) -> Unit,
-        onDelete: (timestamp: Long) -> Unit
+        onDelete: (timestamp: Long) -> Unit,
+        onEditNotes: (() -> Unit)? = null
     ) {
         val times = slips.map { formatSlipTime(activity, it) }.toTypedArray()
         val title = activity.getString(
@@ -90,6 +91,9 @@ object QuitSlipDialogs {
                 onAdd()
             }
             .setNegativeButton(android.R.string.cancel, null)
+            .apply {
+                if (onEditNotes != null) setNeutralButton(R.string.note) { _, _ -> onEditNotes() }
+            }
             .create()
             .dismissCurrentAndShow()
     }

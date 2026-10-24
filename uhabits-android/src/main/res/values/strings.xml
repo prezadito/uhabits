@@ -52,6 +52,10 @@
     <string name="overview">Overview</string>
     <string name="journal">Journal</string>
     <string name="add_note">Add note</string>
+    <string name="edit_note">Edit note</string>
+    <string name="delete_note">Delete note</string>
+    <string name="note">Note</string>
+    <string name="back">Back</string>
     <string name="journal_empty">No notes yet. Tap + to add one.</string>
     <string name="habit_strength">Habit strength</string>
     <string name="history">History</string>
@@ -244,6 +248,7 @@
     <string name="every_month">Every month</string>
     <string name="validation_cannot_be_blank">Cannot be blank</string>
     <string name="today">Today</string>
+    <string name="title_today">Today, %1$s</string>
     <string name="enter">Enter</string>
     <string name="no_habits">No habits found</string>
     <string name="no_numerical_habits">No measurable habits found</string>

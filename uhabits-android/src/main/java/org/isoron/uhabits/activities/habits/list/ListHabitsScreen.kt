@@ -294,20 +294,8 @@ class ListHabitsScreen(
         dialog.dismissCurrentAndShow(fm, "checkmarkDialog")
     }
 
-    override fun showSlipNotesPopup(
-        notes: String,
-        color: PaletteColor,
-        callback: (notes: String) -> Unit
-    ) {
-        val theme = rootView.value.currentTheme()
-        val dialog = CheckmarkDialog()
-        dialog.arguments = Bundle().apply {
-            putInt("color", theme.color(color).toInt())
-            putString("notes", notes)
-            putBoolean("notesOnly", true)
-        }
-        dialog.onToggle = { _, n -> callback(n) }
-        dialog.dismissCurrentAndShow(activity.supportFragmentManager, "checkmarkDialog")
+    override fun showNoteEditor(habit: Habit, date: LocalDate) {
+        activity.startActivity(intentFactory.startNoteEditorActivity(activity, habit, date))
     }
 
     override fun showSlipTimePicker(
@@ -328,9 +316,10 @@ class ListHabitsScreen(
         isToday: Boolean,
         onAdd: () -> Unit,
         onEdit: (timestamp: Long) -> Unit,
-        onDelete: (timestamp: Long) -> Unit
+        onDelete: (timestamp: Long) -> Unit,
+        onEditNotes: (() -> Unit)?
     ) {
-        QuitSlipDialogs.showSlipList(activity, date, slips, isToday, onAdd, onEdit, onDelete)
+        QuitSlipDialogs.showSlipList(activity, date, slips, isToday, onAdd, onEdit, onDelete, onEditNotes)
     }
 
     private fun getExecuteString(command: Command): String? {

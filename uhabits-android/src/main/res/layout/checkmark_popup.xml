@@ -26,23 +26,9 @@
     android:background="@drawable/checkmark_dialog_bg"
     android:clipToOutline="true"
     android:minWidth="208dp"
-    android:minHeight="128dp"
     android:orientation="vertical"
     app:divider="@drawable/checkmark_dialog_divider"
     app:showDividers="middle">
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/notes"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@color/transparent"
-        android:gravity="center"
-        android:hint="@string/notes"
-        android:inputType="textCapSentences|textMultiLine"
-        android:padding="4dp"
-        android:text=""
-        android:textSize="@dimen/smallTextSize" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/booleanButtons"
@@ -72,6 +58,11 @@
             android:id="@+id/unknownBtn"
             style="@style/CheckmarkPopupBtn"
             android:text="@string/fa_question" />
+
+        <ImageView
+            android:id="@+id/notesBtn"
+            style="@style/NotesPopupBtn"
+            android:contentDescription="@string/edit_note" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -108,5 +99,10 @@
             android:id="@+id/unknownBtnNumber"
             style="@style/CheckmarkPopupBtn"
             android:text="@string/fa_question" />
+
+        <ImageView
+            android:id="@+id/notesBtnNumber"
+            style="@style/NotesPopupBtn"
+            android:contentDescription="@string/edit_note" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.appcompat.widget.LinearLayoutCompat>

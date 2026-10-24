@@ -72,6 +72,12 @@ class NumberPanelView(
             setupButtons()
         }
 
+    var showNotesDot = false
+        set(value) {
+            field = value
+            setupButtons()
+        }
+
     var notes = arrayOf<String>()
         set(values) {
             field = values
@@ -101,6 +107,7 @@ class NumberPanelView(
                 else -> ""
             }
             button.colors = colors
+            button.showNotesDot = showNotesDot
             button.date = date
             button.targetType = targetType
             button.threshold = threshold

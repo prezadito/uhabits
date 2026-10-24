@@ -18,9 +18,15 @@
  */
 package org.isoron.uhabits.acceptance
 
+import androidx.test.espresso.Espresso
+import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.assertion.ViewAssertions
+import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
+import androidx.test.uiautomator.By
 import org.isoron.uhabits.BaseUserInterfaceTest
+import org.isoron.uhabits.BaseUserInterfaceTest.Companion.device
 import org.isoron.uhabits.R
 import org.isoron.uhabits.acceptance.steps.CommonSteps.Screen.EDIT_HABIT
 import org.isoron.uhabits.acceptance.steps.CommonSteps.Screen.LIST_HABITS
@@ -50,7 +56,10 @@ import org.isoron.uhabits.acceptance.steps.ListHabitsSteps.MenuItem.TOGGLE_ARCHI
 import org.isoron.uhabits.acceptance.steps.ListHabitsSteps.MenuItem.TOGGLE_COMPLETED
 import org.isoron.uhabits.acceptance.steps.ListHabitsSteps.MenuItem.UNARCHIVE
 import org.isoron.uhabits.acceptance.steps.ListHabitsSteps.clickMenu
+import org.isoron.uhabits.acceptance.steps.ListHabitsSteps.clickNotesButton
 import org.isoron.uhabits.acceptance.steps.ListHabitsSteps.longPressCheckmarks
+import org.isoron.uhabits.core.preferences.HomeViewMode
+import org.junit.Assert.assertNull
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -186,6 +195,64 @@ class HabitsTest : BaseUserInterfaceTest() {
         // TODO: find a better way than sleeping in tests
         Thread.sleep(2001L)
         verifyContentDescriptionContains(R.id.scoreRing, "10%")
+    }
+
+    @Test
+    @Throws(Exception::class)
+    fun shouldNotShowNotesButtonInWeeklyView() {
+        launchApp()
+        verifyShowsScreen(LIST_HABITS)
+        assertNull(device.findObject(By.descContains("Add note")))
+    }
+
+    @Test
+    @Throws(Exception::class)
+    fun shouldAddAndDeleteNoteFromNotesButton() {
+        prefs.homeViewMode = HomeViewMode.MONTHLY
+        launchApp()
+        verifyShowsScreen(LIST_HABITS)
+        clickNotesButton("Wake up early", "Add note")
+        Espresso.onView(ViewMatchers.withId(R.id.note)).perform(ViewActions.typeText("Felt great"))
+        Espresso.closeSoftKeyboard()
+        pressBack()
+        verifyShowsScreen(LIST_HABITS)
+        clickNotesButton("Wake up early", "Edit note")
+        Espresso.onView(ViewMatchers.withId(R.id.note)).check(ViewAssertions.matches(ViewMatchers.withText("Felt great")))
+        Espresso.onView(ViewMatchers.withId(R.id.delete)).perform(ViewActions.click())
+        device.waitForIdle()
+        verifyShowsScreen(LIST_HABITS)
+        clickNotesButton("Wake up early", "Add note")
+        Espresso.onView(ViewMatchers.withId(R.id.note)).check(ViewAssertions.matches(ViewMatchers.withText("")))
+    }
+
+    @Test
+    @Throws(Exception::class)
+    fun shouldAddNoteFromHistoryDialog() {
+        prefs.isShortToggleEnabled = false
+        launchApp()
+        verifyShowsScreen(LIST_HABITS)
+        clickText("Wake up early")
+        verifyShowsScreen(SHOW_HABIT)
+        Espresso.onView(ViewMatchers.withId(R.id.edit)).perform(ViewActions.scrollTo(), ViewActions.click())
+        device.waitForIdle()
+
+        // Today is the bottom-right square of the history editor.
+        clickTodayInHistoryEditor()
+        Espresso.onView(ViewMatchers.withId(R.id.notesBtn)).perform(ViewActions.click())
+        device.waitForIdle()
+        Espresso.onView(ViewMatchers.withId(R.id.note)).perform(ViewActions.typeText("From history"))
+        Espresso.closeSoftKeyboard()
+        pressBack()
+
+        clickTodayInHistoryEditor()
+        Espresso.onView(ViewMatchers.withId(R.id.notesBtn)).perform(ViewActions.click())
+        device.waitForIdle()
+        Espresso.onView(ViewMatchers.withId(R.id.note)).check(ViewAssertions.matches(ViewMatchers.withText("From history")))
+    }
+
+    private fun clickTodayInHistoryEditor() {
+        device.click((device.displayWidth * 0.785).toInt(), (device.displayHeight * 0.697).toInt())
+        device.waitForIdle()
     }
 
     @Test

@@ -23,10 +23,8 @@ import org.isoron.platform.time.getLocalNow
 import org.isoron.platform.time.getToday
 import org.isoron.uhabits.core.commands.AddSlipCommand
 import org.isoron.uhabits.core.commands.CommandRunner
-import org.isoron.uhabits.core.commands.CreateRepetitionCommand
 import org.isoron.uhabits.core.commands.DeleteSlipCommand
 import org.isoron.uhabits.core.commands.EditSlipCommand
-import org.isoron.uhabits.core.models.Entry
 import org.isoron.uhabits.core.models.Habit
 import org.isoron.uhabits.core.models.HabitList
 import org.isoron.uhabits.core.models.PaletteColor
@@ -44,7 +42,7 @@ class QuitSlipBehavior(
     private val commandRunner: CommandRunner,
     private val screen: Screen
 ) {
-    fun onTap(habit: Habit, date: LocalDate) {
+    fun onTap(habit: Habit, date: LocalDate, onEditNotes: (() -> Unit)? = null) {
         val slips = habit.slips.getByDate(date)
         if (slips.isEmpty()) {
             addSlip(habit, date)
@@ -59,19 +57,9 @@ class QuitSlipBehavior(
             onEdit = { timestamp -> editSlip(habit, date, timestamp) },
             onDelete = { timestamp ->
                 commandRunner.run(DeleteSlipCommand(habitList, habit, timestamp))
-            }
+            },
+            onEditNotes = onEditNotes
         )
-    }
-
-    /**
-     * Lets the user edit the notes of a day. Slips are only added or removed through [onTap], so
-     * the popup does not offer any value to choose from.
-     */
-    fun onEditNotes(habit: Habit, date: LocalDate) {
-        val notes = habit.computedEntries.get(date).notes
-        screen.showSlipNotesPopup(notes, habit.color) { newNotes ->
-            commandRunner.run(CreateRepetitionCommand(habitList, habit, date, Entry.UNKNOWN, newNotes))
-        }
     }
 
     private fun addSlip(habit: Habit, date: LocalDate) {
@@ -98,11 +86,6 @@ class QuitSlipBehavior(
 
     interface Screen {
         /**
-         * Asks the user for the notes of a day, without offering any value to choose from.
-         */
-        fun showSlipNotesPopup(notes: String, color: PaletteColor, callback: (notes: String) -> Unit)
-
-        /**
          * Asks the user at which time of the given day they slipped, starting at the given time.
          */
         fun showSlipTimePicker(
@@ -124,7 +107,8 @@ class QuitSlipBehavior(
             isToday: Boolean,
             onAdd: () -> Unit,
             onEdit: (timestamp: Long) -> Unit,
-            onDelete: (timestamp: Long) -> Unit
+            onDelete: (timestamp: Long) -> Unit,
+            onEditNotes: (() -> Unit)?
         )
     }
 }

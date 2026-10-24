@@ -221,13 +221,18 @@ class ListHabitsRootView(
         tbar.title = dateTitle(offset)
     }
 
-    /** "Mon, Oct 19" in the language of the device, for the day [offset] days before today. */
+    /**
+     * "Mon, Oct 19" in the language of the device, for the day [offset] days before today. Today
+     * itself reads "Today, Oct 24".
+     */
     private fun dateTitle(offset: Int): String {
         val day = getToday().minus(offset)
         val date = LocalDate.of(day.year, day.month, day.day)
         val locale = Locale.getDefault()
-        val pattern = DateFormat.getBestDateTimePattern(locale, "EEEMMMd")
-        return java.time.format.DateTimeFormatter.ofPattern(pattern, locale).format(date)
+        val skeleton = if (offset == 0) "MMMd" else "EEEMMMd"
+        val pattern = DateFormat.getBestDateTimePattern(locale, skeleton)
+        val formatted = java.time.format.DateTimeFormatter.ofPattern(pattern, locale).format(date)
+        return if (offset == 0) context.getString(R.string.title_today, formatted) else formatted
     }
 
     override fun onModelChange() {

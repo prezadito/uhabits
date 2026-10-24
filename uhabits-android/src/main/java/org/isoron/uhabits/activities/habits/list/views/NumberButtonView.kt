@@ -108,6 +108,14 @@ class NumberButtonView(
             updateDescription()
             invalidate()
         }
+
+    /** Whether a dot marks the days that have notes, which the weekly view needs. */
+    var showNotesDot = false
+        set(value) {
+            field = value
+            invalidate()
+        }
+
     var notes = ""
         set(value) {
             field = value
@@ -167,7 +175,6 @@ class NumberButtonView(
 
     private inner class Drawer(context: Context) {
         private val tile = DayTilePainter(this@NumberButtonView)
-        private val pNotesIndicator = Paint()
 
         private val pUnit: TextPaint = TextPaint().apply {
             textSize = dim(R.dimen.ds_text_tile_unit)
@@ -212,7 +219,7 @@ class NumberButtonView(
                     drawNumber(canvas, if (recorded) value.toShortString() else "0", textColor)
                 }
             }
-            tile.notesDot(canvas, textColor, notes)
+            if (showNotesDot) tile.notesDot(canvas, textColor, notes)
         }
 
         /** Shrinks the number to fit inside the tile, down to a 9sp minimum. */

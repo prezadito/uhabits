@@ -40,8 +40,11 @@ class CheckmarkDialog : AppCompatDialogFragment() {
     var onToggle: (Int, String) -> Unit = { _, _ -> }
     var onDismiss: () -> Unit = {}
 
-    private var dismissedViaSaveAction = false
-    private var originalNotes: String = ""
+    /** When set, the dialog offers a button that opens the note editor for the same day. */
+    var onEditNotes: (() -> Unit)? = null
+
+    /** Notes are edited in the note editor, so they only travel through this dialog untouched. */
+    private var notes: String = ""
     private var originalValue: Int = 0
     private lateinit var view: CheckmarkPopupBinding
 
@@ -59,13 +62,22 @@ class CheckmarkDialog : AppCompatDialogFragment() {
         arrayOf(view.yesBtn, view.noBtn, view.skipBtn, view.unknownBtn).forEach {
             it.typeface = getFontAwesome(requireContext())
         }
-        originalNotes = requireArguments().getString("notes")!!
+        notes = requireArguments().getString("notes")!!
         originalValue = requireArguments().getInt("value")
-        view.notes.setText(originalNotes)
         if (!prefs.isSkipEnabled) view.skipBtn.visibility = GONE
         if (!prefs.areQuestionMarksEnabled) view.unknownBtn.visibility = GONE
-        // Quit habits only use this dialog for notes, since slips are edited separately.
-        view.booleanButtons.visibility = if (requireArguments().getBoolean("notesOnly")) GONE else VISIBLE
+        view.booleanButtons.visibility = VISIBLE
+        onEditNotes?.let { edit ->
+            view.notesBtn.apply {
+                visibility = VISIBLE
+                setImageResource(if (notes.isBlank()) R.drawable.ic_note_add else R.drawable.ic_note)
+                setColorFilter(view.root.sres.getColor(R.attr.dsInkMuted))
+                setOnClickListener {
+                    requireDialog().dismiss()
+                    edit()
+                }
+            }
+        }
         markSelected(originalValue)
         val dialog = Dialog(requireContext())
         dialog.setContentView(view.root)
@@ -73,8 +85,6 @@ class CheckmarkDialog : AppCompatDialogFragment() {
             setBackgroundDrawableResource(android.R.color.transparent)
         }
         fun onClick(v: Int) {
-            dismissedViaSaveAction = true
-            val notes = view.notes.text.toString().trim()
             onToggle(v, notes)
             requireDialog().dismiss()
         }
@@ -82,10 +92,6 @@ class CheckmarkDialog : AppCompatDialogFragment() {
         view.noBtn.setOnClickListener { onClick(NO) }
         view.skipBtn.setOnClickListener { onClick(SKIP) }
         view.unknownBtn.setOnClickListener { onClick(UNKNOWN) }
-        view.notes.setOnEditorActionListener { v, actionId, event ->
-            onClick(requireArguments().getInt("value"))
-            true
-        }
 
         return dialog
     }
@@ -105,13 +111,6 @@ class CheckmarkDialog : AppCompatDialogFragment() {
 
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
-
-        if (!dismissedViaSaveAction) {
-            val currentNotes = view.notes.text.toString().trim()
-            if (currentNotes != originalNotes) {
-                onToggle(originalValue, currentNotes)
-            }
-        }
         onDismiss()
     }
 }

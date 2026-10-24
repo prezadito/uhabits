@@ -91,19 +91,21 @@ class ListHabitsBehaviorTest : BaseUnitTest() {
     }
 
     @Test
-    fun testOnEdit_quitHabitOnlyEditsNotes() {
+    fun testOnEdit_quitHabitOpensNoteEditor() {
         val quit = fixtures.createQuitHabit()
         val date = getToday().minus(5)
-        var capturedNotes: ((String) -> Unit)? = null
-        every {
-            screen.showSlipNotesPopup(any(), any(), any())
-        } calls { args ->
-            capturedNotes = args.arg<(String) -> Unit>(2)
-            Unit
-        }
+        every { screen.showNoteEditor(any(), any()) } returns Unit
         behavior.onEdit(quit, date, 0f, 0f)
-        capturedNotes!!("Party")
-        assertEquals(Entry(date, Entry.NO, "Party"), quit.computedEntries.get(date))
+        verify { screen.showNoteEditor(quit, date) }
+        assertEquals(2, quit.slips.getByDate(date).size)
+    }
+
+    @Test
+    fun testOnEditNotes_opensNoteEditor() {
+        val date = getToday().minus(2)
+        every { screen.showNoteEditor(any(), any()) } returns Unit
+        behavior.onEditNotes(habit1, date)
+        verify { screen.showNoteEditor(habit1, date) }
     }
 
     @Test
@@ -111,11 +113,11 @@ class ListHabitsBehaviorTest : BaseUnitTest() {
         val quit = fixtures.createQuitHabit()
         val date = getToday().minus(5)
         every {
-            screen.showSlipList(any(), any(), any(), any(), any(), any(), any())
+            screen.showSlipList(any(), any(), any(), any(), any(), any(), any(), any())
         } returns Unit
         behavior.onToggle(quit, date, Entry.YES_MANUAL, "", 0f, 0f)
         verify {
-            screen.showSlipList(date, quit.slips.getByDate(date), any(), false, any(), any(), any())
+            screen.showSlipList(date, quit.slips.getByDate(date), any(), false, any(), any(), any(), null)
         }
         assertEquals(2, quit.slips.getByDate(date).size)
     }

@@ -178,6 +178,7 @@ class ShowHabitActivity : AppCompatActivity(), CommandRunner.Listener {
         override fun showNumberPopup(
             value: Double,
             notes: String,
+            onEditNotes: () -> Unit,
             callback: NumberPickerCallback
         ) {
             val dialog = NumberDialog()
@@ -186,6 +187,7 @@ class ShowHabitActivity : AppCompatActivity(), CommandRunner.Listener {
                 putString("notes", notes)
             }
             dialog.onToggle = { v, n -> callback.onNumberPicked(v, n) }
+            dialog.onEditNotes = onEditNotes
             dialog.dismissCurrentAndShow(supportFragmentManager, "numberDialog")
         }
 
@@ -193,6 +195,7 @@ class ShowHabitActivity : AppCompatActivity(), CommandRunner.Listener {
             selectedValue: Int,
             notes: String,
             color: PaletteColor,
+            onEditNotes: () -> Unit,
             callback: CheckMarkDialogCallback
         ) {
             val theme = view.currentTheme()
@@ -203,22 +206,12 @@ class ShowHabitActivity : AppCompatActivity(), CommandRunner.Listener {
                 putString("notes", notes)
             }
             dialog.onToggle = { v, n -> callback.onNotesSaved(v, n) }
+            dialog.onEditNotes = onEditNotes
             dialog.dismissCurrentAndShow(supportFragmentManager, "checkmarkDialog")
         }
 
-        override fun showSlipNotesPopup(
-            notes: String,
-            color: PaletteColor,
-            callback: (notes: String) -> Unit
-        ) {
-            val dialog = CheckmarkDialog()
-            dialog.arguments = Bundle().apply {
-                putInt("color", view.currentTheme().color(color).toInt())
-                putString("notes", notes)
-                putBoolean("notesOnly", true)
-            }
-            dialog.onToggle = { _, n -> callback(n) }
-            dialog.dismissCurrentAndShow(supportFragmentManager, "checkmarkDialog")
+        override fun showNoteEditor(date: LocalDate) {
+            startActivity(IntentFactory().startNoteEditorActivity(this@ShowHabitActivity, habit, date))
         }
 
         override fun showSlipTimePicker(
@@ -239,9 +232,19 @@ class ShowHabitActivity : AppCompatActivity(), CommandRunner.Listener {
             isToday: Boolean,
             onAdd: () -> Unit,
             onEdit: (timestamp: Long) -> Unit,
-            onDelete: (timestamp: Long) -> Unit
+            onDelete: (timestamp: Long) -> Unit,
+            onEditNotes: (() -> Unit)?
         ) {
-            QuitSlipDialogs.showSlipList(this@ShowHabitActivity, date, slips, isToday, onAdd, onEdit, onDelete)
+            QuitSlipDialogs.showSlipList(
+                this@ShowHabitActivity,
+                date,
+                slips,
+                isToday,
+                onAdd,
+                onEdit,
+                onDelete,
+                onEditNotes
+            )
         }
 
         private fun getPopupAnchor(): View? {

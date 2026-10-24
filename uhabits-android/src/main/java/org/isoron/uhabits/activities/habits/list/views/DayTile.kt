@@ -27,6 +27,8 @@ import android.graphics.RectF
 import android.graphics.Typeface
 import android.text.TextPaint
 import android.view.View
+import androidx.annotation.DrawableRes
+import androidx.appcompat.content.res.AppCompatResources
 import org.isoron.platform.gui.toInt
 import org.isoron.platform.time.LocalDate
 import org.isoron.uhabits.R
@@ -146,6 +148,24 @@ class DayTilePainter(private val view: View) {
 
     fun notesDot(canvas: Canvas, color: Int, notes: String) {
         view.drawNotesIndicator(paint, canvas, rect, color, notes)
+    }
+
+    /** Draws a 24dp vector icon, tinted with [color], centered on the tile. */
+    fun icon(canvas: Canvas, @DrawableRes id: Int, color: Int) {
+        val drawable = AppCompatResources.getDrawable(view.context, id)!!.mutate()
+        val half = view.dp(ICON_SIZE_DP) / 2
+        drawable.setBounds(
+            (rect.centerX() - half).toInt(),
+            (rect.centerY() - half).toInt(),
+            (rect.centerX() + half).toInt(),
+            (rect.centerY() + half).toInt()
+        )
+        drawable.setTint(color)
+        drawable.draw(canvas)
+    }
+
+    private companion object {
+        const val ICON_SIZE_DP = 20f
     }
 }
 

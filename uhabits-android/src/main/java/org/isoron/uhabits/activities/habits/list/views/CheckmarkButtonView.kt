@@ -22,7 +22,6 @@ package org.isoron.uhabits.activities.habits.list.views
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
-import android.graphics.Paint
 import android.view.HapticFeedbackConstants
 import android.view.View
 import android.view.View.MeasureSpec.EXACTLY
@@ -87,6 +86,13 @@ class CheckmarkButtonView(
         set(value) {
             field = value
             updateDescription()
+            invalidate()
+        }
+
+    /** Whether a dot marks the days that have notes, which the weekly view needs. */
+    var showNotesDot = false
+        set(value) {
+            field = value
             invalidate()
         }
 
@@ -168,7 +174,6 @@ class CheckmarkButtonView(
 
     private inner class Drawer {
         private val tile = DayTilePainter(this@CheckmarkButtonView)
-        private val pNotesIndicator = Paint()
 
         fun draw(canvas: Canvas) {
             tile.layout()
@@ -196,11 +201,11 @@ class CheckmarkButtonView(
                     tile.glyph(canvas, R.string.fa_question, 13f, tile.inkMuted)
                 }
             }
-            tile.notesDot(canvas, glyphColor(state), notes)
+            if (showNotesDot) tile.notesDot(canvas, glyphColor(state), notes)
         }
 
         private fun drawBlank(canvas: Canvas) {
-            tile.notesDot(canvas, colors.ink, notes)
+            if (showNotesDot) tile.notesDot(canvas, colors.ink, notes)
         }
 
         private fun glyphColor(state: State) = when (state) {

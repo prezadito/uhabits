@@ -165,7 +165,7 @@ class ShowHabitView(context: Context) : FrameLayout(context) {
         overview.scoreCard.setListener(presenter.scoreCardPresenter)
         overview.historyCard.setListener(presenter.historyCardPresenter)
         overview.barCard.setListener(presenter.barCardPresenter)
-        journal.journalAdd.setOnClickListener { presenter.historyCardPresenter.onEditEntry(getToday()) }
-        journalAdapter.onEntryClicked = { date: LocalDate -> presenter.historyCardPresenter.onEditEntry(date) }
+        journal.journalAdd.setOnClickListener { presenter.historyCardPresenter.onEditNotes(getToday()) }
+        journalAdapter.onEntryClicked = { date: LocalDate -> presenter.historyCardPresenter.onEditNotes(date) }
     }
 }

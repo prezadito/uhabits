@@ -90,6 +90,7 @@ class HabitCardView(
             field = value
             checkmarkPanel.dataOffset = value
             numberPanel.dataOffset = value
+            updateNotesButton()
         }
 
     var viewMode = HomeViewMode.WEEKLY
@@ -144,6 +145,7 @@ class HabitCardView(
         set(values) {
             checkmarkPanel.notes = values
             numberPanel.notes = values
+            updateNotesButton()
         }
 
     var checkmarkPanel: CheckmarkPanelView
@@ -155,6 +157,7 @@ class HabitCardView(
     private var scoreRing: RingView
     private var topRow: LinearLayout
     private var tileRow: FrameLayout
+    private var notesButton: NotesButtonView
     private var history: HabitHistoryView
 
     private var currentToggleTaskId = 0
@@ -202,12 +205,19 @@ class HabitCardView(
             addView(metaLabel)
         }
 
+        notesButton = NotesButtonView(context).apply {
+            onEdit = {
+                habit?.let { behavior.onEditNotes(it, getToday().minus(dataOffset)) }
+            }
+        }
+
         topRow = LinearLayout(context).apply {
             gravity = Gravity.CENTER_VERTICAL
             orientation = LinearLayout.HORIZONTAL
             layoutParams = LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
             addView(scoreRing)
             addView(labelContainer)
+            addView(notesButton)
         }
 
         checkmarkPanel = checkmarkPanelFactory.create().apply {
@@ -340,6 +350,12 @@ class HabitCardView(
         super.onDetachedFromWindow()
     }
 
+    /** The notes button always acts on the newest day shown in the panels. */
+    private fun updateNotesButton() {
+        notesButton.date = getToday().minus(dataOffset)
+        notesButton.notes = notes.getOrNull(dataOffset) ?: ""
+    }
+
     private fun scorePercent() = (score * 100).roundToInt()
 
     private fun copyAttributesFrom(h: Habit) {
@@ -358,6 +374,7 @@ class HabitCardView(
         updateRingGlyph(h)
         history.habit = h
         history.colors = tileColors
+        notesButton.colors = tileColors
         updateMeta(h)
         checkmarkPanel.apply {
             colors = tileColors
@@ -414,6 +431,11 @@ class HabitCardView(
             }
             innerFrame.addView(tileRow, innerFrame.indexOfChild(history))
         }
+        // The weekly view has no single day to attach a note to, so it only marks the days that
+        // have notes.
+        notesButton.visibility = if (viewMode.usesDayRow) VISIBLE else GONE
+        checkmarkPanel.showNotesDot = !viewMode.usesDayRow
+        numberPanel.showNotesDot = !viewMode.usesDayRow
         history.visibility = if (showsHistory) VISIBLE else GONE
         history.mode = viewMode
     }

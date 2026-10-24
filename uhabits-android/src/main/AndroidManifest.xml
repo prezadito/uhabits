@@ -65,6 +65,14 @@
         </activity-alias>
 
         <activity
+            android:name=".activities.habits.note.NoteEditorActivity"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.isoron.uhabits.activities.habits.list.ListHabitsActivity" />
+        </activity>
+
+        <activity
             android:name=".activities.habits.show.ShowHabitActivity"
             android:label="@string/title_activity_show_habit">
             <meta-data

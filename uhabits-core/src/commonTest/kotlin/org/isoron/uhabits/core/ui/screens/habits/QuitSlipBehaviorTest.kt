@@ -130,22 +130,21 @@ class QuitSlipBehaviorTest : BaseUnitTest() {
     }
 
     @Test
-    fun testEditNotes_onlyChangesNotes() {
+    fun testTapOnDayWithSlips_offersNotesWhenAsked() {
         val date = getToday().minus(5)
-        behavior.onEditNotes(habit, date)
-        assertEquals("", screen.notesPopupNotes)
-        screen.notesCallback!!("Party")
-        assertEquals("Party", habit.computedEntries.get(date).notes)
-        assertEquals(Entry.NO, habit.computedEntries.get(date).value)
-        assertEquals(2, habit.slips.getByDate(date).size)
+        var opened = false
+        behavior.onTap(habit, date) { opened = true }
+        screen.onEditNotes!!()
+        assertTrue(opened)
+    }
 
-        behavior.onEditNotes(habit, date)
-        assertEquals("Party", screen.notesPopupNotes)
+    @Test
+    fun testTapOnDayWithSlips_hasNoNotesActionByDefault() {
+        behavior.onTap(habit, getToday().minus(5))
+        assertNull(screen.onEditNotes)
     }
 
     class FakeScreen : QuitSlipBehavior.Screen {
-        var notesPopupNotes: String? = null
-        var notesCallback: ((String) -> Unit)? = null
         var pickerDate: LocalDate? = null
         var pickerInitial: Pair<Int, Int>? = null
         var pickerCallback: ((Int, Int) -> Unit)? = null
@@ -155,15 +154,7 @@ class QuitSlipBehaviorTest : BaseUnitTest() {
         var onAdd: (() -> Unit)? = null
         var onEdit: ((Long) -> Unit)? = null
         var onDelete: ((Long) -> Unit)? = null
-
-        override fun showSlipNotesPopup(
-            notes: String,
-            color: PaletteColor,
-            callback: (notes: String) -> Unit
-        ) {
-            notesPopupNotes = notes
-            notesCallback = callback
-        }
+        var onEditNotes: (() -> Unit)? = null
 
         override fun showSlipTimePicker(
             date: LocalDate,
@@ -184,8 +175,10 @@ class QuitSlipBehaviorTest : BaseUnitTest() {
             isToday: Boolean,
             onAdd: () -> Unit,
             onEdit: (timestamp: Long) -> Unit,
-            onDelete: (timestamp: Long) -> Unit
+            onDelete: (timestamp: Long) -> Unit,
+            onEditNotes: (() -> Unit)?
         ) {
+            this.onEditNotes = onEditNotes
             listDate = date
             listSlips = slips
             listIsToday = isToday
