@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+## [2.7.0-qol] -- 2026-10-24
+
+### Added
+
+- Four more habit colors: Brown, Sky, Mint and Rose. The color picker now has 16 colors in a 4x4 grid. A backup that uses the new colors cannot be restored in older versions, and a color this version does not know is shown as Graphite
+- A full-screen note editor, and a notes button on each habit row. In the Weekly view the button is hidden, because a row has several days; add notes for a day from the history calendar, whose day dialogs have a notes button next to the check mark and the cross
+- An "Organize your way" intro slide for categories and the home views, and a quit habit card on the "Build it or quit it" slide
+
 ### Changed
 
 - Generate bug report sends the log to the fork's maintainer instead of the original app's developer
