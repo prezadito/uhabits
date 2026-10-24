@@ -24,6 +24,7 @@ import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
+import androidx.test.uiautomator.UiSelector
 import org.isoron.uhabits.BaseUserInterfaceTest
 import org.isoron.uhabits.BaseUserInterfaceTest.Companion.device
 import org.isoron.uhabits.R
@@ -211,6 +212,36 @@ class HabitsTest : BaseUserInterfaceTest() {
         verifyShowsScreen(LIST_HABITS)
         clickNotesButton("Wake up early", "Add note")
         Espresso.onView(ViewMatchers.withId(R.id.note)).check(ViewAssertions.matches(ViewMatchers.withText("")))
+    }
+
+    @Test
+    @Throws(Exception::class)
+    fun shouldMoveNoteToPickedDate() {
+        launchApp()
+        verifyShowsScreen(LIST_HABITS)
+        clickNotesButton("Wake up early", "Add note")
+        Espresso.onView(ViewMatchers.withId(R.id.note)).perform(ViewActions.typeText("Moved note"))
+        Espresso.closeSoftKeyboard()
+        Espresso.onView(ViewMatchers.withId(R.id.date)).perform(ViewActions.click())
+        device.waitForIdle()
+        // The picker only offers days up to today, so the 1st of the month is always valid.
+        device.findObject(UiSelector().text("1")).click()
+        device.findObject(UiSelector().text("OK")).click()
+        device.waitForIdle()
+        pressBack()
+        verifyShowsScreen(LIST_HABITS)
+
+        // Today no longer has a note.
+        clickNotesButton("Wake up early", "Add note")
+        Espresso.onView(ViewMatchers.withId(R.id.note)).check(ViewAssertions.matches(ViewMatchers.withText("")))
+
+        // Picking the day the note moved to opens that note.
+        Espresso.onView(ViewMatchers.withId(R.id.date)).perform(ViewActions.click())
+        device.waitForIdle()
+        device.findObject(UiSelector().text("1")).click()
+        device.findObject(UiSelector().text("OK")).click()
+        device.waitForIdle()
+        Espresso.onView(ViewMatchers.withId(R.id.note)).check(ViewAssertions.matches(ViewMatchers.withText("Moved note")))
     }
 
     @Test
