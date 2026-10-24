@@ -27,8 +27,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.ColorUtils
 import androidx.core.view.WindowCompat
 import androidx.core.widget.ImageViewCompat
+import androidx.core.widget.TextViewCompat
+import com.google.android.material.datepicker.CalendarConstraints
+import com.google.android.material.datepicker.DateValidatorPointBackward
+import com.google.android.material.datepicker.MaterialDatePicker
 import org.isoron.platform.gui.toInt
+import org.isoron.platform.time.DateUtils
 import org.isoron.platform.time.LocalDate
+import org.isoron.uhabits.R
 import org.isoron.uhabits.HabitsApplication
 import org.isoron.uhabits.activities.AndroidThemeSwitcher
 import org.isoron.uhabits.core.models.Habit
@@ -36,6 +42,7 @@ import org.isoron.uhabits.core.ui.screens.habits.NoteEditorBehavior
 import org.isoron.uhabits.databinding.ActivityNoteEditorBinding
 import org.isoron.uhabits.utils.applyBottomInset
 import org.isoron.uhabits.utils.applyToolbarInsets
+import org.isoron.uhabits.utils.dismissCurrentAndShow
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 
@@ -48,12 +55,13 @@ class NoteEditorActivity : AppCompatActivity() {
     private lateinit var habit: Habit
     private lateinit var date: LocalDate
     private lateinit var behavior: NoteEditorBehavior
+    private lateinit var themeSwitcher: AndroidThemeSwitcher
     private var deleted = false
 
     override fun onCreate(state: Bundle?) {
         super.onCreate(state)
         val component = (application as HabitsApplication).component
-        val themeSwitcher = AndroidThemeSwitcher(this, component.preferences)
+        themeSwitcher = AndroidThemeSwitcher(this, component.preferences)
         themeSwitcher.apply()
 
         val found = component.habitList.getById(intent.getLongExtra(EXTRA_HABIT_ID, -1))
@@ -62,7 +70,7 @@ class NoteEditorActivity : AppCompatActivity() {
             return
         }
         habit = found
-        date = LocalDate.fromUnixTime(intent.getLongExtra(EXTRA_DATE, 0))
+        date = LocalDate.fromUnixTime(state?.getLong(EXTRA_DATE) ?: intent.getLongExtra(EXTRA_DATE, 0))
         behavior = NoteEditorBehavior(component.habitList, component.commandRunner)
 
         binding = ActivityNoteEditorBinding.inflate(layoutInflater)
@@ -71,8 +79,8 @@ class NoteEditorActivity : AppCompatActivity() {
         binding.root.applyBottomInset()
         applyColors(themeSwitcher)
 
-        val javaDate = java.time.LocalDate.of(date.year, date.month, date.day)
-        binding.date.text = javaDate.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG))
+        updateDateLabel()
+        binding.date.setOnClickListener { showDatePicker() }
         if (state == null) binding.note.setText(behavior.getNotes(habit, date))
 
         binding.back.setOnClickListener { finish() }
@@ -90,6 +98,46 @@ class NoteEditorActivity : AppCompatActivity() {
         if (binding.note.text.isEmpty()) binding.note.requestFocus()
     }
 
+    private fun updateDateLabel() {
+        val javaDate = java.time.LocalDate.of(date.year, date.month, date.day)
+        binding.date.text = javaDate.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG))
+    }
+
+    private fun showDatePicker() {
+        // MaterialDatePicker works with UTC midnights, which matches LocalDate.unixTime.
+        val today = LocalDate.fromUnixTime(DateUtils.getLocalTime())
+        val constraints = CalendarConstraints.Builder()
+            .setEnd(today.unixTime)
+            .setValidator(DateValidatorPointBackward.before(today.unixTime))
+            .build()
+        val builder = MaterialDatePicker.Builder.datePicker()
+        // The dark themes use a near-black primary color, which would make the selected day, the
+        // header and the buttons unreadable.
+        if (themeSwitcher.isNightMode) builder.setTheme(R.style.DatePickerDark)
+        val picker = builder
+            .setSelection(date.unixTime)
+            .setCalendarConstraints(constraints)
+            .build()
+        picker.addOnPositiveButtonClickListener { selection -> onDatePicked(LocalDate.fromUnixTime(selection)) }
+        picker.dismissCurrentAndShow(supportFragmentManager, "noteDatePicker")
+    }
+
+    /**
+     * The text being edited moves to the picked day. When that day already has a note, the editor
+     * switches to it instead, so nothing is overwritten.
+     */
+    private fun onDatePicked(picked: LocalDate) {
+        if (picked == date) return
+        if (behavior.move(habit, date, picked)) {
+            date = picked
+        } else {
+            behavior.save(habit, date, binding.note.text.toString())
+            date = picked
+            binding.note.setText(behavior.getNotes(habit, date))
+        }
+        updateDateLabel()
+    }
+
     /** The habit's tint fills the screen, with black or white ink on top, whichever reads better. */
     private fun applyColors(themeSwitcher: AndroidThemeSwitcher) {
         val background = themeSwitcher.currentTheme.habitTint(habit.color).toInt()
@@ -105,8 +153,14 @@ class NoteEditorActivity : AppCompatActivity() {
         ImageViewCompat.setImageTintList(binding.back, ColorStateList.valueOf(ink))
         val muted = ColorUtils.setAlphaComponent(ink, MUTED_ALPHA)
         binding.date.setTextColor(muted)
+        TextViewCompat.setCompoundDrawableTintList(binding.date, ColorStateList.valueOf(muted))
         binding.note.setTextColor(ink)
         binding.note.setHintTextColor(muted)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        if (::date.isInitialized) outState.putLong(EXTRA_DATE, date.unixTime)
     }
 
     override fun onPause() {
