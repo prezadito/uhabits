@@ -18,8 +18,6 @@
  */
 package org.isoron.uhabits.acceptance.steps
 
-import android.os.Build
-import android.os.Build.VERSION.SDK_INT
 import androidx.annotation.IdRes
 import androidx.annotation.StringRes
 import androidx.recyclerview.widget.RecyclerView
@@ -145,17 +143,6 @@ object CommonSteps : BaseUserInterfaceTest() {
     fun verifyDoesNotDisplayText(text: String?) {
         Espresso.onView(ViewMatchers.withText(text)).check(ViewAssertions.doesNotExist())
         device.waitForIdle()
-    }
-
-    @Throws(Exception::class)
-    fun verifyOpensWebsite(url: String) {
-        var browserPkg = "org.chromium.webview_shell"
-        if (SDK_INT <= Build.VERSION_CODES.M) {
-            browserPkg = "com.android.browser"
-        }
-        assertTrue(device.wait(Until.hasObject(By.pkg(browserPkg)), 5000))
-        device.waitForIdle()
-        assertTrue(device.findObject(UiSelector().textContains(url)).exists())
     }
 
     fun verifyShowsScreen(screen: Screen?) {
