@@ -22,7 +22,6 @@ package org.isoron.uhabits.activities.habits.list.views
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
-import android.graphics.Paint
 import android.view.HapticFeedbackConstants
 import android.view.View
 import android.view.View.MeasureSpec.EXACTLY
@@ -168,11 +167,10 @@ class CheckmarkButtonView(
 
     private inner class Drawer {
         private val tile = DayTilePainter(this@CheckmarkButtonView)
-        private val pNotesIndicator = Paint()
 
         fun draw(canvas: Canvas) {
             tile.layout()
-            val state = resolveState() ?: return drawBlank(canvas)
+            val state = resolveState() ?: return
             when (state) {
                 State.DONE -> {
                     tile.fill(canvas, colors.fill)
@@ -196,17 +194,6 @@ class CheckmarkButtonView(
                     tile.glyph(canvas, R.string.fa_question, 13f, tile.inkMuted)
                 }
             }
-            tile.notesDot(canvas, glyphColor(state), notes)
-        }
-
-        private fun drawBlank(canvas: Canvas) {
-            tile.notesDot(canvas, colors.ink, notes)
-        }
-
-        private fun glyphColor(state: State) = when (state) {
-            State.DONE -> tile.onHabit
-            State.AUTO, State.SKIPPED -> colors.ink
-            else -> tile.inkMuted
         }
 
         /** Null when nothing is drawn (quit habits, days before the quit date). */

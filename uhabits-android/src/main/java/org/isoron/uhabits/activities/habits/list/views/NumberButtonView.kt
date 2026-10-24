@@ -167,7 +167,6 @@ class NumberButtonView(
 
     private inner class Drawer(context: Context) {
         private val tile = DayTilePainter(this@NumberButtonView)
-        private val pNotesIndicator = Paint()
 
         private val pUnit: TextPaint = TextPaint().apply {
             textSize = dim(R.dimen.ds_text_tile_unit)
@@ -212,7 +211,6 @@ class NumberButtonView(
                     drawNumber(canvas, if (recorded) value.toShortString() else "0", textColor)
                 }
             }
-            tile.notesDot(canvas, textColor, notes)
         }
 
         /** Shrinks the number to fit inside the tile, down to a 9sp minimum. */

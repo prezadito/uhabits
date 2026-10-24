@@ -29,8 +29,8 @@ class NumberDialog : AppCompatDialogFragment() {
     var onToggle: (Double, String) -> Unit = { _, _ -> }
     var onDismiss: () -> Unit = {}
 
-    private var dismissedViaSaveAction = false
-    private var originalNotes: String = ""
+    /** Notes are edited in the note editor, so they only travel through this dialog untouched. */
+    private var notes: String = ""
     private var originalValue: Double = 0.0
     private lateinit var view: CheckmarkPopupBinding
 
@@ -51,9 +51,8 @@ class NumberDialog : AppCompatDialogFragment() {
         if (!prefs.areQuestionMarksEnabled) view.unknownBtnNumber.visibility = View.GONE
         view.numberButtons.visibility = View.VISIBLE
         fixDecimalSeparator(view)
-        originalNotes = requireArguments().getString("notes")!!
+        notes = requireArguments().getString("notes")!!
         originalValue = requireArguments().getDouble("value")
-        view.notes.setText(originalNotes)
         view.value.setText(
             when {
                 originalValue < 0.01 -> "0"
@@ -80,10 +79,6 @@ class NumberDialog : AppCompatDialogFragment() {
             save()
         }
 
-        view.notes.setOnEditorActionListener { v, actionId, event ->
-            save()
-            true
-        }
         view.value.requestFocusWithKeyboard()
         val dialog = Dialog(requireContext())
         dialog.setContentView(view.root)
@@ -95,13 +90,6 @@ class NumberDialog : AppCompatDialogFragment() {
 
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
-
-        if (!dismissedViaSaveAction) {
-            val currentNotes = view.notes.text.toString().trim()
-            if (currentNotes != originalNotes) {
-                onToggle(originalValue, currentNotes)
-            }
-        }
         onDismiss()
     }
 
@@ -121,7 +109,6 @@ class NumberDialog : AppCompatDialogFragment() {
     }
 
     fun save() {
-        dismissedViaSaveAction = true
         var value = originalValue
         try {
             val numberFormat = NumberFormat.getInstance()
@@ -134,7 +121,6 @@ class NumberDialog : AppCompatDialogFragment() {
         } catch (e: ParseException) {
             // NOP
         }
-        val notes = view.notes.text.toString().trim()
         val location = view.saveBtn.getCenter()
         onToggle(value, notes)
         requireDialog().dismiss()

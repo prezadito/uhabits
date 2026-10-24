@@ -51,6 +51,6 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/ds_space_16"
         android:contentDescription="@string/add_note"
-        android:src="@drawable/ic_action_add_dark"
+        android:src="@drawable/ic_note_add"
         app:tint="@android:color/white" />
 </FrameLayout>

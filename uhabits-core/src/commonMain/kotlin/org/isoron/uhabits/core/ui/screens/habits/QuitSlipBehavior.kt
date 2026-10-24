@@ -23,10 +23,8 @@ import org.isoron.platform.time.getLocalNow
 import org.isoron.platform.time.getToday
 import org.isoron.uhabits.core.commands.AddSlipCommand
 import org.isoron.uhabits.core.commands.CommandRunner
-import org.isoron.uhabits.core.commands.CreateRepetitionCommand
 import org.isoron.uhabits.core.commands.DeleteSlipCommand
 import org.isoron.uhabits.core.commands.EditSlipCommand
-import org.isoron.uhabits.core.models.Entry
 import org.isoron.uhabits.core.models.Habit
 import org.isoron.uhabits.core.models.HabitList
 import org.isoron.uhabits.core.models.PaletteColor
@@ -63,17 +61,6 @@ class QuitSlipBehavior(
         )
     }
 
-    /**
-     * Lets the user edit the notes of a day. Slips are only added or removed through [onTap], so
-     * the popup does not offer any value to choose from.
-     */
-    fun onEditNotes(habit: Habit, date: LocalDate) {
-        val notes = habit.computedEntries.get(date).notes
-        screen.showSlipNotesPopup(notes, habit.color) { newNotes ->
-            commandRunner.run(CreateRepetitionCommand(habitList, habit, date, Entry.UNKNOWN, newNotes))
-        }
-    }
-
     private fun addSlip(habit: Habit, date: LocalDate) {
         val minuteOfDay = ((getLocalNow() % DAY_MILLIS) / MINUTE_MILLIS).toInt()
         screen.showSlipTimePicker(date, habit.color, minuteOfDay / 60, minuteOfDay % 60) { hour, minute ->
@@ -97,11 +84,6 @@ class QuitSlipBehavior(
     }
 
     interface Screen {
-        /**
-         * Asks the user for the notes of a day, without offering any value to choose from.
-         */
-        fun showSlipNotesPopup(notes: String, color: PaletteColor, callback: (notes: String) -> Unit)
-
         /**
          * Asks the user at which time of the given day they slipped, starting at the given time.
          */

@@ -23,7 +23,9 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import me.tatarka.inject.annotations.Inject
+import org.isoron.platform.time.LocalDate
 import org.isoron.uhabits.activities.habits.edit.EditHabitActivity
+import org.isoron.uhabits.activities.habits.note.NoteEditorActivity
 import org.isoron.uhabits.activities.habits.show.ShowHabitActivity
 import org.isoron.uhabits.activities.intro.IntroActivity
 import org.isoron.uhabits.activities.settings.SettingsActivity
@@ -46,6 +48,12 @@ class IntentFactory() {
     fun startShowHabitActivity(context: Context, habit: Habit) =
         Intent(context, ShowHabitActivity::class.java).apply {
             data = Uri.parse(habit.uriString)
+        }
+
+    fun startNoteEditorActivity(context: Context, habit: Habit, date: LocalDate) =
+        Intent(context, NoteEditorActivity::class.java).apply {
+            putExtra(NoteEditorActivity.EXTRA_HABIT_ID, habit.id)
+            putExtra(NoteEditorActivity.EXTRA_DATE, date.unixTime)
         }
 
     private fun startEditActivity(context: Context): Intent {

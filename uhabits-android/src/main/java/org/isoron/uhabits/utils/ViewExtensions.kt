@@ -23,11 +23,8 @@ import android.app.Activity
 import android.app.Dialog
 import android.content.ActivityNotFoundException
 import android.content.Intent
-import android.graphics.Canvas
 import android.graphics.Color
-import android.graphics.Paint
 import android.graphics.PointF
-import android.graphics.RectF
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Handler
@@ -244,22 +241,6 @@ fun View.dim(id: Int) = InterfaceUtils.getDimension(context, id)
 fun View.sp(value: Float) = InterfaceUtils.spToPixels(context, value)
 fun View.dp(value: Float) = InterfaceUtils.dpToPixels(context, value)
 fun View.str(id: Int) = resources.getString(id)
-
-/** Draws a 6dp dot, inset 4dp from the top-right corner of [tile]. */
-fun View.drawNotesIndicator(
-    pNotesIndicator: Paint,
-    canvas: Canvas,
-    tile: RectF,
-    color: Int,
-    notes: String
-) {
-    if (notes.isBlank()) return
-    val radius = dp(3f)
-    val inset = dp(4f)
-    pNotesIndicator.style = Paint.Style.FILL
-    pNotesIndicator.color = color
-    canvas.drawCircle(tile.right - inset - radius, tile.top + inset + radius, radius, pNotesIndicator)
-}
 
 val View.sres: StyledResources
     get() = StyledResources(context)

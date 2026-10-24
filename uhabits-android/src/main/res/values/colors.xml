@@ -49,4 +49,5 @@
         <item>#b9619e</item>
         <item>#7f7f7f</item>
     </array>
+    <color name="note_delete">#E05A47</color>
 </resources>

@@ -69,9 +69,7 @@ class HistoryCardPresenter(
     override fun onDateLongPress(date: LocalDate) {
         screen.showFeedback()
         if (habit.isQuit) {
-            // Tapping a day of a quit habit always adds or lists slips, so long presses are left
-            // for editing notes, regardless of the short toggle preference.
-            quitSlipBehavior.onEditNotes(habit, date)
+            quitSlipBehavior.onTap(habit, date)
         } else if (habit.isNumerical) {
             showNumberPopup(date)
         } else {
@@ -98,19 +96,10 @@ class HistoryCardPresenter(
         }
     }
 
-    /**
-     * Opens the editor that lets the user change the value and notes of the entry on the given
-     * date, regardless of the short-toggle preference.
-     */
-    fun onEditEntry(date: LocalDate) {
+    /** Opens the editor for the note of the given date, which never changes the entry's value. */
+    fun onEditNotes(date: LocalDate) {
         screen.showFeedback()
-        if (habit.isQuit) {
-            quitSlipBehavior.onEditNotes(habit, date)
-        } else if (habit.isNumerical) {
-            showNumberPopup(date)
-        } else {
-            showCheckmarkPopup(date)
-        }
+        screen.showNoteEditor(date)
     }
 
     private fun showCheckmarkPopup(date: LocalDate) {
@@ -233,6 +222,7 @@ class HistoryCardPresenter(
     interface Screen : QuitSlipBehavior.Screen {
         fun showHistoryEditorDialog(listener: OnDateClickedListener)
         fun showFeedback()
+        fun showNoteEditor(date: LocalDate)
         fun showNumberPopup(
             value: Double,
             notes: String,

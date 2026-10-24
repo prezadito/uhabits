@@ -58,7 +58,7 @@ open class ListHabitsBehavior(
 
     open fun onEdit(habit: Habit, date: LocalDate, x: Float, y: Float) {
         if (habit.isQuit) {
-            quitSlipBehavior.onEditNotes(habit, date)
+            quitSlipBehavior.onTap(habit, date)
             return
         }
         val entry = habit.computedEntries.get(date)
@@ -88,6 +88,11 @@ open class ListHabitsBehavior(
                 commandRunner.run(CreateRepetitionCommand(habitList, habit, date, newValue, newNotes))
             }
         }
+    }
+
+    /** Opens the editor for the note of the given day, which never changes the day's value. */
+    open fun onEditNotes(habit: Habit, date: LocalDate) {
+        screen.showNoteEditor(habit, date)
     }
 
     open fun onExportCSV() {
@@ -190,6 +195,7 @@ open class ListHabitsBehavior(
             color: PaletteColor,
             callback: CheckMarkDialogCallback
         )
+        fun showNoteEditor(habit: Habit, date: LocalDate)
         fun showSendBugReportToDeveloperScreen(log: String)
         fun showSendFileScreen(filename: String)
         fun showConfetti(color: PaletteColor, x: Float, y: Float)

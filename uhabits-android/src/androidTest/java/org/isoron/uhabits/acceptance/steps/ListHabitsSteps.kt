@@ -106,6 +106,23 @@ object ListHabitsSteps {
         }
     }
 
+    /** Opens the note editor of the given habit, using the notes button next to its checkmarks. */
+    fun clickNotesButton(habit: String, description: String) {
+        CommonSteps.scrollToText(habit)
+        Espresso.onView(
+            allOf(
+                ViewMatchers.withContentDescription(org.hamcrest.CoreMatchers.startsWith(description)),
+                ViewMatchers.isDescendantOfA(
+                    allOf(
+                        ViewMatchers.withClassName(endsWith("HabitCardView")),
+                        ViewMatchers.hasDescendant(ViewMatchers.withText(habit))
+                    )
+                )
+            )
+        ).perform(ViewActions.click())
+        device.waitForIdle()
+    }
+
     fun longPressCheckmarks(habit: String?, count: Int) {
         CommonSteps.scrollToText(habit)
         Espresso.onView(

@@ -90,6 +90,7 @@ class HabitCardView(
             field = value
             checkmarkPanel.dataOffset = value
             numberPanel.dataOffset = value
+            updateNotesButton()
         }
 
     var viewMode = HomeViewMode.WEEKLY
@@ -144,6 +145,7 @@ class HabitCardView(
         set(values) {
             checkmarkPanel.notes = values
             numberPanel.notes = values
+            updateNotesButton()
         }
 
     var checkmarkPanel: CheckmarkPanelView
@@ -154,7 +156,8 @@ class HabitCardView(
     private var labelContainer: LinearLayout
     private var scoreRing: RingView
     private var topRow: LinearLayout
-    private var tileRow: FrameLayout
+    private var tileRow: LinearLayout
+    private var notesButton: NotesButtonView
     private var history: HabitHistoryView
 
     private var currentToggleTaskId = 0
@@ -248,13 +251,25 @@ class HabitCardView(
             }
         }
 
-        tileRow = FrameLayout(context).apply {
+        notesButton = NotesButtonView(context).apply {
+            onEdit = {
+                habit?.let { behavior.onEditNotes(it, getToday().minus(dataOffset)) }
+            }
+        }
+
+        val panels = FrameLayout(context).apply {
+            addView(checkmarkPanel, FrameLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT))
+            addView(numberPanel, FrameLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT))
+        }
+
+        tileRow = LinearLayout(context).apply {
+            orientation = LinearLayout.HORIZONTAL
+            gravity = Gravity.END or Gravity.CENTER_VERTICAL
             layoutParams = LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT).apply {
                 topMargin = dp(8f).toInt()
             }
-            val end = FrameLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT, Gravity.END)
-            addView(checkmarkPanel, end)
-            addView(numberPanel, FrameLayout.LayoutParams(end))
+            addView(notesButton)
+            addView(panels)
         }
 
         innerFrame = LinearLayout(context).apply {
@@ -340,6 +355,12 @@ class HabitCardView(
         super.onDetachedFromWindow()
     }
 
+    /** The notes button always acts on the newest day shown in the panels. */
+    private fun updateNotesButton() {
+        notesButton.date = getToday().minus(dataOffset)
+        notesButton.notes = notes.getOrNull(dataOffset) ?: ""
+    }
+
     private fun scorePercent() = (score * 100).roundToInt()
 
     private fun copyAttributesFrom(h: Habit) {
@@ -358,6 +379,7 @@ class HabitCardView(
         updateRingGlyph(h)
         history.habit = h
         history.colors = tileColors
+        notesButton.colors = tileColors
         updateMeta(h)
         checkmarkPanel.apply {
             colors = tileColors
