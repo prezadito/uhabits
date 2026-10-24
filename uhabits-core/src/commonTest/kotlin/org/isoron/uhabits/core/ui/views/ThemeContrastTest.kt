@@ -20,6 +20,7 @@
 package org.isoron.uhabits.core.ui.views
 
 import org.isoron.platform.gui.Color
+import org.isoron.uhabits.core.models.HUE_CANONICAL_INDEX
 import kotlin.test.Test
 import kotlin.test.assertTrue
 
@@ -57,7 +58,7 @@ class ThemeContrastTest {
     @Test
     fun habitColorsInEveryTheme() {
         for ((name, theme) in themes) {
-            for (i in 0..19) {
+            for (i in 0..HUE_CANONICAL_INDEX.max()) {
                 for (surface in listOf(theme.surfaceColor, theme.surfaceRaisedColor)) {
                     check("$name habitInk($i)", theme.habitInk(i), surface, 4.5)
                 }

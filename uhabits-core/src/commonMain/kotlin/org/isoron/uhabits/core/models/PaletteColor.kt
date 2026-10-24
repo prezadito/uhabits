@@ -23,14 +23,14 @@ package org.isoron.uhabits.core.models
 private const val FALLBACK_HUE = 11
 
 /** PaletteIndex 0..19 are the classic palette, 20..23 the hues added later. */
-private val CLASSIC_TO_HUE = intArrayOf(0, 1, 1, 2, 2, 3, 3, 4, 5, 6, 7, 7, 8, 9, 9, 10, 2, 11, 11, 11, 12, 13, 14, 15)
+private val INDEX_TO_HUE = intArrayOf(0, 1, 1, 2, 2, 3, 3, 4, 5, 6, 7, 7, 8, 9, 9, 10, 2, 11, 11, 11, 12, 13, 14, 15)
 
 /** Hue -> paletteIndex the picker saves. */
 val HUE_CANONICAL_INDEX = intArrayOf(0, 2, 3, 5, 7, 8, 9, 11, 12, 13, 15, 18, 20, 21, 22, 23)
 
 data class PaletteColor(val paletteIndex: Int) {
     val hue: Int
-        get() = CLASSIC_TO_HUE.getOrElse(paletteIndex) { FALLBACK_HUE }
+        get() = INDEX_TO_HUE.getOrElse(paletteIndex) { FALLBACK_HUE }
 
     /**
      * Color to store after the user picks [hue] in the color picker. Re-picking
@@ -62,7 +62,7 @@ data class PaletteColor(val paletteIndex: Int) {
             "#303030", // 17 dark grey
             "#757575", // 18 grey
             "#aaaaaa", // 19 light grey
-            "#8D6E4F", // 20 tan
+            "#8D6E4F", // 20 brown (lighter than 16)
             "#4FA8E3", // 21 sky
             "#2EB380", // 22 mint
             "#E0597F" //  23 rose

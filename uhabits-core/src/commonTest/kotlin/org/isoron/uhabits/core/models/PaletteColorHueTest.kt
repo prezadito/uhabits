@@ -16,14 +16,14 @@ class PaletteColorHueTest {
 
     @Test
     fun canonicalIndexMapsBackToHue() {
-        for (hue in 0..15) {
+        for (hue in HUE_CANONICAL_INDEX.indices) {
             assertEquals(hue, PaletteColor.fromHue(hue).hue)
         }
     }
 
     @Test
     fun rePickingSameHueKeepsStoredIndex() {
-        for (index in 0..23) {
+        for (index in 0..HUE_CANONICAL_INDEX.max()) {
             val original = PaletteColor(index)
             assertEquals(original, original.afterPickingHue(original.hue))
         }
@@ -31,8 +31,8 @@ class PaletteColorHueTest {
 
     @Test
     fun pickingOtherHueStoresCanonicalIndex() {
-        for (index in 0..23) {
-            for (hue in 0..15) {
+        for (index in 0..HUE_CANONICAL_INDEX.max()) {
+            for (hue in HUE_CANONICAL_INDEX.indices) {
                 if (hue == PaletteColor(index).hue) continue
                 assertEquals(
                     PaletteColor(HUE_CANONICAL_INDEX[hue]),
@@ -45,7 +45,7 @@ class PaletteColorHueTest {
     @Test
     fun colorEqualsHabitFill() {
         for (theme in listOf(LightTheme(), DarkTheme(), PureBlackTheme(), WidgetTheme())) {
-            for (i in 0..23) {
+            for (i in 0..HUE_CANONICAL_INDEX.max()) {
                 assertEquals(theme.habitFill(i), theme.color(i))
                 assertEquals(theme.habitFill(i), theme.color(PaletteColor(i)))
             }
@@ -63,13 +63,18 @@ class PaletteColorHueTest {
         for (index in listOf(-1, 24, 99)) {
             assertEquals(11, PaletteColor(index).hue)
             assertEquals("#757575", PaletteColor(index).toCsvColor())
+            for (theme in listOf(LightTheme(), DarkTheme())) {
+                assertEquals(theme.habitFill(HUE_CANONICAL_INDEX[11]), theme.habitFill(index))
+                assertEquals(theme.habitInk(HUE_CANONICAL_INDEX[11]), theme.habitInk(index))
+                assertEquals(theme.habitTint(HUE_CANONICAL_INDEX[11]), theme.habitTint(index))
+            }
         }
     }
 
     @Test
     fun newHuesHaveDistinctFills() {
         for (theme in listOf(LightTheme(), DarkTheme())) {
-            assertEquals(16, (0..15).map { theme.habitFill(HUE_CANONICAL_INDEX[it]) }.toSet().size)
+            assertEquals(HUE_CANONICAL_INDEX.size, HUE_CANONICAL_INDEX.indices.map { theme.habitFill(HUE_CANONICAL_INDEX[it]) }.toSet().size)
         }
     }
 }
