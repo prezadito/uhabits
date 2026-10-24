@@ -61,7 +61,7 @@
     <string name="intro_title_1">Dobrodošli</string>
     <string name="intro_title_2">Stvorite neke nove navike</string>
     <string name="intro_description_2">Svaki dan, nakon izvođenja vaše navike, postavite \"kvačicu\" u aplikaciji.</string>
-    <string name="intro_title_4">Pratite svoj napredak</string>
+    <string name="intro_title_5">Pratite svoj napredak</string>
     <string name="interval_15_minutes">15 minuta</string>
     <string name="interval_30_minutes">30 minuta</string>
     <string name="interval_1_hour">1 sat</string>

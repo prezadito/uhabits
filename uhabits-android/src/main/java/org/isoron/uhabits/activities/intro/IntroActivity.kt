@@ -68,6 +68,15 @@ class IntroActivity : AppIntro2() {
                 getString(R.string.intro_title_4),
                 getString(R.string.intro_description_4),
                 R.drawable.intro_icon_4,
+                Color.parseColor("#e57373")
+            )
+        )
+
+        addSlide(
+            AppIntroFragment.newInstance(
+                getString(R.string.intro_title_5),
+                getString(R.string.intro_description_5),
+                R.drawable.intro_icon_5,
                 Color.parseColor("#9575cd")
             )
         )

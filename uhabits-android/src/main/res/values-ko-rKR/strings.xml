@@ -58,7 +58,7 @@
     <string name="intro_title_1">환영합니다</string>
     <string name="intro_title_2">새로운 습관을 만들어 보세요.</string>
     <string name="intro_description_2">매일 습관을 수행하고 앱에 기록하세요.</string>
-    <string name="intro_title_4">습관을 관리하세요</string>
+    <string name="intro_title_5">습관을 관리하세요</string>
     <string name="interval_15_minutes">15분</string>
     <string name="interval_30_minutes">30분</string>
     <string name="interval_1_hour">1시간</string>

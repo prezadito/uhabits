@@ -62,7 +62,7 @@
     <string name="intro_title_1">Bienvenue</string>
     <string name="intro_title_2">Créez de nouvelles habitudes</string>
     <string name="intro_description_2">Chaque jour, après avoir réalisé votre habitude, cochez-la sur l\'application.</string>
-    <string name="intro_title_4">Suivez votre progrès</string>
+    <string name="intro_title_5">Suivez votre progrès</string>
     <string name="interval_15_minutes">15 minutes</string>
     <string name="interval_30_minutes">30 minutes</string>
     <string name="interval_1_hour">1 heure</string>
