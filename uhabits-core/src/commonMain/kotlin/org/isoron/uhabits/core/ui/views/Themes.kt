@@ -45,9 +45,9 @@ abstract class Theme {
     open val onHabitColor = Color(0xffffff)
     open val onHabitTextColor = Color(0x1c1c1c)
 
-    protected open val habitFills = listOf(Color(0xe9615c), Color(0xdd6f23), Color(0xbf8105), Color(0x809703), Color(0x3ca059), Color(0x189e8c), Color(0x0d9caf), Color(0x418eec), Color(0x7786eb), Color(0xa17adf), Color(0xd268b2), Color(0x8d8d8d))
-    protected open val habitInks = listOf(Color(0xc43f3e), Color(0xb45302), Color(0x966503), Color(0x647703), Color(0x0e803b), Color(0x067c6c), Color(0x087988), Color(0x1f6fca), Color(0x5a66c7), Color(0x825abc), Color(0xaf4791), Color(0x6f6f6f))
-    protected open val habitTints = listOf(Color(0xfee8e6), Color(0xffe8dc), Color(0xfdead0), Color(0xe8f0d3), Color(0xd9f3dd), Color(0xcff5ec), Color(0xcef3fa), Color(0xe1eefe), Color(0xe7ecff), Color(0xf0e9ff), Color(0xfee7f5), Color(0xededed))
+    protected open val habitFills = listOf(Color(0xe9615c), Color(0xdd6f23), Color(0xbf8105), Color(0x809703), Color(0x3ca059), Color(0x189e8c), Color(0x0d9caf), Color(0x418eec), Color(0x7786eb), Color(0xa17adf), Color(0xd268b2), Color(0x8d8d8d), Color(0xa8714a), Color(0x4fb0e8), Color(0x35b585), Color(0xe5668a))
+    protected open val habitInks = listOf(Color(0xc43f3e), Color(0xb45302), Color(0x966503), Color(0x647703), Color(0x0e803b), Color(0x067c6c), Color(0x087988), Color(0x1f6fca), Color(0x5a66c7), Color(0x825abc), Color(0xaf4791), Color(0x6f6f6f), Color(0x85502c), Color(0x1a86c4), Color(0x12905f), Color(0xc2406a))
+    protected open val habitTints = listOf(Color(0xfee8e6), Color(0xffe8dc), Color(0xfdead0), Color(0xe8f0d3), Color(0xd9f3dd), Color(0xcff5ec), Color(0xcef3fa), Color(0xe1eefe), Color(0xe7ecff), Color(0xf0e9ff), Color(0xfee7f5), Color(0xededed), Color(0xf3e8df), Color(0xd9f1fc), Color(0xd3f5e5), Color(0xfde6ec))
 
     fun color(paletteColor: PaletteColor): Color = color(paletteColor.paletteIndex)
 
@@ -89,9 +89,9 @@ open class DarkTheme : Theme() {
     override val onHabitColor = Color(0x161616)
     override val onHabitTextColor = Color(0x0f0f0f)
 
-    override val habitFills = listOf(Color(0xcd5c57), Color(0xc2672d), Color(0xad7501), Color(0x74881f), Color(0x3f8f55), Color(0x298e7e), Color(0x208b9a), Color(0x4281cf), Color(0x6c7acd), Color(0x8f70c4), Color(0xb9619e), Color(0x7f7f7f))
-    override val habitInks = listOf(Color(0xf29189), Color(0xe99a6d), Color(0xd3a35d), Color(0xa1b365), Color(0x7bbb88), Color(0x70baab), Color(0x6cb7c4), Color(0x7baff2), Color(0x9aa9f1), Color(0xb89fe7), Color(0xe195c7), Color(0xababab))
-    override val habitTints = listOf(Color(0x3f2826), Color(0x3d2a1f), Color(0x392c1a), Color(0x2b301c), Color(0x203223), Color(0x17332d), Color(0x163236), Color(0x222f3f), Color(0x292d40), Color(0x312b3e), Color(0x3b2834), Color(0x2e2e2e))
+    override val habitFills = listOf(Color(0xcd5c57), Color(0xc2672d), Color(0xad7501), Color(0x74881f), Color(0x3f8f55), Color(0x298e7e), Color(0x208b9a), Color(0x4281cf), Color(0x6c7acd), Color(0x8f70c4), Color(0xb9619e), Color(0x7f7f7f), Color(0x8c5f3f), Color(0x3d93c4), Color(0x2b9a6e), Color(0xc75a78))
+    override val habitInks = listOf(Color(0xf29189), Color(0xe99a6d), Color(0xd3a35d), Color(0xa1b365), Color(0x7bbb88), Color(0x70baab), Color(0x6cb7c4), Color(0x7baff2), Color(0x9aa9f1), Color(0xb89fe7), Color(0xe195c7), Color(0xababab), Color(0xd4a37f), Color(0x7fc6ee), Color(0x6fcfa5), Color(0xf08fab))
+    override val habitTints = listOf(Color(0x3f2826), Color(0x3d2a1f), Color(0x392c1a), Color(0x2b301c), Color(0x203223), Color(0x17332d), Color(0x163236), Color(0x222f3f), Color(0x292d40), Color(0x312b3e), Color(0x3b2834), Color(0x2e2e2e), Color(0x3a2d24), Color(0x1b3342), Color(0x17332a), Color(0x3d2630))
 }
 
 class PureBlackTheme : DarkTheme() {

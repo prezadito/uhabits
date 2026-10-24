@@ -335,6 +335,10 @@
         <item>Violet</item>
         <item>Magenta</item>
         <item>Graphite</item>
+        <item>Brown</item>
+        <item>Sky</item>
+        <item>Mint</item>
+        <item>Rose</item>
     </string-array>
     <string name="cd_color_selected">%1$s, selected</string>
 

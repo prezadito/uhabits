@@ -53,7 +53,7 @@ fun PaletteColor.toFixedAndroidColor(): Int {
     )[paletteIndex]
 }
 
-/** Hue (0..11) of a color picked from the current theme's palette. */
+/** Hue (0..15) of a color picked from the current theme's palette. */
 fun Int.toHue(context: Context): Int {
     return StyledResources(context).getPalette().indexOf(this)
 }

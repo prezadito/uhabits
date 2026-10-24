@@ -48,6 +48,7 @@ import org.isoron.uhabits.acceptance.steps.EditHabitSteps.pickFrequency
 import org.isoron.uhabits.acceptance.steps.EditHabitSteps.typeDescription
 import org.isoron.uhabits.acceptance.steps.EditHabitSteps.typeName
 import org.isoron.uhabits.acceptance.steps.EditHabitSteps.typeQuestion
+import org.isoron.uhabits.acceptance.steps.EditHabitSteps.verifyColorName
 import org.isoron.uhabits.acceptance.steps.ListHabitsSteps.MenuItem.ADD
 import org.isoron.uhabits.acceptance.steps.ListHabitsSteps.MenuItem.ARCHIVE
 import org.isoron.uhabits.acceptance.steps.ListHabitsSteps.MenuItem.DELETE
@@ -166,6 +167,27 @@ class HabitsTest : BaseUserInterfaceTest() {
         verifyShowsScreen(LIST_HABITS)
         verifyDisplaysText("Take a walk")
         verifyDoesNotDisplayText("Track time")
+    }
+
+    @Test
+    @Throws(Exception::class)
+    fun shouldPickAddedColors() {
+        launchApp()
+        verifyShowsScreen(LIST_HABITS)
+        val added = mapOf(20 to "Brown", 21 to "Sky", 22 to "Mint", 23 to "Rose")
+        for ((index, name) in added) {
+            longClickText("Track time")
+            clickMenu(EDIT)
+            verifyShowsScreen(EDIT_HABIT)
+            pickColor(index)
+            verifyColorName(name)
+            clickSave()
+            verifyShowsScreen(LIST_HABITS)
+        }
+        longClickText("Track time")
+        clickMenu(EDIT)
+        verifyShowsScreen(EDIT_HABIT)
+        verifyColorName("Rose")
     }
 
     @Test
