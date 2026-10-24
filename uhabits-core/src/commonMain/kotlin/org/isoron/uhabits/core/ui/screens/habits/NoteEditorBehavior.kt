@@ -47,16 +47,4 @@ class NoteEditorBehavior(
     }
 
     fun delete(habit: Habit, date: LocalDate) = save(habit, date, "")
-
-    /**
-     * Takes the note off [from], so that the text being edited can be saved under [to]. Returns
-     * false, and changes nothing, when [to] already has a note: the editor then shows that note
-     * instead of overwriting it.
-     */
-    fun move(habit: Habit, from: LocalDate, to: LocalDate): Boolean {
-        if (from == to) return true
-        if (getNotes(habit, to).isNotBlank()) return false
-        delete(habit, from)
-        return true
-    }
 }

@@ -27,8 +27,6 @@ import org.isoron.uhabits.core.models.Habit
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertTrue
 
 class NoteEditorBehaviorTest : BaseUnitTest() {
     private lateinit var habit: Habit
@@ -112,30 +110,5 @@ class NoteEditorBehaviorTest : BaseUnitTest() {
         behavior.save(quit, date, "Party")
         assertEquals("Party", quit.computedEntries.get(date).notes)
         assertEquals(slips, quit.slips.getAll().size)
-    }
-
-    @Test
-    fun testMove_takesNoteOffOldDateAndKeepsItsValue() {
-        habit.originalEntries.add(Entry(date, Entry.YES_MANUAL, "Felt great"))
-        habit.recompute()
-        assertTrue(behavior.move(habit, date, date.plus(1)))
-        assertEquals(Entry(date, Entry.YES_MANUAL, ""), habit.computedEntries.get(date))
-    }
-
-    @Test
-    fun testMove_refusesWhenNewDateHasNote() {
-        habit.originalEntries.add(Entry(date, Entry.YES_MANUAL, "Felt great"))
-        habit.originalEntries.add(Entry(date.plus(1), Entry.NO, "Tired"))
-        habit.recompute()
-        assertFalse(behavior.move(habit, date, date.plus(1)))
-        assertEquals("Felt great", behavior.getNotes(habit, date))
-        assertEquals("Tired", behavior.getNotes(habit, date.plus(1)))
-    }
-
-    @Test
-    fun testMove_toSameDateDoesNothing() {
-        behavior.save(habit, date, "Felt great")
-        assertTrue(behavior.move(habit, date, date))
-        assertEquals("Felt great", behavior.getNotes(habit, date))
     }
 }
